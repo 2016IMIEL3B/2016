@@ -45,3 +45,6 @@ buildNumber.properties
 
 # JIRA plugin
 atlassian-ide-plugin.xml
+
+# fichier de projet
+quotation.iml
