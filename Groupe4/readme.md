@@ -3,7 +3,7 @@
 ## Participants
 
 * Julien Alips
-* Mathilde Macerot
+* Mathilde Massot
 * Sandra Bristiel
 * Charles Guérin-Rouard
 
