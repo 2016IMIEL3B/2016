@@ -7,18 +7,6 @@ CREATE DATABASE JAVA_G4_AF;
 USE JAVA_G4_AF;
 
 #------------------------------------------------------------
-# Table: User
-#------------------------------------------------------------
-
-CREATE TABLE Users(
-        id        int (11) Auto_increment  NOT NULL ,
-        mail      Varchar (250) NOT NULL ,
-        id_Quote  Int ,
-        PRIMARY KEY (id )
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Quote
 #------------------------------------------------------------
 
@@ -28,6 +16,7 @@ CREATE TABLE Quote(
         resume Varchar (250) NOT NULL ,
         price  Float ,
         step   Int NOT NULL ,
+        login Varchar (250) NOT NULL,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
@@ -75,6 +64,5 @@ CREATE TABLE QuoteHome(
         PRIMARY KEY (id_Quote )
 )ENGINE=InnoDB;
 
-ALTER TABLE Users ADD CONSTRAINT FK_Users_id_Quote FOREIGN KEY (id_Quote) REFERENCES Quote(id);
 ALTER TABLE QuoteCar ADD CONSTRAINT FK_QuoteCar_id FOREIGN KEY (id_Quote) REFERENCES Quote(id);
 ALTER TABLE QuoteHome ADD CONSTRAINT FK_QuoteHome_id FOREIGN KEY (id_Quote) REFERENCES Quote(id);
