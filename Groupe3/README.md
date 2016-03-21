@@ -1,4 +1,4 @@
-PARTICIPANTS
+#PARTICIPANTS
 
 - Jerome
 - Jules
