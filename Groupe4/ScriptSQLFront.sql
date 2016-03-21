@@ -61,6 +61,7 @@ CREATE TABLE QuoteCar(
 
 CREATE TABLE QuoteHome(
         typeHome       Varchar (250) NOT NULL ,
+        address        Varchar(250) NOT NULL ,
         area           Int NOT NULL ,
         numberRoom     Int NOT NULL ,
         floor          Int ,
