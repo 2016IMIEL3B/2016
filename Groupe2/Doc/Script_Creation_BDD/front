@@ -6,53 +6,53 @@ USE quotation_front;
 
 CREATE TABLE Quotation
 (
-	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	Name NVARCHAR(75) NOT NULL,
-	NbQuotation INT NOT NULL,
-	Price FLOAT NOT NULL,
-	State NVARCHAR(100) NOT NULL,
-	NbStep SMALLINT NOT NULL,
-	User_Id INT
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name NVARCHAR(75) NOT NULL,
+	nbQuotation INT NOT NULL,
+	price FLOAT NOT NULL,
+	state NVARCHAR(100) NOT NULL,
+	nbStep SMALLINT NOT NULL,
+	user_Id INT
 );
 
 CREATE TABLE Home
 (
-	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	Surface FLOAT,
-	NbRoom INT,
-	NbBathroom INT,
-	Garage BOOLEAN,
-	SurfaceGround FLOAT,
-	SurfaceTerrace FLOAT,
-	HomeType_Id SMALLINT,
-	HeaterType_Id SMALLINT,
-	Formul_Id SMALLINT,
-	Quotation_Id INT,
-	CONSTRAINT FK_Home_Quotation FOREIGN KEY (Quotation_Id) REFERENCES Quotation (Id)
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	surface FLOAT,
+	nbRoom INT,
+	nbBathroom INT,
+	garage BOOLEAN,
+	surfaceGround FLOAT,
+	surfaceTerrace FLOAT,
+	homeType_Id SMALLINT,
+	heaterType_Id SMALLINT,
+	formul_Id SMALLINT,
+	quotation_Id INT,
+	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotation_Id) REFERENCES Quotation (id)
 );
 
 CREATE TABLE Driver
 (
-	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	LastName NVARCHAR(50),
-	FirstName NVARCHAR(50),
-	Principal BOOLEAN,
-	Date_Licence DATE,
-	nbAccidents INT,
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	lastName NVARCHAR(50),
+	firstName NVARCHAR(50),
+	principal BOOLEAN,
+	licence_date DATE,
+	nbCrash INT,
 	bonusPenalty Float
 );
 
 CREATE TABLE Car
 (
-	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	TaxableHorsePower SMALLINT,
-	SleepGarage BOOLEAN,
-	Fuel_Id SMALLINT,
-	Mark_Id INT,
-	Model_Id INT,	
-	Insurance_Id INT,
-	Quotation_Id INT,
-	Driver_Id INT,
-	CONSTRAINT FK_Car_Quotation FOREIGN KEY (Quotation_Id) REFERENCES Quotation (Id),
-	CONSTRAINT FK_Car_Driver FOREIGN KEY (Driver_Id) REFERENCES Driver (Id)
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	taxableHorsePower SMALLINT,
+	sleepGarage BOOLEAN,
+	fuel_Id SMALLINT,
+	mark_Id INT,
+	model_Id INT,	
+	insurance_Id INT,
+	quotation_Id INT,
+	driver_Id INT,
+	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotation_Id) REFERENCES Quotation (id),
+	CONSTRAINT FK_Car_Driver FOREIGN KEY (driver_Id) REFERENCES Driver (id)
 );
