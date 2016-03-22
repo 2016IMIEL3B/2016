@@ -1,7 +1,9 @@
 package com.group4.front.entities;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
 public class QuoteCar extends Quote {
 
     private String brand;
