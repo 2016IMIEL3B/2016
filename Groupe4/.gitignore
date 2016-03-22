@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/java,maven,intellij,linux,osx,windows
 
+soft/repository
+
 ### Java ###
 *.class
 

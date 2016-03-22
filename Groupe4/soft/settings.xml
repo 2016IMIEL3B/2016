@@ -51,7 +51,7 @@ under the License.
    |
    | Default: ${user.home}/.m2/repository
    -->
-  <localRepository>/Users/Mathilde/IdeaProjects/Groupe4/Groupe4/soft/repository</localRepository>
+  <localRepository>C:\Users\link_\Documents\_Projets\projetJava\Groupe4\soft\repository</localRepository>
   
 
   <!-- interactiveMode
@@ -91,18 +91,18 @@ under the License.
   <proxies>
 		<!-- proxy | Specification for one proxy, to be used in connecting to the 
 			network. | 		-->
-		<!--
+		
     <proxy>
 			<id>optional</id>
 			<active>true</active>
 			<protocol>http</protocol>
-			<username>nicolas.huet</username>
-			<password>******</password>
+			<username>julien.alips</username>
+			<password>Simpson69</password>
 			<host>10.3.5.1</host>
 			<port>3128</port>
 			<nonProxyHosts>localhost</nonProxyHosts>
 		</proxy>
-    -->
+    
 
 	</proxies>
 
