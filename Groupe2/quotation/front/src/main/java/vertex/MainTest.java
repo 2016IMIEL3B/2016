@@ -10,8 +10,9 @@ public class MainTest {
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
+        
+        vertx.deployVerticle(VerticleListener.class.getCanonicalName());
 
-        vertx.deployVerticle(new VerticleListener());
 
         while (true){
             try {

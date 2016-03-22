@@ -7,6 +7,7 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
+import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.Router;
@@ -42,6 +43,11 @@ public class VerticleListener extends AbstractVerticle {
                     .put("password", "Revelefu1!")
                     .put("database", "quotation_back");
             AsyncSQLClient client = MySQLClient.createShared(vertx, clientConfig);
+            JsonObject config = new JsonObject().put("keyStore", new JsonObject()
+                    .put("path", "key/keystore.jceks")
+                    .put("type", "jceks")
+                    .put("password", "secret"));
+            JWTAuth authProvider = JWTAuth.create(vertx, config);
 
             client.getConnection(res -> {
                 System.out.println("conn -> " + res.succeeded());
@@ -57,7 +63,7 @@ public class VerticleListener extends AbstractVerticle {
                                 context.response().putHeader("UserDetails", userDetail.toString());
                                 context.response().end("Ok!");
                             } else {
-                                context.response().end("Bad Login...");
+                                context.fail(403);//context.response().end("Bad Login...");
                             }
                         } else {
                             context.response().end("Error with Querry...");
