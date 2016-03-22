@@ -33,7 +33,7 @@ public class Authentication {
                     .end(Json.encode(responseBody));
         } else {
             routingContext.response()
-                    .setStatusCode(403)
+                    .setStatusCode(400)
                     .end(Json.encode("Bad login or password"));
         }
     }

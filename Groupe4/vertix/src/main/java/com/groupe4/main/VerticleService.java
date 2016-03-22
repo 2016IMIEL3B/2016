@@ -2,9 +2,13 @@ package com.groupe4.main;
 
 import com.groupe4.main.verticles.Authentication;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpHeaders;
+import io.vertx.core.json.JsonObject;
+import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.ext.web.handler.JWTAuthHandler;
 
 public class VerticleService extends AbstractVerticle{
 
@@ -12,8 +16,25 @@ public class VerticleService extends AbstractVerticle{
     public void start() {
         Router router = Router.router(vertx);
 
+        JsonObject jwtAuthConfig = new JsonObject().put("keyStore", new JsonObject()
+                .put("path", "config/keystore.jceks")
+                .put("type", "jceks")
+                .put("password", "secret"));
+        JWTAuth authProvider = JWTAuth.create(Vertx.currentContext().owner(), jwtAuthConfig);
+
         router.route().handler(BodyHandler.create());
+
+        router.route("/login").handler(context -> {
+            context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
+            context.response().headers().add("content-type", "text/html;charset=UTF-8");
+            context.next();
+        });
+
         router.route("/api/*").produces("application/json");
+
+        // API protection with JWT
+        router.route("/api/*").handler(JWTAuthHandler.create(authProvider));
+
         router.route("/api/*").handler(context -> {
             context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
             context.response().headers().add("content-type", "text/html;charset=UTF-8");
@@ -39,11 +60,13 @@ public class VerticleService extends AbstractVerticle{
             context.next();
         });
 
-        router.post("/api/authentication/login").handler(request -> {
+        // Router begin
+        router.post("/login").handler(routingContext -> {
             Authentication authentication = new Authentication();
-            authentication.login(request);
+            authentication.login(routingContext);
         });
 
+        // Start server
         vertx.createHttpServer().requestHandler(router::accept).listen(1204);
 
         System.out.println("Http server is running on http://localhost:1204 ...");
