@@ -1,5 +1,6 @@
 package com.groupe4.main;
 
+import com.groupe4.main.verticles.Authentication;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.Router;
@@ -38,9 +39,14 @@ public class VerticleService extends AbstractVerticle{
             context.next();
         });
 
+        router.post("/api/authentication/login").handler(request -> {
+            Authentication authentication = new Authentication();
+            authentication.login(request);
+        });
+
         vertx.createHttpServer().requestHandler(router::accept).listen(1204);
 
-        System.out.println("Http server is running...");
+        System.out.println("Http server is running on http://localhost:1204 ...");
     }
 
     @Override
