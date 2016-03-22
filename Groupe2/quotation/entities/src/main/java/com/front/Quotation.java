@@ -43,6 +43,15 @@ public class Quotation {
      */
     private String state;
 
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     /**
      * Quotation number step.

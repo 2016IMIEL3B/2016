@@ -20,7 +20,7 @@ public class Model {
     private String entitled;
 
     /** Mark entitled. */
-    private Mark mark;
+    private int markId;
 
     public String getEntitled() {
         return entitled;
@@ -38,12 +38,12 @@ public class Model {
         this.id = id;
     }
 
-    public Mark getMark() {
-        return this.mark;
+    public int getMarkId() {
+        return this.markId;
     }
 
-    public void setEntitled(Mark mark) {
-        this.mark = mark;
+    public void setMarkId(int markId) {
+        this.markId = markId;
     }
 
 }

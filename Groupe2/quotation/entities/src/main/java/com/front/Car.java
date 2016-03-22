@@ -1,10 +1,5 @@
 package com.front;
 
-import com.back.Fuel;
-import com.back.Insurance;
-import com.back.Mark;
-import com.back.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,29 +32,29 @@ public class Car {
     /**
      * Car fuel.
      */
-    private Fuel fuel;
+    private int fuelId;
 
     /**
      * Car Mark.
      */
-    private Mark mark;
+    private int markId;
 
     /**
      * Car Model.
      */
-    private Model model;
+    private int modelId;
 
     /**
      * Car Insurance.
      */
-    private Insurance insurance;
+    private int insuranceId;
 
-    public Insurance getInsurance() {
-        return insurance;
+    public int getInsuranceId() {
+        return this.insuranceId;
     }
 
-    public void setInsurance(Insurance insurance) {
-        this.insurance = insurance;
+    public void setInsuranceId(int insuranceId) {
+        this.insuranceId = insuranceId;
     }
 
     public int getId() {
@@ -86,27 +81,27 @@ public class Car {
         this.sleepGarage = sleepGarage;
     }
 
-    public Fuel getFuel() {
-        return fuel;
+    public int getFuelId() {
+        return this.fuelId;
     }
 
-    public void setFuel(Fuel fuel) {
-        this.fuel = fuel;
+    public void setFuelId(int fuelId) {
+        this.fuelId = fuelId;
     }
 
-    public Mark getMark() {
-        return mark;
+    public int getMarkId() {
+        return markId;
     }
 
-    public void setMark(Mark mark) {
-        this.mark = mark;
+    public void setMarkId(int markId) {
+        this.markId = markId;
     }
 
-    public Model getModel() {
-        return model;
+    public int getModelId() {
+        return modelId;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setModelId(int modelId) {
+        this.modelId = modelId;
     }
 }

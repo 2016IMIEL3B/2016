@@ -38,7 +38,7 @@ public class Driver {
     private float bonusPenality;
 
     /** Driver Car. */
-    private Car car;
+    private int carId;
 
     public String getFirstName() {
         return firstName;
@@ -96,11 +96,11 @@ public class Driver {
         this.bonusPenality = bonusPenality;
     }
 
-    public Car getCar() {
-        return car;
+    public int getCarId() {
+        return carId;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 }

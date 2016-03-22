@@ -55,24 +55,24 @@ public class Home {
     /**
      * Home Type.
      */
-    private HomeType homeType;
+    private int homeTypeId;
 
     /**
      * Home Type.
      */
-    private HeaterType heaterType;
+    private int heaterTypeId;
 
     /**
      * Formul.
      */
-    private Formul formul;
+    private int formulId;
 
-    public Formul getFormul() {
-        return formul;
+    public int getFormul() {
+        return formulId;
     }
 
-    public void setFormul(Formul formul) {
-        this.formul = formul;
+    public void setFormul(int formulId) {
+        this.formulId = formulId;
     }
 
     public int getId() {
@@ -131,19 +131,19 @@ public class Home {
         this.surfaceTerrace = surfaceTerrace;
     }
 
-    public HomeType getHomeType() {
-        return homeType;
+    public int getHomeTypeId() {
+        return homeTypeId;
     }
 
-    public void setHomeType(HomeType homeType) {
-        this.homeType = homeType;
+    public void setHomeTypeId(int homeTypeId) {
+        this.homeTypeId = homeTypeId;
     }
 
-    public HeaterType getHeaterType() {
-        return heaterType;
+    public int getHeaterTypeId() {
+        return heaterTypeId;
     }
 
-    public void setHeaterType(HeaterType heaterType) {
-        this.heaterType = heaterType;
+    public void setHeaterTypeId(int heaterTypeId) {
+        this.heaterTypeId = heaterTypeId;
     }
 }
