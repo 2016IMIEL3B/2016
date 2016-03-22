@@ -13,7 +13,7 @@ INSERT INTO HeaterType (entitled) VALUES ("Plancher chauffant"), ("Radiateur");
 
 INSERT INTO Mark (entitled) VALUES ("Peaugeot"), ("Alfa Roméo");
 
-INSERT INTO Model (entitled,mark_id) VALUES 
+INSERT INTO Model (entitled,markId) VALUES 
 ("207",1),
 ("208",1),
 ("Giulietta",2),
@@ -23,7 +23,7 @@ INSERT INTO Role (entitled) VALUES ("ADMIN"), ("CLIENT");
 
 INSERT INTO Address (nbStreet,nameStreet,zip,town) VALUES (2,"rue de la vie","53000","Laval");
 
-INSERT INTO User (lastName,firstName,login,password,role_Id,address_Id) VALUES ("Boussard","Kévin","veelkin","test",1,1);
+INSERT INTO User (lastName,firstName,login,password,roleId,addressId) VALUES ("Boussard","Kévin","veelkin","test",1,1);
 
 
 

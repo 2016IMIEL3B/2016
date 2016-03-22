@@ -1,10 +1,10 @@
 USE quotation_front;
 
-INSERT INTO Quotation (name,nbQuotation,price,state,nbStep,user_id) VALUES
+INSERT INTO Quotation (name,number,price,state,nbStep,userId) VALUES
 ("Devis pour une Voiture",125,150000,"En Cours",2,1),
 ("Devis pour une Habitation",15,102589,"En Cours",4,1);
 
-INSERT INTO Home (surface,nbRoom,nbBathroom,garage,surfaceGround,surfaceTerrace,homeType_Id,heaterType_Id,formul_id,quotation_Id) VALUES
+INSERT INTO Home (surface,nbRoom,nbBathroom,garage,surfaceGround,surfaceTerrace,homeTypeId,heaterTypeId,formulId,quotationId) VALUES
 (110.2,5,2,FALSE,100,55.5,1,1,1,1),
 (50.7,2,1,TRUE,22,15,2,2,2,2);
 
@@ -12,5 +12,5 @@ INSERT INTO Driver (lastName,firstName,principal,licence_date,nbCrash,bonusPenal
 ("Boussard","Kévin",TRUE,"1993-12-27",0,0.76),
 ("Rauflet","Nicolas",FALSE,"1995-12-18",2,0);
 
-INSERT INTO Car (taxableHorsePower,sleepGarage,fuel_Id,mark_Id,model_Id,insurance_Id,quotation_Id,driver_Id) VALUES
+INSERT INTO Car (taxableHorsePower,sleepGarage,fuelId,markId,modelId,insuranceId,quotationId,driverId) VALUES
 (9,TRUE,1,1,1,1,1,1);
