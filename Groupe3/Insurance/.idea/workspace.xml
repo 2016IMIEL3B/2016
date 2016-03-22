@@ -105,8 +105,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InsuranceVehicleController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/InsuranceVehicleController.java">
+      <file leaf-file-name="VehicleController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/VehicleController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="501">
               <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
@@ -117,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InsuranceHomeController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/InsuranceHomeController.java">
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+            <state relative-caret-position="187">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,9 +157,10 @@
         <option value="$PROJECT_DIR$/front/src/main/webapp/views/insuranceVehicule2.jsp" />
         <option value="$PROJECT_DIR$/front/src/main/webapp/views/insuranceVehicule3.jsp" />
         <option value="$PROJECT_DIR$/front/src/main/webapp/views/insuranceVehicule4.jsp" />
-        <option value="$PROJECT_DIR$/front/src/main/java/controller/InsuranceHomeController.java" />
         <option value="$PROJECT_DIR$/front/src/main/java/controller/InsuranceVehiculeController.java" />
         <option value="$PROJECT_DIR$/front/src/main/java/controller/InsuranceVehicleController.java" />
+        <option value="$PROJECT_DIR$/front/src/main/java/controller/InsuranceHomeController.java" />
+        <option value="$PROJECT_DIR$/front/src/main/java/controller/HomeController.java" />
       </list>
     </option>
   </component>
@@ -1040,12 +1041,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1458653007218</updated>
-      <workItem from="1458653021893" duration="3583000" />
+      <workItem from="1458653021893" duration="5047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3583000" />
+    <option name="totallyTimeSpent" value="5047000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1230,7 +1231,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/InsuranceVehicleController.java">
+    <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/VehicleController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
@@ -1240,10 +1241,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/InsuranceHomeController.java">
+    <entry file="file://$PROJECT_DIR$/front/src/main/java/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+        <state relative-caret-position="187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
