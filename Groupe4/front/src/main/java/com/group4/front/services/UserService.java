@@ -45,4 +45,13 @@ public class UserService {
 
         return user;
     }
+
+    public User findUserById(Integer id) {
+        User user = new User();
+        user.setId(id);
+        user.setName("Paul");
+        user.setSurname("Jean");
+
+        return user;
+    }
 }
