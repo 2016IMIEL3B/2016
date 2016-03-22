@@ -22,12 +22,13 @@ public class IndexController {
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
     public ModelAndView home(){
-        // Recuperer L'utilisateur courant
-        ModelAndView model = new ModelAndView("Quotation/index");
-        // Recuperer le id du User courant
-        Iterable<Quotation> quotations = qs.findAll();
+
+        // Recuperer L'id de l'utilisateur courant
+        ModelAndView model = new ModelAndView("index");
         // FindById Quotation and Add to Model
+        model.addObject("quotations", qs.findAll());
         return model;
+
     }
 
 }
