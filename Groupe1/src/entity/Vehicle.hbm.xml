@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 mars 2016 11:08:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="entity.Vehicle" table="vehicle" catalog="vertix">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="model" class="entity.Model" fetch="select">
+            <column name="idModel" not-null="true" />
+        </many-to-one>
+        <property name="fuel" type="string">
+            <column name="fuel" length="45" not-null="true" />
+        </property>
+        <property name="horsepower" type="string">
+            <column name="horsepower" length="45" not-null="true" />
+        </property>
+        <property name="sleepInside" type="boolean">
+            <column name="sleepInside" not-null="true" />
+        </property>
+        <property name="anyRisk" type="boolean">
+            <column name="anyRisk" not-null="true" />
+        </property>
+        <set name="quotes" table="quote" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVehicle" />
+            </key>
+            <one-to-many class="entity.Quote" />
+        </set>
+    </class>
+</hibernate-mapping>
