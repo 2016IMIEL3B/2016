@@ -1,0 +1,58 @@
+CREATE DATABASE quotation_front;
+
+
+USE quotation_front;
+
+
+CREATE TABLE Quotation
+(
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	Name NVARCHAR(75) NOT NULL,
+	NbQuotation INT NOT NULL,
+	Price FLOAT NOT NULL,
+	State NVARCHAR(100) NOT NULL,
+	NbStep SMALLINT NOT NULL,
+	User_Id INT
+);
+
+CREATE TABLE Home
+(
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	Surface FLOAT,
+	NbRoom INT,
+	NbBathroom INT,
+	Garage BOOLEAN,
+	SurfaceGround FLOAT,
+	SurfaceTerrace FLOAT,
+	HomeType_Id SMALLINT,
+	HeaterType_Id SMALLINT,
+	Formul_Id SMALLINT,
+	Quotation_Id INT,
+	CONSTRAINT FK_Home_Quotation FOREIGN KEY (Quotation_Id) REFERENCES Quotation (Id)
+);
+
+CREATE TABLE Driver
+(
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	LastName NVARCHAR(50),
+	FirstName NVARCHAR(50),
+	Principal BOOLEAN,
+	Date_Licence DATE,
+	nbAccidents INT,
+	bonusPenalty Float
+);
+
+CREATE TABLE Car
+(
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	TaxableHorsePower SMALLINT,
+	SleepGarage BOOLEAN,
+	Fuel_Id SMALLINT,
+	Mark_Id INT,
+	Model_Id INT,	
+	Insurance_Id INT,
+	Quotation_Id INT,
+	Driver_Id INT,
+	CONSTRAINT FK_Car_Quotation FOREIGN KEY (Quotation_Id) REFERENCES Quotation (Id),
+	CONSTRAINT FK_Car_Driver FOREIGN KEY (Driver_Id) REFERENCES Driver (Id)
+);
