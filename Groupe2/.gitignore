@@ -49,3 +49,4 @@ atlassian-ide-plugin.xml
 
 # fichier de projet
 *.iml
+quotation/out/production
