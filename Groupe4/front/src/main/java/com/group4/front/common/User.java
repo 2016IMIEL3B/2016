@@ -1,8 +1,9 @@
 package com.group4.front.common;
 
-import org.springframework.format.datetime.standard.DateTimeContextHolder;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * User class.
@@ -11,7 +12,7 @@ public class User {
     /**
      * User id.
      */
-    private Long id;
+    private Integer id;
 
     /**
      * User lastname.
@@ -34,6 +35,11 @@ public class User {
     private String password;
 
     /**
+     * User roles.
+     */
+    private List<GrantedAuthority> roles;
+
+    /**
      * Is a active user.
      */
     private Boolean active;
@@ -48,11 +54,11 @@ public class User {
      */
     private Date updatedAt;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -111,4 +117,8 @@ public class User {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public List<GrantedAuthority> getRoles() { return roles; }
+
+    public void setRoles(List<GrantedAuthority> roles) { this.roles = roles; }
 }
