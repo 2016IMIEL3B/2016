@@ -1,6 +1,8 @@
 package com.groupe4.main;
 
+import com.groupe4.connexion.Connexion;
 import io.vertx.core.Vertx;
+
 /**
  * Created by Mathilde on 21/03/2016.
  */
@@ -11,6 +13,9 @@ public class Start {
         Vertx vertx = Vertx.vertx();
 
         vertx.deployVerticle(new VerticleService());
+
+        Connexion connect_bdd = new Connexion(vertx);
+
 
     }
 }

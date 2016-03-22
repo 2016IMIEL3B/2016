@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.englishtown.vertx</groupId>
+    <artifactId>oss-parent-vertx</artifactId>
+    <version>2.1.0</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.englishtown</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
+    <properties>
+        <vertx.version>3.1.0</vertx.version>
+        <junit.version>4.12</junit.version>
+        <mockito.version>1.10.19</mockito.version>
+        <maven.shade.plugin.version>2.3</maven.shade.plugin.version>
+    </properties>
+
+    <dependencies>
+        <!--Vertx dependencies-->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
+        <!--Test dependencies-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>${vertx.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Test*.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/integration/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/integration/**</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <!-- Fat executable jars
+                If you want your project to output a fat executable standalone jar with all the dependencies in it you
+                can use the shade plugin. -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven.shade.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <transformers>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <manifestEntries>
+                                            <!-- If you want your main verticle to run automatically when you run execute the jar with:
+                                            java -jar <jar_name>
+                                            Then specify the Main-Class as io.vertx.core.Starter and the Main-Verticle as the verticle
+                                            you want to run, as follows:
+                                            -->
+                                            <Main-Class>io.vertx.core.Starter</Main-Class>
+
+                                            <!-- Add Main-Verticle
+                                            <Main-Verticle>js:javascript/app.js</Main-Verticle>
+                                            <Main-Verticle>java:com.englishtown.vertx.App</Main-Verticle>
+                                            -->
+
+                                            <!-- Alternatively if you just want to run your own main then specify it here as follows:
+                                            <Main-Class>your.main.Class</Main-Class>
+                                            -->
+                                        </manifestEntries>
+                                    </transformer>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
+                                    </transformer>
+                                </transformers>
+                                <artifactSet>
+                                    <!-- By default all the deps go into the fat jar, if you don't need some, they can be excluded here -->
+                                    <excludes>
+                                    </excludes>
+                                </artifactSet>
+                                <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <scm>
+        <connection>scm:git:https://github.com/englishtown/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/englishtown/${project.artifactId}.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/englishtown/${project.artifactId}</url>
+    </scm>
+
+</project>
