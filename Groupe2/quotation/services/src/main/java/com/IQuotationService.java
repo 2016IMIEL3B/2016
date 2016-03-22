@@ -7,5 +7,5 @@ import com.front.Quotation;
  */
 public interface IQuotationService {
 
-    Quotation findByUserId(int userId);
+    Iterable<Quotation> findByUserId(int user_Id);
 }

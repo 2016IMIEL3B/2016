@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by kevin on 22/03/16.
  */
-public interface QuotationRepository extends CrudRepository<Quotation,Integer>{
+public interface QuotationRepository extends CrudRepository<Quotation, Integer>{
 
-    Quotation findByUserId(int userId);
+    Iterable<Quotation> findByUserId(int user_Id);
 }

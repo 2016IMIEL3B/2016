@@ -4,6 +4,8 @@ import com.QuotationRepository;
 import com.front.Quotation;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
+
 /**
  * Created by kevin on 22/03/16.
  */
@@ -13,5 +15,7 @@ public class QuotationService implements IQuotationService {
     private QuotationRepository quotationDao;
 
     @Override
-    public Quotation findByUserId(int userId) { return quotationDao.findByUserId(userId);  }
+    public Iterable<Quotation> findByUserId(int user_Id) { return quotationDao.findByUserId(user_Id);  }
+
+    public Iterable<Quotation> findAll() { return quotationDao.findAll(); }
 }
