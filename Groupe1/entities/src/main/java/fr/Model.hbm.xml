@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 mars 2016 11:08:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="entity.Model" table="model" catalog="vertix">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="brand" class="entity.Brand" fetch="select">
+            <column name="idBrand" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <set name="vehicles" table="vehicle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idModel" not-null="true" />
+            </key>
+            <one-to-many class="entity.Vehicle" />
+        </set>
+    </class>
+</hibernate-mapping>

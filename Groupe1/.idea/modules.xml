@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dao/vertx.dao.iml" filepath="$PROJECT_DIR$/dao/vertx.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entities/vertx.entities.iml" filepath="$PROJECT_DIR$/entities/vertx.entities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/front/vertx.front.iml" filepath="$PROJECT_DIR$/front/vertx.front.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vertx.root.iml" filepath="$PROJECT_DIR$/vertx.root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/vertx.service.iml" filepath="$PROJECT_DIR$/services/vertx.service.iml" />
+    </modules>
+  </component>
+</project>
