@@ -3,12 +3,14 @@ package com;
 import com.QuotationRepository;
 import com.front.Quotation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
 /**
  * Created by kevin on 22/03/16.
  */
+@Service
 public class QuotationService implements IQuotationService {
 
     @Autowired
