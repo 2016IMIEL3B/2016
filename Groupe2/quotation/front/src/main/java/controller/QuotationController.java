@@ -16,12 +16,6 @@ public class QuotationController {
         return model;
     }
 
-    @RequestMapping({"/Devis/Voiture"})
-    public ModelAndView quotationCar(){
-        ModelAndView model = new ModelAndView("Quotation_Car/index.jsp");
-        return model;
-    }
-
     @RequestMapping({"/Devis/Habitation"})
     public ModelAndView quotationHome(){
         ModelAndView model = new ModelAndView("Quotation_Home/index.jsp");
