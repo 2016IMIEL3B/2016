@@ -11,14 +11,7 @@ public class MainTest {
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
 
-        vertx.setPeriodic(1000, id -> {
-            // This handler will get called every second
-            System.out.println("timer fired!");
-        });
-        vertx.setPeriodic(500, id -> {
-            // This handler will get called every second
-            System.out.println("Plus vite!");
-        });
+        vertx.deployVerticle(new VerticleListener());
 
         while (true){
             try {
