@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 21 Mars 2016 à 14:27
+-- Généré le :  Mar 22 Mars 2016 à 09:21
 -- Version du serveur :  10.1.10-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -62,7 +62,8 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL DEFAULT '',
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `createdAt` date NOT NULL DEFAULT '0000-00-00',
-  `updatedAt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updatedAt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `roles` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
