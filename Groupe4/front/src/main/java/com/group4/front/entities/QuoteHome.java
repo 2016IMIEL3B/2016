@@ -1,5 +1,8 @@
 package com.group4.front.entities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class QuoteHome extends Quote {
 
     private String typeHome;
