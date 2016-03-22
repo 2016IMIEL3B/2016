@@ -1,11 +1,13 @@
 package vertex;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.AsyncResult;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
+import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -49,10 +51,14 @@ public class VerticleListener extends AbstractVerticle {
                     connection.queryWithParams("Select * from User where login = ?", params, resSet -> {
                         System.out.println("resSet -> " + resSet.succeeded());
                         if (resSet.succeeded()){
-                            String userDetail = resSet.result().toJson().toString();
+                            if(resSet.result().getNumRows()!= 0){
+                                JsonObject userDetail = resSet.result().getRows().get(0);
 
-                            context.response().putHeader("UserDetails", userDetail);
-                            context.response().end("Ok!");
+                                context.response().putHeader("UserDetails", userDetail.toString());
+                                context.response().end("Ok!");
+                            } else {
+                                context.response().end("Bad Login...");
+                            }
                         } else {
                             context.response().end("Error with Querry...");
                         }
@@ -64,7 +70,6 @@ public class VerticleListener extends AbstractVerticle {
             client.close();
         }
     }
-
 
     private void getDefaultHeader(RoutingContext context){
         context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
@@ -90,6 +95,8 @@ public class VerticleListener extends AbstractVerticle {
         System.out.println("handle -> " + context.request().path());
         context.next();
     }
+
+
 }
 
 
