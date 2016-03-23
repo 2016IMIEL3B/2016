@@ -5,7 +5,15 @@
 <html lang="en">
 
 <body>
-    <h1>Page Voiture Wizard</h1>
+
+<nav>
+    <h1>Projet Vertx</h1>
+    <a href="/car/1" style="display: inline">Devis Voiture</a> |
+    <a href="/habitation/1">Devis Habitation</a> |
+    <a href="/profile">Profil</a> |
+    <a href="/synthesis">Mes Devis</a>
+</nav>
+    <h1>Assurer une voiture: Partie 2</h1>
 
     <form >
 
@@ -24,7 +32,7 @@
             <input type="text" name="bonusMalus">
         </div>
 
-
+        <input type="submit" value="Valider">
     </form>
 
 </body>
