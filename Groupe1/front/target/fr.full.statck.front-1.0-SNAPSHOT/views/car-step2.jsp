@@ -7,7 +7,7 @@
 <body>
     <h1>Page Voiture Wizard</h1>
 
-    <form  >
+    <form >
 
         <div>
             <label>Date du permis</label>

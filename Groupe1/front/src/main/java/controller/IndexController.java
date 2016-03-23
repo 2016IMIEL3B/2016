@@ -68,9 +68,15 @@ public class IndexController {
         return model;
     }
 
-    @RequestMapping(value = "/habitation", method = RequestMethod.GET)
-    public ModelAndView habitation(){
-        ModelAndView model = new ModelAndView("habitation");
+    @RequestMapping(value = "/habitation/1", method = RequestMethod.GET)
+    public ModelAndView habitation1(){
+        ModelAndView model = new ModelAndView("habitation-step1");
+        return model;
+    }
+
+    @RequestMapping(value = "/habitation/2", method = RequestMethod.GET)
+    public ModelAndView habitation2(){
+        ModelAndView model = new ModelAndView("habitation-step2");
         return model;
     }
 
