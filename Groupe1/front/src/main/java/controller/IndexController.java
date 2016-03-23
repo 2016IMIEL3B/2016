@@ -57,15 +57,26 @@ public class IndexController {
         return model;
     }
 
-    @RequestMapping(value = "/car", method = RequestMethod.GET)
+    @RequestMapping(value = "/car/1", method = RequestMethod.GET)
     public ModelAndView car(){
-        ModelAndView model = new ModelAndView("car");
+        ModelAndView model = new ModelAndView("car-step1");
+        return model;
+    }
+    @RequestMapping(value = "/car/2", method = RequestMethod.GET)
+    public ModelAndView car2(){
+        ModelAndView model = new ModelAndView("car-step2");
         return model;
     }
 
-    @RequestMapping(value = "/habitation", method = RequestMethod.GET)
-    public ModelAndView habitation(){
-        ModelAndView model = new ModelAndView("habitation");
+    @RequestMapping(value = "/habitation/1", method = RequestMethod.GET)
+    public ModelAndView habitation1(){
+        ModelAndView model = new ModelAndView("habitation-step1");
+        return model;
+    }
+
+    @RequestMapping(value = "/habitation/2", method = RequestMethod.GET)
+    public ModelAndView habitation2(){
+        ModelAndView model = new ModelAndView("habitation-step2");
         return model;
     }
 
