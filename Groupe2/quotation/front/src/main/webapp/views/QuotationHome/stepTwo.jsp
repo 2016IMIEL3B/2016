@@ -1,6 +1,6 @@
 <%@ include file="../Default/header.jsp" %>
 
-<form>
+<form method="POST">
 
     <label for="nbpièces">Nombre de pièces</label>
     <select id="nbpièces" class="form-control">

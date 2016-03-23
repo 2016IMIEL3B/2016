@@ -1,6 +1,6 @@
 <%@ include file="../Default/header.jsp" %>
 
-<form>
+<form method="POST">
 
 <label for="date">Date du permis</label>
 <input id="date" type="text" value="" class="form-control">

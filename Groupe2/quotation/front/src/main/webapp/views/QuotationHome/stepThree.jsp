@@ -1,6 +1,6 @@
 <%@ include file="../Default/header.jsp" %>
 
-<form>
+<form method="POST">
 
     <label for="surterrains">Surface du terrains</label>
     <input id="surterrains" type="text" value="" class="form-control">
