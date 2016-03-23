@@ -11,6 +11,8 @@ and open the template in the editor.
     <head>      
         <title>Formulaire d'inscription</title>
         <link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="../css/style.css" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <h1>Formulaire d'inscription</h1>

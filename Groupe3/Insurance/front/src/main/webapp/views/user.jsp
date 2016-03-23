@@ -8,11 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Devis en cours</title>
+    <title>Edition de profil</title>
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <h1>Devis en cours</h1>
+<div class="form-style-10">
+    <h1>Edition de profil</h1>
+</div>
 </body>
 </html>

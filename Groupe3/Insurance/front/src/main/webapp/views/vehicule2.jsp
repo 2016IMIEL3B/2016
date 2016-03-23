@@ -14,7 +14,8 @@
 </head>
 <body>
 <div class="form-style-10">
-    <h1>Devis véhicule - Etape 2</h1>
+    <h1>Devis véhicule</h1>
+    <h2>Etape 1 > Etape 2</h2>
     <form method="post" action="servlet/result">
         <table>
             <tr>
@@ -47,6 +48,6 @@
             </tr>
         </table>
     </form>
-    </div>
+</div>
 </body>
 </html>

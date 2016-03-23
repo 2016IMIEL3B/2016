@@ -9,8 +9,11 @@
 <html>
 <head>
     <title>Devis d'habitation - Etape 1</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<div class="form-style-10">
     <h1>Devis d'habitation</h1>
     <h2>Etape 1</h2>
     <form method="post" action="">
@@ -55,5 +58,6 @@
             </tr>
         </table>
     </form>
+</div>
 </body>
 </html>
