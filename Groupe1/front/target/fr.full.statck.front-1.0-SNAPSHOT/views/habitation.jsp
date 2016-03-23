@@ -5,7 +5,16 @@
 <html lang="en">
 
 <body>
-<h1>Page habitation wizard</h1>
+
+<nav>
+    <h1>Projet Vertx</h1>
+    <a href="/car" style="display: inline">Devis Voiture</a> |
+    <a href="/habitation">Devis Habitation</a> |
+    <a href="/profile">Profil</a> |
+    <a href="/synthesis/">Mes Devis</a>
+</nav>
+
+<h1>Devis - Assurer une habitation</h1>
 </body>
 
 </html>
