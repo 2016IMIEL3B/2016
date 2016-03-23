@@ -23,7 +23,7 @@ USE `DBInsurance` ;
 CREATE TABLE IF NOT EXISTS `DBInsurance`.`Group` (
   `idGroup` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(25) NOT NULL,
-  PRIMARY KEY (`idGroup`, `name`))
+  PRIMARY KEY (`idGroup`))
 ENGINE = InnoDB;
 
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`Adress` (
   `idAdress` INT NOT NULL AUTO_INCREMENT,
   `street` VARCHAR(25) NOT NULL,
   `city` VARCHAR(25) NOT NULL,
-  `code` INT(5) NOT NULL,
+  `postalCode` INT(5) NOT NULL,
   `country` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`idAdress`))
 ENGINE = InnoDB;
