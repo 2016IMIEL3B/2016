@@ -15,7 +15,7 @@
                     <c:if test="${quotation.typeQuotation.entitled} == 'voiture'">
                         <td><a class="button" href="/devis/${quotation.id}/voiture">Reprendre</a></td>
                     </c:if>
-                    <c:if test="${quotation.typeQuotation.entitled} == 'car'">
+                    <c:if test="${quotation.typeQuotation.entitled} == 'habitation'">
                         <td><a class="button" href="/devis/${quotation.id}/habitation">Reprendre</a></td>
                     </c:if>
                     <td><a class="button" href="/devis/supprimer/${quotation.id}">Supprimer</a></td>
