@@ -1,8 +1,12 @@
 USE quotation_front;
 
-INSERT INTO Quotation (name,number,price,state,nbStep,userId) VALUES
-("Devis pour une Voiture",125,150000,"En Cours",2,1),
-("Devis pour une Habitation",15,102589,"En Cours",4,1);
+INSERT INTO TypeQuotation (entitled) VALUES
+("Habitation"),
+("Voiture");
+
+INSERT INTO Quotation (name,number,price,state,nbStep,typeQuotationId,userId) VALUES
+("Devis pour une Voiture",125,150000,"En Cours",2,2,1),
+("Devis pour une Habitation",15,102589,"En Cours",4,1,1);
 
 INSERT INTO Home (surface,nbRoom,nbBathroom,garage,surfaceGround,surfaceTerrace,homeTypeId,heaterTypeId,formulId,quotationId) VALUES
 (110.2,5,2,FALSE,100,55.5,1,1,1,1),

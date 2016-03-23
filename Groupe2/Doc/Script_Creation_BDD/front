@@ -3,6 +3,12 @@ CREATE DATABASE quotation_front;
 
 USE quotation_front;
 
+CREATE TABLE TypeQuotation
+(
+	id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	entitled NVARCHAR(20) UNIQUE NOT NULL
+);
+
 
 CREATE TABLE Quotation
 (
@@ -12,7 +18,9 @@ CREATE TABLE Quotation
 	price FLOAT NOT NULL,
 	state NVARCHAR(100) NOT NULL,
 	nbStep SMALLINT NOT NULL,
-	userId INT
+	typeQuotationId SMALLINT NOT NULL,
+	userId INT,
+	CONSTRAINT FK_Quotation_TypeQuotation FOREIGN KEY (typeQuotationId) REFERENCES TypeQuotation(id)
 );
 
 CREATE TABLE Home

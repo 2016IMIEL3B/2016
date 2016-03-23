@@ -5,10 +5,7 @@ import com.back.Insurance;
 import com.back.Mark;
 import com.back.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by nico on 21/03/16.
@@ -42,6 +39,13 @@ public class Quotation {
      * Quotation state.
      */
     private String state;
+
+    /**
+     * Quotation TypeQuotation.
+     */
+    @ManyToOne
+    @JoinColumn(name = "typeQuotationId")
+    private TypeQuotation typeQuotation;
 
     private int userId;
 
@@ -106,4 +110,11 @@ public class Quotation {
         this.state = state;
     }
 
+    public TypeQuotation getTypeQuotation() {
+        return typeQuotation;
+    }
+
+    public void setTypeQuotation(TypeQuotation typeQuotation) {
+        this.typeQuotation = typeQuotation;
+    }
 }
