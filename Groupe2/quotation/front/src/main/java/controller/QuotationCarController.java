@@ -33,7 +33,7 @@ public class QuotationCarController {
     public ModelAndView quotationCar(@PathVariable int id) {
         ModelAndView model = null;
 
-        Quotation quotation = quotationService.findById(id);
+        Quotation quotation = quotationService.findOneById(id);
 
         if (quotation == null) {
             model = new ModelAndView("QuotationCar/stepOne");
@@ -46,10 +46,11 @@ public class QuotationCarController {
                 model = new ModelAndView("QuotationCar/stepTwo");
                 model.addObject("step", 2);
             } else if (car.getAddress() == null) {
-                model = new ModelAndView("QuotationCar/stepTwo");
+                model = new ModelAndView("QuotationCar/stepThree");
                 model.addObject("step", 3);
-            } else if () {
-                
+            } else if (car.getInsuranceId() == 0) {
+                model = new ModelAndView("QuotationCar/stepFour");
+                model.addObject("step", 4);
             }
         }
 
