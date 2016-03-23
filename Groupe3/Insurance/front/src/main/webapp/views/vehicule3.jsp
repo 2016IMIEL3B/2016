@@ -58,14 +58,14 @@
                 <td>Country</td>
                 <td>
                     <input type=text name="adressCountry"/>
-                    <br/>
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
                 <td colspan=2>
-                    <input type="button" value="Précédent"/>
-                    <input type="submit" value="Suivant"/>
-                    <input type="reset" value="Retablir">
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Précédent" onclick="location.href='/vehicle2'" />
+                    <input type="button" value="Suivant" onclick="location.href='/vehicle4'" />
                 </td>
             </tr>
         </table>

@@ -15,6 +15,44 @@
 <body>
 <div class="form-style-10">
     <h1>Edition de profil</h1>
+    <form method="post" action="">
+        <table BORDER=0>
+            <tr>
+                <td>Nom de l'utilisateur</td>
+                <td>
+                    <input type="text" name="value" value="" />
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Prénom de l'utilisateur</td>
+                <td>
+                    <input type="text" name="value" value="" />
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Mot de passe</td>
+                <td>
+                    <input type="password" name="value" value="" />
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Confirmation</td>
+                <td>
+                    <input type="password" name="value" value="" />
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="submit" value="Enregistrer"/>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>

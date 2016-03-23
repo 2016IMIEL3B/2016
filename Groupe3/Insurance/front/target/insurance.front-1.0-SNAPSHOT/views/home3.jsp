@@ -41,13 +41,14 @@
                     <option value="Solaire">Solaire</option>
                     <option value="Autre">Autre</option>
                     </select>
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
-
-                <td align="right">
-                    <input type="button" value="Précédent"/>
-                    <input type="submit" value="Suivant"/>
+                <td colspan=2>
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Précédent" onclick="location.href='/home2'" />
+                    <input type="button" value="Suivant" onclick="location.href='/home4'" />
                 </td>
             </tr>
         </table>

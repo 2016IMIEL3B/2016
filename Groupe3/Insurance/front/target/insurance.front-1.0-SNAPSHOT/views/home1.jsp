@@ -22,18 +22,21 @@
                 <td>Nom de l'utilisateur</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Prénom de l'utilisateur</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Nom du devis</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    <br/>
                 </td>
             </tr>
             <tr>
@@ -43,17 +46,20 @@
                         <option value="appartement">appartement</option>
                         <option value="maison">maison</option>
                     </select>
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Surface</td>
                 <td>
                     <input type="text" name="value" value="" />m&sup2;
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    <input type="submit" value="Suivant"/>
+                <td colspan=2>
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Suivant" onclick="location.href='/home2'" />
                 </td>
             </tr>
         </table>

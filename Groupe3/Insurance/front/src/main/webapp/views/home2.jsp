@@ -33,18 +33,21 @@
                     <option value="9">9</option>
                     <option value="10">10 et plus</option>
                     </select>
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Etage</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Nombre de salles de bain</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    <br/>
                 </td>
             </tr>
             <tr>
@@ -52,12 +55,14 @@
                 <td>
                     <input type="radio" name="withGarage" value="Oui">Oui</input>
                     <input type="radio" name="withGarage" value="Non">Non</input>
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    <input type="button" value="Précédent"/>
-                    <input type="submit" value="Suivant"/>
+                <td colspan=2>
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Précédent" onclick="location.href='/home1'" />
+                    <input type="button" value="Suivant" onclick="location.href='/home3'" />
                 </td>
             </tr>
         </table>

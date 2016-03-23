@@ -15,6 +15,7 @@ and open the template in the editor.
 		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     </head>
     <body>
+	<div class="form-style-10">
         <h1>Formulaire d'inscription</h1>
         <form method="post" action="servlet/result"> 
 	        <span id="message"></span>
@@ -105,5 +106,6 @@ and open the template in the editor.
 		        </tr>
 	        </table>
         </form>
+		</div>
     </body>
 </html>

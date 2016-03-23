@@ -22,30 +22,35 @@
                 <td>Résumé</td>
                 <td>
                     <input type="text" name="summary" value="" />
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Formule1</td>
                 <td>
                     <input type="radio" name="formule1" value="formule1"/>
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Formule2</td>
                 <td>
                     <input type="radio" name="formule2" value="formule2"/>
+                    <br/>
                 </td>
             </tr>
             <tr>
                 <td>Prix</td>
                 <td>
                     <input type="text" name="price" value="" />
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
-                <td align="right">
-                    <input type="button" value="Précédent"/>
-                    <input type="submit" value="Suivant"/>
+                <td colspan=2>
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Précédent" onclick="location.href='/home3'" />
+                    <input type="submit" value="Terminer" />
                 </td>
             </tr>
         </table>

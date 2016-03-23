@@ -36,14 +36,14 @@
                 <td>Bonus - Malus</td>
                 <td>
                     <input type=text name="userBonusMalus"/>
-                    <br/>
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
                 <td colspan=2>
-                    <input type="button" value="Précédent"/>
-                    <input type="submit" value="Suivant"/>
-                    <input type="reset" value="Retablir">
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Précédent" onclick="location.href='/vehicle1'" />
+                    <input type="button" value="Suivant" onclick="location.href='/vehicle3'" />
                 </td>
             </tr>
         </table>

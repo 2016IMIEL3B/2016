@@ -45,14 +45,14 @@
                 <td>Montant du devis</td>
                 <td>
                     <input type=text name="insurancePrice"/>
-                    <br/>
+                    <br/><br/>
                 </td>
             </tr>
             <tr>
                 <td colspan=2>
-                    <input type="button" value="Précédent"/>
-                    <input type="submit" value="Suivant"/>
-                    <input type="reset" value="Retablir">
+                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Précédent" onclick="location.href='/vehicle3'" />
+                    <input type="submit" value="Terminer">
                 </td>
             </tr>
         </table>
