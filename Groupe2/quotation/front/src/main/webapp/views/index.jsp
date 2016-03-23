@@ -1,10 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html lang="en">
-
-    <body>
+<%@ include file="Default/header.jsp" %>
         <h1>Liste des devis en cours</h1>
 
         <table class="table">
@@ -21,7 +15,4 @@
                 </tr>
             </c:forEach>
         </table>
-
-    </body>
-
-</html>
+<%@ include file="Default/footer.jsp" %>
