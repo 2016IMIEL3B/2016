@@ -10,6 +10,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface QuotationRepository extends CrudRepository<Quotation, Integer>{
 
     Iterable<Quotation> findByUserId(int user_Id);
-    Quotation findOneById(int quotationId);
+    Quotation findOneById(int id);
 
 }

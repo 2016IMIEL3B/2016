@@ -59,7 +59,7 @@ public class AuthHelper {
                             context.response().end("Bad Login");
                         }
                     } else {
-                        context.response().end("Error with Querry.");
+                        context.response().end("Error with Query.");
                     }
                     connection.close();
                 });
