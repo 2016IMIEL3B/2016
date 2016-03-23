@@ -36,6 +36,7 @@ CREATE TABLE Car
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	taxableHorsePower SMALLINT,
 	sleepGarage BOOLEAN,
+	address NVARCHAR(100),
 	fuelId SMALLINT,
 	markId INT,
 	modelId INT,	

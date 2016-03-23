@@ -8,8 +8,8 @@ INSERT INTO Home (surface,nbRoom,nbBathroom,garage,surfaceGround,surfaceTerrace,
 (110.2,5,2,FALSE,100,55.5,1,1,1,1),
 (50.7,2,1,TRUE,22,15,2,2,2,2);
 
-INSERT INTO Car (taxableHorsePower,sleepGarage,fuelId,markId,modelId,insuranceId,quotationId) VALUES
-(9,TRUE,1,1,1,1,1);
+INSERT INTO Car (taxableHorsePower,sleepGarage,address,fuelId,markId,modelId,insuranceId,quotationId) VALUES
+(9,TRUE,"rue de la vie",1,1,1,1,1);
 
 INSERT INTO Driver (lastName,firstName,principal,licence_date,nbCrash,bonusPenalty,carId) VALUES
 ("Boussard","Kévin",TRUE,"1993-12-27",0,0.76,1),
