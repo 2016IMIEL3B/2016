@@ -27,7 +27,7 @@ public class QuotationHomeController {
     @Autowired
     IQuotationService quotationService;
 
-    @RequestMapping(value = "/devis/{id}/maison", method = RequestMethod.GET)
+    @RequestMapping(value = "/devis/{id}/habitation", method = RequestMethod.GET)
     public ModelAndView quotationHome(@PathVariable int id) {
         ModelAndView model = null;
 
