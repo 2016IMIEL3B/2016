@@ -5,18 +5,15 @@ import com.group4.front.common.User;
 import com.group4.front.controller.model.QuoteCarModel;
 import com.group4.front.entities.Quote;
 import com.group4.front.entities.QuoteCar;
-import com.group4.front.services.AuthenticationService;
 import com.group4.front.services.QuoteService;
 import com.group4.front.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller
 public class WizardCarController {
