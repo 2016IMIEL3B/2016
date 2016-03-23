@@ -2,28 +2,54 @@ package vertex;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.AsyncResult;
+import io.vertx.core.Handler;
 import io.vertx.core.http.HttpHeaders;
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
 import io.vertx.ext.auth.jwt.JWTAuth;
+import io.vertx.ext.auth.jwt.JWTOptions;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
+import io.vertx.ext.web.handler.JWTAuthHandler;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Created by Theo Lemaillet on 21/03/16 for project.
  */
 public class VerticleListener extends AbstractVerticle {
+
+    private Router router = Router.router(vertx);
+    private AsyncSQLClient client = MySQLClient.createShared(vertx, getDBConfig());
+    private JWTAuth authProvider = JWTAuth.create(vertx, getAuthConfig());
+
+
     @Override
     public void start(){
-        Router router = Router.router(vertx);
 
         router.route("/*").handler(this::getDefaultHeader);
 
         router.get("/auth/api/login").handler(this::getUserDetails);
+
+        router.route("/api/*").handler(context -> {
+            Boolean ok = context.request().getParam("token") != null;
+            if (ok) context.next();
+            else context.fail(401);
+        });
+
+        router.route("/api/*").failureHandler(failureRoutingContext ->{
+            int statusCode = failureRoutingContext.statusCode();
+            if (statusCode <=0) {
+                statusCode = 403;
+            }
+            failureRoutingContext.response().setStatusCode(statusCode).end("Not Authorized");
+        });
+
+        router.route("/api/*").handler(JWTAuthHandler.create(authProvider));
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8090);
     }
@@ -36,45 +62,65 @@ public class VerticleListener extends AbstractVerticle {
         if (login == null) {
             context.response().end("Nope!");
         } else {
-            JsonObject clientConfig = new JsonObject()
-                    .put("host", "localhost")
-                    .put("port", 3306)
-                    .put("username", "root")
-                    .put("password", "Revelefu1!")
-                    .put("database", "quotation_back");
-            AsyncSQLClient client = MySQLClient.createShared(vertx, clientConfig);
-            JsonObject config = new JsonObject().put("keyStore", new JsonObject()
+            try {
+                JsonObject userDetails = getDetailsFromLogin(context, login);
+                context.response().putHeader("UserDetails", userDetails.toString());
+                context.response().end("Ok!");
+            } catch(Exception e) {
+                context.response().setStatusCode(403).end(e.getMessage());
+            }
+        }
+    }
+
+    public JsonObject getDetailsFromLogin(RoutingContext context, String login) {
+        JsonObject userDetails;
+        String token;
+
+        this.client.getConnection(res -> {
+            System.out.println("conn -> " + res.succeeded());
+            if (res.succeeded()) {
+                JsonArray params = new JsonArray().add(login);
+                SQLConnection connection = res.result();
+                connection.queryWithParams("Select * from User where login = ?", params, resSet -> {
+                    System.out.println("resSet -> " + resSet.succeeded());
+                    if (resSet.succeeded()){
+                        if(resSet.result().getNumRows() != 0){
+
+                            userDetails = resSet.result().getRows().get(0);
+                            token = authProvider.generateToken(userDetails, new JWTOptions());
+
+                        } else {
+                            throw new IllegalStateException("Bad Login");
+                        }
+                    } else {
+                        throw new IllegalStateException("Error with Querry.");
+                    }
+                });
+            } else {
+                throw new IllegalStateException("Error with Database connection.");
+            }
+        });
+
+        return userDetails;
+    }
+
+    private JsonObject getDBConfig(){
+        return new JsonObject()
+                .put("host", "localhost")
+                .put("port", 3306)
+                .put("username", "root")
+                .put("password", "Revelefu1!")
+                .put("database", "quotation_back");
+    }
+
+    private JsonObject getAuthConfig(){
+        return new JsonObject().put(
+                "keyStore",
+                new JsonObject()
                     .put("path", "key/keystore.jceks")
                     .put("type", "jceks")
-                    .put("password", "secret"));
-            JWTAuth authProvider = JWTAuth.create(vertx, config);
-
-            client.getConnection(res -> {
-                System.out.println("conn -> " + res.succeeded());
-                if (res.succeeded()) {
-                    JsonArray params = new JsonArray().add(login);
-                    SQLConnection connection = res.result();
-                    connection.queryWithParams("Select * from User where login = ?", params, resSet -> {
-                        System.out.println("resSet -> " + resSet.succeeded());
-                        if (resSet.succeeded()){
-                            if(resSet.result().getNumRows()!= 0){
-                                JsonObject userDetail = resSet.result().getRows().get(0);
-
-                                context.response().putHeader("UserDetails", userDetail.toString());
-                                context.response().end("Ok!");
-                            } else {
-                                context.fail(403);//context.response().end("Bad Login...");
-                            }
-                        } else {
-                            context.response().end("Error with Querry...");
-                        }
-                    });
-                } else {
-                    context.response().end("Error with DB...");
-                }
-            });
-            client.close();
-        }
+                    .put("password", "secret")
+        );
     }
 
     private void getDefaultHeader(RoutingContext context){
@@ -102,7 +148,10 @@ public class VerticleListener extends AbstractVerticle {
         context.next();
     }
 
-
+    @Override
+    public void stop() throws Exception {
+        client.close();
+    }
 }
 
 
