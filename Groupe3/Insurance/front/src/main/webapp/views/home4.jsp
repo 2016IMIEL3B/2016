@@ -11,6 +11,41 @@
     <title>Devis d'habitation - Etape 4</title>
 </head>
 <body>
-    <h1>Devis d'habitation - Etape 4</h1>
+    <h1>Devis d'habitation</h1>
+    <h2>Etape 1 > Etape 2 > Etape 3 > Etape 4</h2>
+    <form method="post" action="">
+        <table BORDER=0>
+            <tr>
+                <td>Résumé</td>
+                <td>
+                    <input type="text" name="summary" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Formule1</td>
+                <td>
+                    <input type="radio" name="formule1" value="formule1"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Formule2</td>
+                <td>
+                    <input type="radio" name="formule2" value="formule2"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Prix</td>
+                <td>
+                    <input type="text" name="price" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <input type="button" value="Précédent"/>
+                    <input type="submit" value="Suivant"/>
+                </td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>

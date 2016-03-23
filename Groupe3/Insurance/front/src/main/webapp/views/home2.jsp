@@ -11,6 +11,53 @@
     <title>Devis d'habitation - Etape 2</title>
 </head>
 <body>
-    <h1>Devis d'habitation - Etape 2</h1>
+    <h1>Devis d'habitation</h1>
+    <h2>Etape 1 > Etape 2</h2>
+    <form method="post" action="">
+        <table BORDER=0>
+            <tr>
+                <td>Nombre de pièces</td>
+                <td>
+                    <select name="nombrePièces" id="nombrePièces"/>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10 et plus</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Etage</td>
+                <td>
+                    <input type="text" name="value" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre de salles de bain</td>
+                <td>
+                    <input type="text" name="value" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Avec garage ?</td>
+                <td>
+                    <input type="radio" name="withGarage" value="Oui">Oui</input>
+                    <input type="radio" name="withGarage" value="Non">Non</input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <input type="button" value="Précédent"/>
+                    <input type="submit" value="Suivant"/>
+                </td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
