@@ -1,6 +1,6 @@
 <%@ include file="../Default/header.jsp" %>
 
-    <form>
+<form method="POST">
 
     <label for="nomPrenomUser">Nom / prenom de l’utilisateur</label>
     <input id="nomPrenomUser" type="text" value="" class="form-control" disabled>

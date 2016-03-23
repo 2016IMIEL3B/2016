@@ -1,6 +1,6 @@
 <%@ include file="../Default/header.jsp" %>
 
-<form>
+<form method="POST">
 
 <label for="condp">Conducteur principal</label>
 <input id="condp" type="text" value="" class="form-control">

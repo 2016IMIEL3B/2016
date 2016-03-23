@@ -1,6 +1,6 @@
 <%@ include file="../Default/header.jsp" %>
 
-<form>
+<form method="POST">
 
     <p>Resumé du devis</p>
 
