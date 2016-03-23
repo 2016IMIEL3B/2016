@@ -15,28 +15,28 @@ public class VehicleController {
 
     @RequestMapping(path = "/vehicle1",method = RequestMethod.GET)
     public ModelAndView index1View(){
-        ModelAndView model = new ModelAndView("vehicle1");
+        ModelAndView model = new ModelAndView("vehicule1");
         model.addObject("message","Hello world from indexCOntroller -> " + helloService.hello());
         return model;
     }
 
     @RequestMapping(path = "/vehicle2",method = RequestMethod.GET)
     public ModelAndView index2View(){
-        ModelAndView model = new ModelAndView("vehicle2");
+        ModelAndView model = new ModelAndView("vehicule2");
         model.addObject("message","Hello world from indexCOntroller -> " + helloService.hello());
         return model;
     }
 
     @RequestMapping(path = "/vehicle3",method = RequestMethod.GET)
     public ModelAndView index3View(){
-        ModelAndView model = new ModelAndView("vehicle3");
+        ModelAndView model = new ModelAndView("vehicule3");
         model.addObject("message","Hello world from indexCOntroller -> " + helloService.hello());
         return model;
     }
 
     @RequestMapping(path = "/vehicle4",method = RequestMethod.GET)
     public ModelAndView index4View(){
-        ModelAndView model = new ModelAndView("vehicle4");
+        ModelAndView model = new ModelAndView("vehicule4");
         model.addObject("message","Hello world from indexCOntroller -> " + helloService.hello());
         return model;
     }

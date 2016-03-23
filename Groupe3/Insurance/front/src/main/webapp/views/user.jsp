@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Devis en cours</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <h1>Devis en cours</h1>

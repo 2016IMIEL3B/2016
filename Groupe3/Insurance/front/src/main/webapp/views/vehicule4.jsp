@@ -9,8 +9,53 @@
 <html>
 <head>
     <title>Devis véhicule - Etape 4</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<div class="form-style-10">
     <h1>Devis véhicule - Etape 4</h1>
+    <form method="post" action="servlet/result">
+        <table>
+            <tr>
+                <td>Résumé du devis</td>
+                <td>
+                    <input type="textarea" name="insuranceSummary" value="" />
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Tous risques ?</td>
+                <td>
+                    <input type="radio" name="insuranceAllRisks" value="Oui"/>
+                    <input type="radio" name="insuranceAllRisks" value="Non"/>
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Au tiers</td>
+                <td>
+                    <input type="radio" name="insuranceThird" value="Oui"/>
+                    <input type="radio" name="insuranceThird" value="Non"/>
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>Montant du devis</td>
+                <td>
+                    <input type=text name="insurancePrice"/>
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <input type="button" value="Précédent"/>
+                    <input type="submit" value="Suivant"/>
+                    <input type="reset" value="Retablir">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
