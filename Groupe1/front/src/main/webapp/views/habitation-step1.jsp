@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="en">
@@ -13,17 +14,25 @@
     <a href="/profile">Profil</a> |
     <a href="/synthesis">Mes Devis</a>
 </nav>
+<hr/>
 
 <h1>Devis - Assurer une habitation</h1>
 <h2>Etape 1</h2>
 
-<form action="/servlet/habitationStep1" method="POST">
-    <label for="devis-name"></label>
-    <input type="text" name="devis-name" id="devis-name"/>
+<form:form action="/habitation/2" method="POST" modelAttribute="step1">
+    <form:label path="name">Nom du devis :</form:label>
+    <form:input path="name"></form:input>
+
+    <form:label path="type">Type d'appartement :</form:label>
+    <form:radiobutton path="type" value="appartement" label="Appartement"></form:radiobutton>
+    <form:radiobutton path="type" value="maison" label="Maison"></form:radiobutton>
 
 
+    <form:label path="surface">Surface du logement :</form:label>
+    <form:input path="surface"></form:input>
 
-</form>
+    <form:button type="submit">Aller à l'étape 2</form:button>
+</form:form>
 
 
 </body>
