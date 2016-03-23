@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dao/vertx.dao.iml" filepath="$PROJECT_DIR$/dao/vertx.dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/entities/vertx.entities.iml" filepath="$PROJECT_DIR$/entities/vertx.entities.iml" />
-      <module fileurl="file://$PROJECT_DIR$/front/vertx.front.iml" filepath="$PROJECT_DIR$/front/vertx.front.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vertx.root.iml" filepath="$PROJECT_DIR$/vertx.root.iml" />
-      <module fileurl="file://$PROJECT_DIR$/services/vertx.service.iml" filepath="$PROJECT_DIR$/services/vertx.service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entities/fr.full.stack.entities.iml" filepath="$PROJECT_DIR$/entities/fr.full.stack.entities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/fr.full.stack.service.iml" filepath="$PROJECT_DIR$/services/fr.full.stack.service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao/fr.full.statck.dao.iml" filepath="$PROJECT_DIR$/dao/fr.full.statck.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/front/fr.full.statck.front.iml" filepath="$PROJECT_DIR$/front/fr.full.statck.front.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fr.full.statck.root.iml" filepath="$PROJECT_DIR$/fr.full.statck.root.iml" />
     </modules>
   </component>
 </project>
