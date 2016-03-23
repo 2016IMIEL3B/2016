@@ -30,6 +30,11 @@ public class Home {
     private int nbRoom;
 
     /**
+     * Home number floor.
+     */
+    private int floor;
+
+    /**
      * Home number bathroom.
      */
     private int nbBathroom;
@@ -105,6 +110,10 @@ public class Home {
     public void setNbRoom(int nbRoom) {
         this.nbRoom = nbRoom;
     }
+
+    public int getFloor() { return floor; }
+
+    public void setFloor(int floor) { this.floor = floor; }
 
     public int getNbBathroom() {
         return nbBathroom;
