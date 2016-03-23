@@ -11,6 +11,12 @@ import java.util.List;
  */
 public class QuoteService {
 
+    private QuoteRepository quoteRepository;
+
+
+    public List<Quote> getQuotes(Integer userId) {
+        return quoteRepository.getQuotesByUser(userId);
+    }
 
 
     IQuoteRepository test = new QuoteRepository();
