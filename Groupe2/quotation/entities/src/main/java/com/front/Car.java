@@ -30,6 +30,11 @@ public class Car {
     private boolean sleepGarage;
 
     /**
+     * Car Address.
+     */
+    private String address;
+
+    /**
      * Car fuel.
      */
     private int fuelId;
@@ -103,5 +108,13 @@ public class Car {
 
     public void setModelId(int modelId) {
         this.modelId = modelId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

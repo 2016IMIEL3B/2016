@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
  * Created by kevin on 22/03/16.
  */
 @Service
-public class QuotationCarService implements IQuotationCarService {
+public class CarService implements ICarService {
 
     @Autowired
     private CarRepository carRepository;
 
     @Override
-    public Car findById(int car_id) {
-    return null;
+    public Car findById(int carId) {
+        return this.carRepository.findOneById(carId);
     }
 
 }
