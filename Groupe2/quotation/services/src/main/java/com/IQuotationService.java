@@ -13,4 +13,6 @@ public interface IQuotationService {
 
     void delete(int id);
 
+    Quotation findOneById(int id);
+
 }

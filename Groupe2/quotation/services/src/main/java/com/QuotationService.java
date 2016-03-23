@@ -22,4 +22,7 @@ public class QuotationService implements IQuotationService {
     public Iterable<Quotation> findAll() { return quotationDao.findAll(); }
 
     public void delete(int id){ quotationDao.delete(id);}
+
+    public Quotation findOneById(int id) { return quotationDao.findOneById(id); }
+
 }
