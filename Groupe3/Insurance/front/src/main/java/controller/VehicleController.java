@@ -9,7 +9,7 @@ import services.IHelloService;
 /**
  * Created by bmille on 22/03/2016.
  */
-public class InsuranceVehicleController {
+public class VehicleController {
     @Autowired
     private IHelloService helloService;
 
