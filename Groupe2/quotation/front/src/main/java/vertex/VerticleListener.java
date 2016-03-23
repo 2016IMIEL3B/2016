@@ -43,7 +43,7 @@ public class VerticleListener extends AbstractVerticle {
 
         router.route("/api/*").handler(authHelper.getAuthHandler());
 
-        vertx.createHttpServer().requestHandler(router::accept).listen(8091);
+        vertx.createHttpServer().requestHandler(router::accept).listen(8090);
     }
 
     private void getDefaultHeader(RoutingContext context){
