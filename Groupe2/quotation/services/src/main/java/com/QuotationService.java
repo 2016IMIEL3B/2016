@@ -20,4 +20,9 @@ public class QuotationService implements IQuotationService {
     public Iterable<Quotation> findByUserId(int user_Id) { return quotationDao.findByUserId(user_Id);  }
 
     public Iterable<Quotation> findAll() { return quotationDao.findAll(); }
+
+    public void delete(int id){ quotationDao.delete(id);}
+
+    public Quotation findOneById(int id) { return quotationDao.findOneById(id); }
+
 }

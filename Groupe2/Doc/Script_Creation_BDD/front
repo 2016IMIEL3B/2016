@@ -3,6 +3,12 @@ CREATE DATABASE quotation_front;
 
 USE quotation_front;
 
+CREATE TABLE TypeQuotation
+(
+	id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	entitled NVARCHAR(20) UNIQUE NOT NULL
+);
+
 
 CREATE TABLE Quotation
 (
@@ -12,7 +18,9 @@ CREATE TABLE Quotation
 	price FLOAT NOT NULL,
 	state NVARCHAR(100) NOT NULL,
 	nbStep SMALLINT NOT NULL,
-	userId INT
+	typeQuotationId SMALLINT NOT NULL,
+	userId INT,
+	CONSTRAINT FK_Quotation_TypeQuotation FOREIGN KEY (typeQuotationId) REFERENCES TypeQuotation(id)
 );
 
 CREATE TABLE Home
@@ -28,7 +36,21 @@ CREATE TABLE Home
 	heaterTypeId SMALLINT,
 	formulId SMALLINT,
 	quotationId INT,
-	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id)
+	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
+);
+
+CREATE TABLE Car
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	taxableHorsePower SMALLINT,
+	sleepGarage BOOLEAN,
+	address NVARCHAR(100),
+	fuelId SMALLINT,
+	markId INT,
+	modelId INT,	
+	insuranceId INT,
+	quotationId INT,
+	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
 );
 
 CREATE TABLE Driver
@@ -39,20 +61,10 @@ CREATE TABLE Driver
 	principal BOOLEAN,
 	licence_date DATE,
 	nbCrash INT,
-	bonusPenalty Float
+	bonusPenalty Float,
+	carId INT,
+	CONSTRAINT FK_Driver_Car FOREIGN KEY (carId) REFERENCES Car (id) ON DELETE CASCADE
+	
 );
 
-CREATE TABLE Car
-(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	taxableHorsePower SMALLINT,
-	sleepGarage BOOLEAN,
-	fuelId SMALLINT,
-	markId INT,
-	modelId INT,	
-	insuranceId INT,
-	quotationId INT,
-	driverId INT,
-	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id),
-	CONSTRAINT FK_Car_Driver FOREIGN KEY (driverId) REFERENCES Driver (id)
-);
+

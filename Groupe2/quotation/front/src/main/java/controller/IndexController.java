@@ -23,8 +23,10 @@ public class IndexController {
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
     public ModelAndView home(){
 
-        // Recuperer L'id de l'utilisateur courant
         ModelAndView model = new ModelAndView("index");
+
+        // Recuperer L'id de l'utilisateur courant
+
         // FindById Quotation and Add to Model
         model.addObject("quotations", qs.findAll());
         return model;
