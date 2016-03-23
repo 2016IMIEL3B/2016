@@ -3,6 +3,7 @@ package vertex;
 import config.VertxAuthConfig;
 import config.VertxDatabaseConfig;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
@@ -32,7 +33,7 @@ public class AuthHelper {
         String login = context.request().getParam("login");
         System.out.println("login -> " + login);
         if (login == null) {
-            context.response().end("Nope!");
+            context.response().end(new JsonObject().put("result", "Nope!").encodePrettily());
         } else {
             getDetailsFromLogin(context, login);
         }
