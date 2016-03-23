@@ -51,6 +51,30 @@ public class IndexController {
         return model;
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ModelAndView profile(){
+        ModelAndView model = new ModelAndView("profile");
+        return model;
+    }
+
+    @RequestMapping(value = "/car", method = RequestMethod.GET)
+    public ModelAndView car(){
+        ModelAndView model = new ModelAndView("car");
+        return model;
+    }
+
+    @RequestMapping(value = "/habitation", method = RequestMethod.GET)
+    public ModelAndView habitation(){
+        ModelAndView model = new ModelAndView("habitation");
+        return model;
+    }
+
+    @RequestMapping(value = "/synthesis", method = RequestMethod.GET)
+    public ModelAndView synthesis(){
+        ModelAndView model = new ModelAndView("synthesis");
+        return model;
+    }
+
     @RequestMapping("/fail")
     public String fail() throws MyException {
         throw new MyException("Oupss!!");

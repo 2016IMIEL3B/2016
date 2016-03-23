@@ -11,12 +11,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     /**
-     * Ajout de la vue login, pas besoin de code côté controller
+     * Ajout de des vues
      * @param registry
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/profile").setViewName("profile");
+        registry.addViewController("/habitation").setViewName("habitation");
+        registry.addViewController("/car").setViewName("car");
+        registry.addViewController("/synthesis").setViewName("synthesis");
     }
 }
 

@@ -1,4 +1,4 @@
-package entity;
+package fr;
 
 // Generated 22 mars 2016 11:08:52 by Hibernate Tools 3.4.0.CR1
 
