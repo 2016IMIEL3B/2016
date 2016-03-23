@@ -2,6 +2,10 @@ package com.groupe4.dao;
 
 import com.groupe4.connexion.DbClient;
 import com.groupe4.entity.Quote;
+import io.vertx.core.AsyncResult;
+import io.vertx.core.Future;
+import io.vertx.core.Handler;
+import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.sql.ResultSet;
@@ -49,38 +53,41 @@ public class QuoteRepository implements IQuoteRepository {
     }
 
     @Override
-    public ArrayList<Quote> getQuotesByUser(Integer $userId) {
-        AsyncSQLClient client = DbClient.getInstance().getClient();
-        ArrayList<Quote> listQuote = new ArrayList<Quote>();
-        client.getConnection(res -> {
-            if (res.succeeded()) {
-                SQLConnection connection = res.result();
-                //System.out.println("Connexion OK");
-                String query = "SELECT * FROM quote WHERE userId = ?";
-                JsonArray params = new JsonArray().add($userId);
-                connection.queryWithParams(query, params, resGet -> {
-                    if (resGet.succeeded()) {
-                        ResultSet rs = resGet.result();
-                        List<JsonArray> results = rs.getResults();
-                        for (JsonArray row: results) {
-                            Quote nQuote = new Quote();
-                            nQuote.setId(row.getInteger(0));
-                            nQuote.setUserName(row.getString(1));
-                            nQuote.setUserSurname(row.getString(2));
-                            nQuote.setUserId(row.getInteger(3));
-                            nQuote.setTypeQuote(row.getString(4));
-                            nQuote.setGuarantee(row.getString(5));
-                            nQuote.setPrice(row.getInteger(6));
-                            listQuote.add(nQuote);
+    public void getQuotesByUser(Integer userId, Handler<AsyncResult<List<Quote>>> handler) {
+        Vertx.currentContext().owner().runOnContext(x-> {
+            AsyncSQLClient client = DbClient.getInstance().getClient();
+            ArrayList<Quote> listQuote = new ArrayList<Quote>();
+            client.getConnection(res -> {
+                if (res.succeeded()) {
+                    SQLConnection connection = res.result();
+                    //System.out.println("Connexion OK");
+                    String query = "SELECT * FROM quote WHERE userId = ?";
+                    JsonArray params = new JsonArray().add(userId);
+                    connection.queryWithParams(query, params, resGet -> {
+                        if (resGet.succeeded()) {
+                            ResultSet rs = resGet.result();
+                            List<JsonArray> results = rs.getResults();
+                            for (JsonArray row : results) {
+                                Quote nQuote = new Quote();
+                                nQuote.setId(row.getInteger(0));
+                                nQuote.setUserName(row.getString(1));
+                                nQuote.setUserSurname(row.getString(2));
+                                nQuote.setUserId(row.getInteger(3));
+                                nQuote.setTypeQuote(row.getString(4));
+                                nQuote.setGuarantee(row.getString(5));
+                                nQuote.setPrice(row.getInteger(6));
+                                listQuote.add(nQuote);
+                            }
+                            handler.handle(Future.succeededFuture(listQuote));
                         }
-                    }
-                });
-                connection.close();
-            } else {
-                System.out.println("Connexion NOK");
-            }
+                    });
+                    connection.close();
+                } else {
+                    //System.out.println("Connexion NOK");
+                    handler.handle(Future.failedFuture("Connexion NOK"));
+                }
+            });
         });
-        return listQuote;
     }
 
 }

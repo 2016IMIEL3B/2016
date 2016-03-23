@@ -1,5 +1,8 @@
 package com.groupe4.main;
 
+import com.groupe4.dao.IQuoteRepository;
+import com.groupe4.dao.QuoteRepository;
+import com.groupe4.entity.Quote;
 import com.groupe4.main.verticles.Authentication;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
@@ -9,6 +12,8 @@ import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.JWTAuthHandler;
+
+import java.util.List;
 
 public class VerticleService extends AbstractVerticle{
 
