@@ -8,3 +8,4 @@ Etape <c:out value="${step}" />/4
     <div class="progress-bar progress-bar-striped progress-bar-primary active" style="width: 25%">
     </div>
 </div>
+</form>
