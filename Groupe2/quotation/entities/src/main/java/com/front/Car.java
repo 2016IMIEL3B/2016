@@ -1,9 +1,6 @@
 package com.front;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -53,6 +50,11 @@ public class Car {
      * Car Insurance.
      */
     private int insuranceId;
+
+    /** Car Quotation. */
+    @OneToOne
+    @JoinColumn(name = "quotationId")
+    private Quotation quotation;
 
     public int getInsuranceId() {
         return this.insuranceId;
@@ -117,4 +119,8 @@ public class Car {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Quotation getQuotation() { return quotation; }
+
+    public void setQuotation(Quotation quotation) { this.quotation = quotation; }
 }

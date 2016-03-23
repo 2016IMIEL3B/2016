@@ -2,10 +2,7 @@ package com.front;
 
 import com.back.Mark;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -38,7 +35,9 @@ public class Driver {
     private float bonusPenality;
 
     /** Driver Car. */
-    private int carId;
+    @ManyToOne
+    @JoinColumn(name = "carId")
+    private Car car;
 
     public String getFirstName() {
         return firstName;
@@ -96,11 +95,7 @@ public class Driver {
         this.bonusPenality = bonusPenality;
     }
 
-    public int getCarId() {
-        return carId;
-    }
+    public Car getCar() { return car; }
 
-    public void setCarId(int carId) {
-        this.carId = carId;
-    }
+    public void setCar(Car car) { this.car = car; }
 }

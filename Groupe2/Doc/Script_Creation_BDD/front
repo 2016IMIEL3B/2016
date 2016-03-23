@@ -32,6 +32,7 @@ CREATE TABLE Home
 	garage BOOLEAN,
 	surfaceGround FLOAT,
 	surfaceTerrace FLOAT,
+	address NVARCHAR(100),
 	homeTypeId SMALLINT,
 	heaterTypeId SMALLINT,
 	formulId SMALLINT,

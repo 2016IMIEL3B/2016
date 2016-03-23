@@ -8,9 +8,8 @@ INSERT INTO Quotation (name,number,price,state,nbStep,typeQuotationId,userId) VA
 ("Devis pour une Voiture",125,150000,"En Cours",2,2,1),
 ("Devis pour une Habitation",15,102589,"En Cours",4,1,1);
 
-INSERT INTO Home (surface,nbRoom,nbBathroom,garage,surfaceGround,surfaceTerrace,homeTypeId,heaterTypeId,formulId,quotationId) VALUES
-(110.2,5,2,FALSE,100,55.5,1,1,1,1),
-(50.7,2,1,TRUE,22,15,2,2,2,2);
+INSERT INTO Home (surface,nbRoom,nbBathroom,garage,surfaceGround,surfaceTerrace,address,homeTypeId,heaterTypeId,formulId,quotationId) VALUES
+(50.7,2,1,TRUE,22,15,"14 rue de la rélativité 53000 Laval",2,2,2,2);
 
 INSERT INTO Car (taxableHorsePower,sleepGarage,address,fuelId,markId,modelId,insuranceId,quotationId) VALUES
 (9,TRUE,"rue de la vie",1,1,1,1,1);

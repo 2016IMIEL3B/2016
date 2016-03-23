@@ -41,26 +41,21 @@ public class Quotation {
     private String state;
 
     /**
+     * Quotation number step.
+     */
+    private int nbStep;
+
+    /**
+     * Quotation UserId.
+     */
+    private int userId;
+
+    /**
      * Quotation TypeQuotation.
      */
     @ManyToOne
     @JoinColumn(name = "typeQuotationId")
     private TypeQuotation typeQuotation;
-
-    private int userId;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * Quotation number step.
-     */
-    private int nbStep;
 
     public int getNbStep() {
         return nbStep;
@@ -108,6 +103,14 @@ public class Quotation {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public TypeQuotation getTypeQuotation() {

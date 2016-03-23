@@ -27,6 +27,7 @@ public class IndexController {
 
         // Recuperer L'id de l'utilisateur courant
 
+
         // FindById Quotation and Add to Model
         model.addObject("quotations", qs.findAll());
         return model;
