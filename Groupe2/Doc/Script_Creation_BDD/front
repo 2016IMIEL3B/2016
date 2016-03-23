@@ -28,18 +28,7 @@ CREATE TABLE Home
 	heaterTypeId SMALLINT,
 	formulId SMALLINT,
 	quotationId INT,
-	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id)
-);
-
-CREATE TABLE Driver
-(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	lastName NVARCHAR(50),
-	firstName NVARCHAR(50),
-	principal BOOLEAN,
-	licence_date DATE,
-	nbCrash INT,
-	bonusPenalty Float
+	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
 );
 
 CREATE TABLE Car
@@ -52,7 +41,21 @@ CREATE TABLE Car
 	modelId INT,	
 	insuranceId INT,
 	quotationId INT,
-	driverId INT,
-	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id),
-	CONSTRAINT FK_Car_Driver FOREIGN KEY (driverId) REFERENCES Driver (id)
+	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
 );
+
+CREATE TABLE Driver
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	lastName NVARCHAR(50),
+	firstName NVARCHAR(50),
+	principal BOOLEAN,
+	licence_date DATE,
+	nbCrash INT,
+	bonusPenalty Float,
+	carId INT,
+	CONSTRAINT FK_Driver_Car FOREIGN KEY (carId) REFERENCES Car (id) ON DELETE CASCADE
+	
+);
+
+

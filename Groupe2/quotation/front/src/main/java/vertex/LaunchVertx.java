@@ -9,7 +9,7 @@ public class LaunchVertx {
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(VerticleService.class.getCanonicalName());
+        vertx.deployVerticle(VerticleListener.class.getCanonicalName());
 
         while (true) {
             try {

@@ -1,15 +1,9 @@
-X/4
+<btn class="btn btn-default">Annuler</btn>
+<btn class="btn btn-primary pull-right">Valider</btn>
+<p>Etape X/4</p>
 <div class="progress">
-    <div class="progress-bar progress-bar-success active" style="width: 25%">
-        Etape 1
+    <div class="progress-bar progress-bar-striped progress-bar-success active" style="width: 25%">
     </div>
-    <div class="progress-bar progress-bar-success active" style="width: 25%">
-        Etape 2
-    </div>
-    <div class="progress-bar progress-bar-primary active" style="width: 25%">
-        Etape 3
-    </div>
-    <div class="progress-bar progress-bar-danger" style="width: 0%">
-        Etape 4
+    <div class="progress-bar progress-bar-striped progress-bar-primary active" style="width: 25%">
     </div>
 </div>
