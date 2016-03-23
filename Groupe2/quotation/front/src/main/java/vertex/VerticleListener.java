@@ -82,6 +82,7 @@ public class VerticleListener extends AbstractVerticle {
                     if (resSet.succeeded()){
                         if(resSet.result().getNumRows() != 0){
 
+
                             JsonObject userDetails = resSet.result().getRows().get(0);
                             String token = authProvider.generateToken(userDetails, new JWTOptions());
                             context.response().putHeader("UserDetails", userDetails.toString());
