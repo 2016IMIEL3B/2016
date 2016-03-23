@@ -1,22 +1,18 @@
 package com.groupe4.dao;
 
-import com.groupe4.entity.Quote;
-import io.vertx.core.json.JsonArray;
-import io.vertx.ext.sql.ResultSet;
-import io.vertx.ext.sql.SQLConnection;
+
+import com.groupe4.connexion.DbClient;
+import com.groupe4.entity.Item;
+import io.vertx.ext.asyncsql.AsyncSQLClient;
+import io.vertx.ext.asyncsql.MySQLClient;
 
 import java.util.List;
 
-public class QuoteRepository {
+public class ItemRepository implements IItemRepository {
+    @Override
+    public List<Item> findItemListByKey(String key) {
+        AsyncSQLClient client = DbClient.getInstance().getClient();
 
-    private SQLConnection connection;
-
-    public QuoteRepository(SQLConnection connection) {
-        this.connection = connection;
-    }
-
-    /*
-    public Item<Quote> getQuotes() {
         Item<Quote> listQuote;
         connection.query("SELECT * FROM quote", res2 -> {
             if (res2.succeeded()) {
@@ -38,5 +34,4 @@ public class QuoteRepository {
         });
         return Item<Quote> listQuote;
     }
-    */
 }
