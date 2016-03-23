@@ -11,16 +11,19 @@ import io.vertx.ext.web.RoutingContext;
 public class VerticleListener extends AbstractVerticle {
 
     AuthHelper authHelper;
+    FuelHelper fuelHelper;
 
     @Override
     public void start(){
         Router router = Router.router(vertx);
         authHelper = new AuthHelper(vertx);
+        fuelHelper = new FuelHelper(vertx);
 
 
         router.route("/*").handler(this::getDefaultHeader);
 
         router.get("/api/auth/login").handler(authHelper::getUserDetails);
+        router.get("/api/fuel").handler(fuelHelper::getAll);
 
         router.route("/api/*").handler(context -> {
             Boolean ok = context.request().getParam("token") != null;

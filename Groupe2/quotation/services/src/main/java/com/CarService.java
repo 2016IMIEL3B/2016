@@ -14,8 +14,8 @@ public class CarService implements ICarService {
     private CarRepository carRepository;
 
     @Override
-    public Car findById(int id) {
-        return this.carRepository.findOneById(id);
+    public Car findOneByQuotationId(int id) {
+        return this.carRepository.findOneByQuotationId(id);
     }
 
 }

@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by kevin on 22/03/16.
  */
 public interface CarRepository extends CrudRepository<Car,Integer>{
-    Car findOneById(int quotationId);
+    Car findOneByQuotationId(int quotationId);
 }
