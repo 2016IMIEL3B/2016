@@ -30,10 +30,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests().antMatchers("/").permitAll()
                 //.antMatchers("/private/admin/**").hasRole("ADMIN") // Si on souhaites restraindre l'URL pour le role ADMIN
-                .antMatchers("/**").fullyAuthenticated()    // l'accès aux URLs private/** sera restrainte à un utilisateur authentifié
+                //.antMatchers("/**").fullyAuthenticated()    // l'accès aux URLs private/** sera restrainte à un utilisateur authentifié
                 .and()
                 .formLogin()                        // utilisation du mode FormLogin pour l'authentification
-                .loginPage( "/login" )              // Définition d'une page custom pour le login (si non présent authomatiquement généré)
+                .loginPage( "/login" )  // Définition d'une page custom pour le login (si non présent authomatiquement généré)
+                .permitAll()
                 .loginProcessingUrl( "/login.do" )  // Url à utiliser pour poster l'authenfication, donc l'action dans la page custom de login
                 .defaultSuccessUrl( "/" )           // Url par défaut à utiliser en cas d'authentification réussie
                 .failureUrl( "/login?err=1" )
@@ -45,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // Configuration du logout
                 .logout()
+                .permitAll()
                 .logoutRequestMatcher( new AntPathRequestMatcher( "/logout" ) ) // URL à appeler pour se délogguer
                 .logoutSuccessUrl( "/" )                                        // URL vers laquelle renvoyer lorsqu'on s'est bien déloggué
                 .deleteCookies( "JSESSIONID" )                                  // COOKIE à supprimer
