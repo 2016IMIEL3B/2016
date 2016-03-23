@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class DriverService implements IDriverService {
 
     @Autowired
-    private DriverRepository carRepository;
+    private DriverRepository driverRepository;
 
     @Override
     public Driver findOneByCarId(int carId) {
-        return this.carRepository.findOneByCarId(carId);
+        return this.driverRepository.findOneByCarId(carId);
     }
 
 }
