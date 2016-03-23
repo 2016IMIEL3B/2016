@@ -12,4 +12,6 @@
     <label for="amountDevis">Montant du devis</label>
     <input id="amountDevis" type="text" value="" class="form-control" disabled>
 
+    <%@ include file="../QuotationStep/quotationStepState.jsp" %>
+
 <%@ include file="../Default/footer.jsp" %>
