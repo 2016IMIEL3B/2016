@@ -11,8 +11,11 @@ and open the template in the editor.
     <head>      
         <title>Formulaire d'inscription</title>
         <link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="../css/style.css" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     </head>
     <body>
+	<div class="form-style-10">
         <h1>Formulaire d'inscription</h1>
         <form method="post" action="servlet/result"> 
 	        <span id="message"></span>
@@ -103,5 +106,6 @@ and open the template in the editor.
 		        </tr>
 	        </table>
         </form>
+		</div>
     </body>
 </html>

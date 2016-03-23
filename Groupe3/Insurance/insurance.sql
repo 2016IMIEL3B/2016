@@ -23,7 +23,7 @@ USE `DBInsurance` ;
 CREATE TABLE IF NOT EXISTS `DBInsurance`.`Group` (
   `idGroup` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(25) NOT NULL,
-  PRIMARY KEY (`idGroup`, `name`))
+  PRIMARY KEY (`idGroup`))
 ENGINE = InnoDB;
 
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`User` (
   `idGroup` INT NOT NULL,
   PRIMARY KEY (`idUser`),
   INDEX `idGroup_idx` (`idGroup` ASC),
-  CONSTRAINT `idGroup`
+  CONSTRAINT `fk_User_Group`
     FOREIGN KEY (`idGroup`)
     REFERENCES `DBInsurance`.`Group` (`idGroup`)
     ON DELETE NO ACTION
@@ -56,10 +56,12 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`Insurance` (
   `creationDate` DATE NOT NULL,
   `price` INT(8) NOT NULL,
   `summary` LONGTEXT NULL,
+  `step` INT(5) NOT NULL,
+  `statement` ENUM('En cours', 'Terminé') NOT NULL,
   `idUser` INT NOT NULL,
   PRIMARY KEY (`idInsurance`),
   INDEX `idUser_idx` (`idUser` ASC),
-  CONSTRAINT `idUser`
+  CONSTRAINT `fk_Insurance_User`
     FOREIGN KEY (`idUser`)
     REFERENCES `DBInsurance`.`User` (`idUser`)
     ON DELETE NO ACTION
@@ -78,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`CarInsurance` (
   `idInsurance` INT NOT NULL,
   PRIMARY KEY (`idCarInsurance`),
   INDEX `idInsurance_idx` (`idInsurance` ASC),
-  CONSTRAINT `idInsurance`
+  CONSTRAINT `fk_CarInsurance_Insurance`
     FOREIGN KEY (`idInsurance`)
     REFERENCES `DBInsurance`.`Insurance` (`idInsurance`)
     ON DELETE NO ACTION
@@ -95,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`HouseInsurance` (
   `idInsurance` INT NOT NULL,
   PRIMARY KEY (`idHouseInsurance`),
   INDEX `idInsurance_idx` (`idInsurance` ASC),
-  CONSTRAINT `idInsurance`
+  CONSTRAINT `fk_HouseInsurance_Insurance`
     FOREIGN KEY (`idInsurance`)
     REFERENCES `DBInsurance`.`Insurance` (`idInsurance`)
     ON DELETE NO ACTION
@@ -114,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`Driver` (
   `idUser` INT NOT NULL,
   PRIMARY KEY (`idDriver`),
   INDEX `idUser_idx` (`idUser` ASC),
-  CONSTRAINT `idUser`
+  CONSTRAINT `fk_Driver_User`
     FOREIGN KEY (`idUser`)
     REFERENCES `DBInsurance`.`User` (`idUser`)
     ON DELETE NO ACTION
@@ -135,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`Vehicule` (
   `idDriver` INT NOT NULL,
   PRIMARY KEY (`idVehicule`),
   INDEX `idDriver_idx` (`idDriver` ASC),
-  CONSTRAINT `idDriver`
+  CONSTRAINT `fk_Vehicule_Driver`
     FOREIGN KEY (`idDriver`)
     REFERENCES `DBInsurance`.`Driver` (`idDriver`)
     ON DELETE NO ACTION
@@ -150,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`Adress` (
   `idAdress` INT NOT NULL AUTO_INCREMENT,
   `street` VARCHAR(25) NOT NULL,
   `city` VARCHAR(25) NOT NULL,
-  `code` INT(5) NOT NULL,
+  `postalCode` INT(5) NOT NULL,
   `country` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`idAdress`))
 ENGINE = InnoDB;
@@ -175,12 +177,12 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`Home` (
   PRIMARY KEY (`idHome`),
   INDEX `idAdress_idx` (`idAdress` ASC),
   INDEX `idUser_idx` (`idUser` ASC),
-  CONSTRAINT `idAdress`
+  CONSTRAINT `fk_Home_Adress`
     FOREIGN KEY (`idAdress`)
     REFERENCES `DBInsurance`.`Adress` (`idAdress`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `idUser`
+  CONSTRAINT `fk_Home_User`
     FOREIGN KEY (`idUser`)
     REFERENCES `DBInsurance`.`User` (`idUser`)
     ON DELETE NO ACTION
@@ -206,12 +208,12 @@ CREATE TABLE IF NOT EXISTS `DBInsurance`.`GroupRole` (
   `idRole` INT NOT NULL,
   INDEX `idGroup_idx` (`idGroup` ASC),
   INDEX `idRole_idx` (`idRole` ASC),
-  CONSTRAINT `idGroup`
+  CONSTRAINT `fk_GroupRole_Group`
     FOREIGN KEY (`idGroup`)
     REFERENCES `DBInsurance`.`Group` (`idGroup`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `idRole`
+  CONSTRAINT `fk_GroupRole_Role`
     FOREIGN KEY (`idRole`)
     REFERENCES `DBInsurance`.`Role` (`idRole`)
     ON DELETE NO ACTION
