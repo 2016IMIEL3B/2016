@@ -4,10 +4,7 @@ import com.back.Formul;
 import com.back.HeaterType;
 import com.back.HomeType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by nico on 21/03/16.
@@ -16,7 +13,7 @@ import javax.persistence.Id;
 public class Home {
 
     /**
-     * Car id.
+     * Home id.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +28,11 @@ public class Home {
      * Home number room.
      */
     private int nbRoom;
+
+    /**
+     * Home number floor.
+     */
+    private int floor;
 
     /**
      * Home number bathroom.
@@ -53,6 +55,11 @@ public class Home {
     private int surfaceTerrace;
 
     /**
+     * Home Address.
+     */
+    private String address;
+
+    /**
      * Home Type.
      */
     private int homeTypeId;
@@ -63,9 +70,14 @@ public class Home {
     private int heaterTypeId;
 
     /**
-     * Formul.
+     * Home Formul.
      */
     private int formulId;
+
+    /** Home Quotation. */
+    @OneToOne
+    @JoinColumn(name = "quotationId")
+    private Quotation quotation;
 
     public int getFormul() {
         return formulId;
@@ -99,6 +111,10 @@ public class Home {
         this.nbRoom = nbRoom;
     }
 
+    public int getFloor() { return floor; }
+
+    public void setFloor(int floor) { this.floor = floor; }
+
     public int getNbBathroom() {
         return nbBathroom;
     }
@@ -131,9 +147,11 @@ public class Home {
         this.surfaceTerrace = surfaceTerrace;
     }
 
-    public int getHomeTypeId() {
-        return homeTypeId;
-    }
+    public String getAddress() { return address; }
+
+    public void setAddress(String address) { this.address = address; }
+
+    public int getHomeTypeId() { return homeTypeId; }
 
     public void setHomeTypeId(int homeTypeId) {
         this.homeTypeId = homeTypeId;
@@ -146,4 +164,12 @@ public class Home {
     public void setHeaterTypeId(int heaterTypeId) {
         this.heaterTypeId = heaterTypeId;
     }
+
+    public int getFormulId() { return formulId; }
+
+    public void setFormulId(int formulId) { this.formulId = formulId; }
+
+    public Quotation getQuotation() { return quotation; }
+
+    public void setQuotation(Quotation quotation) { this.quotation = quotation; }
 }

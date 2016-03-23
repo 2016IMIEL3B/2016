@@ -6,7 +6,8 @@ USE quotation_front;
 CREATE TABLE TypeQuotation
 (
 	id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	entitled NVARCHAR(20) UNIQUE NOT NULL
+	entitled NVARCHAR(20) UNIQUE NOT NULL,
+	CONSTRAINT UK_TypeQuotation UNIQUE (entitled)
 );
 
 
@@ -27,11 +28,13 @@ CREATE TABLE Home
 (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	surface FLOAT,
-	nbRoom INT,
-	nbBathroom INT,
+	nbRoom SMALLINT,
+	floor SMALLINT,
+	nbBathroom SMALLINT,
 	garage BOOLEAN,
 	surfaceGround FLOAT,
 	surfaceTerrace FLOAT,
+	address NVARCHAR(100),
 	homeTypeId SMALLINT,
 	heaterTypeId SMALLINT,
 	formulId SMALLINT,

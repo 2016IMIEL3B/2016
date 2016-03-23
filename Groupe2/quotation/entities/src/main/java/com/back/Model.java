@@ -1,9 +1,6 @@
 package com.back;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by nico on 21/03/16.
@@ -11,16 +8,18 @@ import javax.persistence.Id;
 @Entity
 public class Model {
 
-    /** Mark id. */
+    /** Model id. */
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     
-    /** Mark entitled. */
+    /** Model entitled. */
     private String entitled;
 
-    /** Mark entitled. */
-    private int markId;
+    /** Model Mark. */
+    @ManyToOne
+    @JoinColumn(name = "markId")
+    private Mark mark;
 
     public String getEntitled() {
         return entitled;
@@ -38,12 +37,7 @@ public class Model {
         this.id = id;
     }
 
-    public int getMarkId() {
-        return this.markId;
-    }
+    public Mark getMark() { return mark; }
 
-    public void setMarkId(int markId) {
-        this.markId = markId;
-    }
-
+    public void setMark(Mark mark) { this.mark = mark; }
 }
