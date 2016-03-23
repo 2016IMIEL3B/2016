@@ -11,8 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.group4.front.dao")
 @EntityScan(basePackages = {"com.group4.front.entities"})
 public class FrontApplication {
-
+/*
 	public static void main(String[] args) {
 		SpringApplication.run(FrontApplication.class, args);
 	}
+	*/
 }

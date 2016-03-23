@@ -34,4 +34,12 @@ public class QuoteService implements IQuoteService {
     public Iterable<Quote> getAll() {
         return this.quoteDAO.findAll();
     }
+
+    public void insertQuoteCar(QuoteCar quoteCar) {
+        this.quoteCarDAO.save(quoteCar);
+    }
+
+    public void insertQuote(Quote quote) {
+        this.quoteDAO.save(quote);
+    }
 }

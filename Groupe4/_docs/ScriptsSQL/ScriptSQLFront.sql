@@ -26,6 +26,7 @@ CREATE TABLE Quote(
 #------------------------------------------------------------
 
 CREATE TABLE QuoteCar(
+        id     int (11) Auto_increment  NOT NULL ,
         brand           Varchar (250) NOT NULL ,
         model           Varchar (250) NOT NULL ,
         fuel            Varchar (250) NOT NULL ,
@@ -39,8 +40,8 @@ CREATE TABLE QuoteCar(
         address         Varchar (250) ,
         allRisk         Boolean NOT NULL ,
         tiers           Boolean NOT NULL ,
-        id_Quote        Int NOT NULL ,
-        PRIMARY KEY (id_Quote )
+		idQuote	   Int NOT NULL ,
+        PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
 
@@ -49,6 +50,7 @@ CREATE TABLE QuoteCar(
 #------------------------------------------------------------
 
 CREATE TABLE QuoteHome(
+        id     int (11) Auto_increment  NOT NULL ,
         typeHome       Varchar (250) NOT NULL ,
         address        Varchar(250) NOT NULL ,
         area           Int NOT NULL ,
@@ -60,9 +62,9 @@ CREATE TABLE QuoteHome(
         terraceArea    Int ,
         typeHeating    Varchar (250) NOT NULL ,
         formula        Varchar (250) NOT NULL ,
-        id_Quote       Int NOT NULL ,
-        PRIMARY KEY (id_Quote )
+		idQuote	   Int NOT NULL ,
+        PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
-ALTER TABLE QuoteCar ADD CONSTRAINT FK_QuoteCar_id FOREIGN KEY (id_Quote) REFERENCES Quote(id);
-ALTER TABLE QuoteHome ADD CONSTRAINT FK_QuoteHome_id FOREIGN KEY (id_Quote) REFERENCES Quote(id);
+ALTER TABLE QuoteCar ADD CONSTRAINT FK_QuoteCar_id FOREIGN KEY (idQuote) REFERENCES Quote(id);
+ALTER TABLE QuoteHome ADD CONSTRAINT FK_QuoteHome_id FOREIGN KEY (idQuote) REFERENCES Quote(id);
