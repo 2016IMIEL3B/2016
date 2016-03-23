@@ -4,19 +4,17 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.ext.web.handler.JWTAuthHandler;
 
 /**
  * Created by Theo Lemaillet on 21/03/16 for project.
  */
 public class VerticleListener extends AbstractVerticle {
 
-    private Router router;
     AuthHelper authHelper;
 
     @Override
     public void start(){
-        router = Router.router(vertx);
+        Router router = Router.router(vertx);
         authHelper = new AuthHelper(vertx);
 
 
@@ -40,7 +38,7 @@ public class VerticleListener extends AbstractVerticle {
 
         router.route("/api/*").handler(authHelper.getAuthHandler());
 
-        vertx.createHttpServer().requestHandler(router::accept).listen(8090);
+        vertx.createHttpServer().requestHandler(router::accept).listen(8091);
     }
 
     private void getDefaultHeader(RoutingContext context){
