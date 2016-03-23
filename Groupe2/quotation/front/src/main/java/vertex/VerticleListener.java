@@ -23,13 +23,17 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class VerticleListener extends AbstractVerticle {
 
-    private Router router = Router.router(vertx);
-    private AsyncSQLClient client = MySQLClient.createShared(vertx, getDBConfig());
-    private JWTAuth authProvider = JWTAuth.create(vertx, getAuthConfig());
+    private Router router;
+    private AsyncSQLClient client;
+    private JWTAuth authProvider;
 
 
     @Override
     public void start(){
+
+        router = Router.router(vertx);
+        client = MySQLClient.createShared(vertx, getDBConfig());
+        authProvider = JWTAuth.create(vertx, getAuthConfig());
 
         router.route("/*").handler(this::getDefaultHeader);
 
@@ -62,19 +66,11 @@ public class VerticleListener extends AbstractVerticle {
         if (login == null) {
             context.response().end("Nope!");
         } else {
-            try {
-                JsonObject userDetails = getDetailsFromLogin(context, login);
-                context.response().putHeader("UserDetails", userDetails.toString());
-                context.response().end("Ok!");
-            } catch(Exception e) {
-                context.response().setStatusCode(403).end(e.getMessage());
-            }
+            getDetailsFromLogin(context, login);
         }
     }
 
-    public JsonObject getDetailsFromLogin(RoutingContext context, String login) {
-        JsonObject userDetails;
-        String token;
+    public void getDetailsFromLogin(RoutingContext context, String login) {
 
         this.client.getConnection(res -> {
             System.out.println("conn -> " + res.succeeded());
@@ -86,22 +82,25 @@ public class VerticleListener extends AbstractVerticle {
                     if (resSet.succeeded()){
                         if(resSet.result().getNumRows() != 0){
 
-                            userDetails = resSet.result().getRows().get(0);
-                            token = authProvider.generateToken(userDetails, new JWTOptions());
+                            JsonObject userDetails = resSet.result().getRows().get(0);
+                            String token = authProvider.generateToken(userDetails, new JWTOptions());
+                            context.response().putHeader("UserDetails", userDetails.toString());
+                            context.response().putHeader("Token", token);
+                            context.response().end("Ok!");
 
                         } else {
-                            throw new IllegalStateException("Bad Login");
+                            context.response().end("Bad Login");
                         }
                     } else {
-                        throw new IllegalStateException("Error with Querry.");
+                        context.response().end("Error with Querry.");
                     }
+                    connection.close();
                 });
             } else {
-                throw new IllegalStateException("Error with Database connection.");
+                context.response().end("Error with Database connection.");
             }
-        });
 
-        return userDetails;
+        });
     }
 
     private JsonObject getDBConfig(){
@@ -117,7 +116,7 @@ public class VerticleListener extends AbstractVerticle {
         return new JsonObject().put(
                 "keyStore",
                 new JsonObject()
-                    .put("path", "key/keystore.jceks")
+                    .put("path", "keystore.jceks")
                     .put("type", "jceks")
                     .put("password", "secret")
         );
