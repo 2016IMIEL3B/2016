@@ -4,20 +4,18 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-import io.vertx.ext.web.handler.JWTAuthHandler;
 
 /**
  * Created by Theo Lemaillet on 21/03/16 for project.
  */
 public class VerticleListener extends AbstractVerticle {
 
-    private Router router;
     AuthHelper authHelper;
     FuelHelper fuelHelper;
 
     @Override
     public void start(){
-        router = Router.router(vertx);
+        Router router = Router.router(vertx);
         authHelper = new AuthHelper(vertx);
         fuelHelper = new FuelHelper(vertx);
 
