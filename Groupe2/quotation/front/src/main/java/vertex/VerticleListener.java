@@ -86,8 +86,8 @@ public class VerticleListener extends AbstractVerticle {
                     if (resSet.succeeded()){
                         if(resSet.result().getNumRows() != 0){
 
-                            userDetails = resSet.result().getRows().get(0);
-                            token = authProvider.generateToken(userDetails, new JWTOptions());
+//                            userDetails = resSet.result().getRows().get(0);
+//                            token = authProvider.generateToken(userDetails, new JWTOptions());
 
                         } else {
                             throw new IllegalStateException("Bad Login");
@@ -101,7 +101,8 @@ public class VerticleListener extends AbstractVerticle {
             }
         });
 
-        return userDetails;
+//        return userDetails;
+        return null;
     }
 
     private JsonObject getDBConfig(){
