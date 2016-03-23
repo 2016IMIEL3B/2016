@@ -18,6 +18,9 @@
 <h2>Etape 1</h2>
 
 <form action="/servlet/habitationStep1" method="POST">
+    <label for="devis-name"></label>
+    <input type="text" name="devis-name" id="devis-name"/>
+
 
 
 </form>
