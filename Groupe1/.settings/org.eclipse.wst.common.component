@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="fr.full.statck.root">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/dao/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/entities/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/front/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/services/src/main/java"/>
+        <property name="context-root" value="fr.full.statck.root"/>
+        <property name="java-output-path" value="/fr.full.statck.root/bin"/>
+    </wb-module>
+</project-modules>
