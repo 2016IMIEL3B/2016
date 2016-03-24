@@ -12,28 +12,27 @@
 <form:form method="POST" action="/wizard/home/2" modelAttribute="model">
         <h2>Étape 1/4</h2>
 
-        <div class="col-md-12">
-            <label class="col-md-6">NOM Prénom</label>
-            <form:label path="userName" class="col-md-6">${model.userName}</form:label>
-
+    <div class="col-md-12">
+        <label class="col-md-3">NOM Prénom</label>
+        <form:label path="userName" class="col-md-3">${model.userName}</form:label>
     </div>
-    <div>
-        <form:label path="quoteHome.typeHome" class="col-md-6">Type Habitation</form:label>
-        <form:select path = "quoteHome.typeHome" class="col-md-6" id="typeSelect" name="typeSelect">
+    <div class="col-md-12">
+        <form:label path="quoteHome.typeHome" class="col-md-3">Type Habitation</form:label>
+        <form:select path = "quoteHome.typeHome" class="col-md-3" id="typeSelect" name="typeSelect">
             <option value="1" selected="selected">Appartement</option>
             <option value="2">Maison</option>
             <option value="3">Studio</option>
         </form:select>
     </div>
 
-    <div>
-        <form:label path="quoteHome.address" class="col-md-6">Adresse</form:label>
-        <form:input required="required" path="quoteHome.address" class="col-md-6" type="text" placeholder="Rue patate"/>
+    <div class="col-md-12">
+        <form:label path="quoteHome.address" class="col-md-3">Adresse</form:label>
+        <form:input required="required" path="quoteHome.address" class="col-md-3" type="text" placeholder="Rue patate"/>
     </div>
 
-    <div>
-        <form:label path="quoteHome.area" class="col-md-6">Surface</form:label>
-        <form:input required="required" min="2" path="quoteHome.area" class="col-md-6" type="number" placeholder="100"/>m²
+    <div class="col-md-12">
+        <form:label path="quoteHome.area" class="col-md-3">Surface</form:label>
+        <form:input required="required" min="2" path="quoteHome.area" class="col-md-3" type="number" placeholder="100"/>m²
     </div>
 
     <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>

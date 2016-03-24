@@ -12,17 +12,19 @@
     <h2>Étape 4/4</h2>
 
     <div class="col-md-12">
-        <label class="col-md-6">Résumé du devis</label>
-        <label class="col-md-6">Pouf pouf</label>
+        <label class="col-md-3">Résumé du devis</label>
+        <label class="col-md-3">Pouf pouf</label>
     </div>
-    <div>
-        <label class="col-md-6">Type de contract</label>
-        <form:radiobutton path="quoteCar.allRisk" value="true"/>Tout Risque
-        <form:radiobutton path="quoteCar.allRisk" value="false"/>Tiers
+    <div class="col-md-12">
+        <label class="col-md-3">Type de contract</label>
+        <div class="col-md-3">
+            <form:radiobutton path="quoteCar.allRisk" value="true"/>Tout Risque
+            <form:radiobutton path="quoteCar.allRisk" value="false"/>Tiers
+        </div>
     </div>
-    <div>
-        <label class="col-md-6">Montant</label>
-        <label class="col-md-6">10000000000€</label>
+    <div class="col-md-12">
+        <label class="col-md-3">Montant</label>
+        <label class="col-md-3">10000000000€</label>
     </div>
 
     <input value="Valider le devis" name="submit" type="submit" class="submit-btn"/>
