@@ -20,25 +20,25 @@ public class CarWizardController {
 
     @RequestMapping
     public ModelAndView processWizard() {
-        return new ModelAndView("car/car-step1", "CarModel", new CarModel());
+        return new ModelAndView("wizard/car/car-step1", "CarModel", new CarModel());
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView processPage(@RequestParam("_page") int currentPage,
     @ModelAttribute("CarModel") CarModel carModel) {
-        return new ModelAndView("car/"+pageViews[currentPage-1]);
+        return new ModelAndView("wizard/car/"+pageViews[currentPage-1]);
     }
 
     @RequestMapping(params = "_finish")
      public ModelAndView processFinish(@ModelAttribute("CarModel") CarModel carModel, SessionStatus status){
         status.setComplete();
-        return new ModelAndView("car/successView");
+        return new ModelAndView("successView");
      }
 
     @RequestMapping (params = "_cancel")
     public String processCancel(SessionStatus status){
         status.setComplete();
-        return "car/canceledView";
+        return "canceledView";
     }
 
 }

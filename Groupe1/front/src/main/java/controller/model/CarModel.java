@@ -4,9 +4,7 @@ import fr.Quote;
 import fr.Vehicle;
 import fr.Model;
 import fr.Brand;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
+
 
 /**
  * Created by EVER on 24/03/2016.
