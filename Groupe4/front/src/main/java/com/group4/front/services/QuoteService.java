@@ -42,4 +42,8 @@ public class QuoteService implements IQuoteService {
     public void insertQuote(Quote quote) {
         this.quoteDAO.save(quote);
     }
+
+    public void insertQuoteHome(QuoteHome quoteHome) {
+        this.quoteHomeDAO.save(quoteHome);
+    }
 }

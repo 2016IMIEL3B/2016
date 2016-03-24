@@ -8,26 +8,30 @@
 </head>
 <body>
 
-<form:form method="POST" action="/wizard/home/2" modelAttribute="model">
-        <h2>Étape 1/4</h2>
+<form:form method="POST" action="/wizard/home/3" modelAttribute="model">
+        <h2>Étape 2/4</h2>
 
-        <div class="col-md-12">
-            <label class="col-md-6">NOM Prénom</label>
-            <form:label path="userName" class="col-md-6">${model.userName}</form:label>
+    <div class="col-md-12">
+        <form:label path="quoteHome.numberRoom" class="col-md-3">Nombre de pièces</form:label>
+        <form:input path="quoteHome.numberRoom" class="col-md-3" min="1" required="required" type="number" placeholder="5"/>
+    </div>
 
+    <div class="col-md-12">
+        <form:label path="quoteHome.floor" class="col-md-3">Étage</form:label>
+        <form:input path="quoteHome.floor" class="col-md-3" required="required" type="number" placeholder="0"/>
     </div>
-    <div>
-        <form:label path="quoteHome.typeHome" class="col-md-6">Type Habitation</form:label>
-        <form:select path = "quoteHome.typeHome" class="col-md-6" id="typeSelect" name="typeSelect">
-            <option value="0">Type Habitation</option>
-            <option value="1">Appartement</option>
-            <option value="2">Maison</option>
-            <option value="3">Studio</option>
-        </form:select>
+
+    <div class="col-md-12">
+        <form:label path="quoteHome.numberBathroom" class="col-md-3">Nombre de salle de bain</form:label>
+        <form:input path="quoteHome.numberBathroom" class="col-md-3" min="1" required="required" type="number" placeholder="1"/>
     </div>
-    <div>
-        <form:label path="quoteHome.area" class="col-md-6">Surface</form:label>
-        <form:input path="quoteHome.area" class="col-md-6" type="text" placeholder="100"/>m²
+    
+    <div class="col-md-12">
+        <label class="col-md-3">Garage</label>
+        <div class="col-md-3">
+            <form:radiobutton path="quoteHome.garage" value="true"/>Oui
+            <form:radiobutton path="quoteHome.garage" value="false"/>Non
+        </div>
     </div>
 
     <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>

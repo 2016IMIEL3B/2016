@@ -4,11 +4,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Wizard car 4</title>
+    <title>Wizard Home</title>
 </head>
 <body>
 
-<form:form method="POST" action="/result" modelAttribute="model">
+<form:form method="POST" action="/resultHome" modelAttribute="model">
     <h2>Étape 4/4</h2>
 
     <div class="col-md-12">
@@ -18,8 +18,9 @@
     <div class="col-md-12">
         <label class="col-md-3">Type de contract</label>
         <div class="col-md-3">
-            <form:radiobutton path="quoteCar.allRisk" value="true"/>Tout Risque
-            <form:radiobutton path="quoteCar.allRisk" value="false"/>Tiers
+            <form:radiobutton path="quoteHome.formula" value="0"/>Formule 1
+            <form:radiobutton path="quoteHome.formula" value="1"/>Formule 2
+            <form:radiobutton path="quoteHome.formula" value="2"/>Formule 2
         </div>
     </div>
     <div class="col-md-12">

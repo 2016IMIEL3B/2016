@@ -1,19 +1,11 @@
 package com.group4.front.controller.model;
 
-import com.group4.front.entities.QuoteCar;
+import com.group4.front.entities.QuoteHome;
 
 public class QuoteHomeModel {
 
-    private QuoteCar quoteCar;
+    private QuoteHome quoteHome;
     private String userName;
-
-    public QuoteCar getQuoteCar() {
-        return quoteCar;
-    }
-
-    public void setQuoteCar(QuoteCar quoteCar) {
-        this.quoteCar = quoteCar;
-    }
 
     public String getUserName() {
         return userName;
@@ -21,5 +13,13 @@ public class QuoteHomeModel {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public QuoteHome getQuoteHome() {
+        return quoteHome;
+    }
+
+    public void setQuoteHome(QuoteHome quoteHome) {
+        this.quoteHome = quoteHome;
     }
 }

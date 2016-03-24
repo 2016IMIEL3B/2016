@@ -27,7 +27,7 @@ public class WizardCarController {
 
     private QuoteCar currentQuoteCar;
 
-    @RequestMapping(path = "/car/wizard",  method = RequestMethod.GET)
+    @RequestMapping(path = "/wizard/car/1",  method = RequestMethod.GET)
     public ModelAndView wizard(){
         ModelAndView model = new ModelAndView("wizard_car");
         User user = this.userService.findUserById(this.session.getIdUser());
@@ -41,7 +41,7 @@ public class WizardCarController {
         return model;
     }
 
-    @RequestMapping(path = "/car/step/1", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(path = "/wizard/car/2", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView wizardCar(@ModelAttribute QuoteCarModel quoteCarModel) {
         ModelAndView modelAndView = new ModelAndView("wizard_car_two");
         modelAndView.addObject("model", quoteCarModel);
@@ -51,7 +51,7 @@ public class WizardCarController {
         return modelAndView;
     }
 
-    @RequestMapping(path = "/car/step/2", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(path = "/wizard/car/3", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView wizardCar2(@ModelAttribute QuoteCarModel quoteCarModel) {
         ModelAndView modelAndView = new ModelAndView("wizard_car_three");
         modelAndView.addObject("model", quoteCarModel);
@@ -63,7 +63,7 @@ public class WizardCarController {
         return modelAndView;
     }
 
-    @RequestMapping(path = "/car/step/3", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(path = "/wizard/car/4", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView wizardCar3(@ModelAttribute QuoteCarModel quoteCarModel) {
         ModelAndView modelAndView = new ModelAndView("wizard_car_four");
         modelAndView.addObject("model", quoteCarModel);
