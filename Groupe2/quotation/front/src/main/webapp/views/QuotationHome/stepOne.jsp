@@ -1,23 +1,26 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form method="POST">
+<form:form method="POST" action="devis/habitation/send/1" modelAttribute="home">
 
     <label for="nomPrenomUser">Nom / prenom de l’utilisateur</label>
     <input id="nomPrenomUser" type="text" value="" class="form-control" disabled>
 
-    <label for="devis">Nom du devis</label>
-    <input id="devis" type="text" value="" class="form-control">
+    <form:label path="quotation.name">Nom du devis</form:label>
+    <form:input path="quotation.name" type="text" value="" class="form-control"></form:input>
 
-    <label for="typeHab">Type d’habitation</label>
-    <select id="typeHab" class="form-control">
+    <form:label path="homeType">Type d’habitation</form:label>
+    <form:select path="homeType" class="form-control">
 
         <option value=""></option>
 
-    </select>
+    </form:select>
 
-    <label for="surface">Surface</label>
-    <input id="surface" type="text" value="" class="form-control">
+    <form:label path="surface">Surface</form:label>
+    <form:input path="surface" type="text" value="" class="form-control" />
 
     <%@ include file="../QuotationStep/quotationStepState.jsp" %>
+
+</form:form>
 
 <%@ include file="../Default/footer.jsp" %>
