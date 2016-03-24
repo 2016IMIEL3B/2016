@@ -1,5 +1,7 @@
 package services;
 
+import model.User;
+
 /**
  * Created by Nico on 09/02/2016.
  */

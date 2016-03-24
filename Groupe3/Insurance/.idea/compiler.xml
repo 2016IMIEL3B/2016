@@ -22,11 +22,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="dao" />
+        <module name="entity" />
         <module name="insurance.front" />
         <module name="insurance.service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dao" target="1.8" />
+      <module name="entity" target="1.8" />
       <module name="insurance" target="1.8" />
       <module name="insurance.front" target="1.8" />
       <module name="insurance.service" target="1.8" />

@@ -5,8 +5,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import model.Person;
-
 /**
  * Created by Nico on 18/02/2016.
  */
@@ -47,7 +45,7 @@ public class DemoController {
         model.addObject("message","hello world -> " + nom);
         return model;
     }
-    
+    /*
     @RequestMapping(path = "/controller/DemoController"
             ,method = {RequestMethod.POST})
     public ModelAndView demoTp5(@ModelAttribute Person person)
@@ -55,5 +53,5 @@ public class DemoController {
         ModelAndView model = new ModelAndView("index", "Person", new Person());
         model.addObject("message","hello world -> " + person.getFirstName() + " " + person.getLastName());
         return model;
-    }
+    }*/
 }

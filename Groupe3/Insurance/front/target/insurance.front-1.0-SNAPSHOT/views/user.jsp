@@ -21,6 +21,7 @@
                 <td>Nom de l'utilisateur</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    ${user.lastName}
                     <br/>
                 </td>
             </tr>
@@ -28,6 +29,7 @@
                 <td>Prénom de l'utilisateur</td>
                 <td>
                     <input type="text" name="value" value="" />
+                    ${user.firstName}
                     <br/>
                 </td>
             </tr>
@@ -36,6 +38,7 @@
                 <td>
                     <input type="password" name="value" value="" />
                     <br/>
+                    ${user.password}
                 </td>
             </tr>
             <tr>

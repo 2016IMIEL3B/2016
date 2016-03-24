@@ -25,6 +25,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="insurance.service" />
+    <orderEntry type="module" module-name="entity" />
+    <orderEntry type="module" module-name="dao" />
     <orderEntry type="library" name="Maven: io.vertx:vertx-web:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: io.vertx:vertx-auth-common:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:1.11.2.RELEASE" level="project" />

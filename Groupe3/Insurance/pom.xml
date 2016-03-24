@@ -11,6 +11,8 @@
     <modules>
         <module>front</module>
         <module>services</module>
+        <module>entity</module>
+        <module>dao</module>
     </modules>
 
     <parent>
