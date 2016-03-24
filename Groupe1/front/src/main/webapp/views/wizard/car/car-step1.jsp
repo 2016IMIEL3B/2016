@@ -3,62 +3,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<html lang="en">
-
-<body>
-
-<nav>
-    <h1>Projet Vertx</h1>
-    <a href="/car/1" style="display: inline">Devis Voiture</a> |
-    <a href="/habitation/1">Devis Habitation</a> |
-    <a href="/profile">Profil</a> |
-    <a href="/synthesis">Mes Devis</a>
-</nav>
-
+<%@include file="../../header.jsp" %>
 
     <h1>Assurer une voiture</h1>
 
-    <form:form action="/carwizard.form?_page=2" method="POST" modelAttribute="carwizard">
+    <form:form action="/carwizard.form?_page=2" method="POST" modelAttribute="CarModel">
 
-        <div>
-            <form:label path="quoteName">Nom du devis</form:label>
-            <form:input path="quoteName" ></form:input>
-        </div>
 
-        <div>
-            <form:label path="listBrand">Marque</form:label>
-            <form:select path="listBrand" >
-                <form:option value="honda" path="listBrand">Honda</form:option>
-                <form:option value="wolkswagen" path="listBrand">Wolkswagen</form:option>
+            <form:label path="" for="quote.name">Nom du devis</form:label>
+            <form:input path="quote.name" ></form:input>
+
+
+            <form:label path="" for="quote.vehicle.model.brand">Marque</form:label>
+            <form:select path="quote.vehicle.model.brand">
+                <form:option value="honda">Honda</form:option>
+                <form:option value="wolkswagen">Wolkswagen</form:option>
             </form:select>
-        </div>
 
-        <div>
-            <form:label path="model">Modèle</form:label>
-            <form:input type="text" path="model"></form:input>
-        </div>
+        <br>
+            <form:label path="" for="quote.vehicle.model"> Modèle</form:label>
+            <form:input  path="quote.vehicle.model"></form:input>
 
-        <div>
-            <form:label path="listFuel">Carburant</form:label>
-            <form:select path="listFuel">
+
+        <br>
+            <form:label path="" for="quote.vehicle.fuel">Carburant</form:label>
+            <form:select path="quote.vehicle.fuel">
                 <form:option value="essence">Essence</form:option>
                 <form:option value="gasoil">Gasoil</form:option>
                 <form:option value="gpl">GPL</form:option>
             </form:select>
-        </div>
 
-        <div>
+        <br>
 
-            <form:label path="listPower">Chevaux fiscaux</form:label>
-            <form:select path="listPower">
+            <form:label path="" for="quote.vehicle.horsepower"> Chevaux fiscaux</form:label>
+            <form:select path="quote.vehicle.horsepower">
                 <form:option value="1">1CH</form:option>
                 <form:option value="2">2CH</form:option>
                 <form:option value="3">3CH</form:option>
                 <form:option value="4">4CH</form:option>
                 <form:option value="5">5CH</form:option>
             </form:select>
-            <label>Chevaux fiscaux</label>
-        </div>
+        <br>
 
         <form:button type="submit">Aller à l'étape suivante</form:button>
 
@@ -66,6 +51,4 @@
 
     </form:form>
 
-</body>
-
-</html>
+<%@include file="../../footer.jsp" %>

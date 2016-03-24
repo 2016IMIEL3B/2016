@@ -18,21 +18,21 @@
     <form >
 
         <div>
-            <label>Date du permis</label>
-            <input type="date" name="dateLicense">
+            <form:label for="quote.usera.drivingLicenceDate">Date du permis</form:label>
+            <from:input type="date" path="quote.usera.drivingLicenceDate"></from:input>
         </div>
 
         <div>
-            <label>Nombre d'accidents</label>
-            <input type="text" name="inputAccident">
+            <from:label for="quote.usera.accidentNumber">Nombre d'accidents</from:label>
+            <from:input type="text" path="quote.usera.accidentNumber"></from:input>
         </div>
 
         <div>
-            <label>Bonus Malus</label>
-            <input type="text" name="bonusMalus">
+            <from:label for="quote.usera.bonus">Bonus Malus</from:label>
+            <from:input type="text" path="quote.usera.bonus"></from:input>
         </div>
 
-        <input type="submit" value="Valider">
+        <form:button type="submit">Aller à l'étape suivante</form:button>
     </form>
 
 </body>
