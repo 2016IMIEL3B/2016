@@ -8,6 +8,8 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
+import io.vertx.ext.auth.jwt.JWTAuth;
+import io.vertx.ext.auth.jwt.JWTOptions;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.Route;
@@ -41,7 +43,6 @@ public class RestApiVertx extends AbstractVerticle {
 
                     // save the connection on the context
                     routingContext.put("conn", conn);
-                    //routingContext.addHeadersEndHandler(done -> conn.close(v -> { }));
                     routingContext.next();
                 } else {
                     routingContext.fail(res.cause());
@@ -61,6 +62,7 @@ public class RestApiVertx extends AbstractVerticle {
     }
 
     private void handleGetUser(RoutingContext routingContext) {
+
         String userName = routingContext.request().getParam("userName");
         String userPassword = routingContext.request().getParam("userPassword");
 
@@ -76,29 +78,24 @@ public class RestApiVertx extends AbstractVerticle {
                 else if (res.result().getNumRows() == 0){sendError(404, response);
                 } else {
                     ResultSet result = res.result();
-                    List<JsonObject> list = result.getRows();
-/*
+                    List<JsonObject> details = result.getRows();
+
                     JsonObject config = getJwtConfig();
                     JWTAuth provider = JWTAuth.create(vertx, config);
 
-                    String sub = userPassword + userLogin;
-                    String token = provider.generateToken(new JsonObject().put("sub", sub), new JWTOptions());
-                    //Authorization: Bearer <token>
-*/
+                    String baseToken = userName + userPassword;
+                    String token = provider.generateToken(
+                            new JsonObject().put("sub", baseToken),
+                            new JWTOptions().setExpiresInMinutes(Long.valueOf(60))
+                    );
+
+                    JsonObject headResponse = new JsonObject().put("token", token).put("details", details);
                     response
                         .putHeader("content-type", "application/json; charset=utf-8")
-                        .end(Json.encodePrettily(list));
-                    //sanitizeResponseData(result);
+                        .end(Json.encodePrettily(headResponse));
                 }
             });
         }
-    }
-
-    private List<JsonObject> sanitizeResponseData(ResultSet result)
-    {
-        List<JsonObject> response = result.getRows();
-        System.out.println(response);
-        return response;
     }
 
     private void sendError(int statusCode, HttpServerResponse response) {
@@ -123,6 +120,5 @@ public class RestApiVertx extends AbstractVerticle {
                 .put("path", "keystore.jceks")
                 .put("type", "jceks")
                 .put("password", "secret"));
-
     }
 }
