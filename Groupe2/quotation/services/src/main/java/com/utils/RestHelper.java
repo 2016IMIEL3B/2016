@@ -1,5 +1,7 @@
 package com.utils;
 
+import com.back.User;
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -40,17 +42,23 @@ public class RestHelper {
         request = new HttpEntity<>(body, headers);
     }
 
-    public HttpEntity<JsonObject> postRequest(String url, String params) {
+    public <T> HttpEntity<T> postRequest(Class<T> clazz,String url, String params) {
         return restTemplate.exchange(
                 url + "?" + params,
                 HttpMethod.POST,
                 request,
-                JsonObject.class
+                clazz
         );
     }
 
     public HttpEntity<JsonObject> loginRequest(String username) {
         String loginUrl = "http://localhost:8091/auth/api/login";
-        return postRequest(loginUrl, "login=" + username);
+        return postRequest(JsonObject.class, loginUrl, "login=" + username);
+    }
+
+    public HttpEntity<String> userRequest(User user){
+        String userJson = Json.encode(user);
+        String userUrl = "http://localhost:8091/api/profil/save";
+        return restTemplate.postForObject(userUrl, user, String.class);
     }
 }

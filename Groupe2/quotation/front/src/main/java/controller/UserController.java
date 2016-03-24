@@ -2,6 +2,7 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -20,7 +21,7 @@ public class UserController {
         return model;
     }
 
-    @RequestMapping({"/profil/save"})
+    @RequestMapping(path = {"/profil/save"}, method = RequestMethod.POST)
     public ModelAndView save(){
         ModelAndView model = new ModelAndView("index");
         // Recuperer l'utilisateur modifié via le formulaire
