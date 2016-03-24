@@ -51,12 +51,6 @@ public class IndexController {
         return model;
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile(){
-        ModelAndView model = new ModelAndView("profile");
-        return model;
-    }
-
     @RequestMapping(value = "/car/1", method = RequestMethod.GET)
     public ModelAndView car(){
         ModelAndView model = new ModelAndView("car-step1");
@@ -65,12 +59,6 @@ public class IndexController {
     @RequestMapping(value = "/car/2", method = RequestMethod.GET)
     public ModelAndView car2(){
         ModelAndView model = new ModelAndView("car-step2");
-        return model;
-    }
-
-    @RequestMapping(value = "/synthesis", method = RequestMethod.GET)
-    public ModelAndView synthesis(){
-        ModelAndView model = new ModelAndView("synthesis");
         return model;
     }
 
