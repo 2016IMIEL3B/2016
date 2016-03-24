@@ -32,14 +32,9 @@ public class FuelHelper {
                 connection.query("Select * from Fuel", resSet -> {
                     if (resSet.succeeded()) {
                         if (resSet.result().getNumRows() != 0) {
-
-                            List<JsonArray> results = resSet.result().getResults();
-
-                            for (JsonArray row: results) {
-                                context.response()
-                                        .putHeader("content-type", "application/json; charset=utf-8")
-                                        .end(Json.encodePrettily(resSet.result().getRows() ));
-                            }
+                            context.response()
+                                    .putHeader("content-type", "application/json; charset=utf-8")
+                                    .end(Json.encodePrettily(resSet.result().getRows() ));
                         } else {
                             context.response().end(new JsonObject().put("result", "Error with Query.").encode());
                         }

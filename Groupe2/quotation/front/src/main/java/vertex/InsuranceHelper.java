@@ -2,6 +2,7 @@ package vertex;
 
 import config.VertxDatabaseConfig;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
@@ -25,12 +26,12 @@ public class InsuranceHelper {
         this.client.getConnection(res -> {
             if (res.succeeded()) {
                 SQLConnection connection = res.result();
-                connection.query("Select entitled from Insurance", resSet -> {
+                connection.query("Select * from Insurance", resSet -> {
                     if (resSet.succeeded()) {
                         if (resSet.result().getNumRows() != 0) {
                             context.response()
                                     .putHeader("content-type", "application/json; charset=utf-8")
-                                    .end(resSet.result().getResults().toString());
+                                    .end(Json.encodePrettily(resSet.result().getRows() ));
                         } else {
                             context.response().end(new JsonObject().put("result", "Error with Query.").encode());
                         }
