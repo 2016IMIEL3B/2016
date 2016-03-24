@@ -1,23 +1,25 @@
 package controller.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
+import fr.Habitation;
+import fr.Quote;
 
 /**
- * Created by user on 23/03/2016.
+ * Created by Manon on 23/03/2016.
  */
-@Component
-@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS, scopeName = "session")
 public class HabitationModel {
 
-    private HabStep1 habStep1;
+    private Quote quote;
 
-    public HabStep1 getHabStep1() {
-        return habStep1;
+    public HabitationModel(){
+        quote = new Quote();
+        quote.setHabitation(new Habitation());
     }
 
-    public void setHabStep1(HabStep1 habStep1) {
-        this.habStep1 = habStep1;
+    public Quote getQuote() {
+        return quote;
+    }
+
+    public void setQuote(Quote quote) {
+        this.quote = quote;
     }
 }
