@@ -4,6 +4,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
+import io.vertx.ext.web.handler.BodyHandler;
 
 import javax.swing.*;
 
@@ -18,6 +19,7 @@ public class VerticleListener extends AbstractVerticle {
     InsuranceHelper insuranceHelper;
     ModelHelper modelHelper;
     FormulHelper formulHelper;
+    UserHelper userHelper;
 
     @Override
     public void start(){
@@ -28,8 +30,9 @@ public class VerticleListener extends AbstractVerticle {
         this.insuranceHelper = new InsuranceHelper(vertx);
         this.modelHelper = new ModelHelper(vertx);
         this.formulHelper = new FormulHelper(vertx);
+        userHelper = new UserHelper(vertx);
 
-
+        router.route().handler(BodyHandler.create());
         router.route("/*").handler(this::getDefaultHeader);
 
         router.post("/auth/api/login").handler(this.authHelper::getUserDetails);
@@ -39,7 +42,10 @@ public class VerticleListener extends AbstractVerticle {
         router.get("/api/model").handler(this.modelHelper::getAll);
         router.get("/api/formul").handler(this.formulHelper::getAll);
 
+        router.post("/api/profil/save").handler(userHelper::getUserInformationsForm);
+
         router.route("/api/*").handler(context -> {
+            context.getBodyAsJson()
             Boolean ok = context.request().getParam("token") != null;
             if (ok) context.next();
             else context.fail(401);
