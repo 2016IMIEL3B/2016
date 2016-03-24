@@ -88,4 +88,8 @@ INSERT INTO `list` (`id`, `listKey`, `value`, `parent_id`) VALUES
 (30, 'FOR', 'Formule 2', null),
 (31, 'HAB', 'Appartement', null),
 (32, 'HAB', 'Maison', null),
-(33, 'HAB', 'Studio', null);
+(33, 'HAB', 'Studio', null),
+(35, 'HEA', 'Electrique', null),
+(36, 'HEA', 'Fioul', null),
+(37, 'HEA', 'Gaz', null),
+(38, 'HEA', 'Bois', null);
