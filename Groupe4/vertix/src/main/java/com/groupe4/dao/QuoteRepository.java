@@ -20,6 +20,11 @@ import java.util.List;
  */
 public class QuoteRepository implements IQuoteRepository {
 
+    /**
+     *
+     * @param quote
+     * @param handler
+     */
     @Override
     public void createQuote(Quote quote, Handler<AsyncResult<Boolean>> handler) {
         Vertx.currentContext().owner().runOnContext(x-> {
@@ -56,6 +61,11 @@ public class QuoteRepository implements IQuoteRepository {
         });
     }
 
+    /**
+     *
+     * @param userId
+     * @param handler
+     */
     @Override
     public void getQuotesByUser(Integer userId, Handler<AsyncResult<List<Quote>>> handler) {
         Vertx.currentContext().owner().runOnContext(x-> {

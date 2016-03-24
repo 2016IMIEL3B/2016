@@ -1,5 +1,6 @@
 package com.groupe4.main;
 
+import com.groupe4.dao.IQuoteRepository;
 import com.groupe4.dao.QuoteRepository;
 import com.groupe4.entity.Quote;
 import io.vertx.core.AsyncResult;
@@ -15,7 +16,7 @@ public class QuoteService {
     /**
      * Quote Dao
      */
-    private QuoteRepository quoteDao;
+    private IQuoteRepository quoteDao;
 
     /**
      * Quote Service
@@ -43,15 +44,5 @@ public class QuoteService {
     public void createQuote(Quote quote, Handler<AsyncResult<Boolean>> handler) {
         this.quoteDao.createQuote(quote, handler);
     }
-
-    /*
-    IQuoteRepository test = new QuoteRepository();
-    test.getQuotesByUser(1,x->{
-        List<Quote> testQuote = x.result();
-        for (final Quote value : testQuote) {
-            System.out.println(value.getUserName());
-        }
-    });
-    */
 
 }
