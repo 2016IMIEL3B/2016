@@ -1,5 +1,7 @@
 package config;
 
+import com.QuotationUserDetails;
+import com.auth.QuotationUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,10 +20,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(securedEnabled = true) //prePostEnabled = true
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public static String USER_NAME = "toto";
-    public static String USER_NAME_ADMIN = "admin";
-    public static String PASSWORD = new BCryptPasswordEncoder().encode("toto");
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Active ou déscative le csrl (si désactivé, plus besoin du champ hidden correspond dans la page de login
@@ -30,10 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests().antMatchers("/").permitAll()
                 //.antMatchers("/private/admin/**").hasRole("ADMIN") // Si on souhaites restraindre l'URL pour le role ADMIN
-                //.antMatchers("/**").fullyAuthenticated()    // l'accès aux URLs private/** sera restrainte à un utilisateur authentifié
+                //.antMatchers("**").fullyAuthenticated()    // l'accès aux URLs private/** sera restrainte à un utilisateur authentifié
                 .and()
                 .formLogin()                        // utilisation du mode FormLogin pour l'authentification
-                .loginPage( "/login" )  // Définition d'une page custom pour le login (si non présent authomatiquement généré)
+                //.loginPage( "/login" )  // Définition d'une page custom pour le login (si non présent authomatiquement généré)
                 .permitAll()
                 .loginProcessingUrl( "/login.do" )  // Url à utiliser pour poster l'authenfication, donc l'action dans la page custom de login
                 .defaultSuccessUrl( "/" )           // Url par défaut à utiliser en cas d'authentification réussie
@@ -61,22 +59,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Service d'authentification
-
+     */
     @Autowired
-    private AuthClientService authClientService;*/
+    private QuotationUserDetailService authClientService;
 
     /**
      * Surcharge de la configuration
      *
      * @param auth blabla
      * @throws Exception
-
+     */
     @Autowired
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception
     {
         auth.userDetailsService(authClientService).passwordEncoder(new BCryptPasswordEncoder());
 
-    }*/
+    }
 
 
 }
