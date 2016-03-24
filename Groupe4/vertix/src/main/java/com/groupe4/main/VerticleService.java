@@ -4,7 +4,7 @@ import com.groupe4.connection.DbClient;
 import com.groupe4.main.controller.AuthenticationController;
 import com.groupe4.main.controller.ListController;
 import com.groupe4.main.controller.QuoteController;
-import com.groupe4.connexion.DbClient;
+import com.groupe4.connection.DbClient;
 import com.groupe4.dao.IUserRepository;
 import com.groupe4.dao.UserRepository;
 import com.groupe4.main.controller.UserController;

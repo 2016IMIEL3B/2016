@@ -1,6 +1,6 @@
 package com.groupe4.dao;
 
-import com.groupe4.connexion.DbClient;
+import com.groupe4.connection.DbClient;
 import com.groupe4.entity.User;
 import com.sun.deploy.util.StringUtils;
 import io.vertx.core.AsyncResult;
