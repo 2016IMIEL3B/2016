@@ -7,12 +7,12 @@
     <title>Wizard car 3</title>
 </head>
 <body>
-<form:form method="POST" action="/car/step/3" modelAttribute="model">
+<form:form method="POST" action="/wizard/car/4" modelAttribute="model">
     <h2>Étape 3/4</h2>
 
     <div class="col-md-12">
         <label class="col-md-6">Conducteur principale</label>
-        <form:input path="quoteCar.driver" class="col-md-6" type="text" placeholder="Pascal Duchamps"/>
+        <form:input path="quoteCar.driver" class="col-md-6" required="required" type="text" placeholder="Pascal Duchamps"/>
     </div>
     <div>
         <label class="col-md-6">Conducteur secondaire</label>

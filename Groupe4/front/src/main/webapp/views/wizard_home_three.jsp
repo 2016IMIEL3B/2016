@@ -8,29 +8,26 @@
 </head>
 <body>
 
-<form:form method="POST" action="/wizard/home/2" modelAttribute="model">
-        <h2>Étape 2/4</h2>
+<form:form method="POST" action="/wizard/home/4" modelAttribute="model">
+        <h2>Étape 3/4</h2>
 
     <div>
-        <form:label path="quoteHome.numberRoom" class="col-md-6">Nombre de pièces</form:label>
-        <form:input path="quoteHome.numberRoom" class="col-md-6" type="text" placeholder="5"/>
+        <form:label path="quoteHome.groundArea" class="col-md-6">Surface du terrain</form:label>
+        <form:input path="quoteHome.groundArea" class="col-md-6" type="number" placeholder="5"/>m²
     </div>
 
     <div>
-        <form:label path="quoteHome.floor" class="col-md-6">Étage</form:label>
-        <form:input path="quoteHome.floor" class="col-md-6" type="text" placeholder="0 pour RDC"/>
+        <form:label path="quoteHome.terraceArea" class="col-md-6">Surface de la terrasse</form:label>
+        <form:input path="quoteHome.terraceArea" class="col-md-6" type="number" placeholder="0"/>m²
     </div>
 
     <div>
-        <form:label path="quoteHome.numberBathroom" class="col-md-6">Nombre de salle de bain</form:label>
-        <form:input path="quoteHome.numberBathroom" class="col-md-6" type="text" placeholder="1"/>
-    </div>
-
-    </div>
-    <div>
-        <label class="col-md-6">Garage</label>
-        <form:radiobutton path="quoteHome.garage" value="true"/>Oui
-        <form:radiobutton path="quoteHome.garage" value="false"/>Non
+        <form:label path="quoteHome.typeHeating" class="col-md-6">Type de chauffage</form:label>
+        <form:select path = "quoteHome.typeHeating" class="col-md-6" id="typeHeatingSelect" name="typeHeatingSelect">
+            <option value="1" selected="selected">Fioul</option>
+            <option value="2">Gaz</option>
+            <option value="3">Bois</option>
+        </form:select>
     </div>
 
     <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>

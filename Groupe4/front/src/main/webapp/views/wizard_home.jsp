@@ -1,14 +1,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@include file="layout_header.jsp" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Wizard car</title>
+    <title>Wizard Home</title>
 </head>
 <body>
 
-<form:form method="POST" action="/wizard/car/2" modelAttribute="model">
+<form:form method="POST" action="/wizard/home/2" modelAttribute="model">
         <h2>Étape 1/4</h2>
 
         <div class="col-md-12">
@@ -17,35 +18,22 @@
 
     </div>
     <div>
-        <form:label path="quoteCar.brand" class="col-md-6">Marque</form:label>
-        <form:select path = "quoteCar.brand" class="col-md-6" id="brandSelect" name="brandSelect">
-            <option value="0">Marque</option>
-            <option value="1">Renault</option>
-            <option value="2">Peugeot</option>
-            <option value="3">Ford</option>
+        <form:label path="quoteHome.typeHome" class="col-md-6">Type Habitation</form:label>
+        <form:select path = "quoteHome.typeHome" class="col-md-6" id="typeSelect" name="typeSelect">
+            <option value="1" selected="selected">Appartement</option>
+            <option value="2">Maison</option>
+            <option value="3">Studio</option>
         </form:select>
     </div>
+
     <div>
-        <form:label path="quoteCar.model" class="col-md-6">Modèle</form:label>
-        <form:select path = "quoteCar.model" class="col-md-6" id="modelSelect" name="modelSelect">
-            <option value="0">Modèle</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </form:select>
+        <form:label path="quoteHome.address" class="col-md-6">Adresse</form:label>
+        <form:input required="required" path="quoteHome.address" class="col-md-6" type="text" placeholder="Rue patate"/>
     </div>
+
     <div>
-        <form:label path="quoteCar.fuel" class="col-md-6">Carburant</form:label>
-        <form:select path = "quoteCar.fuel" class="col-md-6" id="fuelSelect" name="fuelSelect">
-            <option value="0">Carburant</option>
-            <option value="1">Diesel</option>
-            <option value="2">Essence</option>
-            <option value="3">Gpl</option>
-        </form:select>
-    </div>
-    <div>
-        <form:label path="quoteCar.taxHorsepower" class="col-md-6">Chevaux fiscaux</form:label>
-        <form:input path="quoteCar.taxHorsepower" class="col-md-6" type="text" placeholder="54"/>
+        <form:label path="quoteHome.area" class="col-md-6">Surface</form:label>
+        <form:input required="required" min="2" path="quoteHome.area" class="col-md-6" type="number" placeholder="100"/>m²
     </div>
 
     <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>

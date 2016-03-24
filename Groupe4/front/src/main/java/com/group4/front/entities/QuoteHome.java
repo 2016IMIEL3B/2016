@@ -1,6 +1,8 @@
 package com.group4.front.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class QuoteHome {
