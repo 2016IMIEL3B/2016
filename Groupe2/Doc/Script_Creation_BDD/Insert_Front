@@ -14,7 +14,7 @@ INSERT INTO Home (surface,nbRoom,floor,nbBathroom,garage,surfaceGround,surfaceTe
 INSERT INTO Car (taxableHorsePower,sleepGarage,address,fuelId,markId,modelId,insuranceId,quotationId) VALUES
 (9,TRUE,"rue de la vie",1,1,1,1,1);
 
-INSERT INTO Driver (lastName,firstName,principal,licence_date,nbCrash,bonusPenalty,carId) VALUES
+INSERT INTO Driver (lastName,firstName,principal,licence_date,nbCrash,bonusPenality,carId) VALUES
 ("Boussard","Kévin",TRUE,"1993-12-27",0,0.76,1),
 ("Rauflet","Nicolas",FALSE,"1995-12-18",2,0,1);
 
