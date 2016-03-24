@@ -32,12 +32,12 @@ public class VerticleListener extends AbstractVerticle {
 
         router.route("/*").handler(this::getDefaultHeader);
 
-        router.post("/auth/api/login").handler(authHelper::getUserDetails);
-        router.post("/api/fuel").handler(fuelHelper::getAll);
-        router.post("/api/mark").handler(fuelHelper::getAll);
-        router.post("/api/insurance").handler(fuelHelper::getAll);
-        router.post("/api/model").handler(fuelHelper::getAll);
-        router.post("/api/formul").handler(fuelHelper::getAll);
+        router.post("/auth/api/login").handler(this.authHelper::getUserDetails);
+        router.post("/api/fuel").handler(this.fuelHelper::getAll);
+        router.post("/api/mark").handler(this.markHelper::getAll);
+        router.post("/api/insurance").handler(this.insuranceHelper::getAll);
+        router.post("/api/model").handler(this.modelHelper::getAll);
+        router.post("/api/formul").handler(this.formulHelper::getAll);
 
         router.route("/api/*").handler(context -> {
             Boolean ok = context.request().getParam("token") != null;
