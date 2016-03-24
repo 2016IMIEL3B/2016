@@ -13,8 +13,8 @@
 
             <div class="form-group">
                 <form:label path="" for="quote.habitation.type">Type de logement :</form:label><br>
-                <form:radiobutton path="quote.habitation.type" value="appartement" label=" Appartement "></form:radiobutton>
-                <form:radiobutton path="quote.habitation.type" value="maison" label=" Maison "></form:radiobutton>
+                <form:radiobutton path="quote.habitation.type" value="appartement" label="Appartement"></form:radiobutton>
+                <form:radiobutton path="quote.habitation.type" value="maison" label="Maison"></form:radiobutton>
             </div>
 
             <div class="form-group">

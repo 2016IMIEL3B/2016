@@ -31,11 +31,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project Vertx</a>
+                <a class="navbar-brand" href="/">Project Vertx</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Accueil</a></li>
+                    <li class="active"><a href="/">Accueil</a></li>
                     <li><a href="/carwizard.form">Devis véhicule</a></li>
                     <li><a href="/habWizard.form">Devis habitation</a></li>
                 </ul>
