@@ -7,9 +7,6 @@ import io.vertx.ext.sql.SQLConnection;
 
 import java.util.List;
 
-/**
- * Created by Link on 22/03/2016.
- */
 public class QuoteRepository {
 
     private SQLConnection connection;
@@ -19,14 +16,14 @@ public class QuoteRepository {
     }
 
     /*
-    public List<Quote> getQuotes() {
-        List<Quote> listQuote;
+    public Item<Quote> getQuotes() {
+        Item<Quote> listQuote;
         connection.query("SELECT * FROM quote", res2 -> {
             if (res2.succeeded()) {
                 ResultSet rs = res2.result();
 
-                List<String> columnNames = rs.getColumnNames();
-                List<JsonArray> results = rs.getResults();
+                Item<String> columnNames = rs.getColumnNames();
+                Item<JsonArray> results = rs.getResults();
 
 
 
@@ -39,7 +36,7 @@ public class QuoteRepository {
                 }
             }
         });
-        return List<Quote> listQuote;
+        return Item<Quote> listQuote;
     }
     */
 }
