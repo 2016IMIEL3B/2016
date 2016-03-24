@@ -1,6 +1,8 @@
 package com.groupe4.main;
 
-import com.groupe4.main.verticles.Authentication;
+import com.groupe4.connection.DbClient;
+import com.groupe4.main.controller.AuthenticationController;
+import com.groupe4.main.controller.ListController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpHeaders;
@@ -14,6 +16,7 @@ public class VerticleService extends AbstractVerticle{
 
     @Override
     public void start() {
+        DbClient.getInstance();
         Router router = Router.router(vertx);
 
         JsonObject jwtAuthConfig = new JsonObject().put("keyStore", new JsonObject()
@@ -24,7 +27,7 @@ public class VerticleService extends AbstractVerticle{
 
         router.route().handler(BodyHandler.create());
 
-        router.route("/login").handler(context -> {
+        router.route("/loginAction").handler(context -> {
             context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
             context.response().headers().add("content-type", "text/html;charset=UTF-8");
             context.next();
@@ -62,8 +65,18 @@ public class VerticleService extends AbstractVerticle{
 
         // Router begin
         router.post("/login").handler(routingContext -> {
-            Authentication authentication = new Authentication();
-            authentication.login(routingContext);
+            AuthenticationController authenticationController = new AuthenticationController(routingContext);
+            authenticationController.loginAction();
+        });
+
+        router.get("/api/lists").handler(routingContext -> {
+            ListController listController = new ListController(routingContext);
+            listController.getListsAction();
+        });
+
+        router.get("/api/lists/:id").handler(routingContext -> {
+            ListController listController = new ListController(routingContext);
+            listController.getListsByParentId();
         });
 
         // Start server
