@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html lang="en">
 
@@ -13,54 +14,57 @@
     <a href="/profile">Profil</a> |
     <a href="/synthesis">Mes Devis</a>
 </nav>
+
+
     <h1>Assurer une voiture</h1>
 
-    <form>
+    <form:form action="/carwizard.form?_page=2" method="POST" modelAttribute="carwizard">
 
         <div>
-            <label>Nom du devis</label>
-            <input type="text" name="inputQuoteName" >
+            <form:label path="quoteName">Nom du devis</form:label>
+            <form:input path="quoteName" ></form:input>
         </div>
 
         <div>
-            <label>Marque</label>
-            <select name="listBrand">
-                <option value="honda" name="">Honda</option>
-                <option value="wolkswagen" name="">Wolkswagen</option>
-            </select>
+            <form:label path="listBrand">Marque</form:label>
+            <form:select path="listBrand" >
+                <form:option value="honda" path="listBrand">Honda</form:option>
+                <form:option value="wolkswagen" path="listBrand">Wolkswagen</form:option>
+            </form:select>
         </div>
 
         <div>
-            <label>Modèle</label>
-            <input type="text" name="inputModel">
+            <form:label path="model">Modèle</form:label>
+            <form:input type="text" path="model"></form:input>
         </div>
 
         <div>
-            <label>Carburant</label>
-            <select name="listFuel">
-                <option value="essence" name="">Essence</option>
-                <option value="gasoil" name="">Gasoil</option>
-                <option value="gpl" name="">GPL</option>
-            </select>
+            <form:label path="listFuel">Carburant</form:label>
+            <form:select path="listFuel">
+                <form:option value="essence">Essence</form:option>
+                <form:option value="gasoil">Gasoil</form:option>
+                <form:option value="gpl">GPL</form:option>
+            </form:select>
         </div>
 
         <div>
+
+            <form:label path="listPower">Chevaux fiscaux</form:label>
+            <form:select path="listPower">
+                <form:option value="1">1CH</form:option>
+                <form:option value="2">2CH</form:option>
+                <form:option value="3">3CH</form:option>
+                <form:option value="4">4CH</form:option>
+                <form:option value="5">5CH</form:option>
+            </form:select>
             <label>Chevaux fiscaux</label>
-            <select name="listPower">
-                <option value="1" name="">1ch</option>
-                <option value="2" name="">2ch</option>
-                <option value="3" name="">3ch</option>
-                <option value="4" name="">4ch</option>
-                <option value="5" name="">5ch</option>
-                <option value="6" name="">6ch</option>
-            </select>
         </div>
 
-        <input type="submit" value="Etape suivante">
+        <form:button type="submit">Aller à l'étape suivante</form:button>
 
 
 
-    </form>
+    </form:form>
 
 </body>
 
