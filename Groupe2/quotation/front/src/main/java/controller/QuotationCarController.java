@@ -3,7 +3,10 @@ package controller;
 import com.ICarService;
 import com.IDriverService;
 import com.IQuotationService;
+import com.back.Formul;
 import com.back.Fuel;
+import com.back.Mark;
+import com.back.Model;
 import com.front.Car;
 import com.front.Driver;
 import com.front.Quotation;
@@ -49,13 +52,10 @@ public class QuotationCarController {
         Quotation quotation = quotationService.findOneById(id);
 
         if (quotation == null) {
-            RestTemplate restTemplate = new RestTemplate();
+            model.addObject("fuels", this.getAllFuels());
+            model.addObject("marks", this.getAllMarks());
+            model.addObject("models", this.getAllModels());
 
-            URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/fuel").build().toUri();
-            String result = restTemplate.getForObject(uri, String.class);
-            List<Fuel> fuels = Json.decodeValue(result, List.class);
-            model = new ModelAndView("QuotationCar/stepOne", "car", new Car());
-            model.addObject("fuels", fuels);
             model.addObject("step", 1);
         } else {
             Car car = carService.findOneByQuotationId(id);
@@ -146,6 +146,47 @@ public class QuotationCarController {
             model = new ModelAndView(String.format("redirect:/"));
         }
         return model;
+    }
+
+
+    private List<Fuel> getAllFuels() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/fuel").build().toUri();
+
+        String result = restTemplate.getForObject(uri, String.class);
+
+        return Json.decodeValue(result, List.class);
+    }
+
+    private List<Mark> getAllMarks() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/mark").build().toUri();
+
+        String result = restTemplate.getForObject(uri, String.class);
+
+        return Json.decodeValue(result, List.class);
+    }
+
+    private List<Model> getAllModels() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/model").build().toUri();
+
+        String result = restTemplate.getForObject(uri, String.class);
+
+        return Json.decodeValue(result, List.class);
+    }
+
+    private List<Formul> getAllFormul() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/formul").build().toUri();
+
+        String result = restTemplate.getForObject(uri, String.class);
+
+        return Json.decodeValue(result, List.class);
     }
 
 }
