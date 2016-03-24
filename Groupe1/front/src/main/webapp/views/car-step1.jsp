@@ -13,12 +13,14 @@
     <a href="/profile">Profil</a> |
     <a href="/synthesis">Mes Devis</a>
 </nav>
+
+
     <h1>Assurer une voiture</h1>
 
-    <form>
+    <form:form action="/car/1" method="POST" modelAttribute="carstep1">
 
         <div>
-            <label>Nom du devis</label>
+            <form:label path="quoteName">Nom du devis</form:label>
             <input type="text" name="inputQuoteName" >
         </div>
 
@@ -60,7 +62,7 @@
 
 
 
-    </form>
+    </form:form>
 
 </body>
 
