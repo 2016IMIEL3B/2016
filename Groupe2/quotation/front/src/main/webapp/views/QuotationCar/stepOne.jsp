@@ -11,30 +11,28 @@
 
 <form:label path="mark">Marque</form:label>
 <form:select path="mark" class="form-control">
-
-    <option value=""></option>
-
+    <c:forEach items="${marks}" var="mark">
+        <option value="${mark.entitled}">${mark.entitled}</option>
+    </c:forEach>
 </form:select>
 
 <form:label path="model">Modèle</form:label>
 <form:select path="model" class="form-control">
-
-    <option value=""></option>
-
+    <c:forEach items="${models}" var="model">
+        <option value="${model.entitled}">${model.entitled}</option>
+    </c:forEach>
 </form:select>
 
 <form:label path="fuel" >Carburant</form:label>
 <form:select path="fuel" class="form-control">
-
-    <option value=""></option>
-
+    <c:forEach items="${fuels}" var="fuel">
+        <option value="${fuel.entitled}">${fuel.entitled}</option>
+    </c:forEach>
 </form:select>
 
 <form:label path="taxableHorsePower">Cheveaux fiscaux</form:label>
 <form:select path="taxableHorsePower" class="form-control">
-
-    <option value=""></option>
-
+        <option value=""></option>
 </form:select>
 
 <%@ include file="../QuotationStep/quotationStepState.jsp" %>

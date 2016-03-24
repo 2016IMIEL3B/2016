@@ -44,11 +44,12 @@ public class QuotationCarController {
 
     @RequestMapping(value = "/devis/{id}/voiture", method = RequestMethod.GET)
     public ModelAndView quotationCar(@PathVariable int id) {
-        ModelAndView model;
+        ModelAndView model = null;
 
         Quotation quotation = quotationService.findOneById(id);
 
         if (quotation == null) {
+            model = new ModelAndView("QuotationCar/stepOne", "car", new Car());
             model.addObject("fuels", this.getAllFuels());
             model.addObject("marks", this.getAllMarks());
             model.addObject("models", this.getAllModels());
