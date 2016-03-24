@@ -1,23 +1,30 @@
 <%@include file="../../header.jsp" %>
 
-<h1>Devis - Assurer une habitation</h1>
-<h2>Etape 1</h2>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Devis - Assurer une habitation</h1>
+        <h2>Etape 1</h2>
 
-<form:form action="/habWizard.form?_page=2" method="POST" modelAttribute="habWizard">
-    <form:label path="" for="quote.name">Nom du devis :</form:label>
-    <form:input path="quote.name"></form:input>
-    <br>
+        <form:form action="/habWizard.form?_page=2" method="POST" modelAttribute="habWizard">
+            <div class="form-group">
+                <form:label path="" for="quote.name">Nom du devis :</form:label>
+                <form:input path="quote.name" class="form-control"></form:input>
+            </div>
 
-    <form:label path="" for="quote.habitation.type">Type de logement :</form:label>
-    <form:radiobutton path="quote.habitation.type" value="appartement" label="Appartement"></form:radiobutton>
-    <form:radiobutton path="quote.habitation.type" value="maison" label="Maison"></form:radiobutton>
-    <br>
+            <div class="form-group">
+                <form:label path="" for="quote.habitation.type">Type de logement :</form:label><br>
+                <form:radiobutton path="quote.habitation.type" value="appartement" label=" Appartement "></form:radiobutton>
+                <form:radiobutton path="quote.habitation.type" value="maison" label=" Maison "></form:radiobutton>
+            </div>
 
-    <form:label path="" for="quote.habitation.surface">Surface du logement :</form:label>
-    <form:input path="quote.habitation.surface"></form:input>
-    <br>
+            <div class="form-group">
+                <form:label path="" for="quote.habitation.surface">Surface du logement :</form:label>
+                <form:input path="quote.habitation.surface" class="form-control"></form:input>
+            </div>
 
-    <form:button type="submit">Aller à l'étape 2</form:button>
-</form:form>
+            <form:button type="submit" class="btn btn-default">Aller à l'étape 2</form:button>
+        </form:form>
+    </div>
+</div>
 
 <%@include file="../../footer.jsp" %>
