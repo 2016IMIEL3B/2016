@@ -32,14 +32,14 @@ public class MarkHelper {
                                     .putHeader("content-type", "application/json; charset=utf-8")
                                     .end(resSet.result().getResults().toString());
                         } else {
-                            context.response().end(new JsonObject().put("result", "Error with Query.").encode());
+                            context.fail(401);
                         }
                     }
                     connection.close();
                 });
 
             } else {
-                context.response().end("Error with Database connection.");
+                context.fail(500);
             }
 
         });

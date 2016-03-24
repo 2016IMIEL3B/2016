@@ -40,7 +40,7 @@ public class InsuranceHelper {
                 });
 
             } else {
-                context.response().end("Error with Database connection.");
+                context.fail(500);
             }
 
         });

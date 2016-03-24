@@ -72,7 +72,7 @@ public class UserHelper {
                     connection.close();
                 });
             } else {
-                context.response().end(new JsonObject().put("result", "Error with Database connection.").encodePrettily());
+                context.fail(500);
             }
 
         });

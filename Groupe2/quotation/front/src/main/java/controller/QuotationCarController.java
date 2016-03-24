@@ -3,10 +3,7 @@ package controller;
 import com.ICarService;
 import com.IDriverService;
 import com.IQuotationService;
-import com.back.Formul;
-import com.back.Fuel;
-import com.back.Mark;
-import com.back.Model;
+import com.back.*;
 import com.front.Car;
 import com.front.Driver;
 import com.front.Quotation;
@@ -55,6 +52,7 @@ public class QuotationCarController {
             model.addObject("fuels", this.getAllFuels());
             model.addObject("marks", this.getAllMarks());
             model.addObject("models", this.getAllModels());
+            model.addObject("horsepowers" this.getAllHorsePowers());
 
             model.addObject("step", 1);
         } else {
@@ -179,10 +177,20 @@ public class QuotationCarController {
         return Json.decodeValue(result, List.class);
     }
 
-    private List<Formul> getAllFormul() {
+    private List<Formul> getAllFormuls() {
         RestTemplate restTemplate = new RestTemplate();
 
         URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/formul").build().toUri();
+
+        String result = restTemplate.getForObject(uri, String.class);
+
+        return Json.decodeValue(result, List.class);
+    }
+
+    private List<HorsePower> getAllHorsePowers() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/horsepower").build().toUri();
 
         String result = restTemplate.getForObject(uri, String.class);
 
