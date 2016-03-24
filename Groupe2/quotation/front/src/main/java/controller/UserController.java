@@ -1,9 +1,17 @@
 package controller;
 
+import com.back.User;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.stream.Collectors;
 
 /**
  * Created by kevin on 22/03/16.
@@ -13,20 +21,20 @@ public class UserController {
 
     @RequestMapping({"/profil"})
     public ModelAndView home(){
-        ModelAndView model = new ModelAndView("User/index");
-        // Recuperer le user courant
 
-        // Ajouter au model
-
-        return model;
+        return new ModelAndView("User/index","user", new User());
     }
 
     @RequestMapping(path = {"/profil/save"}, method = RequestMethod.POST)
-    public ModelAndView save(){
-        ModelAndView model = new ModelAndView("index");
-        // Recuperer l'utilisateur modifié via le formulaire
-        // Save l'utilisateur dans la BDD VertX
-        // renvoyer sur la page home
-        return model;
+    public String save(@ModelAttribute User user){
+
+        String url = "http://localhost:8091/api/profil/save";
+
+        String result = new RestTemplate().postForObject(url,user,String.class);
+
+        if(result.equals("OK"))
+            return "redirect:/home";
+        else
+            return "redirect:/error";
     }
 }

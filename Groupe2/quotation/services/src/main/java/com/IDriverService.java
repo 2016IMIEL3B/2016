@@ -7,4 +7,5 @@ import com.front.Driver;
  */
 public interface IDriverService {
     Iterable<Driver> findByCarId(int carId);
+    Driver save(Driver driver);
 }

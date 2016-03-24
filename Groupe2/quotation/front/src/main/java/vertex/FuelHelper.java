@@ -2,11 +2,15 @@ package vertex;
 
 import config.VertxDatabaseConfig;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.RoutingContext;
+
+import java.util.List;
 
 /**
  * Created by tlemaillet on 23/03/16 for com.group.two.root.
@@ -25,12 +29,12 @@ public class FuelHelper {
         this.client.getConnection(res -> {
             if (res.succeeded()) {
                 SQLConnection connection = res.result();
-                connection.query("Select entitled from Fuel", resSet -> {
+                connection.query("Select * from Fuel", resSet -> {
                     if (resSet.succeeded()) {
                         if (resSet.result().getNumRows() != 0) {
                             context.response()
                                     .putHeader("content-type", "application/json; charset=utf-8")
-                                    .end(resSet.result().getResults().toString());
+                                    .end(Json.encodePrettily(resSet.result().getRows() ));
                         } else {
                             context.response().end(new JsonObject().put("result", "Error with Query.").encode());
                         }

@@ -25,4 +25,7 @@ public class QuotationService implements IQuotationService {
 
     public Quotation findOneById(int id) { return quotationDao.findOneById(id); }
 
-}
+    @Override
+    public Quotation save(Quotation quotation){
+        return this.quotationDao.save(quotation);
+    }}

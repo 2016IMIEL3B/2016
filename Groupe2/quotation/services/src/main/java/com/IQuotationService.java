@@ -15,4 +15,6 @@ public interface IQuotationService {
 
     Quotation findOneById(int id);
 
+    Quotation save(Quotation quotation);
+
 }

@@ -25,7 +25,7 @@ public class MarkHelper {
         this.client.getConnection(res -> {
             if (res.succeeded()) {
                 SQLConnection connection = res.result();
-                connection.query("Select entitled from Mark", resSet -> {
+                connection.query("Select * from Mark", resSet -> {
                     if (resSet.succeeded()) {
                         if (resSet.result().getNumRows() != 0) {
                             context.response()
