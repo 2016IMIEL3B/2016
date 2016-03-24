@@ -13,14 +13,14 @@
     <a href="/profile">Profil</a> |
     <a href="/synthesis">Mes Devis</a>
 </nav>
+<hr/>
 
 <h1>Devis - Assurer une habitation</h1>
 <h2>Etape 2</h2>
 
-<form action="/servlet/habitationStep2" method="POST">
-
-
-</form>
+Nom du devis: ${name} <br />
+Type de logement: ${type} <br />
+Surface: ${surface}m²
 
 
 </body>
