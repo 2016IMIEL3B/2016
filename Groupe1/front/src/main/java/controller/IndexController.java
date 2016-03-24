@@ -1,10 +1,7 @@
 package controller;
 
-import controller.model.HabStep1;
-import controller.model.HabitationModel;
 import excep.MyException;
 import fr.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -21,9 +18,6 @@ import java.util.Map;
  */
 @Controller
 public class IndexController {
-
-    @Autowired
-    private HabitationModel habitationModel;
 
     @Value("${application.message:Hello World}")
     private String message = "Hello World";
@@ -71,23 +65,6 @@ public class IndexController {
     @RequestMapping(value = "/car/2", method = RequestMethod.GET)
     public ModelAndView car2(){
         ModelAndView model = new ModelAndView("car-step2");
-        return model;
-    }
-
-    @RequestMapping(value = "/habitation/1", method = RequestMethod.GET)
-    public ModelAndView habitation1(){
-        ModelAndView model = new ModelAndView("habitation-step1");
-        habitationModel.setHabStep1(new HabStep1()) ;
-        model.addObject("habStep1", habitationModel.getHabStep1());
-        return model;
-    }
-
-    @RequestMapping(value = "/habitation/2", method = RequestMethod.POST)
-    public ModelAndView habitation1form(@ModelAttribute HabStep1 habStep1){
-        System.out.println(habStep1.getName());
-        System.out.println(habStep1.getSurface());
-        System.out.println(habStep1.getSurface());
-        ModelAndView model = new ModelAndView("habitation-step2");
         return model;
     }
 

@@ -5,6 +5,16 @@
 <html lang="en">
 
 <body>
+
+<nav>
+	<h1>Projet Vertx</h1>
+	<a href="/car/1" style="display: inline">Devis Voiture</a> |
+	<a href="/habWizard.form">Devis Habitation</a> |
+	<a href="/profile">Profil</a> |
+	<a href="/synthesis">Mes Devis</a>
+</nav>
+<hr/>
+
 	<h1>Demo Spring sécurity</h1>
 	<br />
 	Message: ${message}
