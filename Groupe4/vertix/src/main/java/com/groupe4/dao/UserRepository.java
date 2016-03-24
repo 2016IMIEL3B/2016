@@ -2,6 +2,7 @@ package com.groupe4.dao;
 
 import com.groupe4.connexion.DbClient;
 import com.groupe4.entity.User;
+import com.sun.deploy.util.StringUtils;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
@@ -11,9 +12,12 @@ import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.sql.UpdateResult;
+import org.joda.time.DateTime;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -23,104 +27,110 @@ import java.util.List;
  */
 public class UserRepository implements IUserRepository {
 
-    @Override
-    public Integer createUser(String name, String surname, String login, String password) {
-
-        AsyncSQLClient client = DbClient.getInstance().getClient();
-        client.getConnection(res -> {
-            if (res.succeeded()) {
-                System.out.println("OK Connexion");
-                SQLConnection connection = res.result();
-
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date today = Calendar.getInstance().getTime();
-                String createdAt = df.format(today);
-                String updatedAt = df.format(today);
-
-                String query = "INSERT INTO user (name,surname,login,password,createdAt,updatedAt) VALUES(?,?,?,?,?,?)";
-                JsonArray params = new JsonArray().add(name)
-                                                  .add(surname)
-                                                  .add(login)
-                                                  .add(password)
-                                                  .add(createdAt)
-                                                  .add(updatedAt);
-
-                connection.updateWithParams(query, params, res2 -> {
-                    checkUpdateResponse(res, res2);
-                });
-                connection.close();
-
-            } else {
-                // Failed to get connection - deal with it
-                System.out.println("NOK Connexion");
-            }
-        });
-        return null;
-    }
+    private int id;
 
     @Override
-    public Integer updateUser(Integer id, String name, String surname, String login, String password) {
-        AsyncSQLClient client = DbClient.getInstance().getClient();
-        client.getConnection(res -> {
-        if (res.succeeded()) {
-            System.out.println("OK Connexion");
-            SQLConnection connection = res.result();
+    public void createUser(User user, Handler<AsyncResult<Integer>> handler) {
+        Vertx.currentContext().owner().runOnContext(x-> {
+            AsyncSQLClient client = DbClient.getInstance().getClient();
+            client.getConnection(res -> {
+                if (res.succeeded()) {
+                    System.out.println("OK Connexion");
+                    SQLConnection connection = res.result();
 
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date today = Calendar.getInstance().getTime();
-            String updatedAt = df.format(today);
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date today = Calendar.getInstance().getTime();
+                    String createdAt = df.format(today);
+                    String updatedAt = df.format(today);
 
-            System.out.println(updatedAt);
+                    String query = "INSERT INTO user (name,surname,login,password,createdAt,updatedAt,roles) " +
+                            "VALUES(?,?,?,?,?,?,?)";
+                    JsonArray params = new JsonArray()
+                            .add(user.getName())
+                            .add(user.getSurname())
+                            .add(user.getLogin())
+                            .add(user.getPassword())
+                            .add(createdAt)
+                            .add(updatedAt)
+                            .add(StringUtils.join(user.getRoles(), ","));
 
-            String query = "UPDATE user SET name=?, surname=?, login=?, password=?, updatedAt=? WHERE id = ?;";
-            JsonArray params = new JsonArray()
-                    .add(name)
-                    .add(surname)
-                    .add(login)
-                    .add(password)
-                    .add(updatedAt)
-                    .add(id);
+                    connection.updateWithParams(query, params, res2 -> {
+                        checkUpdateResponse(res, res2, handler);
+                    });
+                    connection.close();
 
-            connection.updateWithParams(query, params, res2 -> {
-                checkUpdateResponse(res, res2);
+                } else {
+                    handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
+                }
             });
-            connection.close();
-
-        } else {
-            // Failed to get connection - deal with it
-            System.out.println("NOK Connexion");
-        }
-    });
-        return null;
-    }
-
-    @Override
-    public Integer deleteUser(Integer id) {
-        AsyncSQLClient client = DbClient.getInstance().getClient();
-        client.getConnection(res -> {
-            if (res.succeeded()) {
-                System.out.println("OK Connexion");
-                SQLConnection connection = res.result();
-
-                String query = "UPDATE user SET active = 0 where id = ?";
-                JsonArray params = new JsonArray()
-                        .add(id);
-
-                connection.updateWithParams(query, params, res2 -> {
-                    checkUpdateResponse(res, res2);
-                });
-                connection.close();
-
-            } else {
-                // Failed to get connection - deal with it
-                System.out.println("NOK Connexion");
-            }
         });
-        return null;
     }
 
     @Override
-    public User findById(Integer id, Handler<AsyncResult<User>> handler) {
+    public void updateUser(User user, Handler<AsyncResult<Integer>> handler) {
+        Vertx.currentContext().owner().runOnContext(x-> {
+            AsyncSQLClient client = DbClient.getInstance().getClient();
+            client.getConnection(res -> {
+                if (res.succeeded()) {
+                    System.out.println("OK Connexion");
+                    SQLConnection connection = res.result();
+
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date today = Calendar.getInstance().getTime();
+                    String updatedAt = df.format(today);
+
+                    System.out.println(updatedAt);
+
+                    String query = "UPDATE user SET name=?, surname=?, login=?, password=?, updatedAt=?, roles=? " +
+                            "WHERE id = ?";
+                    JsonArray params = new JsonArray()
+                            .add(user.getName())
+                            .add(user.getSurname())
+                            .add(user.getLogin())
+                            .add(user.getPassword())
+                            .add(updatedAt)
+                            .add(StringUtils.join(user.getRoles(), ","))
+                            .add(user.getId());
+
+                    connection.updateWithParams(query, params, res2 -> {
+                        checkUpdateResponse(res, res2, handler);
+                    });
+                    connection.close();
+
+                } else {
+                    handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
+                }
+            });
+        });
+    }
+
+    @Override
+    public void deleteUser(Integer id, Handler<AsyncResult<Integer>> handler) {
+        Vertx.currentContext().owner().runOnContext(x-> {
+            AsyncSQLClient client = DbClient.getInstance().getClient();
+            client.getConnection(res -> {
+                if (res.succeeded()) {
+                    System.out.println("OK Connexion");
+                    SQLConnection connection = res.result();
+
+                    String query = "UPDATE user SET active = 0 where id = ?";
+                    JsonArray params = new JsonArray()
+                            .add(id);
+
+                    connection.updateWithParams(query, params, res2 -> {
+                        checkUpdateResponse(res, res2, handler);
+                    });
+                    connection.close();
+
+                } else {
+                    handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
+                }
+            });
+        });
+    }
+
+    @Override
+    public void findById(Integer id, Handler<AsyncResult<User>> handler) {
         Vertx.currentContext().owner().runOnContext(x-> {
             AsyncSQLClient client = DbClient.getInstance().getClient();
             client.getConnection(res -> {
@@ -138,34 +148,32 @@ public class UserRepository implements IUserRepository {
                     connection.close();
 
                 } else {
-                    // Failed to get connection - deal with it
-                    System.out.println("NOK Connexion");
+                    handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
                 }
             });
         });
-
-        return null;
     }
 
     @Override
-    public void findByLogin(String login) {
-        AsyncSQLClient client = DbClient.getInstance().getClient();
-        client.getConnection(res -> {
-            if (res.succeeded()) {
-                System.out.println("OK Connexion");
-                SQLConnection connection = res.result();
+    public void findByLogin(String login, Handler<AsyncResult<User>> handler) {
+        Vertx.currentContext().owner().runOnContext(x-> {
+            AsyncSQLClient client = DbClient.getInstance().getClient();
+            client.getConnection(res -> {
+                if (res.succeeded()) {
+                    System.out.println("OK Connexion");
+                    SQLConnection connection = res.result();
 
-                String query = "SELECT * FROM user WHERE login = ?";
-                JsonArray params = new JsonArray().add(login);
+                    String query = "SELECT * FROM user WHERE login = ?";
+                    JsonArray params = new JsonArray().add(login);
 
-                connection.queryWithParams(query, params, res2 -> {
-                    //checkFindResponse(res, res2);
-                });
+                    connection.queryWithParams(query, params, res2 -> {
+                        checkFindResponse(res, res2, handler);
+                    });
 
-            } else {
-                // Failed to get connection - deal with it
-                System.out.println("NOK Connexion");
-            }
+                } else {
+                    handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
+                }
+            });
         });
     }
 
@@ -175,41 +183,43 @@ public class UserRepository implements IUserRepository {
             List<JsonArray> results = resultSet.getResults();
             User user = new User();
 
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
             for (JsonArray row: results) {
-                int userId = row.getInteger(0);
-                String name = row.getString(1);
-                String surname = row.getString(2);
-
-                user.setId(row.getInteger(0));
-                user.setName(row.getString(1));
-                user.setSurname(row.getString(2));
-                user.setLogin(row.getString(3));
-                user.setPassword(row.getString(4));
-                user.setActive(row.getBoolean(5));
-
-//                System.out.println(userId);
-//                System.out.println(name);
-//                System.out.println(surname);
+                try {
+                    user.setId(row.getInteger(0));
+                    user.setName(row.getString(1));
+                    user.setSurname(row.getString(2));
+                    user.setLogin(row.getString(3));
+                    user.setPassword(row.getString(4));
+                    if (row.getInteger(5).equals(1)) {
+                        user.setActive(true);
+                    } else {
+                        user.setActive(false);
+                    }
+                    user.setCreatedAt(dateFormatter.parse(row.getString(6)));
+                    user.setUpdatedAt(new DateTime(row.getString(7)));
+                    user.setRoles(Arrays.asList(row.getString(8).split(",")));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
             handler.handle(Future.succeededFuture(user));
-
         } else {
-            // Failed!
-            System.out.println("NOK Request");
+            handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
         }
     }
 
-    private Integer checkUpdateResponse(AsyncResult<SQLConnection> res, AsyncResult<UpdateResult>res2){
+    private void checkUpdateResponse(AsyncResult<SQLConnection> res, AsyncResult<UpdateResult>res2, Handler<AsyncResult<Integer>> handler){
         if (res.succeeded()) {
 
                 UpdateResult updateResult = res2.result();
-                System.out.println("No. of rows updated: " + updateResult.getUpdated());
-                return 1;
+                Integer id =  updateResult.getKeys().getInteger(0);
 
+                handler.handle(Future.succeededFuture(id));
         } else {
-            // Failed!
-            System.out.println("NOK Request");
+            handler.handle(Future.failedFuture("Error in UserRepository : " + res.cause()));
         }
     }
 }

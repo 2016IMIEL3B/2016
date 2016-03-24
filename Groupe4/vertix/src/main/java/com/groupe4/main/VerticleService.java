@@ -1,5 +1,9 @@
 package com.groupe4.main;
 
+import com.groupe4.connexion.DbClient;
+import com.groupe4.dao.IUserRepository;
+import com.groupe4.dao.UserRepository;
+import com.groupe4.main.controller.UserController;
 import com.groupe4.main.verticles.Authentication;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
@@ -10,17 +14,23 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.JWTAuthHandler;
 
+import javax.jws.soap.SOAPBinding;
+
 public class VerticleService extends AbstractVerticle{
 
     @Override
     public void start() {
+        DbClient.getInstance();
+
+        IUserRepository user = new UserRepository();
+
         Router router = Router.router(vertx);
 
         JsonObject jwtAuthConfig = new JsonObject().put("keyStore", new JsonObject()
                 .put("path", "config/keystore.jceks")
                 .put("type", "jceks")
                 .put("password", "secret"));
-        JWTAuth authProvider = JWTAuth.create(Vertx.currentContext().owner(), jwtAuthConfig);
+        JWTAuth authProvider = JWTAuth.create(vertx, jwtAuthConfig);
 
         router.route().handler(BodyHandler.create());
 
@@ -66,6 +76,25 @@ public class VerticleService extends AbstractVerticle{
             authentication.login(routingContext);
         });
 
+        router.get("/api/users/:idUser").handler(routingContext -> {
+            UserController userController = new UserController(routingContext);
+            userController.getUser();
+        });
+
+        router.delete("/api/users/:idUser").handler(routingContext -> {
+            UserController userController = new UserController(routingContext);
+            userController.deleteUser();
+        });
+
+        router.put("/api/users/:idUser").handler(routingContext ->{
+            UserController userController = new UserController(routingContext);
+            userController.updateUser();
+        });
+
+        router.post("/api/users").handler(routingContext -> {
+            UserController userController = new UserController(routingContext);
+            userController.createUser();
+        });
         // Start server
         vertx.createHttpServer().requestHandler(router::accept).listen(1204);
 

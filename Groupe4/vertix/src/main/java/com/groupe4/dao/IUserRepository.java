@@ -9,10 +9,10 @@ import io.vertx.core.Handler;
  */
 public interface IUserRepository {
 
-    //Integer createUser(String name, String surname, String login, String password);
-    //Integer updateUser(Integer id, String name, String surname, String login, String password);
-    //Integer deleteUser(Integer id);
-    void findById(Integer id, Handler<AsyncResult<User>> handler);
-    //User findByLogin(String login);
+    public void createUser(User user, Handler<AsyncResult<Integer>> handler);
+    public void updateUser(User user, Handler<AsyncResult<Integer>> handler);
+    public void deleteUser(Integer id, Handler<AsyncResult<Integer>> handler);
+    public void findById(Integer id, Handler<AsyncResult<User>> handler);
+    public void findByLogin(String login, Handler<AsyncResult<User>> handler);
 
 }

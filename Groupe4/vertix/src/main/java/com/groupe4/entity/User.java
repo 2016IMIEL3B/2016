@@ -1,19 +1,52 @@
 package com.groupe4.entity;
 
+import org.joda.time.DateTime;
+
 import java.util.Date;
+import java.util.List;
 
 /**
- * Created by Mathilde on 23/03/2016.
+ * User entity.
  */
 public class User {
+    /**
+     * User id.
+     */
     private Integer id;
+
+    /**
+     * User name.
+     */
     private String name;
+    /**
+     * User surname.
+     */
     private String surname;
+    /**
+     * User login.
+     */
     private String login;
+    /**
+     * User password.
+     */
     private String password;
+    /**
+     * User active status.
+     */
     private Boolean active;
+    /**
+     * User creation date.
+     */
     private Date createdAt;
-    private Date updatedAt;
+    /**
+     * User update date.
+     */
+    private DateTime updatedAt;
+
+    /**
+     * User roles;
+     */
+    private List<String> roles;
 
     public User() {
     }
@@ -74,11 +107,27 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public DateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(DateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(String role) {
+        this.roles.add(role);
+    }
+
+    public void removeRole(String role) {
+        this.roles.remove(role);
     }
 }
