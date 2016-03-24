@@ -139,7 +139,3 @@ ALTER TABLE `user`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-INSERT INTO `user` (`id`, `name`, `surname`, `login`, `password`, `active`, `createdAt`, `updatedAt`, `roles`) VALUES (NULL, 'Kent', 'Clarc', 'superman', '123456', '1', '2016-03-22', '2016-03-22 00:00:00', '');
-INSERT INTO `quote` (`id`, `userName`, `userSurname`, `userId`, `typeQuote`, `guarantee`, `price`) VALUES (NULL, 'Parker', 'Peter', '1', 'habitation', 'maybe', '10');
-INSERT INTO `list` (`id`, `list_key`, `value`) VALUES (NULL, 'marque', 'citroen'), (NULL, 'fuel', 'diesel');
