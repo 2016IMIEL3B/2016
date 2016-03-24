@@ -61,4 +61,14 @@ public class Item {
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", listKey='" + listKey + '\'' +
+                ", value='" + value + '\'' +
+                ", parentId=" + parentId +
+                '}';
+    }
 }
