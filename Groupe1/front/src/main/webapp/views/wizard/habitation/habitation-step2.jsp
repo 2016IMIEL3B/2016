@@ -18,25 +18,14 @@
 <h1>Devis - Assurer une habitation</h1>
 <h2>Etape 2</h2>
 
-Nom du devis: ${name} <br />
-Type de logement: ${type} <br />
-Surface: ${surface}m²
+Nom du devis: ${habWizard.quote.name} <br />
+Type de logement: ${habWizard.quote.habitation.type} <br />
+Surface: ${habWizard.quote.habitation.surface}m²
 
-<form:form action="/habwizard.form?_page=3" method="POST" modelAttribute="habwizard">
-    <form:label path="name">Nom du devis :</form:label>
-    <form:input path="name"></form:input>
-    <br>
+<form:form action="/habwizard.form?_page=3" method="POST" modelAttribute="habWizard">
 
-    <form:label path="type">Type d'appartement :</form:label>
-    <form:radiobutton path="type" value="appartement" label="Appartement"></form:radiobutton>
-    <form:radiobutton path="type" value="maison" label="Maison"></form:radiobutton>
-    <br>
 
-    <form:label path="surface">Surface du logement :</form:label>
-    <form:input path="surface"></form:input>
-    <br>
-
-    <form:button type="submit">Aller à l'étape 2</form:button>
+    <form:button type="submit">Aller à l'étape 3</form:button>
 </form:form>
 
 </body>

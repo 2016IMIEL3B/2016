@@ -29,17 +29,17 @@ public class HabWizardController {
     @ModelAttribute("habWizard") HabitationModel habWizard) {
 
         // pageViews est un tableau qui renvois le nom de la vue suivant le numéro d'étape
-        return new ModelAndView("wizard/"+pageViews[currentPage-1]);
+        return new ModelAndView("wizard/habitation/"+pageViews[currentPage-1]);
     }
 
     /**
      * Dernière page
     */
     @RequestMapping(params = "_finish")
-    public ModelAndView processFinish(@ModelAttribute("modelWizard") HabitationModel habWizard, SessionStatus status) {
+    public ModelAndView processFinish(@ModelAttribute("habWizard") HabitationModel habWizard, SessionStatus status) {
         // suppression de l'objet en session
         status.setComplete();
-        return new ModelAndView("wizard/successView");
+        return new ModelAndView("successView");
     }
 
     @RequestMapping(params = "_cancel")
