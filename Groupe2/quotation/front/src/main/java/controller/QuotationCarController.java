@@ -9,6 +9,7 @@ import com.front.Quotation;
 import com.sun.org.apache.xpath.internal.operations.Quo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,6 +68,26 @@ public class QuotationCarController {
                     break;
             }
         }
+
+        return model;
+    }
+
+    @RequestMapping(value = "/devis/voiture/send/1", method = RequestMethod.POST)
+    public ModelAndView quotationCar(@ModelAttribute Car car) {
+
+        ModelAndView model = null;
+
+        if ((car.getQuotation().getName() != "")
+                && (car.getMark() != "")
+                && (car.getModel() != "")
+                && (car.getFuel() != "")
+                && (car.getTaxableHorsePower() != 0)) {
+            car.getQuotation().setNbStep(2);
+//            Quotation result = this.quotationService.save(car.getQuotation());
+            Car carResult = this.carService.save(car);
+            model = new ModelAndView(String.format("redirect:/devis/%d/voiture", carResult.getQuotation().getId()));
+        }
+
 
         return model;
     }

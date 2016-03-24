@@ -18,4 +18,8 @@ public class CarService implements ICarService {
         return this.carRepository.findOneByQuotationId(id);
     }
 
+    @Override
+    public Car save(Car car){
+        return this.carRepository.save(car);
+    }
 }
