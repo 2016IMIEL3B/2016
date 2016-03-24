@@ -1,5 +1,6 @@
 package com.groupe4.service;
 
+import com.groupe4.dao.IItemRepository;
 import com.groupe4.dao.ItemRepository;
 import com.groupe4.entity.Item;
 import io.vertx.core.AsyncResult;
@@ -14,7 +15,7 @@ public class ItemService {
     /**
      * Item Dao.
      */
-    private ItemRepository itemDao;
+    private IItemRepository itemDao;
 
     /**
      * Constructor.

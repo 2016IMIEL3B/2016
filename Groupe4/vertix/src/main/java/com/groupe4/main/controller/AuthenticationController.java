@@ -22,8 +22,9 @@ public class AuthenticationController {
                 .put("password", "secret"));
         JWTAuth provider = JWTAuth.create(Vertx.currentContext().owner(), config);
 
-        String username = this.routingContext.request().getParam("username");
-        String password = this.routingContext.request().getParam("password");
+        JsonObject bodyRequest = this.routingContext.getBodyAsJson();
+        String username = bodyRequest.getString("username");
+        String password = bodyRequest.getString("password");
 
         //mock findUserByLogin to get User
         User user = new User();
