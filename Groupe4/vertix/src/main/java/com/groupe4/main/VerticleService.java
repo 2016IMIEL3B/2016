@@ -3,6 +3,7 @@ package com.groupe4.main;
 import com.groupe4.connection.DbClient;
 import com.groupe4.main.controller.AuthenticationController;
 import com.groupe4.main.controller.ListController;
+import com.groupe4.main.controller.QuoteController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpHeaders;
@@ -11,6 +12,8 @@ import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.JWTAuthHandler;
+
+import java.util.List;
 
 public class VerticleService extends AbstractVerticle{
 
@@ -77,6 +80,16 @@ public class VerticleService extends AbstractVerticle{
         router.get("/api/lists/:id").handler(routingContext -> {
             ListController listController = new ListController(routingContext);
             listController.getListsByParentId();
+        });
+
+        router.get("/api/users/:idUser/quotes").handler(routingContext -> {
+            QuoteController quoteController = new QuoteController(routingContext);
+            quoteController.getQuotesByUser();
+        });
+
+        router.post("/api/users/:idUser/quote").handler(routingContext -> {
+            QuoteController quoteController = new QuoteController(routingContext);
+            quoteController.createQuote();
         });
 
         // Start server

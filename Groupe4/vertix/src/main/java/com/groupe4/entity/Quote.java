@@ -5,13 +5,18 @@ import javax.persistence.*;
 /**
  * Created by Link on 22/03/2016.
  */
-@Entity
 public class Quote {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * Integer id
+     */
     private Integer id;
+
+    /**
+     * String userName
+     */
     private String userName;
+
     private String userSurname;
     private Integer userId;
 
