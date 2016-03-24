@@ -44,22 +44,29 @@ public class QuotationCarController {
             Car car = carService.findOneByQuotationId(id);
             Iterable<Driver> drivers = driverService.findByCarId(car.getId());
 
-            if (car == null) {
-                model = new ModelAndView("QuotationCar/stepOne");
-                model.addObject("step", 1);
-            } else if (!drivers.iterator().hasNext()) {
-                model = new ModelAndView("QuotationCar/stepTwo");
-                model.addObject("step", 2);
-            } else if (car.getAddress() == null) {
-                model = new ModelAndView("QuotationCar/stepThree");
-                model.addObject("step", 3);
-            } else {
-                model = new ModelAndView("QuotationCar/stepFour");
-                model.addObject("step", 4);
+            switch(quotation.getNbStep()){
+                case 1:
+                    model = new ModelAndView("QuotationCar/stepOne");
+                    model.addObject("step", 1);
+                    break;
+                case 2:
+                    model = new ModelAndView("QuotationCar/stepTwo");
+                    model.addObject("step", 2);
+                    break;
+                case 3:
+                    model = new ModelAndView("QuotationCar/stepThree");
+                    model.addObject("step", 3);
+                    break;
+                case 4:
+                    model = new ModelAndView("QuotationCar/stepFour");
+                    model.addObject("step", 4);
+                    break;
+                default:
+                    model = new ModelAndView("QuotationCar/stepOne");
+                    model.addObject("step", 1);
+                    break;
             }
         }
-
-
 
         return model;
     }
