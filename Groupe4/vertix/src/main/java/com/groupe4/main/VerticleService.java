@@ -73,14 +73,14 @@ public class VerticleService extends AbstractVerticle{
         });
 
         router.post("/api/users/:idUser/quotes").handler(routingContext -> {
-            QuoteController quoteController = new QuoteController();
-            quoteController
+            QuoteController quoteController = new QuoteController(routingContext);
+            quoteController.getQuotesByUser(idUser);
 
         });
 
         router.get("/api/users/:idUser/quotes").handler(routingContext -> {
-            QuoteController quoteController = new QuoteController();
-            quoteController.crea
+            QuoteController quoteController = new QuoteController(routingContext);
+            quoteController
         });
 
         // Start server
