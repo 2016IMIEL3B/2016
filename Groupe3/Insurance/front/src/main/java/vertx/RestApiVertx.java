@@ -1,6 +1,7 @@
 package vertx;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
@@ -9,6 +10,7 @@ import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
+import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
@@ -30,8 +32,9 @@ public class RestApiVertx extends AbstractVerticle {
         client = MySQLClient.createShared(vertx, getDbConfig());
         Router router = Router.router(vertx);
         router.route().handler(BodyHandler.create());
+        Route route = router.route(HttpMethod.GET, "/api/user/:userName/:userPassword");
 
-        router.route("/api/user/:userName/:userPassword").handler(routingContext -> {
+        route.handler(routingContext -> {
             client.getConnection(res -> {
                 if (res.succeeded()) {
                     SQLConnection conn = res.result();
@@ -58,15 +61,15 @@ public class RestApiVertx extends AbstractVerticle {
     }
 
     private void handleGetUser(RoutingContext routingContext) {
-        String userID = routingContext.request().getParam("userID");
         String userName = routingContext.request().getParam("userName");
         String userPassword = routingContext.request().getParam("userPassword");
+
         HttpServerResponse response = routingContext.response();
-        if (userID == null) sendError(400, response);
+        if (userName == null || userPassword == null) sendError(400, response);
         else {
             SQLConnection conn = routingContext.get("conn");
             String query = "SELECT * FROM user WHERE firstName =? AND password = ?";
-            JsonArray params = new JsonArray().add("Jerome").add(123456);
+            JsonArray params = new JsonArray().add(userName).add(userPassword);
 
             conn.queryWithParams(query, params, res -> {
                 if (res.failed()) sendError(500, response);
