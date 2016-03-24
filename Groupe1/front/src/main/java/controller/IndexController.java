@@ -78,7 +78,7 @@ public class IndexController {
     public ModelAndView habitation1(){
         ModelAndView model = new ModelAndView("habitation-step1");
         habitationModel.setHabStep1(new HabStep1()) ;
-        model.addObject("step1", habitationModel.getHabStep1());
+        model.addObject("habStep1", habitationModel.getHabStep1());
         return model;
     }
 

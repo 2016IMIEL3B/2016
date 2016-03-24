@@ -19,9 +19,9 @@
 <h1>Devis - Assurer une habitation</h1>
 <h2>Etape 1</h2>
 
-<form:form action="/habitation/2" method="POST" modelAttribute="step1">
+<form:form action="/habitation/2" method="POST" modelAttribute="habStep1">
     <form:label path="name">Nom du devis :</form:label>
-    <form:input path="name"></form:input>
+    <form:input path="name" cssStyle="dis"></form:input>
 
     <form:label path="type">Type d'appartement :</form:label>
     <form:radiobutton path="type" value="appartement" label="Appartement"></form:radiobutton>
