@@ -15,7 +15,7 @@ public class UserController {
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile(){
         ModelAndView model = new ModelAndView("profile");
-        Usera user = new Usera();
+/*        Usera user = new Usera();
         user.setFirstname("Guillaume");
         user.setLastname("Tostain");
         Account account = new Account();
@@ -28,7 +28,7 @@ public class UserController {
         address.setCity("Mondeville");
         user.setAccount(account);
         user.setAddress(address);
-        model.addObject("user", user);
+        model.addObject("user", user);*/
         return model;
     }
 }

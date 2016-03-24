@@ -13,18 +13,37 @@
 <html>
 
 <head>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
 
-    <nav>
-        <h1>Projet Vertx</h1>
-        <a href="/car/1" style="display: inline">Devis Voiture</a> |
-        <a href="/habWizard.form">Devis Habitation</a> |
-        <a href="/profile">Profil</a> |
-        <a href="/synthesis">Mes Devis</a>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project Vertx</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Accueil</a></li>
+                    <li><a href="/carwizard.form">Devis véhicule</a></li>
+                    <li><a href="/habWizard.form">Devis habitation</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><i class="glyphicon glyphicon-user"></i></li>
+                    <li><a href="/profile">Profil</a></li>
+                    <li><a href="/synthesis">Mes devis</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
     </nav>
-    <hr/>
-
-    <div>
