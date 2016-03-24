@@ -1,11 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
-	    <title>Hello world</title>
+	    <title>Home</title>
 		<link rel="stylesheet" href="../css/style.css" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 	</head>
-	<body background="../img/bg.jpg">
 	<div class="form-style-10">
 	    <h1><b>Devis d'assurance en ligne</b></h1>
 		<h2>Connecté en tant que login</h2>

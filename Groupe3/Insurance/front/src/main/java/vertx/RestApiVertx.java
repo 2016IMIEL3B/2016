@@ -7,8 +7,6 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
-import io.vertx.ext.auth.jwt.JWTAuth;
-import io.vertx.ext.auth.jwt.JWTOptions;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.Router;
@@ -33,7 +31,7 @@ public class RestApiVertx extends AbstractVerticle {
         Router router = Router.router(vertx);
         router.route().handler(BodyHandler.create());
 
-        router.route("/api/user/:userLogin/:userPassword").handler(routingContext -> {
+        router.route("/api/user/:userName/:userPassword").handler(routingContext -> {
             client.getConnection(res -> {
                 if (res.succeeded()) {
                     SQLConnection conn = res.result();
@@ -55,39 +53,38 @@ public class RestApiVertx extends AbstractVerticle {
             }
         });
 
- router.get("/api/user/:userLogin/:userPassword").handler(that::handleGetUser);
+        router.get("/api/user/:userName/:userPassword").handler(that::handleGetUser);
         vertx.createHttpServer().requestHandler(router::accept).listen(8090);
     }
 
     private void handleGetUser(RoutingContext routingContext) {
         String userID = routingContext.request().getParam("userID");
-        String userLogin = routingContext.request().getParam("userLogin");
+        String userName = routingContext.request().getParam("userName");
         String userPassword = routingContext.request().getParam("userPassword");
         HttpServerResponse response = routingContext.response();
         if (userID == null) sendError(400, response);
         else {
             SQLConnection conn = routingContext.get("conn");
-            String query = "SELECT * FROM user WHERE login =? AND password = ?";
-            JsonArray params = new JsonArray().add(userLogin).add(userPassword);
+            String query = "SELECT * FROM user WHERE firstName =? AND password = ?";
+            JsonArray params = new JsonArray().add("Jerome").add(123456);
 
             conn.queryWithParams(query, params, res -> {
                 if (res.failed()) sendError(500, response);
                 else if (res.result().getNumRows() == 0){sendError(404, response);
                 } else {
                     ResultSet result = res.result();
-                    List<JsonObject> list = sanitizeResponseData(result);
-
+                    List<JsonObject> list = result.getRows();
+/*
                     JsonObject config = getJwtConfig();
                     JWTAuth provider = JWTAuth.create(vertx, config);
 
                     String sub = userPassword + userLogin;
                     String token = provider.generateToken(new JsonObject().put("sub", sub), new JWTOptions());
                     //Authorization: Bearer <token>
-
-
+*/
                     response
                         .putHeader("content-type", "application/json; charset=utf-8")
-                        .end(Json.encodePrettily(result.getRows()));
+                        .end(Json.encodePrettily(list));
                     //sanitizeResponseData(result);
                 }
             });
