@@ -39,7 +39,7 @@ public class QuotationCarController {
         Quotation quotation = quotationService.findOneById(id);
 
         if (quotation == null) {
-            model = new ModelAndView("QuotationCar/stepOne");
+            model = new ModelAndView("QuotationCar/stepOne", "car", new Car());
             model.addObject("step", 1);
         } else {
             Car car = carService.findOneByQuotationId(id);
