@@ -3,6 +3,7 @@ package com.groupe4.main;
 import com.groupe4.dao.IQuoteRepository;
 import com.groupe4.dao.QuoteRepository;
 import com.groupe4.entity.Quote;
+import com.groupe4.main.controller.QuoteController;
 import com.groupe4.main.verticles.Authentication;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
@@ -69,6 +70,17 @@ public class VerticleService extends AbstractVerticle{
         router.post("/login").handler(routingContext -> {
             Authentication authentication = new Authentication();
             authentication.login(routingContext);
+        });
+
+        router.post('/api/users/:idUser/quotes').handler(routingContext -> {
+            QuoteController quoteController = new QuoteController();
+            quoteController
+
+        });
+
+        router.get('/api/users/:idUser/quotes').handler(routingContext -> {
+            QuoteController quoteController = new QuoteController(routingContext);
+
         });
 
         // Start server
