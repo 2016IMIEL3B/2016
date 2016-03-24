@@ -57,7 +57,7 @@ public class RestHelper {
         return postRequest(JsonObject.class, loginUrl, "login=" + username);
     }
 
-    public HttpEntity<String> userRequest(User user){
+    public String userRequest(User user){
         String userJson = Json.encode(user);
         String userUrl = "http://localhost:8091/api/profil/save";
         return restTemplate.postForObject(userUrl, user, String.class);

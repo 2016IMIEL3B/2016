@@ -1,6 +1,8 @@
 package com;
 
+import io.vertx.core.json.JsonObject;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -10,16 +12,22 @@ import java.util.Collection;
  */
 public class QuotationUserDetails implements UserDetails {
 
-    private String username;
-    private String password;
+    private String username = null;
+    private String password = null;
 
 
-    public QuotationUserDetails() {
+    public QuotationUserDetails(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
+    public QuotationUserDetails(JsonObject rawUserDetails) {
+        this.username = rawUserDetails.getString("login");
+        this.username = rawUserDetails.getString("password");
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends SimpleGrantedAuthority> getAuthorities() {
         return null;
     }
 
@@ -35,21 +43,21 @@ public class QuotationUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

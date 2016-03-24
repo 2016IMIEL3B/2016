@@ -45,7 +45,6 @@ public class VerticleListener extends AbstractVerticle {
         router.post("/api/profil/save").handler(userHelper::getUserInformationsForm);
 
         router.route("/api/*").handler(context -> {
-            context.getBodyAsJson()
             Boolean ok = context.request().getParam("token") != null;
             if (ok) context.next();
             else context.fail(401);

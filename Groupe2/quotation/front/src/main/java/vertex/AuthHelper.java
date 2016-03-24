@@ -3,7 +3,6 @@ package vertex;
 import config.VertxAuthConfig;
 import config.VertxDatabaseConfig;
 import io.vertx.core.Vertx;
-import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
@@ -14,7 +13,7 @@ import io.vertx.ext.sql.SQLConnection;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.JWTAuthHandler;
 
-/**
+/** 
  * Created by tlemaillet on 23/03/16 for com.group.two.root.
  */
 public class AuthHelper {
