@@ -11,6 +11,6 @@ import java.util.List;
  * Created by Link on 23/03/2016.
  */
 public interface IQuoteRepository {
-    void createQuote(Quote quote);
+    void createQuote(Quote quote,Handler<AsyncResult<Boolean>> handler);
     void getQuotesByUser(Integer userId,Handler<AsyncResult<List<Quote>>> handler);
 }

@@ -21,34 +21,38 @@ import java.util.List;
 public class QuoteRepository implements IQuoteRepository {
 
     @Override
-    public void createQuote(Quote quote) {
-        AsyncSQLClient client = DbClient.getInstance().getClient();
-        client.getConnection(res -> {
-            if (res.succeeded()) {
-                SQLConnection connection = res.result();
-                //System.out.println("Connexion OK");
-                String query = "INSERT INTO quote (userName,userSurname,userId,typeQuote,guarantee,price) " +
-                        "VALUES (?, ?, ?, ?, ?, ?)";
-                JsonArray params = new JsonArray()
-                        .add(quote.getUserName())
-                        .add(quote.getUserSurname())
-                        .add(quote.getUserId())
-                        .add(quote.getTypeQuote())
-                        .add(quote.getGuarantee())
-                        .add(quote.getPrice());
+    public void createQuote(Quote quote, Handler<AsyncResult<Boolean>> handler) {
+        Vertx.currentContext().owner().runOnContext(x-> {
+            AsyncSQLClient client = DbClient.getInstance().getClient();
+            client.getConnection(res -> {
+                if (res.succeeded()) {
+                    SQLConnection connection = res.result();
+                    //System.out.println("Connexion OK");
+                    String query = "INSERT INTO quote (userName,userSurname,userId,typeQuote,guarantee,price) " +
+                            "VALUES (?, ?, ?, ?, ?, ?)";
+                    JsonArray params = new JsonArray()
+                            .add(quote.getUserName())
+                            .add(quote.getUserSurname())
+                            .add(quote.getUserId())
+                            .add(quote.getTypeQuote())
+                            .add(quote.getGuarantee())
+                            .add(quote.getPrice());
 
-                connection.updateWithParams(query, params, res2 -> {
-                    if (res2.succeeded()) {
-                        UpdateResult updateResult = res2.result();
-                        //System.out.println("Insert OK, No. of rows updated: " + updateResult.getUpdated());
-                    } else {
-                        System.out.println("Insert NOK");
-                    }
-                });
-                connection.close();
-            } else {
-                System.out.println("Connexion NOK");
-            }
+                    connection.updateWithParams(query, params, res2 -> {
+                        if (res2.succeeded()) {
+                            UpdateResult updateResult = res2.result();
+                            //System.out.println("Insert OK, No. of rows updated: " + updateResult.getUpdated());
+                            handler.handle(Future.succeededFuture(true));
+                        } else {
+                            //System.out.println("Insert NOK");
+                            handler.handle(Future.failedFuture("Insert NOK"));
+                        }
+                    });
+                    connection.close();
+                } else {
+                    //System.out.println("Connexion NOK");
+                }
+            });
         });
     }
 
