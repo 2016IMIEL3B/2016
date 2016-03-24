@@ -62,9 +62,9 @@ CREATE TABLE Driver
 	lastName NVARCHAR(50),
 	firstName NVARCHAR(50),
 	principal BOOLEAN,
-	licence_date DATE,
+	licenceDate DATE,
 	nbCrash INT,
-	bonusPenalty Float,
+	bonusPenality Float,
 	carId INT,
 	CONSTRAINT FK_Driver_Car FOREIGN KEY (carId) REFERENCES Car (id) ON DELETE CASCADE
 	
