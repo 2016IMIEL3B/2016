@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -21,14 +22,14 @@ public class QuotationUserDetails implements UserDetails {
         this.password = password;
     }
 
-    public QuotationUserDetails(JsonObject rawUserDetails) {
-        this.username = rawUserDetails.getString("login");
-        this.username = rawUserDetails.getString("password");
+    public QuotationUserDetails(UserLike userDetails) {
+        this.username = userDetails.getLogin();
+        this.password = userDetails.getPassword();
     }
 
     @Override
     public Collection<? extends SimpleGrantedAuthority> getAuthorities() {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

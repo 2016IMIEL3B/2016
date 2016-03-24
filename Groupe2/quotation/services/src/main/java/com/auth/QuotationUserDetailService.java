@@ -1,6 +1,8 @@
 package com.auth;
 
 import com.QuotationUserDetails;
+import com.UserLike;
+import com.back.User;
 import com.utils.RestHelper;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
@@ -28,16 +30,17 @@ public class QuotationUserDetailService implements UserDetailsService {
 
         ResponseEntity<JsonObject> response = new RestHelper().loginRequest(username);
 
-        if (response.getStatusCode().value() != 200) {
+        if (response.getStatusCode().value() == 200) {
             userSession.setToken(response.getHeaders().get("Token").get(0));
 
             List<String> s = response.getHeaders().get("UserDetails");
-            JsonObject rawUserDetails = Json.decodeValue(s.get(0), JsonObject.class);
+            JsonObject rawUserDetails = new JsonObject(s.get(0));
             userSession.setFromUserDetails(rawUserDetails);
 
-            userDetails = new QuotationUserDetails(rawUserDetails);
+            UserLike pouet = Json.decodeValue(s.get(0), UserLike.class);
+            userDetails = new QuotationUserDetails(pouet);
         } else {
-            userDetails = new QuotationUserDetails(username, "0");
+            throw new UsernameNotFoundException("Bad Login");
         }
 
         return userDetails;
