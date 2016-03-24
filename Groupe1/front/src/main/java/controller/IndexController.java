@@ -1,5 +1,7 @@
 package controller;
 
+import controller.model.CarModel;
+import controller.model.CarStep1;
 import controller.model.HabStep1;
 import controller.model.HabitationModel;
 import excep.MyException;
@@ -24,6 +26,8 @@ public class IndexController {
 
     @Autowired
     private HabitationModel habitationModel;
+
+
 
     @Value("${application.message:Hello World}")
     private String message = "Hello World";
@@ -63,16 +67,7 @@ public class IndexController {
         return model;
     }
 
-    @RequestMapping(value = "/car/1", method = RequestMethod.GET)
-    public ModelAndView car(){
-        ModelAndView model = new ModelAndView("car-step1");
-        return model;
-    }
-    @RequestMapping(value = "/car/2", method = RequestMethod.GET)
-    public ModelAndView car2(){
-        ModelAndView model = new ModelAndView("car-step2");
-        return model;
-    }
+
 
     @RequestMapping(value = "/habitation/1", method = RequestMethod.GET)
     public ModelAndView habitation1(){
