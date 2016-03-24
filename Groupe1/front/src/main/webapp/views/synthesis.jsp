@@ -1,22 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html lang="en">
-
-<body>
-
-<nav>
-    <h1>Projet Vertx</h1>
-    <a href="/car/1" style="display: inline">Devis Voiture</a> |
-    <a href="/habitation/1">Devis Habitation</a> |
-    <a href="/profile">Profil</a> |
-    <a href="/synthesis">Mes Devis</a>
-</nav>
-
+<%@include file="header.jsp" %>
 <h1>Devis en cours</h1>
-
-
 
 <h2>Véhicule</h2>
 <table>
@@ -37,7 +20,7 @@
                     <td>${quote.vehicle.model.brand.name}</td>
                     <td>${quote.price} €</td>
                     <td>${quote.summary}</td>
-                    <td><a href=<c:url value="/car/${quote.step}"/>>Reprendre</a></td>
+                    <td><a href=<c:url value="/wizard/car/${quote.step}"/>>Reprendre</a></td>
                 </c:if>
             </c:forEach>
         </c:if>
@@ -62,14 +45,11 @@
                     <td>${quote.habitation.surface}</td>
                     <td>${quote.price} €</td>
                     <td>${quote.summary}</td>
-                    <td><a href=<c:url value="/habitation/${quote.step}"/>>Reprendre</a></td>
+                    <td><a href=<c:url value="/wizard/habitation/${quote.step}"/>>Reprendre</a></td>
                 </c:if>
             </c:forEach>
         </c:if>
     </tr>
 </table>
 
-
-</body>
-
-</html>
+<%@include file="footer.jsp" %>
