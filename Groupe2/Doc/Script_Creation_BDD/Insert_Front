@@ -8,11 +8,11 @@ INSERT INTO Quotation (name,number,price,state,nbStep,typeQuotationId,userId) VA
 ("Devis pour une Voiture",125,150000,"En Cours",2,2,1),
 ("Devis pour une Habitation",15,102589,"En Cours",4,1,1);
 
-INSERT INTO Home (surface,nbRoom,floor,nbBathroom,garage,surfaceGround,surfaceTerrace,address,homeTypeId,heaterTypeId,formulId,quotationId) VALUES
-(50.7,2,0,2,TRUE,22,15,"14 rue de la rélativité 53000 Laval",2,2,2,2);
+INSERT INTO Home (surface,nbRoom,floor,nbBathroom,garage,surfaceGround,surfaceTerrace,address,homeType,heaterType,formul,quotationId) VALUES
+(50.7,2,0,2,TRUE,22,15,"14 rue de la rélativité 53000 Laval","Pavillon","Plancher chauffant","Formule 1",2);
 
-INSERT INTO Car (taxableHorsePower,sleepGarage,address,fuelId,markId,modelId,insuranceId,quotationId) VALUES
-(9,TRUE,"rue de la vie",1,1,1,1,1);
+INSERT INTO Car (taxableHorsePower,sleepGarage,address,fuel,mark,model,insurance,quotationId) VALUES
+(9,TRUE,"rue de la vie","Sans plomb","Seat","SVG-2000","Tous Risque",1);
 
 INSERT INTO Driver (lastName,firstName,principal,licence_date,nbCrash,bonusPenalty,carId) VALUES
 ("Boussard","Kévin",TRUE,"1993-12-27",0,0.76,1),

@@ -16,14 +16,18 @@ public class VerticleListener extends AbstractVerticle {
     @Override
     public void start(){
         Router router = Router.router(vertx);
-        authHelper = new AuthHelper(vertx);
-        fuelHelper = new FuelHelper(vertx);
+        this.authHelper = new AuthHelper(vertx);
+        thisfuelHelper = new FuelHelper(vertx);
 
 
         router.route("/*").handler(this::getDefaultHeader);
 
         router.post("/auth/api/login").handler(authHelper::getUserDetails);
         router.post("/api/fuel").handler(fuelHelper::getAll);
+        router.post("/api/mark").handler(fuelHelper::getAll);
+        router.post("/api/insurance").handler(fuelHelper::getAll);
+        router.post("/api/model").handler(fuelHelper::getAll);
+        router.post("/api/formul").handler(fuelHelper::getAll);
 
         router.route("/api/*").handler(context -> {
             Boolean ok = context.request().getParam("token") != null;

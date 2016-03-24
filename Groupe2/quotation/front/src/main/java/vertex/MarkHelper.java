@@ -11,12 +11,12 @@ import io.vertx.ext.web.RoutingContext;
 /**
  * Created by tlemaillet on 23/03/16 for com.group.two.root.
  */
-public class FuelHelper {
+public class MarkHelper {
 
     private Vertx vertx;
     private AsyncSQLClient client;
 
-    public FuelHelper(Vertx vertx) {
+    public MarkHelper(Vertx vertx) {
         this.vertx = vertx;
         this.client = MySQLClient.createShared(vertx, new VertxDatabaseConfig().getDBConfig());
     }
@@ -25,7 +25,7 @@ public class FuelHelper {
         this.client.getConnection(res -> {
             if (res.succeeded()) {
                 SQLConnection connection = res.result();
-                connection.query("Select entitled from Fuel", resSet -> {
+                connection.query("Select entitled from Mark", resSet -> {
                     if (resSet.succeeded()) {
                         if (resSet.result().getNumRows() != 0) {
                             context.response()
