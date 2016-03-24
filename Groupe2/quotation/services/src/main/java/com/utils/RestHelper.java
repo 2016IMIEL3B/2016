@@ -52,6 +52,15 @@ public class RestHelper {
         );
     }
 
+    public HttpEntity<JsonObject> getRequest(String url) {
+        return restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                request,
+                JsonObject.class
+        );
+    }
+
     public ResponseEntity<JsonObject> loginRequest(String username) {
         String loginUrl = "http://localhost:8091/auth/api/login";
         return postRequest(JsonObject.class, loginUrl, "login=" + username);

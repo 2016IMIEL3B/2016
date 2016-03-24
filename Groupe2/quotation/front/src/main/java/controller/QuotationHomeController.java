@@ -39,22 +39,29 @@ public class QuotationHomeController {
         } else {
             Home home = homeService.findOneByQuotationId(id);
 
-            if (home == null) {
-                model = new ModelAndView("QuotationHome/stepOne");
-                model.addObject("step", 1);
-            } else if (home.getNbRoom() == 0) {
-                model = new ModelAndView("QuotationHome/stepTwo");
-                model.addObject("step", 2);
-            } else if (home.getSurfaceGround() == 0) {
-                model = new ModelAndView("QuotationHome/stepThree");
-                model.addObject("step", 3);
-            } else {
-                model = new ModelAndView("QuotationHome/stepFour");
-                model.addObject("step", 4);
+            switch(quotation.getNbStep()){
+                case 1:
+                    model = new ModelAndView("QuotationHome/stepOne");
+                    model.addObject("step", 1);
+                    break;
+                case 2:
+                    model = new ModelAndView("QuotationHome/stepTwo");
+                    model.addObject("step", 2);
+                    break;
+                case 3:
+                    model = new ModelAndView("QuotationHome/stepThree");
+                    model.addObject("step", 3);
+                    break;
+                case 4:
+                    model = new ModelAndView("QuotationHome/stepFour");
+                    model.addObject("step", 4);
+                    break;
+                default:
+                    model = new ModelAndView("QuotationHome/stepOne");
+                    model.addObject("step", 1);
+                    break;
             }
         }
-
-
 
         return model;
     }
