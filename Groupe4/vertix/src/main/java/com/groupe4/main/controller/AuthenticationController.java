@@ -1,4 +1,4 @@
-package com.groupe4.main.verticles;
+package com.groupe4.main.controller;
 
 import com.groupe4.main.common.User;
 import io.vertx.core.Vertx;
@@ -8,7 +8,7 @@ import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.auth.jwt.JWTOptions;
 import io.vertx.ext.web.RoutingContext;
 
-public class Authentication {
+public class AuthenticationController {
     public void login(RoutingContext routingContext) {
         JsonObject config = new JsonObject().put("keyStore", new JsonObject()
                 .put("path", "config/keystore.jceks")

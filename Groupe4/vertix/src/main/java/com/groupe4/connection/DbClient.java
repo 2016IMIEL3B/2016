@@ -1,4 +1,4 @@
-package com.groupe4.connexion;
+package com.groupe4.connection;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
