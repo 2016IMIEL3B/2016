@@ -1,41 +1,44 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form method="POST">
+<form:form method="POST" action="devis/voiture/send/1" modelAttribute="car">
 
 <label for="nomPrenomUser">Nom / prenom de l’utilisateur</label>
-<input id="nomPrenomUser" type="text" value="" class="form-control" disabled>
+<input id="nomPrenomUser" type="text" value="" class="form-control" disabled></input>
 
-<label for="devis">Nom du devis</label>
-<input id="devis" type="text" value="" class="form-control">
+<form:label path="quotation.name">Nom du devis</form:label>
+<form:input path="quotation.name" type="text" value="" class="form-control"></form:input>
 
-<label for="marque">Marque</label>
-<select id="marque" class="form-control">
-
-    <option value=""></option>
-
-</select>
-
-<label for="modele">Modèle</label>
-<select id="modele" class="form-control">
+<form:label path="mark">Marque</form:label>
+<form:select path="mark" class="form-control">
 
     <option value=""></option>
 
-</select>
+</form:select>
 
-<label for="carburant">Carburant</label>
-<select id="carburant" class="form-control">
-
-    <option value=""></option>
-
-</select>
-
-<label for="cheveux">Cheveux fiscaux</label>
-<select id="cheveux" class="form-control">
+<form:label path="model">Modèle</form:label>
+<form:select path="model" class="form-control">
 
     <option value=""></option>
 
-</select>
+</form:select>
+
+<form:label path="fuel" >Carburant</form:label>
+<form:select path="fuel" class="form-control">
+
+    <option value=""></option>
+
+</form:select>
+
+<form:label path="taxableHorsePower">Cheveaux fiscaux</form:label>
+<form:select path="taxableHorsePower" class="form-control">
+
+    <option value=""></option>
+
+</form:select>
 
 <%@ include file="../QuotationStep/quotationStepState.jsp" %>
+
+</form:form>
 
 <%@ include file="../Default/footer.jsp" %>

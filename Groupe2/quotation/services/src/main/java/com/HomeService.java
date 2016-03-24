@@ -19,4 +19,8 @@ public class HomeService implements IHomeService {
         return this.homeRepository.findOneByQuotationId(id);
     }
 
+    @Override
+    public Home save(Home home){
+        return this.homeRepository.save(home);
+    }
 }

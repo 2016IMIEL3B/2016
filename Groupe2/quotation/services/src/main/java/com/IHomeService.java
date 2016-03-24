@@ -8,4 +8,5 @@ import com.front.Home;
  */
 public interface IHomeService {
     Home findOneByQuotationId(int id);
+    Home save(Home home);
 }

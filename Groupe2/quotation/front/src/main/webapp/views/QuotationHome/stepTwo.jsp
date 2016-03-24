@@ -1,31 +1,33 @@
 <%@ include file="../Default/header.jsp" %>
 
-<form method="POST">
+<form:form method="POST" action="devis/habitation/send/2" modelAttribute="home">
 
-    <label for="nbpièces">Nombre de pièces</label>
-    <select id="nbpièces" class="form-control">
-
-        <option value=""></option>
-
-    </select>
-
-    <label for="etage">Etage (si appartement)</label>
-    <select id="etage" class="form-control">
+    <form:label path="nbRoom">Nombre de pièces</form:label>
+    <form:select path="nbRoom" class="form-control">
 
         <option value=""></option>
 
-    </select>
+    </form:select>
 
-    <label for="nbbain">Nombre de salle de bain</label>
-    <select id="nbbain" class="form-control">
+    <form:label path="floor">Etage (si appartement)</form:label>
+    <form:select path="floor" class="form-control">
 
         <option value=""></option>
 
-    </select>
+    </form:select>
 
-    <label for="garage">Garage ?</label>
-    <input id="garage" type="checkbox" value="" class="form-control">
+    <form:label path="nbBathroom">Nombre de salle de bain</form:label>
+    <form:select path="nbBathroom" class="form-control">
+
+        <option value=""></option>
+
+    </form:select>
+
+    <form:label path="garage">Garage ?</form:label>
+    <form:input path="garage" type="checkbox" value="" class="form-control" />
 
     <%@ include file="../QuotationStep/quotationStepState.jsp" %>
+
+</form:form>
 
 <%@ include file="../Default/footer.jsp" %>

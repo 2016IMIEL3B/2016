@@ -1,24 +1,27 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form method="POST">
+<form:form method="POST" action="devis/voiture/send/2" modelAttribute="car">
 
-<label for="date">Date du permis</label>
-<input id="date" type="text" value="" class="form-control">
+<form:label path="licenceDate">Date du permis</form:label>
+<form:input path="licenceDate" type="text" value="" class="form-control" />
 
-<label for="nbAcc">Nombre d’accident</label>
-<select id="nbAcc" class="form-control">
-
-    <option value=""></option>
-
-</select>
-
-<label for="bonmal">Bonus malus</label>
-<select id="bonmal" class="form-control">
+<form:label path="nbCrash">Nombre d’accident</form:label>
+<form:select path="nbCrash" class="form-control">
 
     <option value=""></option>
 
-</select>
+</form:select>
+
+<form:label path="bonusPenality" for="bonmal">Bonus malus</form:label>
+<form:select path="bonusPenality" id="bonmal" class="form-control">
+
+    <option value=""></option>
+
+</form:select>
 
 <%@ include file="../QuotationStep/quotationStepState.jsp" %>
+
+</form:form>
 
 <%@ include file="../Default/footer.jsp" %>

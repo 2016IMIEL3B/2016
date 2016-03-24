@@ -9,6 +9,7 @@ import com.front.Quotation;
 import com.sun.org.apache.xpath.internal.operations.Quo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,7 @@ public class QuotationCarController {
         Quotation quotation = quotationService.findOneById(id);
 
         if (quotation == null) {
-            model = new ModelAndView("QuotationCar/stepOne");
+            model = new ModelAndView("QuotationCar/stepOne", "car", new Car());
             model.addObject("step", 1);
         } else {
             Car car = carService.findOneByQuotationId(id);
@@ -70,4 +71,69 @@ public class QuotationCarController {
 
         return model;
     }
+
+    @RequestMapping(value = "/devis/voiture/send/1", method = RequestMethod.POST)
+    public ModelAndView quotationCarStepOne(@ModelAttribute Car car) {
+
+        ModelAndView model = null;
+
+        if ((car.getQuotation().getName() != "")
+                && (car.getMark() != "")
+                && (car.getModel() != "")
+                && (car.getFuel() != "")
+                && (car.getTaxableHorsePower() != 0)) {
+            car.getQuotation().setNbStep(2);
+            Quotation result = this.quotationService.save(car.getQuotation());
+            Car carResult = this.carService.save(car);
+            model = new ModelAndView(String.format("redirect:/devis/%d/voiture", carResult.getQuotation().getId()));
+        }
+        return model;
+    }
+
+
+
+    @RequestMapping(value = "/devis/voiture/send/2", method = RequestMethod.POST)
+    public ModelAndView quotationDriverStepTwo(@ModelAttribute Driver driver) {
+
+        ModelAndView model = null;
+
+        if ((driver.getLicenceDate() != null)
+                && (driver.getNbCrash() > -1)) {
+            driver.getCar().getQuotation().setNbStep(3);
+            Quotation result = this.quotationService.save( driver.getCar().getQuotation());
+            Driver driverResult = this.driverService.save(driver);
+            model = new ModelAndView(String.format("redirect:/devis/%d/voiture", driverResult.getCar().getQuotation().getId()));
+        }
+        return model;
+    }
+
+
+    @RequestMapping(value = "/devis/voiture/send/3", method = RequestMethod.POST)
+    public ModelAndView quotationCarStepThree(@ModelAttribute Car car) {
+
+        ModelAndView model = null;
+
+        if ((car.getAddress() != "")) {
+            car.getQuotation().setNbStep(4);
+            Quotation result = this.quotationService.save(car.getQuotation());
+            Car carResult = this.carService.save(car);
+            model = new ModelAndView(String.format("redirect:/devis/%d/voiture", carResult.getQuotation().getId()));
+        }
+        return model;
+    }
+
+    @RequestMapping(value = "/devis/voiture/send/4", method = RequestMethod.POST)
+    public ModelAndView quotationCarStepFour(@ModelAttribute Car car) {
+
+        ModelAndView model = null;
+
+        if ((car.getInsurance() != "")) {
+            car.getQuotation().setNbStep(0);
+            Quotation result = this.quotationService.save(car.getQuotation());
+            Car carResult = this.carService.save(car);
+            model = new ModelAndView(String.format("redirect:/"));
+        }
+        return model;
+    }
+
 }

@@ -18,4 +18,9 @@ public class DriverService implements IDriverService {
         return this.driverRepository.findByCarId(carId);
     }
 
+    @Override
+    public Driver save(Driver driver){
+        return this.driverRepository.save(driver);
+    }
+
 }

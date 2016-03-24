@@ -7,4 +7,6 @@ import com.front.Car;
  */
 public interface ICarService {
     Car findOneByQuotationId(int id);
+
+    Car save(Car car);
 }
