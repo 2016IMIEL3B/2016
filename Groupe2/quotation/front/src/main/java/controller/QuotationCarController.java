@@ -30,8 +30,6 @@ public class QuotationCarController {
     @Autowired
     IDriverService driverService;
 
-    @Autowired
-    VerticleListener sampleVerticle;
 
     @RequestMapping(value = "/devis/{id}/voiture", method = RequestMethod.GET)
     public ModelAndView quotationCar(@PathVariable int id) {
@@ -44,12 +42,12 @@ public class QuotationCarController {
             model.addObject("step", 1);
         } else {
             Car car = carService.findOneByQuotationId(id);
-            Driver driver = driverService.findOneByCarId(car.getId());
+            Iterable<Driver> drivers = driverService.findByCarId(car.getId());
 
             if (car == null) {
                 model = new ModelAndView("QuotationCar/stepOne");
                 model.addObject("step", 1);
-            } else if (driver == null) {
+            } else if (!drivers.iterator().hasNext()) {
                 model = new ModelAndView("QuotationCar/stepTwo");
                 model.addObject("step", 2);
             } else if (car.getAddress() == null) {

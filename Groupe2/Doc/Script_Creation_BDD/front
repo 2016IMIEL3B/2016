@@ -1,3 +1,4 @@
+drop database if exists quotation_front;
 CREATE DATABASE quotation_front;
 
 

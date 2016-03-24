@@ -34,34 +34,34 @@ public class Car {
     /**
      * Car fuel.
      */
-    private int fuelId;
+    private String fuel;
 
     /**
      * Car Mark.
      */
-    private int markId;
+    private String mark;
 
     /**
      * Car Model.
      */
-    private int modelId;
+    private String model;
 
     /**
      * Car Insurance.
      */
-    private int insuranceId;
+    private String insurance;
 
     /** Car Quotation. */
     @OneToOne
     @JoinColumn(name = "quotationId")
     private Quotation quotation;
 
-    public int getInsuranceId() {
-        return this.insuranceId;
+    public String getInsurance() {
+        return this.insurance;
     }
 
-    public void setInsuranceId(int insuranceId) {
-        this.insuranceId = insuranceId;
+    public void setInsurance(String insuranceId) {
+        this.insurance = insuranceId;
     }
 
     public int getId() {
@@ -88,30 +88,6 @@ public class Car {
         this.sleepGarage = sleepGarage;
     }
 
-    public int getFuelId() {
-        return this.fuelId;
-    }
-
-    public void setFuelId(int fuelId) {
-        this.fuelId = fuelId;
-    }
-
-    public int getMarkId() {
-        return markId;
-    }
-
-    public void setMarkId(int markId) {
-        this.markId = markId;
-    }
-
-    public int getModelId() {
-        return modelId;
-    }
-
-    public void setModelId(int modelId) {
-        this.modelId = modelId;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -123,4 +99,28 @@ public class Car {
     public Quotation getQuotation() { return quotation; }
 
     public void setQuotation(Quotation quotation) { this.quotation = quotation; }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
 }

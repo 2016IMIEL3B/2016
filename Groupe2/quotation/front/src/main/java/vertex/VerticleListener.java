@@ -5,6 +5,8 @@ import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 
+import javax.swing.*;
+
 /**
  * Created by Theo Lemaillet on 21/03/16 for project.
  */
@@ -12,12 +14,20 @@ public class VerticleListener extends AbstractVerticle {
 
     AuthHelper authHelper;
     FuelHelper fuelHelper;
+    MarkHelper markHelper;
+    InsuranceHelper insuranceHelper;
+    ModelHelper modelHelper;
+    FormulHelper formulHelper;
 
     @Override
     public void start(){
         Router router = Router.router(vertx);
         this.authHelper = new AuthHelper(vertx);
-        thisfuelHelper = new FuelHelper(vertx);
+        this.fuelHelper = new FuelHelper(vertx);
+        this.markHelper = new MarkHelper(vertx);
+        this.insuranceHelper = new InsuranceHelper(vertx);
+        this.modelHelper = new ModelHelper(vertx);
+        this.formulHelper = new FormulHelper(vertx);
 
 
         router.route("/*").handler(this::getDefaultHeader);
