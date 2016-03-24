@@ -1,5 +1,6 @@
 package controller.model;
 
+import fr.Quote;
 import fr.Vehicle;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -11,14 +12,14 @@ import org.springframework.stereotype.Component;
 
 public class CarModel {
 
-    private Vehicle vehicle;
+    private Quote quote;
 
     public CarModel(){
-        vehicle = new Vehicle();
-        vehicle.setCar(new Car());
+        quote = new Quote();
+        quote.setVehicle(new Vehicle());
     }
 
-    public Vehicle getVehicle(){return vehicle;}
+    public Quote getQuote(){return quote;}
 
-    public void setVehicle(Vehicle vehicle){this.vehicle = vehicle;}
+    public void setQuote(Quote quote){this.quote = quote;}
 }
