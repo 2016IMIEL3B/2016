@@ -11,17 +11,29 @@ public class QuoteHome {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /** The typeHome. */
     private String typeHome;
-    private int area;
-    private int numberRoom;
-    private int floor;
-    private int numberBathroom;
-    private boolean garage;
-    private int groundArea;
-    private int terraceArea;
-    private String typeHeating;
-    private String formula;
+    /** The address. */
     private String address;
+    /** The area. */
+    private int area;
+    /** The numberRoom. */
+    private int numberRoom;
+    /** The floor. */
+    private int floor;
+    /** The numberBathroom. */
+    private int numberBathroom;
+    /** The garage. */
+    private boolean garage;
+    /** The groundArea. */
+    private int groundArea;
+    /** The terraceArea. */
+    private int terraceArea;
+    /** The typeHeating. */
+    private String typeHeating;
+    /** The formula. */
+    private String formula;
+    /** The idQuote. */
     private int idQuote;
 
     public String getTypeHome() {

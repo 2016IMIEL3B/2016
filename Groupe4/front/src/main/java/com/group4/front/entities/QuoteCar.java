@@ -10,19 +10,33 @@ public class QuoteCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /** The brand. */
     private String brand;
+    /** The model. */
     private String model;
+    /** The fuel. */
     private String fuel;
+    /** The taxHorsepower. */
     private int taxHorsepower;
+    /** The dateLicence. */
     private Date dateLicence;
+    /** The numberAccident. */
     private int numberAccident;
+    /** The bonusMalus. */
     private float bonusMalus;
+    /** The garage. */
     private boolean garage;
+    /** The driver. */
     private String driver;
+    /** The secondaryDriver. */
     private String secondaryDriver;
+    /** The address. */
     private String address;
+    /** The allRisk. */
     private boolean allRisk;
+    /** The tiers. */
     private boolean tiers;
+    /** The idQuote. */
     private int idQuote;
 
     public String getBrand() {
