@@ -5,6 +5,8 @@ import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 
+import javax.swing.*;
+
 /**
  * Created by Theo Lemaillet on 21/03/16 for project.
  */
@@ -12,18 +14,30 @@ public class VerticleListener extends AbstractVerticle {
 
     AuthHelper authHelper;
     FuelHelper fuelHelper;
+    MarkHelper markHelper;
+    InsuranceHelper insuranceHelper;
+    ModelHelper modelHelper;
+    FormulHelper formulHelper;
 
     @Override
     public void start(){
         Router router = Router.router(vertx);
-        authHelper = new AuthHelper(vertx);
-        fuelHelper = new FuelHelper(vertx);
+        this.authHelper = new AuthHelper(vertx);
+        this.fuelHelper = new FuelHelper(vertx);
+        this.markHelper = new MarkHelper(vertx);
+        this.insuranceHelper = new InsuranceHelper(vertx);
+        this.modelHelper = new ModelHelper(vertx);
+        this.formulHelper = new FormulHelper(vertx);
 
 
         router.route("/*").handler(this::getDefaultHeader);
 
         router.post("/auth/api/login").handler(authHelper::getUserDetails);
         router.post("/api/fuel").handler(fuelHelper::getAll);
+        router.post("/api/mark").handler(fuelHelper::getAll);
+        router.post("/api/insurance").handler(fuelHelper::getAll);
+        router.post("/api/model").handler(fuelHelper::getAll);
+        router.post("/api/formul").handler(fuelHelper::getAll);
 
         router.route("/api/*").handler(context -> {
             Boolean ok = context.request().getParam("token") != null;

@@ -5,9 +5,9 @@
 <p>Resumé du devis</p>
 
 <label for="ttrisques">Tous risques ?</label>
-<input id="ttrisques" type="radio" value="" class="form-control">
+<input id="ttrisques" name="choice" type="radio" value="" class="form-control">
 <label for="tiers">Au tiers</label>
-<input id="tiers" type="radio" value="" class="form-control">
+<input id="tiers" name="choice" type="radio" value="" class="form-control">
 
 <label for="amountDevis">Montant du devis</label>
 <input id="amountDevis" type="text" value="" class="form-control" disabled>

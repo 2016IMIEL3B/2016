@@ -1,3 +1,4 @@
+drop database if exists quotation_front;
 CREATE DATABASE quotation_front;
 
 
@@ -35,9 +36,9 @@ CREATE TABLE Home
 	surfaceGround FLOAT,
 	surfaceTerrace FLOAT,
 	address NVARCHAR(100),
-	homeTypeId SMALLINT,
-	heaterTypeId SMALLINT,
-	formulId SMALLINT,
+	homeType NVARCHAR(100),
+	heaterType NVARCHAR(100),
+	formul NVARCHAR(100),
 	quotationId INT,
 	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
 );
@@ -48,10 +49,10 @@ CREATE TABLE Car
 	taxableHorsePower SMALLINT,
 	sleepGarage BOOLEAN,
 	address NVARCHAR(100),
-	fuelId SMALLINT,
-	markId INT,
-	modelId INT,	
-	insuranceId INT,
+	fuel NVARCHAR(100),
+	mark NVARCHAR(100),
+	model NVARCHAR(100),	
+	insurance NVARCHAR(100),
 	quotationId INT,
 	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
 );

@@ -9,5 +9,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by kevin on 22/03/16.
  */
 public interface DriverRepository extends CrudRepository<Driver,Integer>{
-    Driver findOneByCarId(int carId);
+    Iterable<Driver> findByCarId(int carId);
 }

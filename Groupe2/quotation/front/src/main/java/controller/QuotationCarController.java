@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import vertex.VerticleListener;
 
 /**
  * Created by kevin on 22/03/16.
@@ -29,6 +30,7 @@ public class QuotationCarController {
     @Autowired
     IDriverService driverService;
 
+
     @RequestMapping(value = "/devis/{id}/voiture", method = RequestMethod.GET)
     public ModelAndView quotationCar(@PathVariable int id) {
         ModelAndView model;
@@ -40,12 +42,12 @@ public class QuotationCarController {
             model.addObject("step", 1);
         } else {
             Car car = carService.findOneByQuotationId(id);
-            Driver driver = driverService.findOneByCarId(car.getId());
+            Iterable<Driver> drivers = driverService.findByCarId(car.getId());
 
             if (car == null) {
                 model = new ModelAndView("QuotationCar/stepOne");
                 model.addObject("step", 1);
-            } else if (driver == null) {
+            } else if (!drivers.iterator().hasNext()) {
                 model = new ModelAndView("QuotationCar/stepTwo");
                 model.addObject("step", 2);
             } else if (car.getAddress() == null) {

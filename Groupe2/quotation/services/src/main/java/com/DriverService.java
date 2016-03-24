@@ -14,8 +14,8 @@ public class DriverService implements IDriverService {
     private DriverRepository driverRepository;
 
     @Override
-    public Driver findOneByCarId(int carId) {
-        return this.driverRepository.findOneByCarId(carId);
+    public Iterable<Driver> findByCarId(int carId) {
+        return this.driverRepository.findByCarId(carId);
     }
 
 }

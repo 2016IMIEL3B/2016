@@ -62,30 +62,22 @@ public class Home {
     /**
      * Home Type.
      */
-    private int homeTypeId;
+    private String homeType;
 
     /**
      * Home Type.
      */
-    private int heaterTypeId;
+    private String heaterType;
 
     /**
      * Home Formul.
      */
-    private int formulId;
+    private String formul;
 
     /** Home Quotation. */
     @OneToOne
     @JoinColumn(name = "quotationId")
     private Quotation quotation;
-
-    public int getFormul() {
-        return formulId;
-    }
-
-    public void setFormul(int formulId) {
-        this.formulId = formulId;
-    }
 
     public int getId() {
         return id;
@@ -151,25 +143,31 @@ public class Home {
 
     public void setAddress(String address) { this.address = address; }
 
-    public int getHomeTypeId() { return homeTypeId; }
-
-    public void setHomeTypeId(int homeTypeId) {
-        this.homeTypeId = homeTypeId;
-    }
-
-    public int getHeaterTypeId() {
-        return heaterTypeId;
-    }
-
-    public void setHeaterTypeId(int heaterTypeId) {
-        this.heaterTypeId = heaterTypeId;
-    }
-
-    public int getFormulId() { return formulId; }
-
-    public void setFormulId(int formulId) { this.formulId = formulId; }
-
     public Quotation getQuotation() { return quotation; }
 
     public void setQuotation(Quotation quotation) { this.quotation = quotation; }
+
+    public String getHomeType() {
+        return homeType;
+    }
+
+    public void setHomeType(String homeType) {
+        this.homeType = homeType;
+    }
+
+    public String getHeaterType() {
+        return heaterType;
+    }
+
+    public void setHeaterType(String heaterType) {
+        this.heaterType = heaterType;
+    }
+
+    public String getFormul() {
+        return formul;
+    }
+
+    public void setFormul(String formul) {
+        this.formul = formul;
+    }
 }
