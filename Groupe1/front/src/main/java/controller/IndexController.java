@@ -51,16 +51,6 @@ public class IndexController {
         return model;
     }
 
-    @RequestMapping(value = "/car/1", method = RequestMethod.GET)
-    public ModelAndView car(){
-        ModelAndView model = new ModelAndView("car-step1");
-        return model;
-    }
-    @RequestMapping(value = "/car/2", method = RequestMethod.GET)
-    public ModelAndView car2(){
-        ModelAndView model = new ModelAndView("car-step2");
-        return model;
-    }
 
     @RequestMapping("/fail")
     public String fail() throws MyException {

@@ -11,8 +11,8 @@ import controller.model.CarModel;
  */
 
 @Controller
-@RequestMapping("/carwizard.form")
-@SessionAttributes("CarModel")
+@RequestMapping("/carWizard.form")
+@SessionAttributes("CarWizard")
 public class CarWizardController {
 
 
@@ -20,17 +20,17 @@ public class CarWizardController {
 
     @RequestMapping
     public ModelAndView processWizard() {
-        return new ModelAndView("wizard/car/car-step1", "CarModel", new CarModel());
+        return new ModelAndView("wizard/car/car-step1", "CarWizard", new CarModel());
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView processPage(@RequestParam("_page") int currentPage,
-    @ModelAttribute("CarModel") CarModel carModel) {
+    @ModelAttribute("CarWizard") CarModel carWizard) {
         return new ModelAndView("wizard/car/"+pageViews[currentPage-1]);
     }
 
     @RequestMapping(params = "_finish")
-     public ModelAndView processFinish(@ModelAttribute("CarModel") CarModel carModel, SessionStatus status){
+     public ModelAndView processFinish(@ModelAttribute("CarWizard") CarModel carWizard, SessionStatus status){
         status.setComplete();
         return new ModelAndView("successView");
      }

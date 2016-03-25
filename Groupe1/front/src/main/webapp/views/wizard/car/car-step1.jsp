@@ -7,7 +7,7 @@
 
     <h1>Assurer une voiture</h1>
 
-    <form:form action="/carwizard.form?_page=2" method="POST" modelAttribute="CarModel">
+    <form:form action="/carWizard.form?_page=2" method="POST" modelAttribute="CarWizard">
 
 
             <form:label path="" for="quote.name">Nom du devis</form:label>
@@ -22,7 +22,7 @@
 
         <br>
             <form:label path="" for="quote.vehicle.model"> Modèle</form:label>
-            <form:input  path="quote.vehicle.model"></form:input>
+            <form:input  path="quote.vehicle.model.name"></form:input>
 
 
         <br>

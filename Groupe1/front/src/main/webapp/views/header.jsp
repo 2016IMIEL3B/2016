@@ -36,7 +36,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Accueil</a></li>
-                    <li><a href="/carwizard.form">Devis véhicule</a></li>
+                    <li><a href="/carWizard.form">Devis véhicule</a></li>
                     <li><a href="/habWizard.form">Devis habitation</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
