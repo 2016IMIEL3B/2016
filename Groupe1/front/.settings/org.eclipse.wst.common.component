@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="fr.full.statck.front">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="fr.full.stack.service-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fr.full.stack.service/fr.full.stack.service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fr.full.stack.entities-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fr.full.stack.entities/fr.full.stack.entities">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fr.full.statck.dao-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fr.full.statck.dao/fr.full.statck.dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="fr.full.statck.front"/>
+        <property name="java-output-path" value="/fr.full.statck.front/target/classes"/>
+    </wb-module>
+</project-modules>
