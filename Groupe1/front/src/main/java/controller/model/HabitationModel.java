@@ -1,5 +1,6 @@
 package controller.model;
 
+import fr.Address;
 import fr.Habitation;
 import fr.Quote;
 
@@ -13,6 +14,7 @@ public class HabitationModel {
     public HabitationModel(){
         quote = new Quote();
         quote.setHabitation(new Habitation());
+        quote.getHabitation().setAddress(new Address());
     }
 
     public Quote getQuote() {

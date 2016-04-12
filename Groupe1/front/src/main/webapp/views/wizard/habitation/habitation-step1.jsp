@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../../header.jsp" %>
 
 <div class="container">
@@ -8,7 +9,7 @@
         <form:form action="/habWizard.form?_page=2" method="POST" modelAttribute="habWizard">
             <div class="form-group">
                 <form:label path="" for="quote.name">Nom du devis :</form:label>
-                <form:input path="quote.name" class="form-control"></form:input>
+                <form:input path="quote.name" class="form-control" cssStyle="width: 250px;"></form:input>
             </div>
 
             <div class="form-group">
@@ -19,7 +20,7 @@
 
             <div class="form-group">
                 <form:label path="" for="quote.habitation.surface">Surface du logement :</form:label>
-                <form:input path="quote.habitation.surface" class="form-control"></form:input>
+                <form:input path="quote.habitation.surface" class="form-control" cssStyle="width: 250px;"></form:input>
             </div>
 
             <form:button type="submit" class="btn btn-default">Aller à l'étape 2</form:button>

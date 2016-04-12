@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes("habWizard")
 public class HabWizardController {
 
-    private String[] pageViews = new String[] {"habitation-step1","habitation-step2"};
+    private String[] pageViews = new String[] {"habitation-step1","habitation-step2","habitation-step3","habitation-step4"};
 
     //Première étape
     @RequestMapping
@@ -23,12 +23,12 @@ public class HabWizardController {
         return new ModelAndView("wizard/habitation/habitation-step1","habWizard", new HabitationModel());
     }
 
-    // Renvois de l'étape suivant le numéro d'étape
+    // Renvoie de l'étape suivant le numéro d'étape
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView processPage(@RequestParam("_page") int currentPage,
     @ModelAttribute("habWizard") HabitationModel habWizard) {
 
-        // pageViews est un tableau qui renvois le nom de la vue suivant le numéro d'étape
+        // pageViews est un tableau qui renvoie le nom de la vue suivant le numéro d'étape
         return new ModelAndView("wizard/habitation/"+pageViews[currentPage-1]);
     }
 

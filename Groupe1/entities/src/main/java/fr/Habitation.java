@@ -14,7 +14,7 @@ public class Habitation implements java.io.Serializable {
 	private String type;
 	private double surface;
 	private int roomNumber;
-	private Integer floor;
+	private int floor;
 	private int bathroomNumber;
 	private boolean garage;
 	private Double groundSurface;
@@ -22,6 +22,8 @@ public class Habitation implements java.io.Serializable {
 	private String heatingType;
 	private String option;
 	private Set quotes = new HashSet(0);
+
+	private Address address;
 
 	public Habitation() {
 	}
@@ -40,7 +42,7 @@ public class Habitation implements java.io.Serializable {
 	}
 
 	public Habitation(String type, double surface, int roomNumber,
-			Integer floor, int bathroomNumber, boolean garage,
+			int floor, int bathroomNumber, boolean garage,
 			Double groundSurface, double patioSurface, String heatingType,
 			String option, Set quotes) {
 		this.type = type;
@@ -88,11 +90,11 @@ public class Habitation implements java.io.Serializable {
 		this.roomNumber = roomNumber;
 	}
 
-	public Integer getFloor() {
+	public int getFloor() {
 		return this.floor;
 	}
 
-	public void setFloor(Integer floor) {
+	public void setFloor(int floor) {
 		this.floor = floor;
 	}
 
@@ -151,5 +153,9 @@ public class Habitation implements java.io.Serializable {
 	public void setQuotes(Set quotes) {
 		this.quotes = quotes;
 	}
+
+	public Address getAddress() { return address; }
+
+	public void setAddress(Address address) { this.address = address; }
 
 }
