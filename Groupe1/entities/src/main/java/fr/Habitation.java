@@ -12,13 +12,13 @@ public class Habitation implements java.io.Serializable {
 
 	private Integer id;
 	private String type;
-	private double surface;
+	private int surface;
 	private int roomNumber;
 	private int floor;
 	private int bathroomNumber;
 	private boolean garage;
-	private Double groundSurface;
-	private double patioSurface;
+	private int groundSurface;
+	private int patioSurface;
 	private String heatingType;
 	private String option;
 	private Set quotes = new HashSet(0);
@@ -28,8 +28,8 @@ public class Habitation implements java.io.Serializable {
 	public Habitation() {
 	}
 
-	public Habitation(String type, double surface, int roomNumber,
-			int bathroomNumber, boolean garage, double patioSurface,
+	public Habitation(String type, int surface, int roomNumber,
+			int bathroomNumber, boolean garage, int patioSurface,
 			String heatingType, String option) {
 		this.type = type;
 		this.surface = surface;
@@ -41,9 +41,9 @@ public class Habitation implements java.io.Serializable {
 		this.option = option;
 	}
 
-	public Habitation(String type, double surface, int roomNumber,
+	public Habitation(String type, int surface, int roomNumber,
 			int floor, int bathroomNumber, boolean garage,
-			Double groundSurface, double patioSurface, String heatingType,
+			int groundSurface, int patioSurface, String heatingType,
 			String option, Set quotes) {
 		this.type = type;
 		this.surface = surface;
@@ -74,11 +74,11 @@ public class Habitation implements java.io.Serializable {
 		this.type = type;
 	}
 
-	public double getSurface() {
+	public int getSurface() {
 		return this.surface;
 	}
 
-	public void setSurface(double surface) {
+	public void setSurface(int surface) {
 		this.surface = surface;
 	}
 
@@ -114,19 +114,19 @@ public class Habitation implements java.io.Serializable {
 		this.garage = garage;
 	}
 
-	public Double getGroundSurface() {
+	public int getGroundSurface() {
 		return this.groundSurface;
 	}
 
-	public void setGroundSurface(Double groundSurface) {
+	public void setGroundSurface(int groundSurface) {
 		this.groundSurface = groundSurface;
 	}
 
-	public double getPatioSurface() {
+	public int getPatioSurface() {
 		return this.patioSurface;
 	}
 
-	public void setPatioSurface(double patioSurface) {
+	public void setPatioSurface(int patioSurface) {
 		this.patioSurface = patioSurface;
 	}
 
