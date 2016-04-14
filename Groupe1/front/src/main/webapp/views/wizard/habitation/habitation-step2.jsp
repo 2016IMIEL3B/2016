@@ -9,7 +9,7 @@
         <form:form action="/habWizard.form?_page=3" method="POST" modelAttribute="habWizard">
             <div class="form-group">
                 <form:label path="" for="quote.habitation.roomNumber">Nombre de pièces</form:label>
-                <form:select path="quote.habitation.roomNumber" class="form-control" cssStyle="width: 150px;">
+                <form:select path="quote.habitation.roomNumber" id="roomNumber" class="form-control" cssStyle="width: 150px;">
                     <form:option value="1">T1</form:option>
                     <form:option value="2">T2</form:option>
                     <form:option value="3">T3</form:option>
@@ -26,7 +26,8 @@
 
             <div class="form-group">
                 <form:label path="" for="quote.habitation.bathroomNumber">Nombre de salles de bain</form:label>
-                <form:input path="quote.habitation.bathroomNumber" class="form-control" cssStyle="width: 250px;"></form:input>
+                <form:input path="quote.habitation.bathroomNumber" id="bathroomNumber" class="form-control" cssStyle="width: 250px;"></form:input>
+                <div class="alert alert-danger" role="alert" id="roomNumberAlert" style="display: none;">Veuillez saisir un nombre de salles de bain valide.</div>
             </div>
 
             <div class="form-group">
@@ -39,5 +40,7 @@
         </form:form>
     </div>
 </div>
+
+<script type="text/javascript" src="../js/habWizard.js"></script>
 
 <%@include file="../../footer.jsp" %>
