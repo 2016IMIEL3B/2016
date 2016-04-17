@@ -1,40 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="../../header.jsp" %>
 
-<html lang="en">
+<div class="container">
+    <div class="jumbotron">
+        <h1>Devis: Assurer une voiture</h1>
+        <h2>Etape 2</h2>
 
-<body>
+        <form:form action="/carWizard.form?_page=3" method="POST" modelAttribute="carWizard">
 
-<nav>
-    <h1>Projet Vertx</h1>
-    <a href="/car/1" style="display: inline">Devis Voiture</a> |
-    <a href="/habitation/1">Devis Habitation</a> |
-    <a href="/profile">Profil</a> |
-    <a href="/synthesis">Mes Devis</a>
-</nav>
-    <h1>Assurer une voiture: Partie 2</h1>
+            <div class="form-group">
+                <form:label path="" for="quote.Usera.drivingLicenceDate">Date du permis</form:label>
+                <form:input type="date" path="quote.Usera.drivingLicenceDate" class="form-control" cssStyle="width:250px;"></form:input>
 
-    <form >
+            </div>
 
-        <div>
-            <form:label for="quote.usera.drivingLicenceDate">Date du permis</form:label>
-            <from:input type="date" path="quote.usera.drivingLicenceDate"></from:input>
-        </div>
+            <div class="form-group">
+                <form:label path="" for="quote.usera.accidentNumber">Nombre d'accidents</form:label>
+                <form:input type="text" path="quote.Usera.accidentNumber"  class="form-control" cssStyle="width:250px;"></form:input>
+            </div>
 
-        <div>
-            <from:label for="quote.usera.accidentNumber">Nombre d'accidents</from:label>
-            <from:input type="text" path="quote.usera.accidentNumber"></from:input>
-        </div>
+            <div class="form-group">
+                <form:label path="" for="quote.usera.bonus">Bonus Malus</form:label>
+                <form:input type="text" path="quote.>Usera.bonus" class="form-control" cssStyle="width:250px;"></form:input>
+            </div>
 
-        <div>
-            <from:label for="quote.usera.bonus">Bonus Malus</from:label>
-            <from:input type="text" path="quote.usera.bonus"></from:input>
-        </div>
+            <form:button type="submit">Aller à l'étape suivante</form:button>
+        </form:form>
 
-        <form:button type="submit">Aller à l'étape suivante</form:button>
-    </form>
+    </div>
+</div>
 
-</body>
-
-</html>
+<%@include file="../../footer.jsp" %>

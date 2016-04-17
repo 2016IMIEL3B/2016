@@ -12,7 +12,7 @@ import controller.model.CarModel;
 
 @Controller
 @RequestMapping("/carWizard.form")
-@SessionAttributes("CarWizard")
+@SessionAttributes("carWizard")
 public class CarWizardController {
 
 
@@ -20,17 +20,17 @@ public class CarWizardController {
 
     @RequestMapping
     public ModelAndView processWizard() {
-        return new ModelAndView("wizard/car/car-step1", "CarWizard", new CarModel());
+        return new ModelAndView("wizard/car/car-step1", "carWizard", new CarModel());
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView processPage(@RequestParam("_page") int currentPage,
-    @ModelAttribute("CarWizard") CarModel carWizard) {
+    @ModelAttribute("carWizard") CarModel carWizard) {
         return new ModelAndView("wizard/car/"+pageViews[currentPage-1]);
     }
 
     @RequestMapping(params = "_finish")
-     public ModelAndView processFinish(@ModelAttribute("CarWizard") CarModel carWizard, SessionStatus status){
+     public ModelAndView processFinish(@ModelAttribute("carWizard") CarModel carWizard, SessionStatus status){
         status.setComplete();
         return new ModelAndView("successView");
      }
@@ -38,7 +38,7 @@ public class CarWizardController {
     @RequestMapping (params = "_cancel")
     public String processCancel(SessionStatus status){
         status.setComplete();
-        return "canceledView";
+        return "wizard/canceledView";
     }
 
 }

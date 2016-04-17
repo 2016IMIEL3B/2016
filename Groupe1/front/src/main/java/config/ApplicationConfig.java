@@ -10,9 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-/**
- * Created by Nico on 09/02/2016.
- */
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"config","controller","fr"})
 @EnableJpaRepositories(basePackages = "fr")
@@ -24,6 +22,6 @@ public class ApplicationConfig extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ApplicationConfig.class);
+        return application.sources(ApplicationConfig.class)
     }
 }
