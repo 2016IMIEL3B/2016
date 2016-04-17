@@ -62,11 +62,11 @@
 
                 <div class="form-group">
                     <form:label path="" for="quote.summary">Choix de la formule</form:label><br>
-                    <form:radiobutton path="quote.summary" value="basic" label="Formule Basique"></form:radiobutton>
+                    <form:radiobutton path="quote.summary" value="basic" label="Formule Basique" checked="checked"></form:radiobutton>
                     <form:radiobutton path="quote.summary" value="full" label="Formule Complète"></form:radiobutton>
                 </div>
 
-                Montant : ${habWizard.quote.price}
+                <div>Montant : <span path="quote.price" id="price"></span>€ /mois</div>
 
                 <form:button type="submit" class="btn btn-default">Valider le devis</form:button>
             </form:form>
@@ -74,5 +74,12 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    var nbPieces = ${habWizard.quote.habitation.roomNumber};
+    var price = 0;
+</script>
+
+<script type="text/javascript" src="../js/habWizard.js"></script>
 
 <%@include file="../../footer.jsp" %>
