@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <form:label path="" for="quote.name">Nom du devis</form:label>
-                <form:input path="quote.name" class="form-control" cssStyle="width:250px;" ></form:input>
+                <form:input path="quote.name" class="form-control" cssStyle="width:250px;" required="required"></form:input>
             </div>
 
             <div class="form-group">

@@ -22,6 +22,6 @@ public class ApplicationConfig extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ApplicationConfig.class)
+        return application.sources(ApplicationConfig.class);
     }
 }

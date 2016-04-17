@@ -45,8 +45,8 @@
 
                 <div class="form-group">
                     <form:label path="" for="quote.summary">Choix de la formule</form:label><br>
-                    <form:radiobutton path="quote.summary" value="basic" label="Tous risques"></form:radiobutton>
-                    <form:radiobutton path="quote.summary" value="full" label="Au tiers"></form:radiobutton>
+                    <form:radiobutton path="quote.summary" value="allrisks" label="Tous risques"></form:radiobutton>
+                    <form:radiobutton path="quote.summary" value="third" label="Au tiers"></form:radiobutton>
                 </div>
 
                 Montant : ${carWizard.quote.price}
