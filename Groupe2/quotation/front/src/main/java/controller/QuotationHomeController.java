@@ -56,6 +56,9 @@ public class QuotationHomeController {
             home.setQuotation(quotation);
 
             switch(quotation.getNbStep()){
+                case 0:
+                    model = new ModelAndView("QuotationHome/index","home",home);
+                    break;
                 case 2:
                     model = new ModelAndView("QuotationHome/stepTwo","home",home);
                     model.addObject("step", 2);

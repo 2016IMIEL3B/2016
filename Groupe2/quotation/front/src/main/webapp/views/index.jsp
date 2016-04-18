@@ -16,7 +16,14 @@
                         <td><a class="btn btn-primary" href="/devis/${quotation.id}/voiture">Reprendre</a></td>
                     </c:if>
                     <c:if test="${quotation.typeQuotation.entitled == 'Habitation'}">
-                        <td><a class="btn btn-primary" href="/devis/${quotation.id}/habitation">Reprendre</a></td>
+                        <c:choose>
+                            <c:when test="${quotation.state == 'Fini'}">
+                                <td><a class="btn btn-primary" href="/devis/${quotation.id}/habitation">Voir</a></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td><a class="btn btn-primary" href="/devis/${quotation.id}/habitation">Reprendre</a></td>
+                            </c:otherwise>
+                        </c:choose>
                     </c:if>
                     <td><a class="btn btn-danger" href="/devis/supprimer/${quotation.id}">Supprimer</a></td>
                 </tr>
