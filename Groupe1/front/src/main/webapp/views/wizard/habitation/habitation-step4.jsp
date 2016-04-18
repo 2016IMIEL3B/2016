@@ -80,6 +80,6 @@
     var price = 0;
 </script>
 
-<script type="text/javascript" src="../js/habWizard.js"></script>
+<script type="text/javascript" src="../js/habWizard-synthesis.js"></script>
 
 <%@include file="../../footer.jsp" %>

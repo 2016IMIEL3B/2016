@@ -19,13 +19,16 @@
             </div>
 
             <div class="form-group">
-                <form:label path="" for="quote.habitation.surface">Surface du logement (en m²):</form:label>
-                <form:input path="quote.habitation.surface" class="form-control" cssStyle="width: 250px;" required="required"></form:input>
+                <form:label path="" for="quote.habitation.surface">Surface du logement (en m²) :</form:label>
+                <form:input path="quote.habitation.surface" id="surface" class="form-control" cssStyle="width: 250px;" required="required"></form:input>
+                <div class="alert alert-danger" role="alert" id="surfaceAlert" style="display: none;">Veuillez saisir une surface de logement valide.</div>
             </div>
 
             <form:button type="submit" class="btn btn-default">Aller à l'étape 2</form:button>
         </form:form>
     </div>
 </div>
+
+<script type="text/javascript" src="../js/habWizard.js"></script>
 
 <%@include file="../../footer.jsp" %>
