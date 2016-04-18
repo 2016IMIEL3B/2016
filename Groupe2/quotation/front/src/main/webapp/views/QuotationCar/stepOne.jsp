@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form:form method="POST" action="devis/voiture/send/1" modelAttribute="car">
+<form:form method="POST" action="/devis/voiture/send/1" modelAttribute="car">
 
 <label for="nomPrenomUser">Nom / prenom de l’utilisateur</label>
 <input id="nomPrenomUser" type="text" value="" class="form-control" disabled></input>
@@ -32,7 +32,9 @@
 
 <form:label path="taxableHorsePower">Cheveaux fiscaux</form:label>
 <form:select path="taxableHorsePower" class="form-control">
-        <option value=""></option>
+    <c:forEach items="${horsepowers}" var="horsepower">
+        <option value="${horsepower.value}">${horsepower.value}</option>
+    </c:forEach>
 </form:select>
 
 <%@ include file="../QuotationStep/quotationStepState.jsp" %>

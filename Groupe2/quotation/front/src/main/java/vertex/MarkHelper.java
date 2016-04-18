@@ -2,6 +2,7 @@ package vertex;
 
 import config.VertxDatabaseConfig;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.MySQLClient;
@@ -30,7 +31,7 @@ public class MarkHelper {
                         if (resSet.result().getNumRows() != 0) {
                             context.response()
                                     .putHeader("content-type", "application/json; charset=utf-8")
-                                    .end(resSet.result().getResults().toString());
+                                    .end(Json.encodePrettily(resSet.result().getRows() ));
                         } else {
                             context.fail(401);
                         }

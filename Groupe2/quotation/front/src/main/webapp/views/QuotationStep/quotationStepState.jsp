@@ -1,5 +1,5 @@
 <a class="btn btn-default" href="/">Annuler</a>
-<btn type="submit" class="btn btn-primary pull-right">Valider</btn>
+<button type="submit" class="btn btn-primary pull-right">Valider</button>
 <c:set var="stepStat" scope="session" value="${(step-1)*25}"/>
 Etape <c:out value="${step}" />/4
 <div class="progress">

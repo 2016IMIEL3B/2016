@@ -23,6 +23,7 @@ public class VerticleListener extends AbstractVerticle {
     UserHelper userHelper;
     HomeTypeHelper homeTypeHelper;
     HeaterTypeHelper heaterTypeHelper;
+    HorsePowerHelper horsePowerHelper;
 
     @Override
     public void start(){
@@ -35,6 +36,8 @@ public class VerticleListener extends AbstractVerticle {
         this.insuranceHelper = new InsuranceHelper(vertx);
         this.modelHelper = new ModelHelper(vertx);
         this.formulHelper = new FormulHelper(vertx);
+        this.horsePowerHelper = new HorsePowerHelper(vertx);
+
         userHelper = new UserHelper(vertx);
 
         router.route().handler(BodyHandler.create());
@@ -48,7 +51,7 @@ public class VerticleListener extends AbstractVerticle {
         router.get("/api/insurance").handler(this.insuranceHelper::getAll);
         router.get("/api/model").handler(this.modelHelper::getAll);
         router.get("/api/formul").handler(this.formulHelper::getAll);
-
+        router.get("/api/horsepower").handler(this.horsePowerHelper::getAll);
         router.post("/api/profil/save").handler(userHelper::getUserInformationsForm);
 
         router.route("/api/*").handler(context -> {
