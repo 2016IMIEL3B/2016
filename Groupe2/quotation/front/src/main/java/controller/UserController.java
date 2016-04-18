@@ -34,7 +34,13 @@ public class UserController {
 
     @RequestMapping(path = {"/profil/save"}, method = RequestMethod.POST)
     public String save(@ModelAttribute User user){
-        String result = new RestHelper().defaultRequest("/api/profil/save", user.getAllParams(), HttpMethod.POST, String.class).getBody();
+
+        String result = new RestHelper().defaultRequest(
+                "/api/profil/save",
+                user.getAllParamsIntrospection(),
+                HttpMethod.POST,
+                String.class
+        ).getBody();
 
         if(result.contains("OK")) {
             userSession.refreshUserSession(user);

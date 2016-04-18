@@ -38,16 +38,20 @@ public class User {
 
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    /*public String getAllParams(){
+    public String getAllParamsIntrospection(){
         String fparams = "";
         String d;
-        Field[] params = this.getClass().getFields();
+        Field[] params = this.getClass().getDeclaredFields();
         for (int i = 0; i < params.length; i++) {
             d = (i == 0) ? "" : "&";
-            fparams+= d + params[i].getName() + "=" + params[i].toString();
+            try {
+                fparams+= d + params[i].getName() + "=" + params[i].get(this);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
         return fparams;
-    }*/
+    }
 
     public String getAllParams(){
         String fparams = "id=" + id ;
