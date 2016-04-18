@@ -38,7 +38,7 @@ public class UserController {
 
         if(result.contains("OK")) {
             userSession.refreshUserSession(user);
-            return "redirect:/home";
+            return "redirect:/profil";
         }
         else
             return "redirect:/error";
