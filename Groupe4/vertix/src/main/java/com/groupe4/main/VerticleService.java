@@ -33,14 +33,12 @@ public class VerticleService extends AbstractVerticle{
             context.next();
         });
 
-        router.route("/api/*").produces("application/json");
-
         // API protection with JWT
         router.route("/api/*").handler(JWTAuthHandler.create(authProvider));
 
-        router.route("/api/*").handler(context -> {
+        router.route("/api/*").produces("application/json").handler(context -> {
             context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
-            context.response().headers().add("content-type", "text/html;charset=UTF-8");
+            context.response().headers().add("content-type", "application/json");
 
             context.response()
                     // do not allow proxies to cache the data

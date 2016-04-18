@@ -29,19 +29,20 @@ public class AuthenticationController {
         //mock findUserByLogin to get User
         User user = new User();
         user.setPassword("password");
+        user.setId(1);
+        user.setLogin("michel");
 
         if (password.equals(user.getPassword())) {
-            String token = provider.generateToken(new JsonObject().put("loginAction", username), new JWTOptions());
-            JsonObject responseBody = new JsonObject();
-            responseBody.put("user", Json.encode(user)).put("token", token);
+            String token = provider.generateToken(new JsonObject().put("login", username), new JWTOptions());
 
             this.routingContext.response()
-                    .setStatusCode(200)
-                    .end(Json.encode(responseBody));
+                 .setStatusCode(200)
+                 .putHeader("token", token)
+                 .end(Json.encode(user));
         } else {
             this.routingContext.response()
-                    .setStatusCode(400)
-                    .end(Json.encode("Bad loginAction or password"));
+                 .setStatusCode(400)
+                 .end(Json.encode("Bad loginAction or password"));
         }
     }
 }
