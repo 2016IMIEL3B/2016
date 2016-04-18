@@ -1,4 +1,4 @@
-package com.groupe4.main.controller;
+package com.groupe4.controller;
 
 import com.groupe4.entity.Quote;
 import com.groupe4.main.QuoteService;

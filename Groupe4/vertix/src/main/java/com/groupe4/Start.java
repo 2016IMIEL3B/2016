@@ -1,11 +1,12 @@
-package com.groupe4.main;
+package com.groupe4;
 
+import com.groupe4.service.RouterService;
 import io.vertx.core.Vertx;
 
 public class Start {
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(new VerticleService());
+        vertx.deployVerticle(new RouterService());
     }
 }

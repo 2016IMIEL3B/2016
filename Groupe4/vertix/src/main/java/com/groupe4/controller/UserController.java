@@ -1,14 +1,10 @@
-package com.groupe4.main.controller;
+package com.groupe4.controller;
 
-import com.fasterxml.jackson.core.JsonEncoding;
 import com.groupe4.entity.User;
-import com.groupe4.main.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.String;
+import com.groupe4.service.UserService;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by Mathilde on 24/03/2016.

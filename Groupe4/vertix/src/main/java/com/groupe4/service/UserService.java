@@ -1,4 +1,4 @@
-package com.groupe4.main.service;
+package com.groupe4.service;
 
 import com.groupe4.dao.IUserRepository;
 import com.groupe4.dao.UserRepository;

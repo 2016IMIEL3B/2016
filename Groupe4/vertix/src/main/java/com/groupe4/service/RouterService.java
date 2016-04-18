@@ -1,8 +1,8 @@
-package com.groupe4.main;
+package com.groupe4.service;
 
 import com.groupe4.connection.DbClient;
-import com.groupe4.main.controller.AuthenticationController;
-import com.groupe4.main.controller.ListController;
+import com.groupe4.controller.AuthenticationController;
+import com.groupe4.controller.ListController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpHeaders;
@@ -12,7 +12,7 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.JWTAuthHandler;
 
-public class VerticleService extends AbstractVerticle{
+public class RouterService extends AbstractVerticle{
 
     @Override
     public void start() {

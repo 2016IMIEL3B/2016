@@ -1,4 +1,4 @@
-package com.groupe4.main;
+package com.groupe4.service;
 
 import com.groupe4.dao.IQuoteRepository;
 import com.groupe4.dao.QuoteRepository;
