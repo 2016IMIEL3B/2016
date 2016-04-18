@@ -7,9 +7,6 @@ import io.vertx.ext.web.RoutingContext;
 
 import java.util.List;
 
-/**
- * Created by Link on 23/03/2016.
- */
 public class QuoteController {
 
     /**
@@ -43,9 +40,10 @@ public class QuoteController {
                 List<Quote> quotes = handler.result();
 
                 if (quotes.size() > 0) {
+                    System.out.println(quotes.toString());
                     this.routingContext.response()
                             .setStatusCode(200)
-                            .end(Json.encode(Json.encode(quotes)));
+                            .end(Json.encode(quotes));
                 } else {
                     this.routingContext.response()
                             .setStatusCode(404)
@@ -80,5 +78,4 @@ public class QuoteController {
             }
         });
     }
-
 }

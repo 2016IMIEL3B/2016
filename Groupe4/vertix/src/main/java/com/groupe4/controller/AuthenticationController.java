@@ -9,6 +9,7 @@ import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.auth.jwt.JWTOptions;
 import io.vertx.ext.web.RoutingContext;
 
+
 public class AuthenticationController {
     private RoutingContext routingContext;
     private UserService userService;

@@ -1,5 +1,9 @@
 package com.groupe4.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.groupe4.common.JsonDateDeserializer;
+import com.groupe4.common.JsonDateSerializer;
 import org.joda.time.DateTime;
 
 import java.util.Date;
@@ -37,11 +41,15 @@ public class User {
     /**
      * User creation date.
      */
+    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
     private Date createdAt;
     /**
      * User update date.
      */
-    private DateTime updatedAt;
+    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    private Date updatedAt;
 
     /**
      * User roles;
@@ -107,11 +115,11 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public DateTime getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(DateTime updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -129,5 +137,20 @@ public class User {
 
     public void removeRole(String role) {
         this.roles.remove(role);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", roles=" + roles +
+                '}';
     }
 }
