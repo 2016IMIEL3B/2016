@@ -27,9 +27,27 @@ public class HabWizardController {
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView processPage(@RequestParam("_page") int currentPage,
     @ModelAttribute("habWizard") HabitationModel habWizard) {
+        boolean $status = false;
 
-        // pageViews est un tableau qui renvoie le nom de la vue suivant le numéro d'étape
-        return new ModelAndView("wizard/habitation/"+pageViews[currentPage-1]);
+        switch (currentPage-1){
+            case 1:
+                $status = habWizard.checkStep1();
+                break;
+            case 2:
+                $status = habWizard.checkStep2();
+                break;
+            case 3:
+                $status = habWizard.checkStep3();
+                break;
+        }
+
+        if($status){
+            // pageViews est un tableau qui renvoie le nom de la vue suivant le numéro d'étape
+            return new ModelAndView("wizard/habitation/"+pageViews[currentPage-1]);
+        } else {
+            // on renvoie à la page précédente
+            return new ModelAndView("wizard/habitation/"+pageViews[currentPage-2]);
+        }
     }
 
     /**
@@ -37,7 +55,6 @@ public class HabWizardController {
     */
     @RequestMapping(params = "_finish")
     public ModelAndView processFinish(@ModelAttribute("habWizard") HabitationModel habWizard, SessionStatus status) {
-
 
 
         // suppression de l'objet en session
