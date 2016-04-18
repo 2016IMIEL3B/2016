@@ -53,10 +53,10 @@ public class HabitationModel {
         boolean $status = false;
         Integer number = this.quote.getHabitation().getAddress().getNumber();
         String street = this.quote.getHabitation().getAddress().getStreet();
-        String postcode = this.quote.getHabitation().getAddress().getPostcode();
+        Integer postcode = this.quote.getHabitation().getAddress().getPostcode();
         String city = this.quote.getHabitation().getAddress().getCity();
 
-        if(number >0 && !street.isEmpty() && !postcode.isEmpty() && !city.isEmpty()){
+        if(number >0 && !street.isEmpty() && postcode > 0 && !city.isEmpty()){
             $status = true;
         }
         return $status;
