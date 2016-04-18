@@ -1,7 +1,6 @@
 package vertx;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
@@ -34,7 +33,7 @@ public class RestApiVertx extends AbstractVerticle {
         client = MySQLClient.createShared(vertx, getDbConfig());
         Router router = Router.router(vertx);
         router.route().handler(BodyHandler.create());
-        Route route = router.route(HttpMethod.GET, "/api/user/:userName/:userPassword");
+        Route route = router.get("/login");
 
         route.handler(routingContext -> {
             client.getConnection(res -> {
@@ -57,7 +56,7 @@ public class RestApiVertx extends AbstractVerticle {
             }
         });
 
-        router.get("/api/user/:userName/:userPassword").handler(that::handleGetUser);
+        router.get("/login").handler(that::handleGetUser);
         vertx.createHttpServer().requestHandler(router::accept).listen(8090);
     }
 
