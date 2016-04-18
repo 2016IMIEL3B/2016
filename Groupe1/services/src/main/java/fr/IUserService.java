@@ -5,5 +5,11 @@ package fr;
  */
 public interface IUserService {
 
+    User save (User user);
+
+    Iterable<User> findAll();
+
+
+
     User findByLogin(String login);
 }

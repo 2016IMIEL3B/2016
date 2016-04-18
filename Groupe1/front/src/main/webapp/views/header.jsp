@@ -29,8 +29,6 @@
     $(document).ready(function(){
         var url = "${requestScope['javax.servlet.forward.request_uri']}";
 
-        console.log(url);
-
         switch(url) {
             case "/":
                 $('#navHome').addClass("active");

@@ -13,6 +13,17 @@ public class UserService implements IUserService {
     private UserRepository userDao;
 
     @Override
+    public User save(User user) {
+        return userDao.save(user);
+    }
+
+    @Override
+    public Iterable<User> findAll() {
+        return userDao.findAll();
+    }
+
+
+    @Override
     public User findByLogin(String login) {
         return userDao.findByLogin(login);
     }

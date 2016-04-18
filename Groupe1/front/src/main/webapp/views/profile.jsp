@@ -2,11 +2,26 @@
 <%@include file="header.jsp" %>
 
 
+
+
 <div class="container">
     <div class="jumbotron">
         <h1>Page profil</h1>
 
-        <h2>${user.firstname} ${user.lastname}</h2>
+
+<h2>${user.firstName} ${user.lastName}</h2>
+<table>
+    <tr>
+        <th>Adresse :</th>
+
+        <td>${user.address.number} ${user.address.street} ${user.address.postcode} ${user.address.city}</td>
+
+    </tr>
+    <tr>
+        <th>Login :</th>
+        <td>${user.login}</td>
+    </tr>
+
 
         <a class="btn btn-default" href="/synthesis">Mes devis</a>
 
@@ -20,11 +35,11 @@
         <table>
             <tr>
                 <th>Login :</th>
-                <td>${user.account.login}</td>
+                <td>${user.login}</td>
             </tr>
 
         </table>
-
+    </table>
     </div>
 </div>
 
