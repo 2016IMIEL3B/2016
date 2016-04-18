@@ -62,13 +62,11 @@
 </div>
 
 
+<script type="text/javascript">
+    var sleepinside = ${carWizard.quote.vehicle.sleepInside};
+    var price = 0;
+</script>
 
-
-
-
-
-
-
-
+<script type="text/javascript" src="../js/carWizard.js"></script>
 
 <%@include file="../../footer.jsp" %>
