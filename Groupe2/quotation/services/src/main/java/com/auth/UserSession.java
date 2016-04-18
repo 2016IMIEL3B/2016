@@ -21,6 +21,10 @@ public class UserSession {
         return token;
     }
 
+    public JsonObject getHeaderToken(){
+        return new JsonObject().put("Authorization", "Bearer " + this.token);
+    }
+
     public void setToken(String token) {
         this.token = token;
     }

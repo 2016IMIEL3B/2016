@@ -26,7 +26,7 @@ public class IndexController {
 
         ModelAndView model = new ModelAndView("index");
 
-        // Recuperer L'id de l'utilisateur courant
+        //TODO Recuperer L'id de l'utilisateur courant
         //UserDetails userDetails =
 
         // FindById Quotation and Add to Model
