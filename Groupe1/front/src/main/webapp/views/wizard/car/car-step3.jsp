@@ -12,18 +12,14 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <form:label path="" for="">Conducteur principal</form:label>
-                        <form:input path="" class="form-control" cssStyle="width:250px;" required="required"></form:input>
-
-                    </div>
-
-                    <div class="form-group">
-                        <form:label path="" for=""></form:label>
-                        <form:input path="" class="form-control" cssStyle="width:250px;" required="required"></form:input>
+                        <form:input path="" class="form-control" placeholder="Nom" cssStyle="width:250px;" required="required"></form:input>
+                        <form:input path="" class="form-control" placeholder="prénom" cssStyle="width:250px;" required="required"></form:input>
                     </div>
 
                     <div class="form-group">
                         <form:label path="" for="">Conducteur secondaire</form:label>
-                        <form:input path="" class="form-control" cssStyle="width:250px;"></form:input>
+                        <form:input path="" class="form-control" placeholder="Nom" cssStyle="width:250px;"></form:input>
+                        <form:input path="" class="form-control" placeholder="prénom" cssStyle="width:250px;"></form:input>
                     </div>
 
                     <div class="form-group">
@@ -36,22 +32,22 @@
                     <div class="form-group">
                         <form:label path="" for="quote.habitation.address.number"> Numéro </form:label>
 
-                        <form:input  path="quote.habitation.address.number" class="form-control" cssStyle="width:250px;"></form:input>
+                        <form:input  path="quote.habitation.address.number" class="form-control" cssStyle="width:250px;" required="required"></form:input>
                     </div>
 
                     <div class="form-group">
                         <form:label path="" for="quote.habitation.address.street"> Nom de rue </form:label>
-                        <form:input  path="quote.habitation.address.street" class="form-control" cssStyle="width:250px;"></form:input>
+                        <form:input  path="quote.habitation.address.street" class="form-control" cssStyle="width:250px;" required="required"></form:input>
                     </div>
 
                     <div class="form-group">
                         <form:label path="" for="quote.habitation.address.postcode"> Code postal </form:label>
-                        <form:input  path="quote.habitation.address.postcode" class="form-control" cssStyle="width:250px;"></form:input>
+                        <form:input  path="quote.habitation.address.postcode" class="form-control" cssStyle="width:250px;" required="required"></form:input>
                     </div>
 
                     <div class="form-group">
                         <form:label path="" for="quote.habitation.address.city"> Ville </form:label>
-                        <form:input  path="quote.habitation.address.city" class="form-control" cssStyle="width:250px;"></form:input>
+                        <form:input  path="quote.habitation.address.city" class="form-control" cssStyle="width:250px;" required="required"></form:input>
                     </div>
 
                 </div>
