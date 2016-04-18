@@ -11,10 +11,10 @@
 
     <form:label path="homeType">Type d’habitation</form:label>
     <form:select path="homeType" class="form-control">
-
-        <option value=""></option>
-
-    </form:select>
+        <c:forEach items="${homeType}" var="homeType">
+            <option value="${homeType.entitled}">${homeType.entitled}</option>
+        </c:forEach>
+</form:select>
 
     <form:label path="surface">Surface</form:label>
     <form:input path="surface" type="text" value="" class="form-control" />
