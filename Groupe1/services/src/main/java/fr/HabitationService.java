@@ -9,7 +9,7 @@ public class HabitationService implements IHabitationService {
 
     @Autowired
     HabitationRepository habitationDao;
-    
+
     @Override
     public Habitation save(Habitation habitation) {
         return habitationDao.save(habitation);
