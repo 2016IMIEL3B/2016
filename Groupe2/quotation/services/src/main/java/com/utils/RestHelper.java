@@ -1,5 +1,6 @@
 package com.utils;
 
+import com.UserLike;
 import com.back.User;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
@@ -61,9 +62,9 @@ public class RestHelper {
         );
     }
 
-    public ResponseEntity<JsonObject> loginRequest(String username) {
+    public ResponseEntity<UserLike> loginRequest(String username) {
         String loginUrl = "http://localhost:8091/auth/api/login";
-        return postRequest(JsonObject.class, loginUrl, "login=" + username);
+        return postRequest(UserLike.class, loginUrl, "login=" + username);
     }
 
     public String userRequest(User user){
