@@ -7,5 +7,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserRepository extends CrudRepository<User,Integer> {
 
+    User save(User user);
     User findByLogin(String login);
+
+    Iterable<User> findAll();
 }

@@ -8,6 +8,15 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/config/WebSecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/config/ApplicationConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/config/WebMvcConfig.java</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -39,7 +48,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.5" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.2.4.RELEASE" level="project" />
@@ -91,5 +99,19 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-core:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-common:4.0.33.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.0.33.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-transport:4.0.33.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-handler:4.0.33.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec:4.0.33.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-codec-http:4.0.33.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.5" level="project" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-web:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-auth-common:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-sql-common:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-jdbc-client:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.2" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.11" level="project" />
   </component>
 </module>

@@ -1,5 +1,7 @@
 /bin/
+/build/
 .idea/
+.settings
 front/target
 dao/target
 services/target
