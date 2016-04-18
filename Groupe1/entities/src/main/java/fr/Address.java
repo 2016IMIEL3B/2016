@@ -98,7 +98,7 @@ public class Address implements java.io.Serializable {
 		this.city = city;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "address")
 	public Set<Habitation> getHabitations() {
 		return this.habitations;
 	}
@@ -107,7 +107,7 @@ public class Address implements java.io.Serializable {
 		this.habitations = habitations;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "address")
 	public Set<Vehicle> getVehicles() {
 		return this.vehicles;
 	}
@@ -116,7 +116,7 @@ public class Address implements java.io.Serializable {
 		this.vehicles = vehicles;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "address")
 	public Set<User> getUsers() {
 		return this.users;
 	}

@@ -26,6 +26,7 @@ public class HabitationModel {
     }
 
     public HabitationModel(Quote myQuote) {
+
         quote = myQuote;
     }
 

@@ -57,7 +57,7 @@ public class Client implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	public User getUser() {
 		return this.user;
@@ -104,7 +104,7 @@ public class Client implements java.io.Serializable {
 		this.isSecondary = isSecondary;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "quoteuser", catalog = "assurance", joinColumns = { @JoinColumn(name = "userId", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "quoteId", nullable = false, updatable = false) })
 	public Set<Quote> getQuotes() {
 		return this.quotes;

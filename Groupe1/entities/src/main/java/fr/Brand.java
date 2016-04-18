@@ -51,7 +51,7 @@ public class Brand implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "brand")
 	public Set<Model> getModels() {
 		return this.models;
 	}

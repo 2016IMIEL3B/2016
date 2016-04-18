@@ -1,6 +1,7 @@
 package controller;
 
 import fr.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,59 +16,50 @@ import java.util.List;
 @Controller
 public class QuoteController {
 
+    @Autowired
+    private QuoteService quoteService;
+
     @RequestMapping(value = "/synthesis", method = RequestMethod.GET)
     public ModelAndView synthesis(){
         ModelAndView model = new ModelAndView("synthesis");
 
-        List<Quote> quotes = new ArrayList<Quote>();
+        Iterable<Quote> quotes = quoteService.findAll();
 
-        Brand brand = new Brand();
-        brand.setName("Renault");
-
-        Model myModel = new Model();
-        myModel.setName("Clio IV");
-        myModel.setBrand(brand);
-
-        Vehicle vehicle = new Vehicle();
-        vehicle.setModel(myModel);
-
-        Quote quote1 = new Quote();
-
-        quote1.setName("monDevis");
-        quote1.setStep(2);
-        quote1.setIsCompleted(false);
-        quote1.setVehicle(vehicle);
-        quote1.setPrice(800);
-        quote1.setSummary("Devis Clio IV 2014");
-        quotes.add(quote1);
-
-        Habitation habitation = new Habitation();
-        habitation.setType("Maison");
-        habitation.setSurface(100);
-
-        Quote quote2 = new Quote();
-
-        quote2.setName("devisHabitation");
-        quote2.setStep(3);
-        quote2.setIsCompleted(false);
-        quote2.setHabitation(habitation);
-        quote2.setPrice(1000);
-        quote2.setSummary("Devis maison centre rennes");
-        quotes.add(quote2);
+//        Brand brand = new Brand();
+//        brand.setName("Renault");
+//
+//        Model myModel = new Model();
+//        myModel.setName("Clio IV");
+//        myModel.setBrand(brand);
+//
+//        Vehicle vehicle = new Vehicle();
+//        vehicle.setModel(myModel);
+//
+//        Quote quote1 = new Quote();
+//        quote1.setId(1);
+//        quote1.setName("monDevis");
+//        quote1.setStep(2);
+//        quote1.setIsCompleted(false);
+//        quote1.setVehicle(vehicle);
+//        quote1.setPrice(800);
+//        quote1.setSummary("Devis Clio IV 2014");
+//        quotes.add(quote1);
+//
+//        Habitation habitation = new Habitation();
+//        habitation.setType("Maison");
+//        habitation.setSurface(100);
+//
+//        Quote quote2 = new Quote();
+//        quote2.setId(2);
+//        quote2.setName("devisHabitation");
+//        quote2.setStep(3);
+//        quote2.setIsCompleted(false);
+//        quote2.setHabitation(habitation);
+//        quote2.setPrice(1000);
+//        quote2.setSummary("Devis maison centre rennes");
+//        quotes.add(quote2);
 
         model.addObject("quotes", quotes);
         return model;
-    }
-
-    @RequestMapping(value = "/carResume", method = RequestMethod.POST)
-    public ModelAndView carResume(Integer carId){
-
-        return null;
-    }
-
-    @RequestMapping(value = "/habResume", method = RequestMethod.POST)
-    public ModelAndView habResume(Integer habId){
-
-        return null;
     }
 }
