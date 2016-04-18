@@ -11,9 +11,9 @@
 
     <form:label path="heaterType">Type de chauffage</form:label>
     <form:select path="heaterType" class="form-control">
-
-        <option value=""></option>
-
+        <c:forEach items="${heaterType}" var="heaterType">
+            <option value="${heaterType.entitled}">${heaterType.entitled}</option>
+        </c:forEach>
     </form:select>
 
     <%@ include file="../QuotationStep/quotationStepState.jsp" %>

@@ -4,23 +4,38 @@
 
     <form:label path="nbRoom">Nombre de pièces</form:label>
     <form:select path="nbRoom" class="form-control">
-
-        <option value=""></option>
-
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
     </form:select>
 
     <form:label path="floor">Etage (si appartement)</form:label>
     <form:select path="floor" class="form-control">
-
-        <option value=""></option>
-
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10"></option>
     </form:select>
 
     <form:label path="nbBathroom">Nombre de salle de bain</form:label>
     <form:select path="nbBathroom" class="form-control">
-
-        <option value=""></option>
-
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
     </form:select>
 
     <form:label path="garage">Garage ?</form:label>

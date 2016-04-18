@@ -20,11 +20,15 @@ public class VerticleListener extends AbstractVerticle {
     ModelHelper modelHelper;
     FormulHelper formulHelper;
     UserHelper userHelper;
+    HomeTypeHelper homeTypeHelper;
+    HeaterTypeHelper heaterTypeHelper;
 
     @Override
     public void start(){
         Router router = Router.router(vertx);
         this.authHelper = new AuthHelper(vertx);
+        this.homeTypeHelper = new HomeTypeHelper(vertx);
+        this.heaterTypeHelper = new HeaterTypeHelper(vertx);
         this.fuelHelper = new FuelHelper(vertx);
         this.markHelper = new MarkHelper(vertx);
         this.insuranceHelper = new InsuranceHelper(vertx);
@@ -37,6 +41,8 @@ public class VerticleListener extends AbstractVerticle {
 
         router.post("/auth/api/login").handler(this.authHelper::getUserDetails);
         router.get("/api/fuel").handler(this.fuelHelper::getAll);
+        router.get("/api/homeType").handler(this.homeTypeHelper::getAll);
+        router.get("/api/heaterType").handler(this.heaterTypeHelper::getAll);
         router.get("/api/mark").handler(this.markHelper::getAll);
         router.get("/api/insurance").handler(this.insuranceHelper::getAll);
         router.get("/api/model").handler(this.modelHelper::getAll);
