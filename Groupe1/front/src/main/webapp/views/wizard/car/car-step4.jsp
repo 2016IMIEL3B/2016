@@ -19,17 +19,17 @@
                 <span>${carWizard.quote.habitation.address.postcode}</span>
                 <span>${carWizard.quote.habitation.address.city}</span>
             </div>
-            <div>
-                <span>${carWizard.Usera.drivingLicenceDate}</span>
-                <span>${carWizard.Usera.accidentNumber}</span>
-                <span>${carWizard.Usera.bonus}</span>
-            </div>
+            <%--<div>--%>
+                <%--<span>${carWizard.Usera.drivingLicenceDate}</span>--%>
+                <%--<span>${carWizard.Usera.accidentNumber}</span>--%>
+                <%--<span>${carWizard.Usera.bonus}</span>--%>
+            <%--</div>--%>
 
-            <div>
-                <span>${carWizard.Usera.firstName}</span>
-                <span>${carWizard.Usera.LastName}</span>
-                <span>${carWizard.Usera.isSecondary}</span>
-            </div>
+            <%--<div>--%>
+                <%--<span>${carWizard.Usera.firstName}</span>--%>
+                <%--<span>${carWizard.Usera.LastName}</span>--%>
+                <%--<span>${carWizard.Usera.isSecondary}</span>--%>
+            <%--</div>--%>
 
             <div>
                 <span>${carWizard.quote.vehicle.model}</span>
