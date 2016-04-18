@@ -8,11 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 public interface QuoteRepository extends CrudRepository<Quote,Integer> {
 
     Quote save (Quote quote);
-
-   Quote findOne(Integer integer);
-
-   Iterable<Quote> findAll();
+    Quote findOne(Integer integer);
+    Iterable<Quote> findAll();
     void delete(Integer integer);
-
 
 }
