@@ -1,9 +1,15 @@
 package com.group4.front.entities;
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class QuoteCar extends Quote {
+@Entity
+public class QuoteCar {
 
+    /** The id. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String brand;
     private String model;
     private String fuel;
@@ -17,6 +23,7 @@ public class QuoteCar extends Quote {
     private String address;
     private boolean allRisk;
     private boolean tiers;
+    private int idQuote;
 
     public String getBrand() {
         return brand;
@@ -120,5 +127,21 @@ public class QuoteCar extends Quote {
 
     public void setTiers(boolean tiers) {
         this.tiers = tiers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdQuote() {
+        return idQuote;
+    }
+
+    public void setIdQuote(int idQuote) {
+        this.idQuote = idQuote;
     }
 }

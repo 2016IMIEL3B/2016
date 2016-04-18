@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()                        // utilisation du mode FormLogin pour l'authentification
              // .loginPage( "/login" )              // Définition d'une page custom pour le login (si non présent authomatiquement généré)
                 .loginProcessingUrl( "/login.do" )  // Url à utiliser pour poster l'authenfication, donc l'action dans la page custom de login
-                .defaultSuccessUrl( "/" )           // Url par défaut à utiliser en cas d'authentification réussie
+                .defaultSuccessUrl( "/index" )           // Url par défaut à utiliser en cas d'authentification réussie
                 .failureUrl( "/login?err=1" )
                 .usernameParameter( "username" )    // Nom du champs pour le username dans la page de login
                 .passwordParameter( "password" )    // Nom du champs pour le mot de passe dans la page de login

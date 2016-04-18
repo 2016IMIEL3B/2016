@@ -1,4 +1,4 @@
-<!--  Include layout_header  -->
+<%@include file="layout_header.jsp" %>
 
 <div class="row content">
 	<div class="col-sm-8 text-left"> 
@@ -8,7 +8,7 @@
 	</div>
 	
 	<div class="col-sm-2 sidenav margin_top_20" >
-	  <a href="#">
+	  <a href="wizard_car.jsp">
 	    <div class="well">
 	      <p>Création d'un devis voiture</p>
 	    </div>
@@ -23,4 +23,4 @@
 	</div>
 </div>
 
-<!--  Include layout_footer  -->
+<%@include file="layout_footer.jsp" %>

@@ -1,7 +1,14 @@
 package com.group4.front.entities;
 
-public class QuoteHome extends Quote {
+import javax.persistence.*;
 
+@Entity
+public class QuoteHome {
+
+    /** The id. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String typeHome;
     private int area;
     private int numberRoom;
@@ -13,6 +20,7 @@ public class QuoteHome extends Quote {
     private String typeHeating;
     private String formula;
     private String address;
+    private int idQuote;
 
     public String getTypeHome() {
         return typeHome;
@@ -100,5 +108,21 @@ public class QuoteHome extends Quote {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdQuote() {
+        return idQuote;
+    }
+
+    public void setIdQuote(int idQuote) {
+        this.idQuote = idQuote;
     }
 }

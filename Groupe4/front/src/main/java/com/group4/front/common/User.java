@@ -1,6 +1,6 @@
 package com.group4.front.common;
 
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Date;
 import java.util.List;
@@ -37,7 +37,7 @@ public class User {
     /**
      * User roles.
      */
-    private List<GrantedAuthority> roles;
+    private List<SimpleGrantedAuthority> roles;
 
     /**
      * Is a active user.
@@ -118,7 +118,22 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public List<GrantedAuthority> getRoles() { return roles; }
+    public List<SimpleGrantedAuthority> getRoles() { return roles; }
 
-    public void setRoles(List<GrantedAuthority> roles) { this.roles = roles; }
+    public void setRoles(List<SimpleGrantedAuthority> roles) { this.roles = roles; }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                ", active=" + active +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }

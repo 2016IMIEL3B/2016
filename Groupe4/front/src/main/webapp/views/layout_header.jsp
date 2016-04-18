@@ -7,15 +7,14 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="projet_java">
     <meta name="author" content="groupe4">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Application Groupe 4 : </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../assets/css/template.css" rel="stylesheet">
+    <link href="/assets/css/template.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

@@ -1,8 +1,13 @@
 package com.group4.front.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Quote {
 
     /** The id. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     /** The name. */
     private String name;

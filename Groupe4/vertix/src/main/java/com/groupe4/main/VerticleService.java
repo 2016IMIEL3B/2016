@@ -1,22 +1,34 @@
 package com.groupe4.main;
 
+import com.groupe4.connection.DbClient;
+import com.groupe4.main.controller.AuthenticationController;
+import com.groupe4.main.controller.ListController;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpHeaders;
+import io.vertx.core.json.JsonObject;
+import io.vertx.ext.auth.jwt.JWTAuth;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.ext.web.handler.JWTAuthHandler;
 
 public class VerticleService extends AbstractVerticle{
 
     @Override
     public void start() {
+        DbClient.getInstance();
         Router router = Router.router(vertx);
 
-        router.route().handler(BodyHandler.create());
-        router.route("/api/*").produces("application/json");
-        router.route("/api/*").handler(context -> {
-            context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
-            context.response().headers().add("content-type", "text/html;charset=UTF-8");
+        JsonObject jwtAuthConfig = new JsonObject().put("keyStore", new JsonObject()
+                .put("path", "config/keystore.jceks")
+                .put("type", "jceks")
+                .put("password", "secret"));
+        JWTAuth authProvider = JWTAuth.create(Vertx.currentContext().owner(), jwtAuthConfig);
 
+        router.route().handler(BodyHandler.create());
+
+        router.route("/*").handler(context -> {
+            context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
             context.response()
                     // do not allow proxies to cache the data
                     .putHeader("Cache-Control", "no-store, no-cache")
@@ -34,13 +46,32 @@ public class VerticleService extends AbstractVerticle{
                     .putHeader("X-FRAME-OPTIONS", "DENY")
                     // Accept all
                     .putHeader("Access-Control-Allow-Origin", "*");
-
             context.next();
         });
 
+        // API protection with JWT
+        router.route("/api/*").handler(JWTAuthHandler.create(authProvider));
+
+        // Router begin
+        router.post("/login").handler(routingContext -> {
+            AuthenticationController authenticationController = new AuthenticationController(routingContext);
+            authenticationController.loginAction();
+        });
+
+        router.get("/api/lists").handler(routingContext -> {
+            ListController listController = new ListController(routingContext);
+            listController.getListsAction();
+        });
+
+        router.get("/api/lists/:id").handler(routingContext -> {
+            ListController listController = new ListController(routingContext);
+            listController.getListsByParentId();
+        });
+
+        // Start server
         vertx.createHttpServer().requestHandler(router::accept).listen(1204);
 
-        System.out.println("Http server is running...");
+        System.out.println("Http server is running on http://localhost:1204 ...");
     }
 
     @Override

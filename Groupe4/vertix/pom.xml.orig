@@ -25,12 +25,12 @@
     </dependency>
     <dependency>
         <groupId>io.vertx</groupId>
-        <artifactId>vertx-mysql-postgresql-client</artifactId>
+<<<<<<< HEAD
+        <artifactId>vertx-auth-jwt</artifactId>
         <version>3.2.1</version>
     </dependency>
-    <dependency>
-        <groupId>io.vertx</groupId>
-        <artifactId>vertx-auth-jwt</artifactId>
+=======
+        <artifactId>vertx-mysql-postgresql-client</artifactId>
         <version>3.2.1</version>
     </dependency>
     <dependency>
@@ -44,6 +44,7 @@
         <version>6.0</version>
         <scope>provided</scope>
     </dependency>
+>>>>>>> 57b4559dabdaf8d5caaba178681d1f09cc959812
 </dependencies>
 
     <build>
