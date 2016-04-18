@@ -17,7 +17,7 @@ public class UserService implements IUserService{
         return userRepository.findOne(id);
     }
 
-    public User findByLogin(String login) {
-        return userRepository.findByLogin(login);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

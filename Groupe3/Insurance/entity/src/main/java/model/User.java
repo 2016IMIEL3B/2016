@@ -27,11 +27,13 @@ public class User implements UserDetails {
 	private String firstName;
 	@Column(name="lastName")
 	private String lastName;
-	@Column(name="login")
+	@Column(name="username")
 	private String username;
 	@Column(name="password")
 	private String password;
+
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idGroup")
 	private Group group;
 
 	public User(String firstName, String lastName, String username, String password, Group group) {
@@ -74,7 +76,15 @@ public class User implements UserDetails {
 		this.password = password;
 	}
 
-	@Override
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    @Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return group.getRoles();
 	}
@@ -97,14 +107,5 @@ public class User implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
-	}
-
-	public Group getGroup() {
-		return group;
-	}
-
-    @OneToMany(mappedBy="group")
-    public void setGroup(Group group) {
-		this.group = group;
 	}
 }

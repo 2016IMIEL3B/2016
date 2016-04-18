@@ -7,5 +7,5 @@ import model.User;
  */
 public interface IUserService {
     User getUser(Integer id);
-    User findByLogin(String login);
+    User findByUsername(String username);
 }

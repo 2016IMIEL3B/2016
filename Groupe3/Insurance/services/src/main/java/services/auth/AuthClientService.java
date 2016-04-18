@@ -21,7 +21,7 @@ public class AuthClientService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userService.findByLogin(username);
+        User user = userService.findByUsername(username);
         if (user != null) return user;
 
         throw new UsernameNotFoundException("Username not found");

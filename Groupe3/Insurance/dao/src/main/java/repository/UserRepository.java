@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserRepository extends CrudRepository<User,Integer> {
 
-    User findByLogin(String login);
+    User findByUsername(String username);
     //void removeUser(int id);
 }
