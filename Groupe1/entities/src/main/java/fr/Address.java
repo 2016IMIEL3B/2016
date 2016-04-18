@@ -13,21 +13,21 @@ public class Address implements java.io.Serializable {
 	private Integer id;
 	private int number;
 	private String street;
-	private String postcode;
+	private Integer postcode;
 	private String city;
 	private Set users = new HashSet(0);
 
 	public Address() {
 	}
 
-	public Address(int number, String street, String postode, String city) {
+	public Address(int number, String street, Integer postode, String city) {
 		this.number = number;
 		this.street = street;
 		this.postcode = postode;
 		this.city = city;
 	}
 
-	public Address(int number, String street, String postode, String city,
+	public Address(int number, String street, Integer postode, String city,
 			Set users) {
 		this.number = number;
 		this.street = street;
@@ -60,11 +60,11 @@ public class Address implements java.io.Serializable {
 		this.street = street;
 	}
 
-	public String getPostcode() {
+	public Integer getPostcode() {
 		return this.postcode;
 	}
 
-	public void setPostcode(String postcode) {
+	public void setPostcode(Integer postcode) {
 		this.postcode = postcode;
 	}
 

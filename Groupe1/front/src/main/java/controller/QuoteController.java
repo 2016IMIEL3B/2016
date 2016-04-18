@@ -34,7 +34,7 @@ public class QuoteController {
         Quote quote1 = new Quote();
 
         quote1.setName("monDevis");
-        quote1.setStep(1);
+        quote1.setStep(2);
         quote1.setIsCompleted(false);
         quote1.setVehicle(vehicle);
         quote1.setPrice(800);
@@ -48,7 +48,7 @@ public class QuoteController {
         Quote quote2 = new Quote();
 
         quote2.setName("devisHabitation");
-        quote2.setStep(1);
+        quote2.setStep(3);
         quote2.setIsCompleted(false);
         quote2.setHabitation(habitation);
         quote2.setPrice(1000);

@@ -39,7 +39,6 @@ public class HabWizardController {
     public ModelAndView processFinish(@ModelAttribute("habWizard") HabitationModel habWizard, SessionStatus status) {
 
 
-
         // suppression de l'objet en session
         status.setComplete();
         return new ModelAndView("successView");
