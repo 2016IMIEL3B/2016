@@ -49,7 +49,9 @@
                             <td>${quote.habitation.surface}</td>
                             <td>${quote.price} €</td>
                             <td>${quote.summary}</td>
-                            <td><a class="btn btn-default" href=<c:url value="/habWizard.form?_page=${quote.step}"/>>Reprendre</a></td>
+                            <td>
+                                <a class="btn btn-default" href=<c:url value="/habWizard.form?_quoteId=${quote.id}"/>>Reprendre</a>
+                            </td>
                         </c:if>
                     </c:forEach>
                 </c:if>

@@ -24,4 +24,8 @@ public class HabitationModel {
     public void setQuote(Quote quote) {
         this.quote = quote;
     }
+
+    public HabitationModel(Quote myQuote){
+        quote = myQuote;
+    }
 }

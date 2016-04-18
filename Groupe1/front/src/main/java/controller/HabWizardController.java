@@ -1,5 +1,6 @@
 package controller;
 
+import fr.*;
 import controller.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,14 @@ public class HabWizardController {
 
         // pageViews est un tableau qui renvoie le nom de la vue suivant le numéro d'étape
         return new ModelAndView("wizard/habitation/"+pageViews[currentPage-1]);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") int _quoteId) {
+        Quote quote= new Quote();
+        HabitationModel habitationModel = new HabitationModel(quote);
+        //return new ModelAndView("wizard/habitation/habitation-step"+quote.step,"habWizard", habitationModel);
+        return null;
     }
 
     /**
