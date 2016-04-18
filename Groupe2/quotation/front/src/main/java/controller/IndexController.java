@@ -30,15 +30,24 @@ public class IndexController {
 
         ModelAndView model = new ModelAndView("index");
 
-        // FindById Quotation and Add to Model
-        if(usersession.getUser().getId() != 0)
-            model.addObject("quotations", qs.findByUserId(usersession.getUser().getId()));
-        else{
-            model = new ModelAndView("Error/index");
-            model.addObject("message", "L'id de l'utilisateur n'est pas présent dans la BDD");
+        if(usersession.getUser() != null){
+            // FindById Quotation and Add to Model
+            if(usersession.getUser().getId() != 0)
+                model.addObject("quotations", qs.findByUserId(usersession.getUser().getId()));
+            else{
+                model = new ModelAndView("Error/index");
+                model.addObject("message", "L'id de l'utilisateur n'est pas présent dans la BDD");
+            }
+        }else{
+            model = new ModelAndView("login");
         }
 
         return model;
+    }
+
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public ModelAndView login(){
+        return new ModelAndView("login");
     }
 
     @RequestMapping(value = {"/error"}, method = RequestMethod.GET)

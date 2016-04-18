@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form:form method="POST" action="devis/habitation/send/1" modelAttribute="home">
+<form:form method="POST" action="/devis/habitation/send/1" modelAttribute="home">
 
     <label for="nomPrenomUser">Nom / prenom de l’utilisateur</label>
     <input id="nomPrenomUser" type="text" value="" class="form-control" disabled>
@@ -14,7 +14,7 @@
         <c:forEach items="${homeType}" var="homeType">
             <option value="${homeType.entitled}">${homeType.entitled}</option>
         </c:forEach>
-</form:select>
+    </form:select>
 
     <form:label path="surface">Surface</form:label>
     <form:input path="surface" type="text" value="" class="form-control" />

@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form:form method="POST" action="devis/habitation/send/3" modelAttribute="home">
+<form:form method="POST" action="/devis/${id}/habitation/send/3" modelAttribute="home">
 
     <form:label path="surfaceGround">Surface du terrains</form:label>
     <form:input path="surfaceGround" type="text" value="" class="form-control" />

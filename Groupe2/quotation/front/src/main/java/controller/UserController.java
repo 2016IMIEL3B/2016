@@ -28,7 +28,6 @@ public class UserController {
 
     @RequestMapping({"/profil"})
     public ModelAndView home(){
-
         return new ModelAndView("User/index","user", userSession.getUser());
     }
 

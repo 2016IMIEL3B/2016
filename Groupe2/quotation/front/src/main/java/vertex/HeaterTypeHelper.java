@@ -30,7 +30,7 @@ public class HeaterTypeHelper {
                         if (resSet.result().getNumRows() != 0) {
                             context.response()
                                     .putHeader("content-type", "application/json; charset=utf-8")
-                                    .end(Json.encodePrettily(resSet.result().getRows() ));
+                                    .end(Json.encodePrettily(resSet.result().getRows()));
                         } else {
                             context.fail(401);
                         }

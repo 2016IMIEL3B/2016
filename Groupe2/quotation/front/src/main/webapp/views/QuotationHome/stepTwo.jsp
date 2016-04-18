@@ -1,6 +1,8 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ include file="../Default/header.jsp" %>
 
-<form:form method="POST" action="devis/habitation/send/2" modelAttribute="home">
+<form:form method="POST" action="/devis/${id}/habitation/send/2" modelAttribute="home">
 
     <form:label path="nbRoom">Nombre de pièces</form:label>
     <form:select path="nbRoom" class="form-control">
@@ -39,7 +41,7 @@
     </form:select>
 
     <form:label path="garage">Garage ?</form:label>
-    <form:input path="garage" type="checkbox" value="" class="form-control" />
+    <form:checkbox path="garage" value="false" class="form-control" />
 
     <%@ include file="../QuotationStep/quotationStepState.jsp" %>
 
