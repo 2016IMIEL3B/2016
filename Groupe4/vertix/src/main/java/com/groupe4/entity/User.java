@@ -138,4 +138,19 @@ public class User {
     public void removeRole(String role) {
         this.roles.remove(role);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", roles=" + roles +
+                '}';
+    }
 }

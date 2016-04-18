@@ -87,6 +87,16 @@ public class RouterService extends AbstractVerticle{
             userController.createUser();
         });
 
+        router.get("/api/users/:idUser/quotes").handler(routingContext -> {
+            QuoteController quoteController = new QuoteController(routingContext);
+            quoteController.getQuotesByUser();
+        });
+
+        router.post("/api/users/:idUser/quote").handler(routingContext -> {
+            QuoteController quoteController = new QuoteController(routingContext);
+            quoteController.createQuote();
+        });
+
         // Start server
         vertx.createHttpServer().requestHandler(router::accept).listen(1204);
 

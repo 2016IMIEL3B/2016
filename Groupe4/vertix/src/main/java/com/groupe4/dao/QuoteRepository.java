@@ -15,9 +15,6 @@ import io.vertx.ext.sql.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Link on 22/03/2016.
- */
 public class QuoteRepository implements IQuoteRepository {
 
     /**
@@ -46,16 +43,14 @@ public class QuoteRepository implements IQuoteRepository {
                     connection.updateWithParams(query, params, res2 -> {
                         if (res2.succeeded()) {
                             UpdateResult updateResult = res2.result();
-                            //System.out.println("Insert OK, No. of rows updated: " + updateResult.getUpdated());
                             handler.handle(Future.succeededFuture(true));
                         } else {
-                            //System.out.println("Insert NOK");
                             handler.handle(Future.failedFuture("Insert NOK"));
                         }
                     });
                     connection.close();
                 } else {
-                    //System.out.println("Connexion NOK");
+                    System.out.println("Connexion NOK");
                 }
             });
         });
