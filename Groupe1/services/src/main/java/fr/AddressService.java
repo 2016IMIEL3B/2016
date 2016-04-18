@@ -1,8 +1,11 @@
 package fr;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Created by joe on 18/04/2016.
  */
+@Service
 public class AddressService implements IAddressService {
 
     AddressRepository addressDao;
