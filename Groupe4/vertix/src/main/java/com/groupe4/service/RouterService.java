@@ -1,8 +1,7 @@
 package com.groupe4.service;
 
 import com.groupe4.connection.DbClient;
-import com.groupe4.controller.AuthenticationController;
-import com.groupe4.controller.ListController;
+import com.groupe4.controller.*;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpHeaders;
@@ -66,6 +65,26 @@ public class RouterService extends AbstractVerticle{
         router.get("/api/lists/:id").handler(routingContext -> {
             ListController listController = new ListController(routingContext);
             listController.getListsByParentId();
+        });
+
+        router.get("/api/users/:idUser").handler(routingContext -> {
+            UserController userController = new UserController(routingContext);
+            userController.getUser();
+        });
+
+        router.delete("/api/users/:idUser").handler(routingContext -> {
+            UserController userController = new UserController(routingContext);
+            userController.deleteUser();
+        });
+
+        router.put("/api/users/:idUser").handler(routingContext ->{
+            UserController userController = new UserController(routingContext);
+            userController.updateUser();
+        });
+
+        router.post("/api/users").handler(routingContext -> {
+            UserController userController = new UserController(routingContext);
+            userController.createUser();
         });
 
         // Start server

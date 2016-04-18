@@ -1,7 +1,7 @@
 package com.groupe4.controller;
 
 import com.groupe4.entity.Quote;
-import com.groupe4.main.QuoteService;
+import com.groupe4.service.QuoteService;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.RoutingContext;
 
