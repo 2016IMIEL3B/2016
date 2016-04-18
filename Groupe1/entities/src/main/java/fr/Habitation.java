@@ -75,7 +75,7 @@ public class Habitation implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "addressId", nullable = false)
 	public Address getAddress() {
 		return this.address;
@@ -175,7 +175,7 @@ public class Habitation implements java.io.Serializable {
 		this.option = option;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "habitation")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "habitation")
 	public Set<Quote> getQuotes() {
 		return this.quotes;
 	}

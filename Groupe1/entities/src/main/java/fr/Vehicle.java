@@ -59,7 +59,7 @@ public class Vehicle implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "addressId", nullable = false)
 	public Address getAddress() {
 		return this.address;
@@ -69,7 +69,7 @@ public class Vehicle implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "modelId", nullable = false)
 	public Model getModel() {
 		return this.model;
@@ -115,7 +115,7 @@ public class Vehicle implements java.io.Serializable {
 		this.anyRisk = anyRisk;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicle")
 	public Set<Quote> getQuotes() {
 		return this.quotes;
 	}

@@ -60,7 +60,7 @@ public class Quote implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "habitationId")
 	public Habitation getHabitation() {
 		return this.habitation;
@@ -70,7 +70,7 @@ public class Quote implements java.io.Serializable {
 		this.habitation = habitation;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "vehicleId")
 	public Vehicle getVehicle() {
 		return this.vehicle;
@@ -125,7 +125,7 @@ public class Quote implements java.io.Serializable {
 		this.summary = summary;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "quoteuser", catalog = "assurance", joinColumns = { @JoinColumn(name = "quoteId", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "userId", nullable = false, updatable = false) })
 	public Set<Client> getClients() {
 		return this.clients;

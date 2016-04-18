@@ -58,7 +58,7 @@ public class User extends UserHelper implements java.io.Serializable  {
 		this.userId = userId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "addressId", nullable = false)
 	public Address getAddress() {
 		return this.address;
@@ -104,7 +104,7 @@ public class User extends UserHelper implements java.io.Serializable  {
 		this.password = password;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<Client> getClients() {
 		return this.clients;
 	}
@@ -113,7 +113,7 @@ public class User extends UserHelper implements java.io.Serializable  {
 		this.clients = clients;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<Role> getRoles() {
 		return this.roles;
 	}

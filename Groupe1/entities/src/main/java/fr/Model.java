@@ -45,7 +45,7 @@ public class Model implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "brandId", nullable = false)
 	public Brand getBrand() {
 		return this.brand;
@@ -64,7 +64,7 @@ public class Model implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "model")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "model")
 	public Set<Vehicle> getVehicles() {
 		return this.vehicles;
 	}

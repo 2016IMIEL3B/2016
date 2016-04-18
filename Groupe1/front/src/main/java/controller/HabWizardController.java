@@ -18,6 +18,9 @@ public class HabWizardController {
 
     private String[] pageViews = new String[] {"habitation-step1","habitation-step2","habitation-step3","habitation-step4"};
 
+    @Autowired
+    private QuoteService quoteService;
+
     //Première étape
     @RequestMapping
     public ModelAndView processWizard() {
@@ -52,11 +55,10 @@ public class HabWizardController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") int _quoteId) {
-        Quote quote= new Quote();
+    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") Integer quoteId) {
+        Quote quote = quoteService.findOne(quoteId);
         HabitationModel habitationModel = new HabitationModel(quote);
-        //return new ModelAndView("wizard/habitation/habitation-step"+quote.step,"habWizard", habitationModel);
-        return null;
+        return new ModelAndView("wizard/habitation/habitation-step"+quote.getStep(),"habWizard", habitationModel);
     }
 
     /**
