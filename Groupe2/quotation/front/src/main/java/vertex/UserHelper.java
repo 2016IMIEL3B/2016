@@ -34,11 +34,8 @@ public class UserHelper {
         // Recuperer les données liées au formulaire du User
         JsonObject object = context.getBodyAsJson();
 
-        // Recuperer l'id de l'utilisateur stocké dans la session
-        int idUser = 1;
-
         User user  =  new User();
-
+        user.setId(object.getInteger("id"));
         user.setLastName(object.getString("lastName"));
         user.setFirstName(object.getString("firstName"));
         user.setLogin(object.getString("login"));
@@ -49,17 +46,17 @@ public class UserHelper {
         if (user.getLastName() == null || user.getFirstName() == null || user.getLogin() == null || user.getPassword() == null) {
             context.response().end(new JsonObject().put("result", "Tous les champs ne sont pas remplis !").encodePrettily());
         } else {
-            updateUserInformations(context,idUser, user);
+            updateUserInformations(context,user);
         }
 
     }
 
-    public void updateUserInformations(RoutingContext context, int idUser, User user){
+    public void updateUserInformations(RoutingContext context, User user){
         this.client.getConnection(res -> {
             System.out.println("conn -> " + res.succeeded());
             if (res.succeeded()) {
 
-                JsonArray params = new JsonArray().add(user.getLastName()).add(user.getFirstName()).add(user.getLogin()).add(user.getPassword()).add(idUser);
+                JsonArray params = new JsonArray().add(user.getLastName()).add(user.getFirstName()).add(user.getLogin()).add(user.getPassword()).add(user.getId());
 
                 SQLConnection connection = res.result();
                 connection.updateWithParams("Update User SET lastName = ?, firstName = ?, login = ?, password = ?  where id = ?", params, resSet -> {

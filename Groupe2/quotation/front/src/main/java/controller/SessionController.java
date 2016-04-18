@@ -18,10 +18,7 @@ public class SessionController {
 
     @RequestMapping({"/sessiondump"})
     public ModelAndView home(){
-        ModelAndView model = new ModelAndView("Session/index", "token", userSession.getToken());
-        // Recuperer le user courant
-
-        // Ajouter au model
+        ModelAndView model = new ModelAndView("Session/index", "userSession", userSession);
 
         return model;
     }

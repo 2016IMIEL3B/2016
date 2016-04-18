@@ -1,6 +1,8 @@
 package controller;
 
+import com.auth.UserSession;
 import com.back.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +21,13 @@ import java.util.stream.Collectors;
 @Controller
 public class UserController {
 
+    @Autowired
+    private UserSession userSession;
+
     @RequestMapping({"/profil"})
     public ModelAndView home(){
 
-        return new ModelAndView("User/index","user", new User());
+        return new ModelAndView("User/index","user", userSession.getUser());
     }
 
     @RequestMapping(path = {"/profil/save"}, method = RequestMethod.POST)
@@ -32,8 +37,10 @@ public class UserController {
 
         String result = new RestTemplate().postForObject(url,user,String.class);
 
-        if(result.equals("OK"))
+        if(result.contains("OK")) {
+            userSession.refreshUserSession(user);
             return "redirect:/home";
+        }
         else
             return "redirect:/error";
     }

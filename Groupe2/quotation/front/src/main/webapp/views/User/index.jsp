@@ -5,6 +5,7 @@
 
 <form:form  method="post" action="/profil/save" modelAttribute="user">
 
+    <form:input cssStyle="display: none" path="id"/>
     <form:label path="lastName">Nom :</form:label>
     <form:input path="lastName" />
     <form:label path="firstName">Prénom :</form:label>

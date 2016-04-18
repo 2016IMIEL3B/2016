@@ -1,9 +1,8 @@
 <%@ include file="../Default/header.jsp" %>
 
 <ul>
-    <li>${token}</li>
-    <li>${username}</li>
-    <li>${password}</li>
+    <li>${userSession.getToken()}</li>
+    <li>${userSession.getUserLike().getLastName()}</li>
 </ul>
 
 <%@ include file="../Default/footer.jsp" %>

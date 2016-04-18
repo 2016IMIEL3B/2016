@@ -25,6 +25,9 @@ public class UserSession {
         this.token = token;
     }
 
+    public User getUser() {
+        return user;
+    }
 
     public void setFromUserDetails(UserLike userDetails){
         user.setPassword(userDetails.getPassword());
@@ -32,5 +35,15 @@ public class UserSession {
         user.setLogin(userDetails.getLogin());
         user.setLastName(userDetails.getLastName());
         user.setId(userDetails.getId());
+    }
+
+    public void refreshUserSession(User user){
+        if(user != null){
+            this.user.setId(user.getId());
+            this.user.setFirstName(user.getFirstName());
+            this.user.setLastName(user.getLastName());
+            this.user.setLogin(user.getLogin());
+            this.user.setPassword(user.getPassword());
+        }
     }
 }
