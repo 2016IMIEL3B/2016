@@ -10,23 +10,14 @@ import com.front.Car;
 import com.front.Driver;
 import com.front.Quotation;
 import com.front.TypeQuotation;
-import io.vertx.core.json.Json;
-import io.vertx.core.json.JsonArray;
-import io.vertx.core.json.JsonObject;
+import com.utils.RestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
-import vertex.VerticleListener;
-
-import java.net.URI;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -223,55 +214,24 @@ public class QuotationCarController {
 
 
     private List<Fuel> getAllFuels() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/fuel").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<Fuel>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/fuel").getBody();
     }
 
     private List<Mark> getAllMarks() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/mark").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<Mark>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/mark").getBody();
     }
 
     private List<Model> getAllModels() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/model").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<Model>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/model").getBody();
     }
 
     private List<Formul> getAllFormuls() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/formul").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<Formul>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/formul").getBody();
     }
 
     private List<HorsePower> getAllHorsePowers() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/horsepower").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<HorsePower>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/horsepower").getBody();
     }
-
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");

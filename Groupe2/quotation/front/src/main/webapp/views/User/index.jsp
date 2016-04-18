@@ -1,7 +1,7 @@
 <%@ include file="../Default/header.jsp" %>
 <h1>Page de Profil</h1>
 
-<span>Formulaire de création d'un Utilisateur :</span>
+<span>Modification du profil</span>
 
 <form:form  method="post" action="/profil/save" modelAttribute="user">
 
@@ -17,5 +17,7 @@
 
     <input type="submit" value="Créer"/>
 </form:form>
+
+<a class="btn btn-primary" href="/" role="button">Page d'accueil</a>
 
 <%@ include file="../Default/footer.jsp" %>

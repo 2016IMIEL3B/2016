@@ -14,11 +14,15 @@ import org.springframework.stereotype.Component;
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS, scopeName = "session")
 public class UserSession {
 
-    private String token;
-    private User user = new User();
+    private String token = "";
+    private User user;
 
     public String getToken() {
         return token;
+    }
+
+    public JsonObject getHeaderToken(){
+        return new JsonObject().put("Authorization", "Bearer " + this.token);
     }
 
     public void setToken(String token) {
@@ -30,6 +34,7 @@ public class UserSession {
     }
 
     public void setFromUserDetails(UserLike userDetails){
+        user = new User();
         user.setPassword(userDetails.getPassword());
         user.setFirstName(userDetails.getFirstName());
         user.setLogin(userDetails.getLogin());

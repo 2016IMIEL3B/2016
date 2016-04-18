@@ -2,6 +2,8 @@ package controller;
 
 import com.auth.UserSession;
 import com.back.User;
+import com.utils.CPrint;
+import com.utils.RestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -33,13 +35,16 @@ public class UserController {
     @RequestMapping(path = {"/profil/save"}, method = RequestMethod.POST)
     public String save(@ModelAttribute User user){
 
-        String url = "http://localhost:8091/api/profil/save";
-
-        String result = new RestTemplate().postForObject(url,user,String.class);
+        String result = new RestHelper(userSession.getHeaderToken()).defaultRequest(
+                "/api/profil/save",
+                user.getAllParamsIntrospection(),
+                HttpMethod.POST,
+                String.class
+        ).getBody();
 
         if(result.contains("OK")) {
             userSession.refreshUserSession(user);
-            return "redirect:/home";
+            return "redirect:/profil";
         }
         else
             return "redirect:/error";

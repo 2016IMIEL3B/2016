@@ -31,15 +31,13 @@ public class UserHelper {
 
     public void getUserInformationsForm(RoutingContext context){
 
-        // Recuperer les données liées au formulaire du User
-        JsonObject object = context.getBodyAsJson();
-
         User user  =  new User();
-        user.setId(object.getInteger("id"));
-        user.setLastName(object.getString("lastName"));
-        user.setFirstName(object.getString("firstName"));
-        user.setLogin(object.getString("login"));
-        user.setPassword(object.getString("password"));
+        System.out.println(context.request().params().toString());
+        user.setId(Integer.parseInt(context.request().getParam("id")));
+        user.setLastName(context.request().getParam("lastName"));
+        user.setFirstName(context.request().getParam("firstName"));
+        user.setLogin(context.request().getParam("login"));
+        user.setPassword(context.request().getParam("password"));
 
         System.out.println(user.getLastName());
 

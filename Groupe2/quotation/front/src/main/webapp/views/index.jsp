@@ -25,5 +25,6 @@
     <div class="createQuotation">
         <a class="btn btn-primary" href="/devis/0/voiture" role="button">Creer un devis Voiture</a>
         <a class="btn btn-primary" href="/devis/0/habitation" role="button">Creer un devis Habitation</a>
+        <a class="btn btn-primary" href="/profil" role="button">Page de Profil</a>
     </div>
 <%@ include file="Default/footer.jsp" %>

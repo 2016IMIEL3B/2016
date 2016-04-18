@@ -3,6 +3,7 @@ package controller;
 import com.IQuotationService;
 import com.QuotationRepository;
 
+import com.auth.UserSession;
 import com.front.Quotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +20,9 @@ import com.QuotationService;
 public class IndexController {
 
     @Autowired
+    UserSession usersession;
+
+    @Autowired
     IQuotationService qs;
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
@@ -26,13 +30,24 @@ public class IndexController {
 
         ModelAndView model = new ModelAndView("index");
 
-        // Recuperer L'id de l'utilisateur courant
-        //UserDetails userDetails =
-
         // FindById Quotation and Add to Model
-        model.addObject("quotations", qs.findAll());
-        return model;
+        if(usersession.getUser().getId() != 0)
+            model.addObject("quotations", qs.findByUserId(usersession.getUser().getId()));
+        else{
+            model = new ModelAndView("Error/index");
+            model.addObject("message", "L'id de l'utilisateur n'est pas présent dans la BDD");
+        }
 
+        return model;
+    }
+
+    @RequestMapping(value = {"/error"}, method = RequestMethod.GET)
+    public ModelAndView error(){
+        ModelAndView model = new ModelAndView("Error/index");
+
+        model.addObject("message", "Une erreur est survenue lors de l'éxecution de l'application");
+
+        return model;
     }
 
 }

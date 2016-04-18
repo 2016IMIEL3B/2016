@@ -1,9 +1,9 @@
 package com.utils;
 
 import com.UserLike;
-import com.back.User;
-import io.vertx.core.json.Json;
+import com.auth.UserSession;
 import io.vertx.core.json.JsonObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import java.util.List;
+
 
 /**
  * Created by tlemaillet on 24/03/16 for com.group.two.root.
@@ -28,7 +30,7 @@ public class RestHelper {
 
     public RestHelper(JsonObject headParams) {
         selfInit();
-        headers.add("Cache-Control", "no-store, no-cache");
+        headParams.forEach(headParam -> headers.add(headParam.getKey(), headParam.getValue().toString()));
         validate();
     }
 
@@ -36,40 +38,36 @@ public class RestHelper {
         headers = new LinkedMultiValueMap<>();
         restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-
         headers.add("Content-Type", "application/json");
+        headers.add("Cache-Control", "no-store, no-cache");
     }
     private void validate() {
         JsonObject body = new JsonObject().put("Hey", "Bonjour");
         request = new HttpEntity<>(body, headers);
     }
 
-    public <T> ResponseEntity<T> postRequest(Class<T> clazz, String url, String params) {
+    public <T> ResponseEntity<T> doRequest(String url, String params, HttpMethod method, Class<T> clazz) {
         return restTemplate.exchange(
                 url + "?" + params,
-                HttpMethod.POST,
+                method,
                 request,
                 clazz
         );
     }
 
-    public HttpEntity<JsonObject> getRequest(String url) {
-        return restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                request,
-                JsonObject.class
-        );
+    public <T> ResponseEntity<T> defaultRequest(String path, String params, HttpMethod method, Class<T> clazz) {
+        return doRequest(getDefaultServer() + path, params, method, clazz);
     }
 
     public ResponseEntity<UserLike> loginRequest(String username) {
-        String loginUrl = "http://localhost:8091/auth/api/login";
-        return postRequest(UserLike.class, loginUrl, "login=" + username);
+        return defaultRequest("/auth/api/login", "login=" + username, HttpMethod.POST, UserLike.class);
     }
 
-    public String userRequest(User user){
-        String userJson = Json.encode(user);
-        String userUrl = "http://localhost:8091/api/profil/save";
-        return restTemplate.postForObject(userUrl, user, String.class);
+    public ResponseEntity<List> apiRequest(String path) {
+        return defaultRequest(path, "", HttpMethod.GET, List.class);
+    }
+
+    private String getDefaultServer(){
+       return "http://localhost:8091";
     }
 }
