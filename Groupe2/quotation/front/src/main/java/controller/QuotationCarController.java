@@ -53,7 +53,7 @@ public class QuotationCarController {
             model.addObject("fuels", this.getAllFuels());
             model.addObject("marks", this.getAllMarks());
             model.addObject("models", this.getAllModels());
-            model.addObject("horsepowers" this.getAllHorsePowers());
+            model.addObject("horsepowers", this.getAllHorsePowers());
 
             model.addObject("step", 1);
         } else {
