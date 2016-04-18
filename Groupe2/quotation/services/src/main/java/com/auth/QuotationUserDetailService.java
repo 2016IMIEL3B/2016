@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Created by tlemaillet on 23/03/16 for com.group.two.root.
+ *  Created by tlemaillet on 23/03/16 for com.group.two.root.
  */
 @Component
 
@@ -28,16 +28,17 @@ public class QuotationUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QuotationUserDetails userDetails;
 
-        ResponseEntity<JsonObject> response = new RestHelper().loginRequest(username);
+        ResponseEntity<UserLike> response = new RestHelper().loginRequest(username);
 
         if (response.getStatusCode().value() == 200) {
             userSession.setToken(response.getHeaders().get("Token").get(0));
 
-            List<String> s = response.getHeaders().get("UserDetails");
-            JsonObject rawUserDetails = new JsonObject(s.get(0));
-            userSession.setFromUserDetails(rawUserDetails);
+            UserLike pouet = response.getBody();
+            /*pouet = Json.decodeValue(response.getHeaders().get("UserDetails").get(0), UserLike.class);
+            pouet = Json.decodeValue(response.getBody().encode(), UserLike.class);
+            pouet = Json.mapper.convertValue(response.getBody(), UserLike.class);*/
 
-            UserLike pouet = Json.decodeValue(s.get(0), UserLike.class);
+            userSession.setFromUserDetails(pouet);
             userDetails = new QuotationUserDetails(pouet);
         } else {
             throw new UsernameNotFoundException("Bad Login");
