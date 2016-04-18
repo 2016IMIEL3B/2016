@@ -1,7 +1,9 @@
 package com.utils;
 
 import com.UserLike;
+import com.auth.UserSession;
 import io.vertx.core.json.JsonObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ import java.util.List;
  * Created by tlemaillet on 24/03/16 for com.group.two.root.
  */
 public class RestHelper {
+
+    /*@Autowired
+    UserSession usersession;*/
 
     MultiValueMap<String, String> headers;
     RestTemplate restTemplate;
@@ -38,6 +43,11 @@ public class RestHelper {
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         headers.add("Content-Type", "application/json");
         headers.add("Cache-Control", "no-store, no-cache");
+        /*String token = usersession.getToken();
+        if (!token.equals("")) {
+            headers.add("Authorization", "Bearer " + token );
+        }*/
+
     }
     private void validate() {
         JsonObject body = new JsonObject().put("Hey", "Bonjour");

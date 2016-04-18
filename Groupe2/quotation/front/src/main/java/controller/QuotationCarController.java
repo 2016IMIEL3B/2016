@@ -3,6 +3,7 @@ package controller;
 import com.ICarService;
 import com.IDriverService;
 import com.IQuotationService;
+import com.auth.UserSession;
 import com.back.*;
 import com.front.Car;
 import com.front.Driver;
@@ -32,7 +33,8 @@ public class QuotationCarController {
     @Autowired
     IDriverService driverService;
 
-    RestHelper restHelper = new RestHelper();
+    @Autowired
+    UserSession userSession;
 
 
     @RequestMapping(value = "/devis/{id}/voiture", method = RequestMethod.GET)
@@ -161,4 +163,5 @@ public class QuotationCarController {
         return (List<HorsePower>) restHelper.apiRequest("/api/horsepower").getBody();
     }
 
+    RestHelper restHelper = new RestHelper(userSession.getHeaderToken());
 }

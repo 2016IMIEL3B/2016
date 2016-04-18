@@ -4,12 +4,14 @@ import com.ICarService;
 import com.IDriverService;
 import com.IHomeService;
 import com.IQuotationService;
+import com.auth.UserSession;
 import com.back.HeaterType;
 import com.back.HomeType;
 import com.front.Car;
 import com.front.Driver;
 import com.front.Home;
 import com.front.Quotation;
+import com.utils.RestHelper;
 import io.vertx.core.json.Json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,11 @@ public class QuotationHomeController {
 
     @Autowired
     IQuotationService quotationService;
+
+    @Autowired
+    UserSession userSession;
+    RestHelper restHelper = new RestHelper(userSession.getHeaderToken());
+
 
     @RequestMapping(value = "/devis/{id}/habitation", method = RequestMethod.GET)
     public ModelAndView quotationHome(@PathVariable int id) {
@@ -136,22 +143,10 @@ public class QuotationHomeController {
     }
 
     private List<HomeType> getAllHomeType() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/homeType").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<HomeType>) restHelper.apiRequest("/api/homeType").getBody();
     }
 
     private List<HeaterType> getAllHeaterType() {
-        RestTemplate restTemplate = new RestTemplate();
-
-        URI uri = UriComponentsBuilder.fromUriString("http://localhost:8091/api/heaterType").build().toUri();
-
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return Json.decodeValue(result, List.class);
+        return (List<HeaterType>) restHelper.apiRequest("/api/homeType").getBody();
     }
 }

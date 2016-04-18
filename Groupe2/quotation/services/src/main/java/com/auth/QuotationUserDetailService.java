@@ -31,7 +31,7 @@ public class QuotationUserDetailService implements UserDetailsService {
         ResponseEntity<UserLike> response = new RestHelper().loginRequest(username);
 
         if (response.getStatusCode().value() == 200) {
-            userSession.setToken(response.getHeaders().get("Token").get(0));
+
 
             UserLike pouet = response.getBody();
             /*pouet = Json.decodeValue(response.getHeaders().get("UserDetails").get(0), UserLike.class);
@@ -39,6 +39,7 @@ public class QuotationUserDetailService implements UserDetailsService {
             pouet = Json.mapper.convertValue(response.getBody(), UserLike.class);*/
 
             userSession.setFromUserDetails(pouet);
+            userSession.setToken(response.getHeaders().get("Token").get(0));
             userDetails = new QuotationUserDetails(pouet);
         } else {
             throw new UsernameNotFoundException("Bad Login");

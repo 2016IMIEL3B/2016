@@ -35,7 +35,7 @@ public class UserController {
     @RequestMapping(path = {"/profil/save"}, method = RequestMethod.POST)
     public String save(@ModelAttribute User user){
 
-        String result = new RestHelper().defaultRequest(
+        String result = new RestHelper(userSession.getHeaderToken()).defaultRequest(
                 "/api/profil/save",
                 user.getAllParamsIntrospection(),
                 HttpMethod.POST,
