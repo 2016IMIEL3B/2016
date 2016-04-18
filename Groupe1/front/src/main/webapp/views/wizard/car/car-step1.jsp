@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <form:label path="" for="quote.vehicle.horsepower"> Chevaux fiscaux</form:label>
-                <form:select path="quote.vehicle.horsepower">
+                <form:select path="quote.vehicle.horsepower" id="horsePower">
                     <form:option value="1">1CH</form:option>
                     <form:option value="2">2CH</form:option>
                     <form:option value="3">3CH</form:option>
