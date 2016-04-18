@@ -28,16 +28,16 @@
             <tr>
                 <td>Tous risques ?</td>
                 <td>
-                    <input type="radio" name="insuranceAllRisks" value="Oui"/>
-                    <input type="radio" name="insuranceAllRisks" value="Non"/>
+                    <input type="radio" name="insuranceAllRisks" value="Oui"/>Oui
+                    <input type="radio" name="insuranceAllRisks" value="Non"/>Non
                     <br/>
                 </td>
             </tr>
             <tr>
                 <td>Au tiers</td>
                 <td>
-                    <input type="radio" name="insuranceThird" value="Oui"/>
-                    <input type="radio" name="insuranceThird" value="Non"/>
+                    <input type="radio" name="insuranceThird" value="Oui"/>Oui
+                    <input type="radio" name="insuranceThird" value="Non"/>Non
                     <br/>
                 </td>
             </tr>

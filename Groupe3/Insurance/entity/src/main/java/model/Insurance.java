@@ -27,17 +27,14 @@ public class Insurance {
 	String summary;
 	@Column(name="step")
 	int step;
-	enum Statement { 
-		IN_PROGRESS, CLOSED
-	}
 	@Column(name="statement")
-	Statement statement;
+	String statement;
 
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name = "idUser")
 	User user;
 	
-	public Insurance(String name, Date created_date, int price, String summary, int step, Statement statement,
+	public Insurance(String name, Date created_date, int price, String summary, int step, String statement,
 			User user) {
 		super();
 		this.name = name;
@@ -87,10 +84,10 @@ public class Insurance {
 	public void setStep(int step) {
 		this.step = step;
 	}
-	public Statement getStatement() {
+	public String getStatement() {
 		return statement;
 	}
-	public void setStatement(Statement statement) {
+	public void setStatement(String statement) {
 		this.statement = statement;
 	}
 	public User getUser() {

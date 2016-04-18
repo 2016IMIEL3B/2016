@@ -1,1 +1,10 @@
+repository\InsuranceRepository.class
 repository\UserRepository.class
+repository\HouseInsuranceRepository.class
+repository\HomeRepository.class
+repository\AddressRepository.class
+repository\CarInsuranceRepository.class
+repository\DriverRepository.class
+repository\GroupRepository.class
+repository\VehiculeRepository.class
+repository\RoleRepository.class

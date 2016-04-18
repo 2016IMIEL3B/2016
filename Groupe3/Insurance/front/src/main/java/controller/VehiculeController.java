@@ -9,8 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by bmille on 22/03/2016.
  */
 @Controller
-public class VehicleController {
-
+public class VehiculeController {
     @RequestMapping(path = "/vehicle1",method = RequestMethod.GET)
     public ModelAndView vehicle1View(){
         ModelAndView model = new ModelAndView("vehicule1");

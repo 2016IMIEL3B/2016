@@ -28,8 +28,8 @@
             <tr>
                 <td>Garage</td>
                 <td>
-                    <input type="radio" name="vehicleInGarage" value="Oui"/>
-                    <input type="radio" name="vehicleInGarage" value="Non"/>
+                    <input type="radio" name="vehicleInGarage" value="Oui"/>Oui
+                    <input type="radio" name="vehicleInGarage" value="Non"/>Non
                     <br/>
                 </td>
             </tr>

@@ -57,7 +57,11 @@
         <!-- hibernate -->
 
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
 
+        </dependency>
         <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
