@@ -11,12 +11,12 @@
     <head>
         <meta charset="utf-8" />
         <title>Connexion</title>
-        <link type="text/css" rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/style.css" type="text/css" />
         <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <c:url value="/login" var="loginUrl"/>
         <div class=form-style-10">
+            <c:url value="/login" var="loginUrl"/>
             <h1>Authentification</h1>
             <form action="${loginUrl}" method="post">
                 <c:if test="${param.error != null}">

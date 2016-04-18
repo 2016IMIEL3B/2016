@@ -12,12 +12,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 /**
  * Created by Nico on 09/02/2016.
  */
+
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"config","controller","servlet","services", "repository","model"})
+@ComponentScan(basePackages = {"config", "controller", "servlet", "services", "repository", "model"})
 @EntityScan(basePackages = {"model"})
-@EnableJpaRepositories(basePackages = "repository")
-@Import(value = {WebSecurityConfig.class})
+@EnableJpaRepositories(basePackages = "services")
+@Import(value = {WebSecurityConfig.class, WebMvcConfig.class})
 public class ApplicationConfig extends SpringBootServletInitializer {
 
     @Override

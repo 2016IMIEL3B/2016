@@ -16,4 +16,8 @@ public class UserService implements IUserService{
     public User getUser(Integer id) {
         return userRepository.findOne(id);
     }
+
+    public User findByLogin(String login) {
+        return userRepository.findByLogin(login);
+    }
 }

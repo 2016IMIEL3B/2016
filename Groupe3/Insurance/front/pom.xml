@@ -13,7 +13,6 @@
     <packaging>war</packaging>
 
     <dependencies>
-
         <dependency>
             <groupId>insurance</groupId>
             <artifactId>insurance.service</artifactId>

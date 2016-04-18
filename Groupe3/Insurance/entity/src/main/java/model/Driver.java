@@ -10,10 +10,9 @@ public class Driver extends User {
 	Date drivingLicenceDate;
 	int accidentNumber;
 	int bonusMalus;
-	
-	public Driver(String firstName, String lastName, String login, String password, Group group,
-			Date drivingLicenceDate, int accidentNumber, int bonusMalus) {
-		//super(firstName, lastName, login, password, group);
+
+	public Driver(String firstName, String lastName, String username, String password, Group group, Date drivingLicenceDate, int accidentNumber, int bonusMalus) {
+		super(firstName, lastName, username, password, group);
 		this.drivingLicenceDate = drivingLicenceDate;
 		this.accidentNumber = accidentNumber;
 		this.bonusMalus = bonusMalus;

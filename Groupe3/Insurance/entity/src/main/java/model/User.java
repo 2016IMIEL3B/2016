@@ -5,35 +5,43 @@ package model;
 
 import javax.persistence.*;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import javax.print.DocFlavor;
+import java.util.Collection;
+import java.util.List;
+
+
 /**
  * @author Enzo
  *
  */
 @Entity
 @Table(name="user")
-public class User {
+public class User implements UserDetails {
 	@Id
-	@Column(name="id")
+	@Column(name="idUser")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int id;
+	private int id;
 	@Column(name="firstName")
-	String firstName;
+	private String firstName;
 	@Column(name="lastName")
-	String lastName;
+	private String lastName;
 	@Column(name="login")
-	String login;
+	private String username;
 	@Column(name="password")
-	String password;
-	//Group group;
-	/*
-	public User(String firstName, String lastName, String login, String password, Group group) {
+	private String password;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Group group;
+
+	public User(String firstName, String lastName, String username, String password, Group group) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.login = login;
+		this.username = username;
 		this.password = password;
 		this.group = group;
-	}*/
+	}
 	
 	public int getId() {
 		return id;
@@ -53,11 +61,11 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -65,12 +73,38 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	/*
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return group.getRoles();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
 	public Group getGroup() {
 		return group;
 	}
-	public void setGroup(Group group) {
+
+    @OneToMany(mappedBy="group")
+    public void setGroup(Group group) {
 		this.group = group;
 	}
-	*/
 }

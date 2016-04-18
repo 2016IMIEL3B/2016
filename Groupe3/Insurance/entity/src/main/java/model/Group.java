@@ -3,17 +3,31 @@
  */
 package model;
 
+import java.util.List;
+import javax.persistence.*;
+
 /**
  * @author Enzo
  *
  */
+@Entity
+@Table(name="group")
 public class Group {
-	int id;
-	String name;
-	
-	public Group(String name) {
-		super();
+	@Id
+	@Column(name="idGroup")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String name;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+		name="grouprole",
+		joinColumns=@JoinColumn(name="idGroup"),
+		inverseJoinColumns=@JoinColumn(name="idRole"))
+	private List<Role> roles;
+
+	public Group(String name, List<Role> roles) {
 		this.name = name;
+		this.roles = roles;
 	}
 
 	public int getId() {
@@ -30,5 +44,13 @@ public class Group {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 }
