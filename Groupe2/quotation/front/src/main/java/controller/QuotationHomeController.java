@@ -1,29 +1,21 @@
 package controller;
 
-import com.ICarService;
-import com.IDriverService;
 import com.IHomeService;
 import com.IQuotationService;
 import com.auth.UserSession;
 import com.back.HeaterType;
 import com.back.HomeType;
-import com.front.Car;
-import com.front.Driver;
 import com.front.Home;
 import com.front.Quotation;
 import com.utils.RestHelper;
-import io.vertx.core.json.Json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -40,7 +32,6 @@ public class QuotationHomeController {
 
     @Autowired
     UserSession userSession;
-    RestHelper restHelper = new RestHelper(userSession.getHeaderToken());
 
 
     @RequestMapping(value = "/devis/{id}/habitation", method = RequestMethod.GET)
@@ -143,10 +134,10 @@ public class QuotationHomeController {
     }
 
     private List<HomeType> getAllHomeType() {
-        return (List<HomeType>) restHelper.apiRequest("/api/homeType").getBody();
+        return (List<HomeType>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/homeType").getBody();
     }
 
     private List<HeaterType> getAllHeaterType() {
-        return (List<HeaterType>) restHelper.apiRequest("/api/homeType").getBody();
+        return (List<HeaterType>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/homeType").getBody();
     }
 }

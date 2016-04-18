@@ -144,24 +144,22 @@ public class QuotationCarController {
 
 
     private List<Fuel> getAllFuels() {
-        return (List<Fuel>) restHelper.apiRequest("/api/fuel").getBody();
+        return (List<Fuel>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/fuel").getBody();
     }
 
     private List<Mark> getAllMarks() {
-        return (List<Mark>) restHelper.apiRequest("/api/mark").getBody();
+        return (List<Mark>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/mark").getBody();
     }
 
     private List<Model> getAllModels() {
-        return (List<Model>) restHelper.apiRequest("/api/model").getBody();
+        return (List<Model>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/model").getBody();
     }
 
     private List<Formul> getAllFormuls() {
-        return (List<Formul>) restHelper.apiRequest("/api/formul").getBody();
+        return (List<Formul>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/formul").getBody();
     }
 
     private List<HorsePower> getAllHorsePowers() {
-        return (List<HorsePower>) restHelper.apiRequest("/api/horsepower").getBody();
+        return (List<HorsePower>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/horsepower").getBody();
     }
-
-    RestHelper restHelper = new RestHelper(userSession.getHeaderToken());
 }
