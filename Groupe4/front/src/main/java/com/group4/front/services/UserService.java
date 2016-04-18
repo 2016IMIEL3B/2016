@@ -3,7 +3,6 @@ package com.group4.front.services;
 import com.group4.front.common.User;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -38,7 +37,7 @@ public class UserService {
         //user.setPassword(bCryptEncoder.encode("password"));
         user.setPassword("password");
 
-        List<GrantedAuthority> grantedAuths = new ArrayList<>();
+        List<SimpleGrantedAuthority> grantedAuths = new ArrayList<>();
         grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
         grantedAuths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         user.setRoles(grantedAuths);

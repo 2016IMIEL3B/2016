@@ -15,6 +15,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        System.out.println("Entering CustomAuthenticationProvider.authenticate");
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
         //BCryptPasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
@@ -22,9 +23,14 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         User user = this.authenticationService.login(name, password);
 
+
         if (password.equals(user.getPassword())) {
+            System.out.println("Password match as expected.");
+            System.out.println("Exiting CustomAuthenticationProvider.authenticate");
+            System.out.println("name: " + name);
             return new UsernamePasswordAuthenticationToken(name, password, user.getRoles());
         }
+        System.out.println("Password does not match as expected.");
 
         return null;
     }
