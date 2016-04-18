@@ -12,12 +12,6 @@ public class Quote {
      */
     private Integer id;
 
-    /**
-     * String userName
-     */
-    private String userName;
-
-    private String userSurname;
     private Integer userId;
 
     private String typeQuote;
@@ -33,22 +27,6 @@ public class Quote {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserSurname() {
-        return userSurname;
-    }
-
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
     }
 
     public Integer getUserId() {
@@ -87,8 +65,6 @@ public class Quote {
     public String toString() {
         return "Quote{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", userSurname='" + userSurname + '\'' +
                 ", userId=" + userId +
                 ", typeQuote='" + typeQuote + '\'' +
                 ", guarantee='" + guarantee + '\'' +

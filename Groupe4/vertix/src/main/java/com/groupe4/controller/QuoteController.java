@@ -63,8 +63,14 @@ public class QuoteController {
      * POST /api/users/:idUser/quote
      */
     public void createQuote() {
+
+        System.out.println("Into create quote");
+
         Integer id = Integer.parseInt(this.routingContext.request().getParam("idUser"));
         Quote quote = Json.decodeValue(this.routingContext.getBodyAsJson().encode(), Quote.class);
+
+        quote.setUserId(id);
+
         this.quoteService.createQuote(quote, handler -> {
             if (handler.succeeded()) {
                 this.routingContext.response()

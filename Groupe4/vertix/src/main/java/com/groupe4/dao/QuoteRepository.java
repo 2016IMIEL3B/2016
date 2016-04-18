@@ -30,11 +30,9 @@ public class QuoteRepository implements IQuoteRepository {
                 if (res.succeeded()) {
                     SQLConnection connection = res.result();
                     //System.out.println("Connexion OK");
-                    String query = "INSERT INTO quote (userName,userSurname,userId,typeQuote,guarantee,price) " +
-                            "VALUES (?, ?, ?, ?, ?, ?)";
+                    String query = "INSERT INTO quote (userId,typeQuote,guarantee,price) " +
+                            "VALUES (?, ?, ?, ?)";
                     JsonArray params = new JsonArray()
-                            .add(quote.getUserName())
-                            .add(quote.getUserSurname())
                             .add(quote.getUserId())
                             .add(quote.getTypeQuote())
                             .add(quote.getGuarantee())
@@ -79,8 +77,6 @@ public class QuoteRepository implements IQuoteRepository {
                             for (JsonArray row : results) {
                                 Quote nQuote = new Quote();
                                 nQuote.setId(row.getInteger(0));
-                                nQuote.setUserName(row.getString(1));
-                                nQuote.setUserSurname(row.getString(2));
                                 nQuote.setUserId(row.getInteger(3));
                                 nQuote.setTypeQuote(row.getString(4));
                                 nQuote.setGuarantee(row.getString(5));
