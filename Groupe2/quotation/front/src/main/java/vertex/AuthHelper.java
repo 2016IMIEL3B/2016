@@ -18,14 +18,14 @@ import io.vertx.ext.web.handler.JWTAuthHandler;
  */
 public class AuthHelper {
 
-    private Vertx vertx;
     private AsyncSQLClient client;
     private JWTAuth authProvider;
+    private JWTAuthHandler authHandler;
 
     public AuthHelper(Vertx vertx) {
-        this.vertx = vertx;
         this.client = MySQLClient.createShared(vertx, new VertxDatabaseConfig().getDBConfig());
         this.authProvider = JWTAuth.create(vertx, new VertxAuthConfig().getAuthConfig());
+        this.authHandler = JWTAuthHandler.create(authProvider);
     }
 
     public void getUserDetails(RoutingContext context){
@@ -138,11 +138,9 @@ public class AuthHelper {
     }*/
 
     public JWTAuthHandler getAuthHandler(){
-        return JWTAuthHandler.create(authProvider);
+        return authHandler;
     }
 
 
-    public void close(){
-        client.close();
-    }
+    public void close(){client.close();}
 }
