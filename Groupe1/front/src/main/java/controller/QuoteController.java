@@ -55,8 +55,19 @@ public class QuoteController {
         quote2.setSummary("Devis maison centre rennes");
         quotes.add(quote2);
 
-
         model.addObject("quotes", quotes);
         return model;
+    }
+
+    @RequestMapping(value = "/carResume", method = RequestMethod.POST)
+    public ModelAndView carResume(Integer carId){
+
+        return null;
+    }
+
+    @RequestMapping(value = "/habResume", method = RequestMethod.POST)
+    public ModelAndView habResume(Integer habId){
+
+        return null;
     }
 }

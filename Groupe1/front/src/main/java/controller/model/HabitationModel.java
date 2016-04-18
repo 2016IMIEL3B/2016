@@ -25,6 +25,10 @@ public class HabitationModel {
         this.quote = quote;
     }
 
+    public HabitationModel(Quote myQuote) {
+        quote = myQuote;
+    }
+
     public boolean checkStep1() {
         boolean $status = false;
         String name = this.quote.getName();
@@ -60,5 +64,6 @@ public class HabitationModel {
             $status = true;
         }
         return $status;
+
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import fr.*;
 import controller.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +49,14 @@ public class HabWizardController {
             // on renvoie à la page précédente
             return new ModelAndView("wizard/habitation/"+pageViews[currentPage-2]);
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") int _quoteId) {
+        Quote quote= new Quote();
+        HabitationModel habitationModel = new HabitationModel(quote);
+        //return new ModelAndView("wizard/habitation/habitation-step"+quote.step,"habWizard", habitationModel);
+        return null;
     }
 
     /**
