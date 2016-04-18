@@ -1,5 +1,7 @@
 package controller;
 
+import fr.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
@@ -15,8 +17,10 @@ import controller.model.CarModel;
 @SessionAttributes("carWizard")
 public class CarWizardController {
 
-
     private String[] pageViews = new String[] {"car-step1","car-step2","car-step3","car-step4"};
+
+    @Autowired
+    private QuoteService quoteService;
 
     @RequestMapping
     public ModelAndView processWizard() {
@@ -39,6 +43,13 @@ public class CarWizardController {
     public String processCancel(SessionStatus status){
         status.setComplete();
         return "wizard/canceledView";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") Integer quoteId) {
+        Quote quote = quoteService.findOne(quoteId);
+        CarModel carModel = new CarModel(quote);
+        return new ModelAndView("wizard/car/car-step"+quote.getStep(),"carWizard", carModel);
     }
 
 }

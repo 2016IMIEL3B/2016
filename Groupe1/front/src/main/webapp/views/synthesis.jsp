@@ -24,7 +24,7 @@
                             <td>${quote.vehicle.model.brand.name}</td>
                             <td>${quote.price} €</td>
                             <td>${quote.summary}</td>
-                            <td><a class="btn btn-default" href=<c:url value="/carWizard.form?_page=${quote.step}"/>>Reprendre</a></td>
+                            <td><a class="btn btn-default" href=<c:url value="/carWizard.form?_quoteId=${quote.step}"/>>Reprendre</a></td>
                         </c:if>
                     </c:forEach>
                 </c:if>
