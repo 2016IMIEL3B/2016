@@ -28,6 +28,8 @@ public class UserController {
         model.addObject("user", user);
 
 
+        model.addObject("user", user);
+
         return model;
     }
 }

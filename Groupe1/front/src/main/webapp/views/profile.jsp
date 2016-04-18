@@ -3,9 +3,11 @@
 
 
 
+
 <div class="container">
     <div class="jumbotron">
         <h1>Page profil</h1>
+
 
 <h2>${user.firstName} ${user.lastName}</h2>
 <table>
