@@ -2,6 +2,7 @@ package vertex;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpHeaders;
+import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
@@ -52,9 +53,21 @@ public class VerticleListener extends AbstractVerticle {
 
         router.route("/api/*").failureHandler(failureRoutingContext ->{
             int statusCode = failureRoutingContext.statusCode();
-            if (statusCode <=0) {
-                statusCode = 403;
+            HttpServerResponse resp = failureRoutingContext.response();
+
+            if (statusCode <=0 || statusCode == 403) {
+                resp.setStatusCode(403).end("Not Authorized");
+            } else if(statusCode == 401) {
+                resp.setStatusCode(statusCode).end("Bad Login");
+            } else if(statusCode == 501) {
+                resp.setStatusCode(statusCode).end("Querry Sided Error");
+            } else if(statusCode == 400) {
+                resp.setStatusCode(statusCode).end("Hep Hep Hep, on aime pas trop les tricheurs par chez nous");
+            } else {
+                resp.setStatusCode(statusCode).end();
             }
+
+
             failureRoutingContext.response().setStatusCode(statusCode).end("Not Authorized");
         });
 

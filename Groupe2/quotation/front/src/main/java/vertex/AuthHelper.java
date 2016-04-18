@@ -32,7 +32,7 @@ public class AuthHelper {
         String login = context.request().getParam("login");
         System.out.println("login -> " + login);
         if (login == null) {
-            context.response().end(new JsonObject().put("result", "Nope!").encode());
+            context.fail(400);
         } else {
             getDetailsFromLogin(context, login);
         }
@@ -52,19 +52,17 @@ public class AuthHelper {
                             String token = authProvider.generateToken(userDetails, new JWTOptions());
                             context.response().putHeader("UserDetails", userDetails.toString());
                             context.response().putHeader("Token", token);
-                            context.response().end(new JsonObject().put("result", "Ok!").encode());
-
+                            context.response().end(userDetails.encode());
                         } else {
-                            context.response().end(new JsonObject().put("result", "Bad Login").encode());
-
+                            context.fail(401);
                         }
                     } else {
-                        context.response().end(new JsonObject().put("result", "Error with Query.").encode());
+                        context.fail(501);
                     }
                     connection.close();
                 });
             } else {
-                context.response().end(new JsonObject().put("result", "Error with Database connection.").encode());
+                context.fail(503);
             }
 
         });
