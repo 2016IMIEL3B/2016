@@ -6,9 +6,6 @@ import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
-/**
- * Created by Mathilde on 24/03/2016.
- */
 public class UserController {
 
     private RoutingContext routingContext;

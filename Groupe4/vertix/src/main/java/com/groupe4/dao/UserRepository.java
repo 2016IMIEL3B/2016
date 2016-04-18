@@ -192,7 +192,7 @@ public class UserRepository implements IUserRepository {
                         user.setActive(false);
                     }
                     user.setCreatedAt(dateFormatter.parse(row.getString(6)));
-                    user.setUpdatedAt(new DateTime(row.getString(7)));
+                    user.setUpdatedAt(dateFormatter.parse(row.getString(7)));
                     user.setRoles(Arrays.asList(row.getString(8).split(",")));
                 } catch (ParseException e) {
                     e.printStackTrace();
