@@ -2,7 +2,6 @@ package com.groupe4.dao;
 
 import com.groupe4.connection.DbClient;
 import com.groupe4.entity.User;
-import com.sun.deploy.util.StringUtils;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
@@ -17,14 +16,9 @@ import org.joda.time.DateTime;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-/**
- * Created by Mathilde on 23/03/2016.
- */
 public class UserRepository implements IUserRepository {
 
     private int id;
@@ -52,7 +46,7 @@ public class UserRepository implements IUserRepository {
                             .add(user.getPassword())
                             .add(createdAt)
                             .add(updatedAt)
-                            .add(StringUtils.join(user.getRoles(), ","));
+                            .add(user.getRoles().stream().collect(Collectors.joining(",")));
 
                     connection.updateWithParams(query, params, res2 -> {
                         checkUpdateResponse(res, res2, handler);
@@ -89,7 +83,7 @@ public class UserRepository implements IUserRepository {
                             .add(user.getLogin())
                             .add(user.getPassword())
                             .add(updatedAt)
-                            .add(StringUtils.join(user.getRoles(), ","))
+                            .add(user.getRoles().stream().collect(Collectors.joining(",")))
                             .add(user.getId());
 
                     connection.updateWithParams(query, params, res2 -> {
