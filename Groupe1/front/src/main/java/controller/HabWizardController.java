@@ -16,6 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes("habWizard")
 public class HabWizardController {
 
+    @Autowired
+    private QuoteService quoteService;
+
+    @Autowired
+    private HabitationService habitationService;
+
+    @Autowired
+    private AddressService addressService;
+
     private String[] pageViews = new String[] {"habitation-step1","habitation-step2","habitation-step3","habitation-step4"};
 
     @Autowired
@@ -56,7 +65,7 @@ public class HabWizardController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getFromSynthesis(@RequestParam("_quoteId") Integer quoteId) {
-        Quote quote = quoteService.findOne(quoteId);
+        quoteService.findOne(quoteId);
         HabitationModel habitationModel = new HabitationModel(quote);
         return new ModelAndView("wizard/habitation/habitation-step"+quote.getStep(),"habWizard", habitationModel);
     }
@@ -66,7 +75,9 @@ public class HabWizardController {
     */
     @RequestMapping(params = "_finish")
     public ModelAndView processFinish(@ModelAttribute("habWizard") HabitationModel habWizard, SessionStatus status) {
-
+        addressService.save(habWizard.getQuote().getHabitation().getAddress());
+        habitationService.save(habWizard.getQuote().getHabitation());
+        quoteService.save(habWizard.getQuote());
 
         // suppression de l'objet en session
         status.setComplete();
