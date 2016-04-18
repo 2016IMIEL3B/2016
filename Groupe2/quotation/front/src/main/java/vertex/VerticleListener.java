@@ -78,7 +78,6 @@ public class VerticleListener extends AbstractVerticle {
 
     private void getDefaultHeader(RoutingContext context){
         context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
-        context.response().headers().add("content-type", "text/html;charset=UTF-8");
         context.response()
                 // do not allow proxies to cache the data
                 .putHeader("Cache-Control", "no-store, no-cache")
