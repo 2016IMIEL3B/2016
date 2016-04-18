@@ -3,26 +3,39 @@
  */
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * @author Enzo
  *
  */
-public class CarInsurance extends Insurance {
-	
+@Entity
+@Table(name="carinsurance")
+public class CarInsurance {
+	@Id
+	@Column(name="idCarInsurance")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+	@Column(name="secondaryDriver")
 	String secondaryDriver;
+	@Column(name="allRisks")
 	int allRisks;
+	@Column(name="third")
 	int third;
-	
-	public CarInsurance(String name, Date created_date, int price, String summary, int step, Statement statement,
-			User user, String secondaryDriver, int allRisks, int third) {
-		super(name, created_date, price, summary, step, statement, user);
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idInsurance")
+	private Insurance insurance;
+
+	public CarInsurance(String secondaryDriver, int allRisks, int third, Insurance insurance) {
 		this.secondaryDriver = secondaryDriver;
 		this.allRisks = allRisks;
 		this.third = third;
+		this.insurance = insurance;
 	}
+
+	protected CarInsurance() {}
 	
 	public int getId() {
 		return id;
@@ -48,4 +61,5 @@ public class CarInsurance extends Insurance {
 	public void setThird(int third) {
 		this.third = third;
 	}
+
 }

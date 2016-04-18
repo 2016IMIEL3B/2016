@@ -17,6 +17,7 @@ public class Group {
 	@Column(name="idGroup")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name="name")
 	private String name;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -29,6 +30,8 @@ public class Group {
 		this.name = name;
 		this.roles = roles;
 	}
+
+	protected Group() {}
 
 	public int getId() {
 		return id;

@@ -44,6 +44,8 @@ public class User implements UserDetails {
 		this.password = password;
 		this.group = group;
 	}
+
+	protected User(){}
 	
 	public int getId() {
 		return id;
@@ -75,11 +77,9 @@ public class User implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
     public Group getGroup() {
         return group;
     }
-
     public void setGroup(Group group) {
         this.group = group;
     }

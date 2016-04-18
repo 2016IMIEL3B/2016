@@ -3,21 +3,33 @@
  */
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * @author Enzo
  *
  */
-public class HouseInsurance extends Insurance {
+@Entity
+@Table(name="houseinsurance")
+public class HouseInsurance {
+	@Id
+	@Column(name="idHouseInsurance")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+	@Column(name="option")
 	int option;
-	
-	public HouseInsurance(String name, Date created_date, int price, String summary, int step, Statement statement,
-			User user, int option) {
-		super(name, created_date, price, summary, step, statement, user);
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idInsurance")
+	private Insurance insurance;
+
+	public HouseInsurance(int option, Insurance insurance) {
 		this.option = option;
+		this.insurance = insurance;
 	}
+
+	protected HouseInsurance() {}
 
 	public int getId() {
 		return id;

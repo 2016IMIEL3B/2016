@@ -1,5 +1,8 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 public class State {
 	int id;
 	String value;
@@ -16,6 +19,7 @@ public class State {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
 	public State(String value) {
 		super();
 		this.value = value;

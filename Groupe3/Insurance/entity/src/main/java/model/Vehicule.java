@@ -3,17 +3,31 @@
  */
 package model;
 
+import javax.persistence.*;
+
 /**
  * @author Enzo
  *
  */
+@Entity
+@Table(name="insurance")
 public class Vehicule {
+	@Id
+	@Column(name="idVehicule")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+	@Column(name="brand")
 	String brand;
+	@Column(name="model")
 	String model;
+	@Column(name="fuel")
 	String fuel;
+	@Column(name="horsepowerTax")
 	int horsePowerTax;
+	@Column(name="inGarage")
 	int inGarage;
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name = "idDriver")
 	Driver driver;
 	
 	public Vehicule(String brand, String model, String fuel, int horsePowerTax, int inGarage, Driver driver) {
@@ -25,6 +39,8 @@ public class Vehicule {
 		this.inGarage = inGarage;
 		this.driver = driver;
 	}
+
+	protected Vehicule() {}
 
 	public int getId() {
 		return id;

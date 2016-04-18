@@ -3,23 +3,38 @@
  */
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * @author Enzo
  *
  */
+@Entity
+@Table(name="insurance")
 public class Insurance {
+	@Id
+	@Column(name="idInsurance")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+	@Column(name="name")
 	String name;
+	@Column(name="creationDate")
 	Date created_date;
+	@Column(name="price")
 	int price;
+	@Column(name="summary")
 	String summary;
+	@Column(name="step")
 	int step;
 	enum Statement { 
 		IN_PROGRESS, CLOSED
 	}
+	@Column(name="statement")
 	Statement statement;
+
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name = "idUser")
 	User user;
 	
 	public Insurance(String name, Date created_date, int price, String summary, int step, Statement statement,
@@ -33,6 +48,8 @@ public class Insurance {
 		this.statement = statement;
 		this.user = user;
 	}
+
+	protected Insurance() {}
 	
 	public int getId() {
 		return id;

@@ -45,13 +45,4 @@ public class DemoController {
         model.addObject("message","hello world -> " + nom);
         return model;
     }
-    /*
-    @RequestMapping(path = "/controller/DemoController"
-            ,method = {RequestMethod.POST})
-    public ModelAndView demoTp5(@ModelAttribute Person person)
-    {
-        ModelAndView model = new ModelAndView("index", "Person", new Person());
-        model.addObject("message","hello world -> " + person.getFirstName() + " " + person.getLastName());
-        return model;
-    }*/
 }

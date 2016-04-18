@@ -3,20 +3,42 @@
  */
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class Driver extends User {
+/**
+ * @author Enzo
+ *
+ */
+@Entity
+@Table(name="driver")
+public class Driver {
+	@Id
+	@Column(name="idDriver")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+
+	@Column(name="drivingLicenseDate")
 	Date drivingLicenceDate;
+
+	@Column(name="accidentNumber")
 	int accidentNumber;
+
+	@Column(name="bonusMalus")
 	int bonusMalus;
 
-	public Driver(String firstName, String lastName, String username, String password, Group group, Date drivingLicenceDate, int accidentNumber, int bonusMalus) {
-		super(firstName, lastName, username, password, group);
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idUser")
+	private User user;
+
+	public Driver(Date drivingLicenceDate, int accidentNumber, int bonusMalus, User user) {
 		this.drivingLicenceDate = drivingLicenceDate;
 		this.accidentNumber = accidentNumber;
 		this.bonusMalus = bonusMalus;
+		this.user = user;
 	}
+
+	protected Driver() {}
 
 	public Date getDrivingLicenceDate() {
 		return drivingLicenceDate;

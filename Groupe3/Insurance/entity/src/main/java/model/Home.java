@@ -1,17 +1,37 @@
 package model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="home")
 public class Home {
+	@Id
+	@Column(name="idHome")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
+	@Column(name="type")
 	String type;
+	@Column(name="surface")
 	int surface;
+	@Column(name="roomNumber")
 	int roomNumber;
+	@Column(name="floor")
 	int floor;
+	@Column(name="bathroomNumber")
 	int bathroomNumber;
+	@Column(name="withGarage")
 	int withGarage;
+	@Column(name="groundSurface")
 	int groundSurface;
+	@Column(name="terraceSurface")
 	int terraceSurface;
+	@Column(name="heatingType")
 	String heatingType;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idAdress")
 	Address address;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idUser")
 	User user;
 	
 	public Home(String type, int surface, int roomNumber, int floor, int bathroomNumber, int withGarage,
@@ -29,6 +49,8 @@ public class Home {
 		this.address = address;
 		this.user = user;
 	}
+
+	protected Home() {}
 	
 	public int getId() {
 		return id;

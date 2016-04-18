@@ -19,6 +19,7 @@ public class Role implements GrantedAuthority {
 	@Column(name="idRole")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name="name")
 	private String name;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -31,6 +32,8 @@ public class Role implements GrantedAuthority {
 		super();
 		this.name = name;
 	}
+
+	protected Role() {}
 
 	public int getId() {
 		return id;
