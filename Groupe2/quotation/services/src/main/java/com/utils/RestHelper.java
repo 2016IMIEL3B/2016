@@ -19,9 +19,6 @@ import java.util.List;
  */
 public class RestHelper {
 
-    /*@Autowired
-    UserSession usersession;*/
-
     MultiValueMap<String, String> headers;
     RestTemplate restTemplate;
     HttpEntity<JsonObject> request;
@@ -43,11 +40,6 @@ public class RestHelper {
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         headers.add("Content-Type", "application/json");
         headers.add("Cache-Control", "no-store, no-cache");
-        /*String token = usersession.getToken();
-        if (!token.equals("")) {
-            headers.add("Authorization", "Bearer " + token );
-        }*/
-
     }
     private void validate() {
         JsonObject body = new JsonObject().put("Hey", "Bonjour");
