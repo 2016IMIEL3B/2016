@@ -69,6 +69,7 @@ public class QuotationHomeController {
                     model.addObject("step", 3);
                     break;
                 case 4:
+                    home.getQuotation().setPrice(899.99f);
                     model = new ModelAndView("QuotationHome/stepFour","home",home);
                     model.addObject("formul", this.getAllFormul());
                     model.addObject("step", 4);

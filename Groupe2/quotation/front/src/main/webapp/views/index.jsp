@@ -13,7 +13,14 @@
                     <td>${quotation.nbStep}</td>
                     <td>${quotation.state}</td>
                     <c:if test="${quotation.typeQuotation.entitled == 'Voiture'}">
-                        <td><a class="btn btn-primary" href="/devis/${quotation.id}/voiture">Reprendre</a></td>
+                        <c:choose>
+                            <c:when test="${quotation.state == 'Fini'}">
+                                <td><a class="btn btn-primary" href="/devis/${quotation.id}/voiture">Voir</a></td>
+                            </c:when>
+                            <c:otherwise>
+                            <td><a class="btn btn-primary" href="/devis/${quotation.id}/voiture">Reprendre</a></td>
+                            </c:otherwise>
+                        </c:choose>
                     </c:if>
                     <c:if test="${quotation.typeQuotation.entitled == 'Habitation'}">
                         <c:choose>

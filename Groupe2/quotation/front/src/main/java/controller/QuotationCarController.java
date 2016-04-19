@@ -62,23 +62,32 @@ public class QuotationCarController {
             Car car = carService.findOneByQuotationId(id);
             car.setQuotation(quotation);
 
-            Iterable<Driver> drivers = driverService.findByCarId(car.getId());
-
             switch(quotation.getNbStep()){
+                case 0:
+                    this.principalDriver = driverService.findOneByCarIdAndPrincipal(car.getId(), false);
+
+                    model = new ModelAndView("QuotationCar/index","driver", this.principalDriver);
+                    break;
                 case 2:
                     model = new ModelAndView("QuotationCar/stepTwo", "driver", new Driver());
                     model.addObject("step", 2);
                     break;
                 case 3:
-                    drivers.forEach(driver -> { QuotationCarController.this.principalDriver = driver; } );
+                    this.principalDriver = driverService.findOneByCarIdAndPrincipal(car.getId(), false);
+
                     this.principalDriver.setCar(car);
                     model = new ModelAndView("QuotationCar/stepThree", "driver", this.principalDriver);
                     model.addObject("step", 3);
                     break;
                 case 4:
-                    drivers.forEach(driver -> { if (driver.isPrincipal()) QuotationCarController.this.principalDriver = driver; } );
+                    this.principalDriver = driverService.findOneByCarIdAndPrincipal(car.getId(), true);
+                    Driver secondDriver = driverService.findOneByCarIdAndPrincipal(car.getId(), true);
+
                     this.principalDriver.setCar(car);
+                    quotation.setPrice(359.45f);
+                    this.principalDriver.getCar().setQuotation(quotation);
                     model = new ModelAndView("QuotationCar/stepFour", "driver", this.principalDriver);
+                    model.addObject("secondDriver", secondDriver);
                     model.addObject("step", 4);
                     break;
                 default:
@@ -130,7 +139,7 @@ public class QuotationCarController {
         Quotation quotation = this.quotationService.findOneById(id);
         Car car = this.carService.findOneByQuotationId(quotation.getId());
 
-        this.driverService.findByCarId(car.getId()).forEach(obj -> QuotationCarController.this.principalDriver = obj);
+        this.principalDriver = this.driverService.findOneByCarIdAndPrincipal(car.getId(), false);
 
         this.principalDriver.setLicenceDate(driver.getLicenceDate());
         this.principalDriver.setBonusPenality(driver.getBonusPenality());
@@ -158,18 +167,8 @@ public class QuotationCarController {
         Quotation quotation = this.quotationService.findOneById(id);
         Car car = this.carService.findOneByQuotationId(quotation.getId());
         Driver secondDriver =  null;
-        if (secondFirstName != "" && secondLastName != "") {
-            secondDriver = new Driver();
 
-            secondDriver.setFirstName(secondFirstName);
-            secondDriver.setLastName(secondLastName);
-            secondDriver.setCar(car);
-            secondDriver.setPrincipal(false);
-
-            this.driverService.save(secondDriver);
-        }
-
-        this.driverService.findByCarId(car.getId()).forEach(obj -> QuotationCarController.this.principalDriver = obj);
+        this.principalDriver = this.driverService.findOneByCarIdAndPrincipal(car.getId(), false);
 
         this.principalDriver.setFirstName(driver.getFirstName());
         this.principalDriver.setLastName(driver.getLastName());
@@ -184,6 +183,17 @@ public class QuotationCarController {
         this.quotationService.save(quotation);
         this.driverService.save(this.principalDriver);
 
+        if (secondFirstName != "" && secondLastName != "") {
+            secondDriver = new Driver();
+
+            secondDriver.setFirstName(secondFirstName);
+            secondDriver.setLastName(secondLastName);
+            secondDriver.setCar(car);
+            secondDriver.setPrincipal(false);
+
+            this.driverService.save(secondDriver);
+        }
+
         model = new ModelAndView(String.format("redirect:/devis/%d/voiture", this.principalDriver.getCar().getQuotation().getId()));
 
         return model;
@@ -196,20 +206,17 @@ public class QuotationCarController {
 
         Quotation quotation = this.quotationService.findOneById(id);
         Car car = this.carService.findOneByQuotationId(quotation.getId());
+        this.principalDriver = this.driverService.findOneByCarIdAndPrincipal(car.getId(), true);
 
-        this.driverService.findByCarId(car.getId()).forEach(obj -> QuotationCarController.this.principalDriver = obj);
+        car.setTier(driver.getCar().isTier());
+        quotation.setState("Fini");
+        quotation.setNbStep(0);
 
-        this.principalDriver.setBonusPenality(driver.getBonusPenality());
-        this.principalDriver.setLicenceDate(driver.getLicenceDate());
-        this.principalDriver.setNbCrash(driver.getNbCrash());
+        this.quotationService.save(car.getQuotation());
+        this.carService.save(car);
 
-        if ((car.getInsurance() != "")) {
-            car.getQuotation().setNbStep(0);
-            car.getQuotation().setState("Terminer");
-            Quotation result = this.quotationService.save(car.getQuotation());
-            Car carResult = this.carService.save(car);
-            model = new ModelAndView(String.format("redirect:/"));
-        }
+        model = new ModelAndView(String.format("redirect:/"));
+
         return model;
     }
 
@@ -226,13 +233,14 @@ public class QuotationCarController {
         return (List<Model>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/model").getBody();
     }
 
-    private List<Formul> getAllFormuls() {
-        return (List<Formul>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/formul").getBody();
-    }
-
     private List<HorsePower> getAllHorsePowers() {
         return (List<HorsePower>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/horsepower").getBody();
     }
+
+    private List<Price> getAllPrice() {
+        return (List<Price>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/price").getBody();
+    }
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");

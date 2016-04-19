@@ -1,10 +1,5 @@
 package com.front;
 
-import com.back.Fuel;
-import com.back.Insurance;
-import com.back.Mark;
-import com.back.Model;
-
 import javax.persistence.*;
 
 /**
