@@ -12,9 +12,10 @@ import java.util.Date;
 /**
  * Created by bmille on 22/03/2016.
  */
+
+//@RequestMapping("/wizard.form")
+//@SessionAttributes("modelWizard")
 @Controller
-@RequestMapping("/wizard.form")
-@SessionAttributes("modelWizard")
 public class VehiculeController {
     @Autowired
     private ICarInsuranceService carInsuranceService;
@@ -29,19 +30,31 @@ public class VehiculeController {
 
     private String[] pageViews = new String[] {"vehicule1","vehicule2", "vehicule3", "vehicule4", "vehicule5"};
 
-    @RequestMapping(path = "/vehicle1",method = RequestMethod.GET)
+    /*@RequestMapping(path = "/vehicle1",method = RequestMethod.GET)
     public ModelAndView vehicle1View(){
         ModelAndView model = new ModelAndView("wizard/vehicule1","modelWizard", new ModelWizard());
         return model;
+    }*/
+
+    @RequestMapping(value = "/vehicle1",method = RequestMethod.GET)
+    public ModelAndView vehicle1View(){
+        ModelAndView model = new ModelAndView("vehicule1");
+        return model;
     }
 
+    @RequestMapping(value = "/vehicle2",method = RequestMethod.GET)
+    public ModelAndView vehicle2View(){
+        ModelAndView model = new ModelAndView("vehicule2");
+        return model;
+    }
+    /*
     @RequestMapping(path = "/vehicle2/{idInsurance}",method = RequestMethod.GET)
     public @ResponseBody ModelAndView vehicle2View(@PathVariable int idInsurance){
         ModelAndView model = new ModelAndView("vehicule2");
         Insurance insurance = insuranceService.findByIdInsurance(idInsurance);
         model.addObject("carInsurance", carInsuranceService.findByInsurance(insurance));
         return model;
-    }
+    }*/
 /*
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView vehicle2View(@RequestParam("/vehicle2") int currentPage,
@@ -73,6 +86,12 @@ public class VehiculeController {
         return new ModelAndView("wizard/"+pageViews[currentPage-1]);
     }*/
 
+    @RequestMapping(value = "/vehicle3",method = RequestMethod.GET)
+    public ModelAndView vehicle3View(){
+        ModelAndView model = new ModelAndView("vehicule3");
+        return model;
+    }
+/*
     @RequestMapping(path = "/vehicle3/{idInsurance}",method = RequestMethod.GET)
     public @ResponseBody ModelAndView vehicle3View(@PathVariable int idInsurance){
         ModelAndView model = new ModelAndView("vehicule3");
@@ -80,7 +99,7 @@ public class VehiculeController {
         model.addObject("carInsurance", carInsuranceService.findByInsurance(insurance));
         return model;
     }
-
+*/
    /* @RequestMapping(path = "/vehicle3",method = RequestMethod.POST)
     public ModelAndView vehicle2View(@RequestParam Date userDrivingLicenseDate,
                                      @RequestParam int userAccidentNumber,
@@ -100,6 +119,12 @@ public class VehiculeController {
         return model;
     }*/
 
+    @RequestMapping(value = "/vehicle4",method = RequestMethod.GET)
+    public ModelAndView vehicle4View(){
+        ModelAndView model = new ModelAndView("vehicule4");
+        return model;
+    }
+    /*
     @RequestMapping(path = "/vehicle4/{idInsurance}",method = RequestMethod.GET)
     public @ResponseBody ModelAndView vehicle4View(@PathVariable int idInsurance){
         ModelAndView model = new ModelAndView("vehicule4");
@@ -107,7 +132,7 @@ public class VehiculeController {
         model.addObject("carInsurance", carInsuranceService.findByInsurance(insurance));
         return model;
     }
-
+*/
     /*@RequestMapping(path = "/vehicle4",method = RequestMethod.POST)
     public ModelAndView vehicle2View(@RequestParam String carInsuranceSecondaryDriver,
                                      @RequestParam int vehicleInGarage){

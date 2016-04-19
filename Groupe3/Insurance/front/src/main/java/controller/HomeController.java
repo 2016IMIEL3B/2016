@@ -21,21 +21,38 @@ public class HomeController {
     private IHouseInsuranceService houseInsuranceService;
     @Autowired
     private IInsuranceService insuranceService;
-
-    @RequestMapping(path = "/home1",method = RequestMethod.GET)
-    public @ResponseBody ModelAndView index1View(@PathVariable int idInsurance){
+    @RequestMapping(value = "/home1",method = RequestMethod.GET)
+    public ModelAndView index1View(){
         ModelAndView model = new ModelAndView("home1");
         return model;
     }
 
-    @RequestMapping(path = "/home2/{idInsurance}",method = RequestMethod.GET)
+    @RequestMapping(value = "/home2",method = RequestMethod.GET)
+    public ModelAndView index2View(){
+        ModelAndView model = new ModelAndView("home2");
+        return model;
+    }
+
+  /*  @RequestMapping(path = "/home2/{idInsurance}",method = RequestMethod.GET)
     public @ResponseBody ModelAndView index2View(@PathVariable int idInsurance){
         ModelAndView model = new ModelAndView("home2");
         Insurance insurance = insuranceService.findByIdInsurance(idInsurance);
         model.addObject("carInsurance", houseInsuranceService.findByInsurance(insurance));
         return model;
     }
+*/
+    @RequestMapping(value = "/home3",method = RequestMethod.GET)
+    public ModelAndView index3View(){
+        ModelAndView model = new ModelAndView("home3");
+        return model;
+    }
 
+    @RequestMapping(value = "/home4",method = RequestMethod.GET)
+    public ModelAndView index4View(){
+        ModelAndView model = new ModelAndView("home4");
+        return model;
+    }
+/*
     @RequestMapping(path = "/home3/{idInsurance}",method = RequestMethod.GET)
     public @ResponseBody ModelAndView index3View(@PathVariable int idInsurance){
         ModelAndView model = new ModelAndView("home3");
@@ -50,5 +67,5 @@ public class HomeController {
         Insurance insurance = insuranceService.findByIdInsurance(idInsurance);
         model.addObject("carInsurance", houseInsuranceService.findByInsurance(insurance));
         return model;
-    }
+    }*/
 }
