@@ -169,7 +169,7 @@ public class QuotationHomeController {
             homeTemp.setFormul(home.getFormul());
 
             homeTemp.getQuotation().setNbStep(0);
-            //home.getQuotation().setPrice(home.getQuotation().getPrice());
+            homeTemp.getQuotation().setPrice(889.99F);
             homeTemp.getQuotation().setState("Fini");
             this.quotationService.save(homeTemp.getQuotation());
 

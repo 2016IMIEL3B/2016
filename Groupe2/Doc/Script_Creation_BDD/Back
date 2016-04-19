@@ -21,7 +21,7 @@ CREATE TABLE HorsePower
 CREATE TABLE Price
 (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	value INT,
+	value FLOAT,
     	type NVARCHAR(30)
 );
 
