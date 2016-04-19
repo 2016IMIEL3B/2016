@@ -30,7 +30,17 @@
         </form:select>
     </div>
 
+    <div class="col-md-12">
+        <label class="col-md-3">Type de contract</label>
+        <div class="col-md-3">
+            <form:radiobutton path="quoteHome.formula" value="0"/>Formule 1
+            <form:radiobutton path="quoteHome.formula" value="1"/>Formule 2
+            <form:radiobutton path="quoteHome.formula" value="2"/>Formule 2
+        </div>
+    </div>
+
     <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>
+    <a href="/wizard/home/2" class="btn btn-default">Etape précédente</a>
 </form:form>
 
 </body>

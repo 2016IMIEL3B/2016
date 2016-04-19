@@ -51,6 +51,7 @@ public class UserService {
         user.setId(id);
         user.setName("Paul");
         user.setSurname("Jean");
+        user.setLogin("jeanpaul@mail.fr");
 
         return user;
     }
