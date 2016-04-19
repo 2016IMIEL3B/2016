@@ -1,30 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="header.jsp" %>
 
-<html lang="en">
+<div class="container">
+    <div class="jumbotron">
 
-<body>
+        <h1>Devis - Assurer une habitation</h1>
+        <h2>Votre devis est enregistré !</h2>
+<
+        <span>Voir les devis réalisés : <a class="btn btn-default>" href="/synthesis">Mes devis</a></span>
 
-<nav>
-    <h1>Projet Vertx</h1>
-    <a href="/car/1" style="display: inline">Devis Voiture</a> |
-    <a href="/habitation/1">Devis Habitation</a> |
-    <a href="/profile">Profil</a> |
-    <a href="/synthesis">Mes Devis</a>
-</nav>
-<hr/>
+        </div>
+    </div>
 
-<h1>Devis - Assurer une habitation</h1>
-<h2>Succès</h2>
-
-Step 1 : ${habWizard.step1} <br/>
-Step 2 : ${habWizard.step2} <br/>
-Step 3 : ${habWizard.step3} <br/>
-
-
-
-</body>
-
-</html>
+<%@include file="footer.jsp" %>
