@@ -29,6 +29,13 @@
         <label class="col-md-3">Si oui, adresse</label>
         <form:input path="quoteCar.address" class="col-md-3" type="text" placeholder="Rue des patates"/>
     </div>
+    <div class="col-md-12">
+        <label class="col-md-3">Type de contract</label>
+        <div class="col-md-3">
+            <form:radiobutton path="quoteCar.allRisk" value="true"/>Tout Risque
+            <form:radiobutton path="quoteCar.allRisk" value="false"/>Tiers
+        </div>
+    </div>
 
     <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>
 </form:form>
