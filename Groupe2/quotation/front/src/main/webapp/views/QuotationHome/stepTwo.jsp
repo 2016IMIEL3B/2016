@@ -4,7 +4,7 @@
 
 <form:form method="POST" action="/devis/${id}/habitation/send/2" modelAttribute="home">
 
-    <form:label path="nbRoom">Nombre de pièces</form:label>
+    <form:label path="nbRoom">Nombre de pieces</form:label>
     <form:select path="nbRoom" class="form-control">
         <option value="1">1</option>
         <option value="2">2</option>

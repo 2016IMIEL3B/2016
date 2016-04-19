@@ -4,11 +4,11 @@
     <p>Devis Complet :</p>
     <span>Nom du devis :</span>
     <span><c:out value="${home.quotation.name}"/></span> <br>
-    <span>Type d'habitation :</span>
+    <span>Type habitation :</span>
     <span><c:out value="${home.homeType}"/></span> <br>
     <span>Surface :</span>
     <span><c:out value="${home.surface}"/></span> <br>
-    <span>Nomre de pièces : </span>
+    <span>Nomre de pieces : </span>
     <span><c:out value="${home.nbRoom}"/></span> <br>
     <span>Etage :</span>
     <span><c:out value="${home.floor}"/></span> <br>
@@ -26,6 +26,3 @@
     <span><c:out value="${home.formul}"/></span> <br>
     <span>Prix :</span>
     <span><c:out value="${home.quotation.price}"/></span>
-
-
-<%@ include file="../Default/footer.jsp" %>

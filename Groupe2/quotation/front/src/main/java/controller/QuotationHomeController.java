@@ -50,6 +50,7 @@ public class QuotationHomeController {
             model.addObject("homeType", this.getAllHomeType());
             model.addObject("heaterType", this.getAllHeaterType());
             model.addObject("formul", this.getAllFormul());
+            model.addObject("userSession", userSession.getUser());
             model.addObject("step", 1);
         } else {
             Home home = homeService.findOneByQuotationId(id);
@@ -176,7 +177,7 @@ public class QuotationHomeController {
         return (List<HomeType>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/homeType").getBody();
     }
 
-    private List<HeaterType> getAllHeaterType() {
+        private List<HeaterType> getAllHeaterType() {
         return (List<HeaterType>) new RestHelper(userSession.getHeaderToken()).apiRequest("/api/heaterType").getBody();
     }
 
