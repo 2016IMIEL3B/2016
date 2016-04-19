@@ -100,6 +100,8 @@ public class QuotationHomeController {
             Home homeResult = this.homeService.save(home);
 
             model = new ModelAndView(String.format("redirect:/devis/%d/habitation", homeResult.getQuotation().getId()));
+        }else{
+            model = new ModelAndView(String.format("redirect:/devis/%d/habitation", home.getQuotation().getId()));
         }
         return model;
     }
@@ -123,6 +125,8 @@ public class QuotationHomeController {
             Home homeResult = this.homeService.save(homeTemp);
 
             model = new ModelAndView(String.format("redirect:/devis/%d/habitation", homeResult.getQuotation().getId()));
+        }else{
+            model = new ModelAndView(String.format("redirect:/devis/%d/habitation", quotation.getId()));
         }
         return model;
     }
@@ -146,6 +150,8 @@ public class QuotationHomeController {
             Home homeResult = this.homeService.save(homeTemp);
 
             model = new ModelAndView(String.format("redirect:/devis/%d/habitation", homeResult.getQuotation().getId()));
+        }else{
+            model = new ModelAndView(String.format("redirect:/devis/%d/habitation", quotation.getId()));
         }
         return model;
     }
