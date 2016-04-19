@@ -1,12 +1,15 @@
 package com.group4.front.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.group4.front.common.AppData;
+import com.group4.front.entities.SimpleQuote;
 import com.group4.front.entities.User;
 import com.group4.front.controller.model.QuoteCarModel;
 import com.group4.front.entities.Quote;
 import com.group4.front.entities.QuoteCar;
 import com.group4.front.services.ItemService;
 import com.group4.front.services.QuoteService;
+import com.group4.front.services.SimpleQuoteService;
 import com.group4.front.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,8 @@ public class WizardCarController {
     private QuoteService quoteService;
     @Autowired
     private ItemService itemService;
+    @Autowired
+    SimpleQuoteService simpleQuoteService;
 
     private QuoteCar currentQuoteCar;
     private Quote currentQuote;
@@ -41,6 +46,7 @@ public class WizardCarController {
         quoteCarModel.setBrands(this.itemService.findItemsByType("MAR"));
         quoteCarModel.setFuels(this.itemService.findItemsByType("FUE"));
         quoteCarModel.setQuoteCar(new QuoteCar());
+        quoteCarModel.setQuote(new Quote());
 
         model.addObject("model", quoteCarModel);
         return model;
@@ -55,14 +61,13 @@ public class WizardCarController {
         this.currentQuoteCar = quoteCarModel.getQuoteCar();
 
         Quote quote = new Quote();
-        quote.setName("Devis pouf");
-        quote.setResume("Bla bla");
         quote.setLogin(user.getLogin());
         quote.setStep(1);
 
-        this.quoteService.insertQuote(quote);
-        this.currentQuoteCar.setIdQuote(quote.getId());
         this.currentQuote = quote;
+        this.quoteService.insertQuote(this.currentQuote);
+        this.currentQuoteCar.setIdQuote(quote.getId());
+        //this.quoteService.insertQuoteCar(this.currentQuoteCar);
 
         return modelAndView;
     }
@@ -73,11 +78,12 @@ public class WizardCarController {
         modelAndView.addObject("model", quoteCarModel);
 
         this.currentQuote.setStep(2);
-        this.quoteService.insertQuote(this.currentQuote);
-
         this.currentQuoteCar.setDateLicence(quoteCarModel.getQuoteCar().getDateLicence());
         this.currentQuoteCar.setNumberAccident(quoteCarModel.getQuoteCar().getNumberAccident());
         this.currentQuoteCar.setBonusMalus(quoteCarModel.getQuoteCar().getBonusMalus());
+
+        //this.quoteService.insertQuoteCar(this.currentQuoteCar);
+        this.quoteService.insertQuote(this.currentQuote);
 
         return modelAndView;
     }
@@ -88,27 +94,36 @@ public class WizardCarController {
         modelAndView.addObject("model", quoteCarModel);
 
         this.currentQuote.setStep(3);
-        this.quoteService.insertQuote(this.currentQuote);
-
         this.currentQuoteCar.setDriver(quoteCarModel.getQuoteCar().getDriver());
         this.currentQuoteCar.setSecondaryDriver(quoteCarModel.getQuoteCar().getSecondaryDriver());
         this.currentQuoteCar.setGarage(quoteCarModel.getQuoteCar().isGarage());
         this.currentQuoteCar.setAddress(quoteCarModel.getQuoteCar().getAddress());
+        this.currentQuoteCar.setAllRisk(quoteCarModel.getQuoteCar().isAllRisk());
+        this.currentQuoteCar.setTiers(!quoteCarModel.getQuoteCar().isAllRisk());
+
+        this.quoteService.insertQuoteCar(this.currentQuoteCar);
+        this.quoteService.insertQuote(this.currentQuote);
 
         return modelAndView;
     }
 
     @RequestMapping(path = "/result", method = RequestMethod.POST)
-    public ModelAndView wizardCarEnd(@ModelAttribute QuoteCarModel quoteCarModel) {
+    public ModelAndView wizardCar4(@ModelAttribute QuoteCarModel quoteCarModel) throws JsonProcessingException {
         ModelAndView modelAndView = new ModelAndView("index");
 
         this.currentQuote.setStep(4);
+        this.currentQuote.setName(quoteCarModel.getQuote().getName());
+        this.currentQuote.setResume(quoteCarModel.getQuote().getResume());
+        this.currentQuote.setPrice(quoteCarModel.getQuote().getPrice());
+
+        SimpleQuote simpleQuote = new SimpleQuote();
+        simpleQuote.setPrice(Math.round(this.currentQuote.getPrice()));
+        simpleQuote.setTypeQuote("CarQuote");
+        simpleQuote.setGuarantee("Standard car guarantee");
+        simpleQuote.setUserId(this.session.getIdUser());
+
         this.quoteService.insertQuote(this.currentQuote);
-
-        this.currentQuoteCar.setAllRisk(quoteCarModel.getQuoteCar().isAllRisk());
-        this.currentQuoteCar.setTiers(!quoteCarModel.getQuoteCar().isAllRisk());
-
-        this.quoteService.insertQuoteCar(this.currentQuoteCar);
+        this.simpleQuoteService.createSimpleQuote(simpleQuote);
 
         return modelAndView;
     }

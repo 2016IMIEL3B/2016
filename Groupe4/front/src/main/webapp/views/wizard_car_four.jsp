@@ -12,19 +12,16 @@
     <h2>Étape 4/4</h2>
 
     <div class="col-md-12">
-        <label class="col-md-3">Résumé du devis</label>
-        <label class="col-md-3">Pouf pouf</label>
+        <label class="col-md-3">Intitulé du devis</label>
+        <form:input path="quote.name" class="col-md-3" required="required" type="text"/>
     </div>
     <div class="col-md-12">
-        <label class="col-md-3">Type de contract</label>
-        <div class="col-md-3">
-            <form:radiobutton path="quoteCar.allRisk" value="true"/>Tout Risque
-            <form:radiobutton path="quoteCar.allRisk" value="false"/>Tiers
-        </div>
+        <label class="col-md-3">Résumé du devis</label>
+        <form:textarea path="quote.resume" class="col-md-3"/>
     </div>
     <div class="col-md-12">
         <label class="col-md-3">Montant</label>
-        <label class="col-md-3">10000000000€</label>
+        <form:input path="quote.price" class="col-md-3" required="required" type="number"/>
     </div>
 
     <input value="Valider le devis" name="submit" type="submit" class="submit-btn"/>

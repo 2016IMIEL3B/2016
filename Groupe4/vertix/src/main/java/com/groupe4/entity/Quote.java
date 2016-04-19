@@ -1,10 +1,5 @@
 package com.groupe4.entity;
 
-import javax.persistence.*;
-
-/**
- * Created by Link on 22/03/2016.
- */
 public class Quote {
 
     /**

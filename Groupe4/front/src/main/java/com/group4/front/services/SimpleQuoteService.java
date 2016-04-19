@@ -17,7 +17,7 @@ public class SimpleQuoteService {
         return this.simpleQuoteRepository.findSimpleQuotesByUser(userId);
     }
 
-    public void createSimpleQuote(Integer userId, SimpleQuote quote) throws JsonProcessingException {
-        this.simpleQuoteRepository.createSimpleQuote(userId, quote);
+    public void createSimpleQuote(SimpleQuote quote) throws JsonProcessingException {
+        this.simpleQuoteRepository.createSimpleQuote(quote);
     }
 }

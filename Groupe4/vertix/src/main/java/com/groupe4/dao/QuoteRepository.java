@@ -29,7 +29,6 @@ public class QuoteRepository implements IQuoteRepository {
             client.getConnection(res -> {
                 if (res.succeeded()) {
                     SQLConnection connection = res.result();
-                    //System.out.println("Connexion OK");
                     String query = "INSERT INTO quote (userId,typeQuote,guarantee,price) " +
                             "VALUES (?, ?, ?, ?)";
                     JsonArray params = new JsonArray()
@@ -67,7 +66,6 @@ public class QuoteRepository implements IQuoteRepository {
             client.getConnection(res -> {
                 if (res.succeeded()) {
                     SQLConnection connection = res.result();
-                    //System.out.println("Connexion OK");
                     String query = "SELECT * FROM quote WHERE userId = ?";
                     JsonArray params = new JsonArray().add(userId);
                     connection.queryWithParams(query, params, resGet -> {
@@ -88,11 +86,9 @@ public class QuoteRepository implements IQuoteRepository {
                     });
                     connection.close();
                 } else {
-                    //System.out.println("Connexion NOK");
                     handler.handle(Future.failedFuture("Connexion NOK"));
                 }
             });
         });
     }
-
 }

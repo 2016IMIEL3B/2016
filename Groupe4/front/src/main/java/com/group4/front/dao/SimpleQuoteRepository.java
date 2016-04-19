@@ -35,17 +35,15 @@ public class SimpleQuoteRepository implements ISimpleQuoteRepository {
     }
 
     @Override
-    public void createSimpleQuote(Integer userId, SimpleQuote quote) throws JsonProcessingException {
+    public void createSimpleQuote(SimpleQuote quote) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         String jsonQuote = mapper.writeValueAsString(quote);
 
-        String url = ApiUtils.API_URL + "users/" + userId + "/quote";
+        String url = ApiUtils.API_URL + "users/" + quote.getUserId() + "/quotes";
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<String> httpEntity = new HttpEntity<String>(jsonQuote, this.apiUtils.getHeaders());
-        ParameterizedTypeReference<List<SimpleQuote>> returnedObject =
-                new ParameterizedTypeReference<List<SimpleQuote>>(){};
 
-        restTemplate.exchange(url, HttpMethod.POST, httpEntity, returnedObject);
+        restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
     }
 }

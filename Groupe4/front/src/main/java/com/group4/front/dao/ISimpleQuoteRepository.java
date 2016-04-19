@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ISimpleQuoteRepository {
     List<SimpleQuote> findSimpleQuotesByUser(Integer userId);
-    void createSimpleQuote(Integer userId, SimpleQuote quote) throws JsonProcessingException;
+    void createSimpleQuote(SimpleQuote quote) throws JsonProcessingException;
 }
