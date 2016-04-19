@@ -21,6 +21,10 @@ public class CarModel {
         quote.getVehicle().getModel().setBrand(new Brand());
     }
 
+    public CarModel(Quote myQuote) {
+        quote = myQuote;
+    }
+
     public Quote getQuote(){return quote;}
 
     public void setQuote(Quote quote){this.quote = quote;}
