@@ -56,12 +56,6 @@ public class CarWizardController {
         CarModel carModel = new CarModel(quote);
         return new ModelAndView("wizard/car/car-step"+quote.getStep(),"carWizard", carModel);
     }
-/*
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-        sdf.setLenient(true);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-    }*/
+
 
 }
