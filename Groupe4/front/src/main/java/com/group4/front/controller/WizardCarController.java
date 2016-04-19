@@ -67,7 +67,7 @@ public class WizardCarController {
         this.currentQuote = quote;
         this.quoteService.insertQuote(this.currentQuote);
         this.currentQuoteCar.setIdQuote(quote.getId());
-        //this.quoteService.insertQuoteCar(this.currentQuoteCar);
+        this.quoteService.insertQuoteCar(this.currentQuoteCar);
 
         return modelAndView;
     }
@@ -82,7 +82,7 @@ public class WizardCarController {
         this.currentQuoteCar.setNumberAccident(quoteCarModel.getQuoteCar().getNumberAccident());
         this.currentQuoteCar.setBonusMalus(quoteCarModel.getQuoteCar().getBonusMalus());
 
-        //this.quoteService.insertQuoteCar(this.currentQuoteCar);
+        this.quoteService.insertQuoteCar(this.currentQuoteCar);
         this.quoteService.insertQuote(this.currentQuote);
 
         return modelAndView;
