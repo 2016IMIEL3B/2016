@@ -11,8 +11,10 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.JWTAuthHandler;
 
+/**
+ * RouterService define http rules and routes.
+ */
 public class RouterService extends AbstractVerticle{
-
     @Override
     public void start() {
         DbClient.getInstance();
@@ -29,26 +31,17 @@ public class RouterService extends AbstractVerticle{
         router.route("/*").handler(context -> {
             context.response().headers().add(HttpHeaders.CONTENT_TYPE, "application/json");
             context.response()
-                    // do not allow proxies to cache the data
                     .putHeader("Cache-Control", "no-store, no-cache")
-                    // prevents Internet Explorer from MIME - sniffing a
-                    // response away from the declared content-type
                     .putHeader("X-Content-Type-Options", "nosniff")
-                    // Strict HTTPS (for about ~6Months)
                     .putHeader("Strict-Transport-Security", "max-age=" + 15768000)
-                    // IE8+ do not allow opening of attachments in the context
-                    // of this resource
                     .putHeader("X-Download-Options", "noopen")
-                    // enable XSS for IE
                     .putHeader("X-XSS-Protection", "1; mode=block")
-                    // deny frames
                     .putHeader("X-FRAME-OPTIONS", "DENY")
-                    // Accept all
                     .putHeader("Access-Control-Allow-Origin", "*");
             context.next();
         });
 
-        // API protection with JWT
+        // API protection with JWT for /api/* routes
         router.route("/api/*").handler(JWTAuthHandler.create(authProvider));
 
         // Router begin
@@ -92,7 +85,7 @@ public class RouterService extends AbstractVerticle{
             quoteController.getQuotesByUser();
         });
 
-        router.post("/api/users/:idUser/quote").handler(routingContext -> {
+        router.post("/api/users/:idUser/quotes").handler(routingContext -> {
             QuoteController quoteController = new QuoteController(routingContext);
             quoteController.createQuote();
         });

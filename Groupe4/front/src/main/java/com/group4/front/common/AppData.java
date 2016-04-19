@@ -32,4 +32,12 @@ public class AppData {
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
+
+    @Override
+    public String toString() {
+        return "AppData{" +
+                "token='" + token + '\'' +
+                ", idUser=" + idUser +
+                '}';
+    }
 }
