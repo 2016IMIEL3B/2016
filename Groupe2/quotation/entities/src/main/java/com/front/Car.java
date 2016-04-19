@@ -47,7 +47,7 @@ public class Car {
     private String model;
 
     /**
-     * Car Insurance.
+     * Car Price.
      */
     private String insurance;
 
@@ -130,7 +130,7 @@ public class Car {
     }
 
     public boolean isTier() {
-        return sleepGarage;
+        return this.tier;
     }
 
     public void setTier(boolean tier) {

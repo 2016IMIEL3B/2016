@@ -7,8 +7,6 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 
-import javax.swing.*;
-
 /**
  * Created by Theo Lemaillet on 21/03/16 for project.
  */
@@ -17,9 +15,9 @@ public class VerticleListener extends AbstractVerticle {
     AuthHelper authHelper;
     FuelHelper fuelHelper;
     MarkHelper markHelper;
-    InsuranceHelper insuranceHelper;
     ModelHelper modelHelper;
     FormulHelper formulHelper;
+    PriceHelper priceHelper;
     UserHelper userHelper;
     HomeTypeHelper homeTypeHelper;
     HeaterTypeHelper heaterTypeHelper;
@@ -33,9 +31,9 @@ public class VerticleListener extends AbstractVerticle {
         this.heaterTypeHelper = new HeaterTypeHelper(vertx);
         this.fuelHelper = new FuelHelper(vertx);
         this.markHelper = new MarkHelper(vertx);
-        this.insuranceHelper = new InsuranceHelper(vertx);
         this.modelHelper = new ModelHelper(vertx);
         this.formulHelper = new FormulHelper(vertx);
+        this.priceHelper = new PriceHelper(vertx);
         this.horsePowerHelper = new HorsePowerHelper(vertx);
 
         userHelper = new UserHelper(vertx);
@@ -48,7 +46,7 @@ public class VerticleListener extends AbstractVerticle {
         router.get("/api/homeType").handler(this.homeTypeHelper::getAll);
         router.get("/api/heaterType").handler(this.heaterTypeHelper::getAll);
         router.get("/api/mark").handler(this.markHelper::getAll);
-        router.get("/api/insurance").handler(this.insuranceHelper::getAll);
+        router.get("/api/price").handler(this.priceHelper::getPriceByType);
         router.get("/api/model").handler(this.modelHelper::getAll);
         router.get("/api/modelByMark/:id").handler(this.modelHelper::getModelByMarkInformations);
         router.get("/api/formul").handler(this.formulHelper::getAll);

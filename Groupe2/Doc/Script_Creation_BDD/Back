@@ -18,11 +18,11 @@ CREATE TABLE HorsePower
 	value int
 );
 
-CREATE TABLE Insurance
+CREATE TABLE Price
 (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	entitled NVARCHAR(30) NOT NULL,
-	CONSTRAINT UK_Insurance UNIQUE (entitled)
+	value INT
+    type NVARCHAR(30)
 );
 
 CREATE TABLE Formul
