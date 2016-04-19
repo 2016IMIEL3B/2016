@@ -22,8 +22,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         User user = this.authenticationService.login(name, password);
 
-        if (password.equals(user.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(name, password, user.getRoles());
+        if (user != null) {
+            if (password.equals(user.getPassword())) {
+                return new UsernamePasswordAuthenticationToken(name, password, user.getRoles());
+            }
         }
 
         return null;
