@@ -12,12 +12,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests().antMatchers("/login","/error").permitAll()
                 .antMatchers("/").fullyAuthenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")    // l'accès aux URLs private/** sera restrainte à un utilisateur authentifié
                 .and()
                 .formLogin()                        // utilisation du mode FormLogin pour l'authentification
-             // .loginPage( "/login" )              // Définition d'une page custom pour le login (si non présent authomatiquement généré)
+                .loginPage( "/login" )              // Définition d'une page custom pour le login (si non présent authomatiquement généré)
                 .loginProcessingUrl( "/login.do" )  // Url à utiliser pour poster l'authenfication, donc l'action dans la page custom de login
                 .defaultSuccessUrl( "/" )           // Url par défaut à utiliser en cas d'authentification réussie
                 .failureUrl( "/login?err=1" )
