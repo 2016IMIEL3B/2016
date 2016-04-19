@@ -10,6 +10,7 @@
 ## Documentation
 
 Spécifications : ```_docs/cahier-specifications.pdf```
+
 Compte-rendu : ```_docs/compte-rendu.pdf```
 
 ## Fixtures
@@ -26,9 +27,11 @@ Utilisateur de démonstration :
 ### Valeurs par défaut
 
 Serveur front : http://localhost:1203
+
 Serveur Vertx : http://localhost:1204
 
 ### Configuration
 
 Spring: *RouterService.java*
+
 Vertx: *ressources/application.properties*
