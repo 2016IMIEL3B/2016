@@ -4,10 +4,10 @@
 <form:form method="POST" action="/devis/habitation/send/1" modelAttribute="home">
 
     <label for="nomPrenomUser">Nom / prenom de l’utilisateur</label>
-    <input id="nomPrenomUser" type="text" value="" class="form-control" disabled>
+    <input id="nomPrenomUser" type="text" value="${userSession.lastName} - ${userSession.firstName}" class="form-control" disabled>
 
     <form:label path="quotation.name">Nom du devis</form:label>
-    <form:input path="quotation.name" type="text" value="" class="form-control"></form:input>
+    <form:input path="quotation.name" type="text" value="" class="form-control" ></form:input>
 
     <form:label path="homeType">Type d’habitation</form:label>
     <form:select path="homeType" class="form-control">

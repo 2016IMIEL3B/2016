@@ -55,8 +55,8 @@ public class QuotationCarController {
             model = new ModelAndView("QuotationCar/stepOne", "car", new Car());
             model.addObject("fuels", this.getAllFuels());
             model.addObject("marks", this.getAllMarks());
-            model.addObject("models", this.getAllModels());
             model.addObject("horsepowers", this.getAllHorsePowers());
+            model.addObject("userSession", userSession.getUser());
             model.addObject("step", 1);
         } else {
             Car car = carService.findOneByQuotationId(id);

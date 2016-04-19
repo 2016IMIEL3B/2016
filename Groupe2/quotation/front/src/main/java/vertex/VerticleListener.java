@@ -50,6 +50,7 @@ public class VerticleListener extends AbstractVerticle {
         router.get("/api/mark").handler(this.markHelper::getAll);
         router.get("/api/insurance").handler(this.insuranceHelper::getAll);
         router.get("/api/model").handler(this.modelHelper::getAll);
+        router.get("/api/modelByMark/:id").handler(this.modelHelper::getModelByMarkInformations);
         router.get("/api/formul").handler(this.formulHelper::getAll);
         router.get("/api/horsepower").handler(this.horsePowerHelper::getAll);
         router.post("/api/profil/save").handler(userHelper::getUserInformationsForm);
