@@ -1,6 +1,7 @@
 package vertx;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
@@ -32,8 +33,8 @@ public class RestApiVertx extends AbstractVerticle {
         RestApiVertx that = this;
         client = MySQLClient.createShared(vertx, getDbConfig());
         Router router = Router.router(vertx);
-        router.route().handler(BodyHandler.create());
-        Route route = router.get("/login");
+        router.route("/*").handler(BodyHandler.create());
+        Route route = router.route(HttpMethod.POST, "/login");
 
         route.handler(routingContext -> {
             client.getConnection(res -> {
@@ -49,49 +50,50 @@ public class RestApiVertx extends AbstractVerticle {
             });
         }).failureHandler(routingContext -> {
             SQLConnection conn = routingContext.get("conn");
-            if (conn != null) {
+            if (conn == null) {
                 routingContext.response()
-                    .putHeader("content-type", "application/json; charset=utf-8")
-                    .end("<h1>Failed to Connect the DB</h1>" + conn);
+                        .putHeader("content-type", "application/json; charset=utf-8")
+                        .end("<h1>Failed to Connect the DB</h1>" + conn);
             }
         });
 
-        router.get("/login").handler(that::handleGetUser);
+        router.route(HttpMethod.POST, "/login").handler(that::handleGetUser);
         vertx.createHttpServer().requestHandler(router::accept).listen(8090);
     }
 
     private void handleGetUser(RoutingContext routingContext) {
 
-        String userName = routingContext.request().getParam("userName");
-        String userPassword = routingContext.request().getParam("userPassword");
+        JsonObject requestBody = routingContext.getBodyAsJson();
+        String userLogin = requestBody.getString("userLogin");
+        String userPassword = requestBody.getString("userPassword");
 
         HttpServerResponse response = routingContext.response();
-        if (userName == null || userPassword == null) sendError(400, response);
+        if (userLogin == null || userPassword == null) sendError(400, response);
         else {
             SQLConnection conn = routingContext.get("conn");
-            String query = "SELECT * FROM user WHERE firstName =? AND password = ?";
-            JsonArray params = new JsonArray().add(userName).add(userPassword);
+            String query = "SELECT * FROM user WHERE login =? AND password = ?";
+            JsonArray params = new JsonArray().add(userLogin).add(userPassword);
 
             conn.queryWithParams(query, params, res -> {
                 if (res.failed()) sendError(500, response);
                 else if (res.result().getNumRows() == 0){sendError(404, response);
                 } else {
                     ResultSet result = res.result();
-                    List<JsonObject> details = result.getRows();
+                    List<JsonObject> payload = result.getRows();
 
                     JsonObject config = getJwtConfig();
                     JWTAuth provider = JWTAuth.create(vertx, config);
 
-                    String baseToken = userName + userPassword;
+                    String baseToken = userLogin + userPassword;
                     String token = provider.generateToken(
                             new JsonObject().put("sub", baseToken),
                             new JWTOptions().setExpiresInMinutes(Long.valueOf(60))
                     );
 
-                    JsonObject headResponse = new JsonObject().put("token", token).put("details", details);
+                    JsonObject headResponse = new JsonObject().put("token", token).put("payload", payload);
                     response
-                        .putHeader("content-type", "application/json; charset=utf-8")
-                        .end(Json.encodePrettily(headResponse));
+                            .putHeader("content-type", "application/json; charset=utf-8")
+                            .end(Json.encodePrettily(headResponse));
                 }
             });
         }
@@ -104,20 +106,20 @@ public class RestApiVertx extends AbstractVerticle {
     private JsonObject getDbConfig()
     {
         return new JsonObject()
-            .put("host", "127.0.0.1")
-            .put("port", 3306)
-            .put("maxPoolSize", 10)
-            .put("username", "root")
-            .put("password", "root")
-            .put("database", "dbinsurance");
+                .put("host", "127.0.0.1")
+                .put("port", 3306)
+                .put("maxPoolSize", 100)
+                .put("username", "root")
+                .put("password", "root")
+                .put("database", "dbinsurance");
     }
 
     private JsonObject getJwtConfig()
     {
         return new JsonObject()
-            .put("keyStore", new JsonObject()
-                .put("path", "keystore.jceks")
-                .put("type", "jceks")
-                .put("password", "secret"));
+                .put("keyStore", new JsonObject()
+                        .put("path", "keystore.jceks")
+                        .put("type", "jceks")
+                        .put("password", "secret"));
     }
 }
