@@ -65,7 +65,7 @@ public class QuotationCarController {
             switch(quotation.getNbStep()){
                 case 0:
                     this.principalDriver = driverService.findOneByCarIdAndPrincipal(car.getId(), false);
-
+                    this.principalDriver.setCar(car);
                     model = new ModelAndView("QuotationCar/index","driver", this.principalDriver);
                     break;
                 case 2:
@@ -86,6 +86,7 @@ public class QuotationCarController {
                     this.principalDriver.setCar(car);
                     quotation.setPrice(359.45f);
                     this.principalDriver.getCar().setQuotation(quotation);
+
                     model = new ModelAndView("QuotationCar/stepFour", "driver", this.principalDriver);
                     model.addObject("secondDriver", secondDriver);
                     model.addObject("step", 4);
@@ -211,6 +212,7 @@ public class QuotationCarController {
         car.setTier(driver.getCar().isTier());
         quotation.setState("Fini");
         quotation.setNbStep(0);
+        quotation.setPrice(399.99f);
 
         this.quotationService.save(car.getQuotation());
         this.carService.save(car);

@@ -3,12 +3,12 @@
 
 <form:form method="POST" action="/devis/${id}/voiture/send/3" modelAttribute="driver">
 
-    <form:label path="firstName">Prénom Conducteur principal</form:label>
+    <form:label path="firstName">Prenom Conducteur principal</form:label>
     <form:input path="firstName" type="text" value="" class="form-control" />
     <form:label path="lastName">Nom Conducteur principal</form:label>
     <form:input path="lastName" type="text" value="" class="form-control" />
 
-    <label for="secondFirstName">Prénom Conducteur secondaire</label>
+    <label for="secondFirstName">Prenom Conducteur secondaire</label>
     <input name="secondFirstName" id="secondFirstName" type="text" value="" class="form-control" />
     <label for="secondLastName">Nom Conducteur secondaire</label>
     <input name="secondLastName"  id="secondLastName" type="text" value="" class="form-control" />

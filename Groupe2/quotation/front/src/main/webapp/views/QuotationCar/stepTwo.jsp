@@ -4,11 +4,11 @@
 
 <form:form method="POST" action="/devis/${id}/voiture/send/2" modelAttribute="driver">
 
-<form:label path="licenceDate">Date du permis</form:label>
+<form:label path="licenceDate">Date du permis (jj-mm-aaaa) </form:label>
 <input type="text" path="licenceDate" class= "date form-control" name = "licenceDate"
        pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\d\d" />
 
-<form:label path="nbCrash">Nombre d’accident</form:label>
+<form:label path="nbCrash">Nombre accident</form:label>
 <form:select path="nbCrash" class="form-control">
     <option value="1">1</option>
     <option value="2">2</option>

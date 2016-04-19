@@ -16,7 +16,7 @@
     </c:forEach>
 </form:select>
 
-<form:label path="model">Modèle</form:label>
+<form:label path="model">Modele</form:label>
 <form:select path="model" id="models" class="form-control">
     <c:forEach items="${models}" var="model">
         <option id="${model.id}" value="${model.entitled}">${model.entitled}</option>

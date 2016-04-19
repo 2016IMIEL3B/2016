@@ -10,7 +10,7 @@
     <form:input path="car.quotation.name" type="text" value="" class="form-control" disabled="true"/>
     <form:label path="car.mark">Marque :</form:label>
     <form:input path="car.mark" type="text" value="" class="form-control" disabled="true"/>
-    <form:label path="car.model">Modèle :</form:label>
+    <form:label path="car.model">Modele :</form:label>
     <form:input path="car.model" type="text" value="" class="form-control" disabled="true"/>
     <form:label path="car.fuel">Type de Carburant : </form:label>
     <form:input path="car.fuel" type="text" value="" class="form-control" disabled="true"/>
@@ -42,7 +42,6 @@
 <form:input path="secondDriver.lastName" type="text" value="" class="form-control" disabled="true"/>
 <br /><br />
 
-<label >Etape 4 :</label> <br />
 <form:form method="POST" action="/devis/${id}/voiture/send/4" modelAttribute="driver">
     <label for="car.tier">Tous Risque</label>
     <form:radiobutton path="car.tier" class="form-control" value="False"/>
@@ -50,7 +49,7 @@
     <form:radiobutton path="car.tier" class="form-control" value="True"/>
 
     <label for="car.quotation.price">Montant du devis</label>
-    <input id="amountDevis" type="text" value="${car.quotation.price}" class="form-control" disabled />
+    <input id="amountDevis" type="text" value="399.99" class="form-control" disabled />
 
 <%@ include file="../QuotationStep/quotationStepState.jsp" %>
 
