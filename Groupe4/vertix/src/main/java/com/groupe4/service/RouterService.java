@@ -85,7 +85,7 @@ public class RouterService extends AbstractVerticle{
             quoteController.getQuotesByUser();
         });
 
-        router.post("/api/users/:idUser/quote").handler(routingContext -> {
+        router.post("/api/users/:idUser/quotes").handler(routingContext -> {
             QuoteController quoteController = new QuoteController(routingContext);
             quoteController.createQuote();
         });
