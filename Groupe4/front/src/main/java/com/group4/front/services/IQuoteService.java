@@ -11,5 +11,6 @@ public interface IQuoteService {
 
     QuoteHome getQuoteHomeById(int id);
     QuoteCar getQuoteCarById(int id);
+    Quote getQuoteById(int id);
     Iterable<Quote> getAll();
 }
