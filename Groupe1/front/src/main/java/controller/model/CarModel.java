@@ -12,6 +12,15 @@ public class CarModel {
 
     private Client client;
     private Quote quote;
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public CarModel(){
         client = new Client();
@@ -28,4 +37,12 @@ public class CarModel {
     public Quote getQuote(){return quote;}
 
     public void setQuote(Quote quote){this.quote = quote;}
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }

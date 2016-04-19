@@ -12,15 +12,15 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <form:label path="" for="">Conducteur principal</form:label>
-                        <form:input path="quote.user.lastname" class="form-control" placeholder="Nom" cssStyle="width:250px;" required="required"></form:input>
-                        <form:input path="quote.user.firstname" class="form-control" placeholder="prénom" cssStyle="width:250px;" required="required"></form:input>
+                        <form:input path="client.user.lastName" class="form-control" placeholder="Nom" cssStyle="width:250px;" required="required"></form:input>
+                        <form:input path="client.user.firstName" class="form-control" placeholder="prénom" cssStyle="width:250px;" required="required"></form:input>
                     </div>
 
-                    <div class="form-group">
-                        <form:label path="" for="">Conducteur secondaire</form:label>
-                        <form:input path="" class="form-control" placeholder="Nom" cssStyle="width:250px;"></form:input>
-                        <form:input path="" class="form-control" placeholder="prénom" cssStyle="width:250px;"></form:input>
-                    </div>
+                    <%--<div class="form-group">--%>
+                        <%--<form:label path="" for="">Conducteur secondaire</form:label>--%>
+                        <%--<form:input path="" class="form-control" placeholder="Nom" cssStyle="width:250px;"></form:input>--%>
+                        <%--<form:input path="" class="form-control" placeholder="prénom" cssStyle="width:250px;"></form:input>--%>
+                    <%--</div>--%>
 
                     <div class="form-group">
                         <form:label path="" for="quote.vehicle.sleepInside">Dors dans un garage?</form:label>

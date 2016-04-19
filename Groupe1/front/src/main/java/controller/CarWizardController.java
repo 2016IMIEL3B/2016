@@ -2,11 +2,16 @@ package controller;
 
 import fr.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import controller.model.CarModel;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by EVER on 24/03/2016.
@@ -51,5 +56,12 @@ public class CarWizardController {
         CarModel carModel = new CarModel(quote);
         return new ModelAndView("wizard/car/car-step"+quote.getStep(),"carWizard", carModel);
     }
+/*
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+    }*/
 
 }

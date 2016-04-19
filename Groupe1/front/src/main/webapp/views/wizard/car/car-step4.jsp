@@ -14,21 +14,21 @@
 
             <div>
                 <span style="font-size: 18px;">Adresse du propriétaire :</span>
-                <span>${carWizard.quote.habitation.address.number}</span>
-                <span>${carWizard.quote.habitation.address.street}</span>
-                <span>${carWizard.quote.habitation.address.postcode}</span>
-                <span>${carWizard.quote.habitation.address.city}</span>
+                <span>${carWizard.address.number}</span>
+                <span>${carWizard.address.street}</span>
+                <span>${carWizard.address.postcode}</span>
+                <span>${carWizard.address.city}</span>
             </div>
             <div>
-                <span>${carWizard.quote.clients.drivingLicenceDate}</span>
-                <span>${carWizard.quote.clients.accidentNumber}</span>
-                <span>${carWizard.quote.clients.bonus}</span>
+                <span>${carWizard.client.drivingLicenceDate}</span>
+                <span>${carWizard.client.accidentNumber}</span>
+                <span>${carWizard.client.bonus}</span>
             </div>
 
             <div>
-                <span>${carWizard.quote.clients.firstName}</span>
-                <span>${carWizard.quote.clients.LastName}</span>
-                <span>${carWizard.quote.clients.isSecondary}</span>
+                <span>${carWizard.client.user.firstName}</span>
+                <span>${carWizard.client.user.LastName}</span>
+                <span>${carWizard.client.isSecondary}</span>
             </div>
 
             <div>
