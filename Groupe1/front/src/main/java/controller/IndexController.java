@@ -2,6 +2,7 @@ package controller;
 
 import excep.MyException;
 import fr.User;
+import fr.vertx.VerticleRunner;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -23,18 +24,19 @@ public class IndexController {
     private String message = "Hello World";
 
     @RequestMapping({"/","/index"})
-    public String welcome(Map<String, Object> model) {
+    public ModelAndView welcome(Map<String, Object> model) {
         String m = message;
+        VerticleRunner.launch();
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         if (auth != null && auth.getPrincipal() != null && auth.getPrincipal() instanceof User) {
             User user = (User)auth.getPrincipal();
             m = String.format("Hello %s", user.getUsername());
+
         }
-        model.put("message", m);
-        return "index";
+        return new ModelAndView("/index");
     }
-
-
 
     @RequestMapping("/private/client")
     public String dash(Map<String, Object> model) {

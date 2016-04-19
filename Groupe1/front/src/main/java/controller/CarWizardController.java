@@ -1,6 +1,10 @@
 package controller;
 
-import fr.*;
+
+import controller.model.CarModel;
+import fr.BrandService;
+import fr.Quote;
+import fr.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -8,7 +12,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import controller.model.CarModel;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,9 +35,20 @@ public class CarWizardController {
     @Autowired
     private QuoteService quoteService;
 
+    @Autowired
+    private BrandService brandService;
+
     @RequestMapping
     public ModelAndView processWizard() {
-        return new ModelAndView("wizard/car/car-step1", "carWizard", new CarModel());
+
+         List<String> brands = Arrays.asList( brandService.findAll().iterator().getClass().getName());
+
+            Map parameterMap = new HashMap<String, Object>();
+            parameterMap.put("brands", brands);
+            parameterMap.put("carWizard", new CarModel());
+
+
+        return new ModelAndView("wizard/car/car-step1",  parameterMap);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -22,14 +22,12 @@ public class UserController {
     public ModelAndView profile(){
         ModelAndView model = new ModelAndView("profile");
 
-
         User user = userService.findByLogin("jonas");
-
-        model.addObject("user", user);
-
 
         model.addObject("user", user);
 
         return model;
     }
+
+
 }

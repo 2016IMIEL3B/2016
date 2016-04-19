@@ -1,17 +1,13 @@
 package fr.vertx;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.jdbc.JDBCClient;
 import io.vertx.ext.sql.ResultSet;
 import io.vertx.ext.sql.SQLConnection;
 
-import java.util.logging.Logger;
-
 public class VertxService extends AbstractVerticle {
 
-private static Logger logger;
 public void start() {
 
 

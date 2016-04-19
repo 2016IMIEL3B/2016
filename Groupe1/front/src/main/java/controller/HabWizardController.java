@@ -17,13 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class HabWizardController {
 
     @Autowired
-    private QuoteService quoteService;
-
-    @Autowired
     private HabitationService habitationService;
 
     @Autowired
     private AddressService addressService;
+
+    @Autowired
+    private QuoteService quoteService;
 
     private String[] pageViews = new String[] {"habitation-step1","habitation-step2","habitation-step3","habitation-step4"};
 
@@ -62,6 +62,7 @@ public class HabWizardController {
 
     @RequestMapping(params="_quoteId", method = RequestMethod.POST)
     public ModelAndView getFromSynthesis(@PathVariable Integer quoteId) {
+
         Quote quote = quoteService.findOne(quoteId);
         HabitationModel habitationModel = new HabitationModel(quote);
         return new ModelAndView("wizard/habitation/habitation-step"+quote.getStep(),"habWizard", habitationModel);

@@ -102,7 +102,6 @@ CREATE TABLE `Habitation` (
   `groundSurface` int(11) DEFAULT NULL,
   `patioSurface` int(11) NOT NULL,
   `heatingType` varchar(45) NOT NULL,
-  `option` varchar(45) NOT NULL,
   `addressId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -110,9 +109,9 @@ CREATE TABLE `Habitation` (
 -- Contenu de la table `Habitation`
 --
 
-INSERT INTO `Habitation` (`id`, `type`, `surface`, `roomNumber`, `floor`, `bathroomNumber`, `garage`, `groundSurface`, `patioSurface`, `heatingType`, `option`, `addressId`) VALUES
-(1, 'maison', 100, 3, NULL, 1, 1, 200, 20, 'electrique', '1', 1),
-(2, 'appartement', 50, 2, 3, 1, 0, NULL, 20, 'electrique', '1', 2);
+INSERT INTO `Habitation` (`id`, `type`, `surface`, `roomNumber`, `floor`, `bathroomNumber`, `garage`, `groundSurface`, `patioSurface`, `heatingType`, `addressId`) VALUES
+(1, 'maison', 100, 3, NULL, 1, 1, 200, 20, 'electrique', 1),
+(2, 'appartement', 50, 2, 3, 1, 0, NULL, 20, 'electrique', 2);
 
 -- --------------------------------------------------------
 

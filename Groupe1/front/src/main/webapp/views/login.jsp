@@ -12,14 +12,16 @@
 		    .info { width:400px; display:inline-block; }
 
 		</style>
+		<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.min.js"></script>
 
 	</head>
 
 	<body>
 		<H1>Page de login</H1>
-        <span class="info">Pour un accès authentifié sans rôle:</span><span>toto / toto</span> <br />
+   <%--     <span class="info">Pour un accès authentifié sans rôle:</span><span>toto / toto</span> <br />
         <span class="info">Pour un accès authentifié avec le rôle ROLE_ADMIN:</span><span>admin / toto</span> <br />
-		<span class="info">Le mot de passe toto en crypté donne:</span><span><%=WebSecurityConfig.PASSWORD%></span> <br />
+		<span class="info">Le mot de passe toto en crypté donne:</span><span><%=WebSecurityConfig.PASSWORD%></span> <br />--%>
         <br />
 		<form id="form" action="<c:url value='/login.do'/>" method="POST">
 			<c:if test="${not empty param.err}">
@@ -43,11 +45,25 @@
 			Password:<br>
 			<input type="password" name="password" value="" class="input-text input-pass<c:if test="${not empty param.err}"> input-error</c:if>"/>
 
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			<input id="token" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 			<div class="submit-container">
 				<input value="Login" name="submit" type="submit" class="submit-btn"/>
 			</div>
 		</form>
+
+		<script language="JavaScript">
+			$(document).ready(function () {
+				$('.submit-btn').on('click', function () {
+					$.ajax({
+						url: '/api/newToken',
+						dataType: 'text',
+						success: function (text) {
+							$('#token').html('Current Token: ' + text);
+						}
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
