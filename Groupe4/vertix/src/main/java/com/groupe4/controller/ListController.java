@@ -3,6 +3,7 @@ package com.groupe4.controller;
 import com.groupe4.entity.Item;
 import com.groupe4.service.ItemService;
 import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
@@ -41,19 +42,11 @@ public class ListController {
         this.itemService.findItemListByKey(type, handler -> {
             if (handler.succeeded()) {
                 List<Item> items = handler.result();
-                JsonObject list = new JsonObject();
-
-                for (Item item : items) {
-                    list.put(item.getId().toString(), item.getValue());
-                }
 
                 if (items.size() > 0) {
-                    JsonObject responseBody = new JsonObject();
-                    responseBody.put(type, list);
-
                     this.routingContext.response()
                             .setStatusCode(200)
-                            .end(Json.encode(responseBody));
+                            .end(Json.encode(items));
                 } else {
                     this.routingContext.response()
                             .setStatusCode(404)

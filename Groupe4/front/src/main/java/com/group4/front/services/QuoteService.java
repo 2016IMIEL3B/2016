@@ -31,6 +31,9 @@ public class QuoteService implements IQuoteService {
     }
 
     @Override
+    public Quote getQuoteById(int id) { return quoteDAO.findOne(id); }
+
+    @Override
     public Iterable<Quote> getAll() {
         return this.quoteDAO.findAll();
     }

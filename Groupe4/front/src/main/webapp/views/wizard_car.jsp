@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="layout_header.jsp" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,25 +19,25 @@
     <div class="col-md-12">
         <form:label path="quoteCar.brand" class="col-md-3">Marque</form:label>
         <form:select path = "quoteCar.brand" class="col-md-3" id="brandSelect" name="brandSelect">
-            <option value="1" selected="selected">Renault</option>
-            <option value="2">Peugeot</option>
-            <option value="3">Ford</option>
+            <c:forEach var="brand" items="${model.brands}">
+                <option value="${brand.id}">${brand.value}</option>
+            </c:forEach>
         </form:select>
     </div>
     <div class="col-md-12">
         <form:label path="quoteCar.model" class="col-md-3">Modèle</form:label>
         <form:select path = "quoteCar.model" class="col-md-3" id="modelSelect" name="modelSelect">
-            <option value="1" selected="selected">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1" selected="selected">Mock1</option>
+            <option value="2">Mock2</option>
+            <option value="3">Mock3</option>
         </form:select>
     </div>
     <div class="col-md-12">
         <form:label path="quoteCar.fuel" class="col-md-3">Carburant</form:label>
         <form:select path = "quoteCar.fuel" class="col-md-3" id="fuelSelect" name="fuelSelect">
-            <option value="1" selected="selected">Diesel</option>
-            <option value="2">Essence</option>
-            <option value="3">Gpl</option>
+            <c:forEach var="fuel" items="${model.fuels}">
+                <option value="${fuel.id}">${fuel.value}</option>
+            </c:forEach>
         </form:select>
     </div>
     <div class="col-md-12">
