@@ -28,8 +28,8 @@ public class DbClient {
                 .put("host", "127.0.0.1")
                 .put("port", 3306)
                 .put("username", "root")
-                .put("password", "1234")
-                .put("database", "java_g4_ms");
+                .put("password", "toto")
+                .put("database", "JAVA_G4_MS");
         this.client = MySQLClient.createShared(vertx, mySQLClientConfig);
     }
 
