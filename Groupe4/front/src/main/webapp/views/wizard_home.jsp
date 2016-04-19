@@ -10,11 +10,13 @@
 <body>
 
 <form:form method="POST" action="/wizard/home/2" modelAttribute="model">
-        <h2>Étape 1/4</h2>
+    <h2>Étape 1/4</h2>
 
     <div class="col-md-12">
-        <label class="col-md-3">NOM Prénom</label>
-        <form:label path="userName" class="col-md-3">${model.userName}</form:label>
+        <form:label path="userName" class="col-md-3">Nom Prénom</form:label>
+        <form:input path="userName" class="col-md-3" type="text" disabled="true"/>
+        <%--<label class="col-md-3">NOM Prénom</label>--%>
+        <%--<form:label path="userName" class="col-md-3">${model.userName}</form:label>--%>
     </div>
     <div class="col-md-12">
         <form:label path="quoteHome.typeHome" class="col-md-3">Type Habitation</form:label>

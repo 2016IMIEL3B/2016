@@ -13,22 +13,16 @@
 
     <div class="col-md-12">
         <label class="col-md-3">Résumé du devis</label>
-        <label class="col-md-3">Pouf pouf</label>
+        <form:input required="required" path="quote.resume" class="col-md-3" type="text"/>
     </div>
-    <div class="col-md-12">
-        <label class="col-md-3">Type de contract</label>
-        <div class="col-md-3">
-            <form:radiobutton path="quoteHome.formula" value="0"/>Formule 1
-            <form:radiobutton path="quoteHome.formula" value="1"/>Formule 2
-            <form:radiobutton path="quoteHome.formula" value="2"/>Formule 2
-        </div>
-    </div>
+
     <div class="col-md-12">
         <label class="col-md-3">Montant</label>
-        <label class="col-md-3">10000000000€</label>
+        <form:input required="required" path="quote.price" class="col-md-3" type="text"/>
     </div>
 
     <input value="Valider le devis" name="submit" type="submit" class="submit-btn"/>
+    <a href="/wizard/home/3" class="btn btn-default">Etape précédente</a>
 </form:form>
 
 </body>

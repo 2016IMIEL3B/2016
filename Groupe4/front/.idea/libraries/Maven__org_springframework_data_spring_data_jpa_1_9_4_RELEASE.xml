@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework.data:spring-data-jpa:1.9.4.RELEASE">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../soft/repository/org/springframework/data/spring-data-jpa/1.9.4.RELEASE/spring-data-jpa-1.9.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Soft/repository/org/springframework/data/spring-data-jpa/1.9.4.RELEASE/spring-data-jpa-1.9.4.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../../../soft/repository/org/springframework/data/spring-data-jpa/1.9.4.RELEASE/spring-data-jpa-1.9.4.RELEASE-javadoc.jar!/" />
