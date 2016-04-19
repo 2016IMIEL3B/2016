@@ -9,19 +9,19 @@
         <form:form action="/carWizard.form?_page=3" method="POST" modelAttribute="carWizard">
 
             <div class="form-group">
-                <form:label path="" for="">Date du permis</form:label>
-                <form:input type="date" path="" class="form-control" cssStyle="width:250px;" required="required"></form:input>
+                <form:label path="" for="client.drivingLicenceDate">Date du permis</form:label>
+                <form:input type="date" path="client.drivingLicenceDate" class="form-control" cssStyle="width:250px;" required="required"></form:input>
 
             </div>
 
             <div class="form-group">
-                <form:label path="" for="">Nombre d'accidents</form:label>
-                <form:input type="text" path=""  class="form-control" cssStyle="width:250px;" required="required" ></form:input>
+                <form:label path="" for="client.accidentNumber">Nombre d'accidents</form:label>
+                <form:input type="text" path="client.accidentNumber"  class="form-control" cssStyle="width:250px;" required="required" ></form:input>
             </div>
 
             <div class="form-group">
-                <form:label path="" for="">Bonus Malus</form:label>
-                <form:input type="text" path="" class="form-control" cssStyle="width:250px;" ></form:input>
+                <form:label path="" for="client.bonus">Bonus Malus</form:label>
+                <form:input type="text" path="client.bonus" class="form-control" cssStyle="width:250px;" ></form:input>
             </div>
 
             <form:button type="submit">Aller à l'étape suivante</form:button>

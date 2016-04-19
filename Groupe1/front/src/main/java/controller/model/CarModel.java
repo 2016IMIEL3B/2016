@@ -1,9 +1,6 @@
 package controller.model;
 
-import fr.Quote;
-import fr.Vehicle;
-import fr.Model;
-import fr.Brand;
+import fr.*;
 
 
 /**
@@ -13,9 +10,11 @@ import fr.Brand;
 
 public class CarModel {
 
+    private Client client;
     private Quote quote;
 
     public CarModel(){
+        client = new Client();
         quote = new Quote();
         quote.setVehicle(new Vehicle());
         quote.getVehicle().setModel(new Model());
