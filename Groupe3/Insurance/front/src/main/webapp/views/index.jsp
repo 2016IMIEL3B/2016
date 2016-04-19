@@ -25,17 +25,16 @@
                 <td>Etape</td>
             </tr>
             <c:forEach var="insurance" items="${insurances}" varStatus="counter">
-                    <tr>
-                        <td><c:out value="${insurance.name}"/></td>
-                        <td><c:out value="${insurance.step}"/></td>
-                        <td>
-                            <input type="button" onclick="document.location.href='/${insurance.step}';" value="Reprendre le devis"/>
-                        </td>
-                        <td>
-                            <input type="button" onclick="document.location.href='/delete${insurance.step}';" value="Supprimer le devis"/>
-                        </td>
-                    </tr>
-
+				<tr>
+					<td><c:out value="${insurance.name}"/></td>
+					<td><c:out value="${insurance.step}"/></td>
+					<td>
+						<input type="button" onclick="document.location.href='/${insurance.type}${insurance.step}?idInsurance=${insurance.id}';" value="Reprendre le devis"/>
+					</td>
+					<td>
+						<input type="button" onclick="document.location.href='/delete${insurance.type}${insurance.step}';" value="Supprimer le devis"/>
+					</td>
+				</tr>
 			</c:forEach>
 		</div>
 	</div>

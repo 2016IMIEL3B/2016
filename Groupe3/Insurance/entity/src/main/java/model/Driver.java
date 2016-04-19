@@ -31,14 +31,7 @@ public class Driver {
 	@JoinColumn(name = "idUser")
 	private User user;
 
-	public Driver(Date drivingLicenceDate, int accidentNumber, int bonusMalus, User user) {
-		this.drivingLicenceDate = drivingLicenceDate;
-		this.accidentNumber = accidentNumber;
-		this.bonusMalus = bonusMalus;
-		this.user = user;
-	}
-
-	protected Driver() {}
+	public Driver() {}
 
 	public Date getDrivingLicenceDate() {
 		return drivingLicenceDate;
@@ -70,5 +63,13 @@ public class Driver {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

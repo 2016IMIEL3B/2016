@@ -7,9 +7,6 @@
           <element id="module-output" name="insurance.front" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="insurance.front-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="insurance.front" />
-          </element>
           <element id="archive" name="insurance.service-1.0-SNAPSHOT.jar">
             <element id="module-output" name="insurance.service" />
           </element>

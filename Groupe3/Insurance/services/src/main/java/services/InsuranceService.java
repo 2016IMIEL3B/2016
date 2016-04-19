@@ -2,6 +2,7 @@ package services;
 
 import model.Insurance;
 import model.User;
+import model.Vehicule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.InsuranceRepository;
@@ -17,5 +18,19 @@ public class InsuranceService implements IInsuranceService {
 
     public List<Insurance> findByStatementAndUser(String statement, User user) {
         return insuranceRepository.findByStatementAndUser(statement, user);
+    }
+
+    public Insurance saveAndgetInsurance(Insurance insurance) {
+        insuranceRepository.save(insurance);
+        insurance.setId(insurance.getId());
+        return insurance;
+    }
+
+    public void saveInsurance(Insurance insurance) {
+        insuranceRepository.save(insurance);
+    }
+
+    public Insurance findByIdInsurance(int idInsurance) {
+        return insuranceRepository.findOne(idInsurance);
     }
 }

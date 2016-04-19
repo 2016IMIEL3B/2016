@@ -25,6 +25,8 @@ public class Insurance {
 	int price;
 	@Column(name="summary")
 	String summary;
+	@Column(name="type")
+	String type;
 	@Column(name="step")
 	int step;
 	@Column(name="statement")
@@ -33,20 +35,8 @@ public class Insurance {
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name = "idUser")
 	User user;
-	
-	public Insurance(String name, Date created_date, int price, String summary, int step, String statement,
-			User user) {
-		super();
-		this.name = name;
-		this.created_date = created_date;
-		this.price = price;
-		this.summary = summary;
-		this.step = step;
-		this.statement = statement;
-		this.user = user;
-	}
 
-	protected Insurance() {}
+	public Insurance() {}
 	
 	public int getId() {
 		return id;
@@ -95,5 +85,12 @@ public class Insurance {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

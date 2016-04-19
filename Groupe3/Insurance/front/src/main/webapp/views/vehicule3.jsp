@@ -28,37 +28,9 @@
             <tr>
                 <td>Garage</td>
                 <td>
-                    <input type="radio" name="vehicleInGarage" value="Oui"/>Oui
-                    <input type="radio" name="vehicleInGarage" value="Non"/>Non
+                    <input type="radio" name="vehicleInGarage" value="1"/>Oui
+                    <input type="radio" name="vehicleInGarage" value="0"/>Non
                     <br/>
-                </td>
-            </tr>
-            <tr>
-                <td>Adresse</td>
-                <td>
-                    <input type=text name="adressStreet"/>
-                    <br/>
-                </td>
-            </tr>
-            <tr>
-                <td>Ville</td>
-                <td>
-                    <input type=text name="adressCity"/>
-                    <br/>
-                </td>
-            </tr>
-            <tr>
-                <td>Code postal</td>
-                <td>
-                    <input type=text name="adressCode"/>
-                    <br/>
-                </td>
-            </tr>
-            <tr>
-                <td>Country</td>
-                <td>
-                    <input type=text name="adressCountry"/>
-                    <br/><br/>
                 </td>
             </tr>
             <tr>

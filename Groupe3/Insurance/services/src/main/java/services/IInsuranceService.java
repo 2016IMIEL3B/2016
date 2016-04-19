@@ -9,4 +9,7 @@ import java.util.List;
  */
 public interface IInsuranceService {
     List<Insurance> findByStatementAndUser(String statement, User user);
+    Insurance findByIdInsurance(int idInsurance);
+    Insurance saveAndgetInsurance(Insurance insurance);
+    void saveInsurance(Insurance insurance);
 }

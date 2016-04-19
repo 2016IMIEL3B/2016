@@ -24,11 +24,6 @@ public class HouseInsurance {
 	@JoinColumn(name = "idInsurance")
 	private Insurance insurance;
 
-	public HouseInsurance(int option, Insurance insurance) {
-		this.option = option;
-		this.insurance = insurance;
-	}
-
 	protected HouseInsurance() {}
 
 	public int getId() {

@@ -29,18 +29,8 @@ public class Vehicule {
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name = "idDriver")
 	Driver driver;
-	
-	public Vehicule(String brand, String model, String fuel, int horsePowerTax, int inGarage, Driver driver) {
-		super();
-		this.brand = brand;
-		this.model = model;
-		this.fuel = fuel;
-		this.horsePowerTax = horsePowerTax;
-		this.inGarage = inGarage;
-		this.driver = driver;
-	}
 
-	protected Vehicule() {}
+	public Vehicule() {}
 
 	public int getId() {
 		return id;

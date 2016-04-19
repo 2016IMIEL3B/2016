@@ -28,15 +28,12 @@ public class CarInsurance {
 	@JoinColumn(name = "idInsurance")
 	private Insurance insurance;
 
-	public CarInsurance(String secondaryDriver, int allRisks, int third, Insurance insurance) {
-		this.secondaryDriver = secondaryDriver;
-		this.allRisks = allRisks;
-		this.third = third;
-		this.insurance = insurance;
-	}
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "idVehicule")
+	private Vehicule vehicule;
 
-	protected CarInsurance() {}
-	
+	public CarInsurance() {}
+
 	public int getId() {
 		return id;
 	}
@@ -62,4 +59,19 @@ public class CarInsurance {
 		this.third = third;
 	}
 
+	public Insurance getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(Insurance insurance) {
+		this.insurance = insurance;
+	}
+
+	public Vehicule getVehicule() {
+		return vehicule;
+	}
+
+	public void setVehicule(Vehicule vehicule) {
+		this.vehicule = vehicule;
+	}
 }

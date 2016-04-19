@@ -19,28 +19,7 @@
     <form method="post" action="servlet/result">
         <table>
             <tr>
-                <td>Nom de l'utilisateur</td>
-                <td>
-                    <input type="text" name="userLastName" value="" />
-                    <br/>
-                </td>
-            </tr>
-            <tr>
-                <td>Prénom de l'utilisateur</td>
-                <td>
-                    <input type="text" name="userFirstName" />
-                    <br/>
-                </td>
-            </tr>
-            <tr>
                 <td>Nom du devis</td>
-                <td>
-                    <input type=text name="insuranceName"/>
-                    <br/>
-                </td>
-            </tr>
-            <tr>
-                <td>Marque</td>
                 <td>
                     <input type=text name="insuranceName"/>
                     <br/>

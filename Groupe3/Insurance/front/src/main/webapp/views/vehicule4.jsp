@@ -28,16 +28,16 @@
             <tr>
                 <td>Tous risques ?</td>
                 <td>
-                    <input type="radio" name="insuranceAllRisks" value="Oui"/>Oui
-                    <input type="radio" name="insuranceAllRisks" value="Non"/>Non
+                    <input type="radio" name="insuranceAllRisks" value="1"/>Oui
+                    <input type="radio" name="insuranceAllRisks" value="0"/>Non
                     <br/>
                 </td>
             </tr>
             <tr>
                 <td>Au tiers</td>
                 <td>
-                    <input type="radio" name="insuranceThird" value="Oui"/>Oui
-                    <input type="radio" name="insuranceThird" value="Non"/>Non
+                    <input type="radio" name="insuranceThird" value="1"/>Oui
+                    <input type="radio" name="insuranceThird" value="0"/>Non
                     <br/>
                 </td>
             </tr>
@@ -52,7 +52,7 @@
                 <td colspan=2>
                     <input type="button" value="Annuler" onclick="location.href='/'" />
                     <input type="button" value="Précédent" onclick="location.href='/vehicle3'" />
-                    <input type="submit" value="Terminer">
+                    <input type="button" value="Terminer" onclick="location.href='/vehicle5'" />
                 </td>
             </tr>
         </table>
