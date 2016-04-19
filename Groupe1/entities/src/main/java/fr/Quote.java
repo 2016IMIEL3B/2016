@@ -60,7 +60,7 @@ public class Quote implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "habitationId")
 	public Habitation getHabitation() {
 		return this.habitation;
@@ -70,7 +70,7 @@ public class Quote implements java.io.Serializable {
 		this.habitation = habitation;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "vehicleId")
 	public Vehicle getVehicle() {
 		return this.vehicle;
