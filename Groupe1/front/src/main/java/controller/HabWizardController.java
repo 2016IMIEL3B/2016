@@ -60,7 +60,7 @@ public class HabWizardController {
         }
     }
 
-    @RequestMapping(value = "/quote/{quoteId}", method = RequestMethod.GET)
+    @RequestMapping(params="_quoteId", method = RequestMethod.POST)
     public ModelAndView getFromSynthesis(@PathVariable Integer quoteId) {
         Quote quote = quoteService.findOne(quoteId);
         HabitationModel habitationModel = new HabitationModel(quote);
@@ -72,9 +72,11 @@ public class HabWizardController {
     */
     @RequestMapping(params = "_finish")
     public ModelAndView processFinish(@ModelAttribute("habWizard") HabitationModel habWizard, SessionStatus status) {
-        addressService.save(habWizard.getQuote().getHabitation().getAddress());
-        habitationService.save(habWizard.getQuote().getHabitation());
-        quoteService.save(habWizard.getQuote());
+        try {
+            quoteService.save(habWizard.getQuote());
+        } catch (Exception e){
+            System.out.print(e.getMessage());
+        }
 
         // suppression de l'objet en session
         status.setComplete();

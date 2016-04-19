@@ -8,15 +8,6 @@
         </webroots>
       </configuration>
     </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/config/WebSecurityConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/config/ApplicationConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/config/WebMvcConfig.java</file>
-        </fileset>
-      </configuration>
-    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
