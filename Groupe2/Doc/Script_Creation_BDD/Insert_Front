@@ -5,17 +5,7 @@ INSERT INTO TypeQuotation (entitled) VALUES
 ("Voiture");
 
 INSERT INTO Quotation (name,number,price,state,nbStep,typeQuotationId,userId) VALUES
-("Devis pour une Voiture",125,150000,"En Cours",2,2,1),
 ("Devis pour une Habitation",15,102589,"En Cours",4,1,1);
 
 INSERT INTO Home (surface,nbRoom,floor,nbBathroom,garage,surfaceGround,surfaceTerrace,address,homeType,heaterType,formul,quotationId) VALUES
-(50.7,2,0,2,TRUE,22,15,"14 rue de la rélativité 53000 Laval","Pavillon","Plancher chauffant","Formule 1",2);
-
-INSERT INTO Car (taxableHorsePower,sleepGarage,address,fuel,mark,model,tier ,insurance,quotationId) VALUES
-(9,TRUE,"rue de la vie","Sans plomb","Seat","SVG-2000",true, "Tous Risque",1);
-
-INSERT INTO Driver (lastName,firstName,principal,licenceDate,nbCrash,bonusPenality,carId) VALUES
-("Boussard","Kévin",TRUE,"1993-12-27",0,0.76,1),
-("Rauflet","Nicolas",FALSE,"1995-12-18",2,0,1);
-
-
+(50.7,2,0,2,TRUE,22,15,"14 rue de la rélativité 53000 Laval","Pavillon","Plancher chauffant","Formule 1",1);
