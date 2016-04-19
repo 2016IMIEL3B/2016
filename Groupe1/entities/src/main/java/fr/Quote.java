@@ -135,4 +135,5 @@ public class Quote implements java.io.Serializable {
 		this.clients = clients;
 	}
 
+
 }

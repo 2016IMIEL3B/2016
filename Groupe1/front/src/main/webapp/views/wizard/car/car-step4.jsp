@@ -13,29 +13,29 @@
             <h4>Devis établi au nom de : John Doe</h4>
 
             <div>
-                <span style="font-size: 18px;">Adresse du propriétaire :</span>
-                <span>${carWizard.quote.habitation.address.number}</span>
-                <span>${carWizard.quote.habitation.address.street}</span>
-                <span>${carWizard.quote.habitation.address.postcode}</span>
-                <span>${carWizard.quote.habitation.address.city}</span>
+                <span style="font-size: 18px;">Adresse du propriétaire :</span> <br>
+                <span>${carWizard.address.number}</span><br>
+                <span>${carWizard.address.street}</span><br>
+                <span>${carWizard.address.postcode}</span><br>
+                <span>${carWizard.address.city}</span><br>
             </div>
-            <%--<div>--%>
-                <%--<span>${carWizard.Usera.drivingLicenceDate}</span>--%>
-                <%--<span>${carWizard.Usera.accidentNumber}</span>--%>
-                <%--<span>${carWizard.Usera.bonus}</span>--%>
-            <%--</div>--%>
-
-            <%--<div>--%>
-                <%--<span>${carWizard.Usera.firstName}</span>--%>
-                <%--<span>${carWizard.Usera.LastName}</span>--%>
-                <%--<span>${carWizard.Usera.isSecondary}</span>--%>
-            <%--</div>--%>
 
             <div>
-                <span>${carWizard.quote.vehicle.model}</span>
-                <span>${carWizard.quote.vehicle.fuel}</span>
-                <span>${carWizard.quote.vehicle.horsepower}</span>
-                <span>${carWizard.quote.vehicle.sleepInside}</span>
+                <span style="font-size: 18px;">Informations conducteur:</span><br>
+                <span>${carWizard.client.user.firstName}</span><br>
+                <span>${carWizard.client.user.lastName}</span><br>
+                <span>Date d'obtention du permis:</span><span>${carWizard.client.drivingLicenceDate}</span><br>
+                <span>Nombre d'accidents:</span> <span>${carWizard.client.accidentNumber}</span>
+
+            </div>
+
+            <div>
+                <span style="font-size: 18px;">Informations Véhicule:</span><br>
+                <span>Modèle: </span><span>${carWizard.quote.vehicle.model.name}</span><br>
+                <span>Fuel:</span><span>${carWizard.quote.vehicle.fuel}</span><br>
+                <span>Chevaux fiscaux: </span><span>${carWizard.quote.vehicle.horsepower}</span>
+
+
 
             </div>
         </div>

@@ -1,9 +1,6 @@
 package controller.model;
 
-import fr.Quote;
-import fr.Vehicle;
-import fr.Model;
-import fr.Brand;
+import fr.*;
 
 
 /**
@@ -13,9 +10,21 @@ import fr.Brand;
 
 public class CarModel {
 
+    private Client client;
     private Quote quote;
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public CarModel(){
+        client = new Client();
+        address = new Address();
         quote = new Quote();
         quote.setVehicle(new Vehicle());
         quote.getVehicle().setModel(new Model());
@@ -29,4 +38,12 @@ public class CarModel {
     public Quote getQuote(){return quote;}
 
     public void setQuote(Quote quote){this.quote = quote;}
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }

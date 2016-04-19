@@ -22,8 +22,12 @@
             </div>
 
             <div class="form-group">
-                <form:label path="" for="quote.vehicle.model"> Modèle</form:label>
-                <form:input  path="quote.vehicle.model.name" class="form-control" cssStyle="width:250px;"></form:input>
+                <form:label path="" for="quote.vehicle.model.name"> Modèle</form:label>
+
+                <form:select path="quote.vehicle.model.name">
+                    <form:option value="Civic">Civic</form:option>
+                    <form:option value="Jazz">Jazz</form:option>
+                </form:select>
 
             </div>
 
