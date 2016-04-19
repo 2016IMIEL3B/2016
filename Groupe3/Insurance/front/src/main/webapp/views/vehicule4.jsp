@@ -50,7 +50,7 @@
             </tr>
             <tr>
                 <td colspan=2>
-                    <input type="button" value="Annuler" onclick="location.href='/'" />
+                    <input type="button" value="Annuler" onclick="location.href='/src/main/webapp'" />
                     <input type="button" value="Précédent" onclick="location.href='/vehicle3'" />
                     <input type="button" value="Terminer" onclick="location.href='/vehicle5'" />
                 </td>
