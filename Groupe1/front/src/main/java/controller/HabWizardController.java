@@ -60,8 +60,8 @@ public class HabWizardController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") Integer quoteId) {
+    @RequestMapping(value = "/quote/{quoteId}", method = RequestMethod.GET)
+    public ModelAndView getFromSynthesis(@PathVariable Integer quoteId) {
         Quote quote = quoteService.findOne(quoteId);
         HabitationModel habitationModel = new HabitationModel(quote);
         return new ModelAndView("wizard/habitation/habitation-step"+quote.getStep(),"habWizard", habitationModel);

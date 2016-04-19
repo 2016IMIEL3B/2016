@@ -45,8 +45,8 @@ public class CarWizardController {
         return "wizard/canceledView";
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getFromSynthesis(@RequestParam("_quoteId") Integer quoteId) {
+    @RequestMapping(value = "/quote/{quoteId}", method = RequestMethod.GET)
+    public ModelAndView getFromSynthesis(@PathVariable Integer quoteId) {
         Quote quote = quoteService.findOne(quoteId);
         CarModel carModel = new CarModel(quote);
         return new ModelAndView("wizard/car/car-step"+quote.getStep(),"carWizard", carModel);
