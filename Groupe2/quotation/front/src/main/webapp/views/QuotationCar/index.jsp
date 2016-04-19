@@ -3,13 +3,13 @@
 
 <p>Devis Complet :</p>
 <span>Nom du devis :</span>
-<span><c:out value="${driver.quotation.name}"/></span> <br>
+<span><c:out value="${driver.car.quotation.name}"/></span> <br>
 <span>Prix :</span>
-<span><c:out value="${driver.quotation.price}"/></span> <br>
+<span><c:out value="${driver.car.quotation.price}"/></span> <br>
 
 <span>Voiture :</span>
 <span><c:out value="${driver.car.mark}"/></span> <br>
-<span><Model></Model> :</span>
+<span><Model></Model> Modele :</span>
 <span><c:out value="${driver.car.model}"/></span> <br>
 <span>Carburant : </span>
 <span><c:out value="${driver.car.fuel}"/></span> <br>
