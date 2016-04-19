@@ -1,7 +1,7 @@
 package com.group4.front.controller;
 
 import com.group4.front.common.AppData;
-import com.group4.front.common.User;
+import com.group4.front.entities.User;
 import com.group4.front.controller.model.QuoteCarModel;
 import com.group4.front.entities.Quote;
 import com.group4.front.entities.QuoteCar;

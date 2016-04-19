@@ -1,7 +1,7 @@
 package com.group4.front.controller;
 
 import com.group4.front.common.AppData;
-import com.group4.front.common.User;
+import com.group4.front.entities.User;
 import com.group4.front.controller.model.QuoteHomeModel;
 import com.group4.front.entities.Quote;
 import com.group4.front.entities.QuoteHome;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
 
 
 @Controller

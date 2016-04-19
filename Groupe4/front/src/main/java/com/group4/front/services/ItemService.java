@@ -1,7 +1,6 @@
 package com.group4.front.services;
 
 import com.group4.front.dao.IItemRepository;
-import com.group4.front.dao.ItemRepository;
 import com.group4.front.entities.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

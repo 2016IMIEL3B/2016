@@ -1,4 +1,4 @@
-package com.group4.front.common;
+package com.group4.front.entities;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

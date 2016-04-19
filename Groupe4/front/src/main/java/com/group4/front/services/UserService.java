@@ -1,56 +1,26 @@
 package com.group4.front.services;
 
-import com.group4.front.common.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.group4.front.dao.IUserRepository;
+import com.group4.front.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Component
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS, scopeName = "singleton")
 public class UserService {
-    //Mock
-    public User findUserByLogin(String login) {
-        User user = new User();
-        user.setId(1);
-        user.setLogin(login);
-        user.setActive(true);
-        user.setName("Test");
-        user.setSurname("Michel");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date createdAt = null;
-        try {
-            createdAt = dateFormat.parse("2016-03-01");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        user.setCreatedAt(createdAt);
+    @Autowired
+    private IUserRepository userRepository;
 
-        //BCryptPasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
-        //user.setPassword(bCryptEncoder.encode("password"));
-        user.setPassword("password");
+    public User findUserById(Integer id) { return this.userRepository.findUserById(id); }
 
-        List<SimpleGrantedAuthority> grantedAuths = new ArrayList<>();
-        grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-        grantedAuths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        user.setRoles(grantedAuths);
+    public Integer createUser(User user) throws JsonProcessingException { return this.userRepository.createUser(user); }
 
-        return user;
-    }
+    public void updateUser(User user) throws JsonProcessingException { this.userRepository.updateUser(user); }
 
-    public User findUserById(Integer id) {
-        User user = new User();
-        user.setId(id);
-        user.setName("Paul");
-        user.setSurname("Jean");
-
-        return user;
+    public void deleteUser(User user) {
+        this.userRepository.deleteUser(user);
     }
 }
