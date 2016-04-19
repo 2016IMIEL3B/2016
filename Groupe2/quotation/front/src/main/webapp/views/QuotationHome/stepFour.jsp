@@ -6,11 +6,11 @@
     <p>Resumé du devis</p>
     <form:label path="quotation.name">Nom du devis :</form:label>
     <form:input path="quotation.name" type="text" value="" class="form-control" disabled="true"/>
-    <form:label path="homeType">Type d'habitation :</form:label>
+    <form:label path="homeType">Type habitation :</form:label>
     <form:input path="homeType" type="text" value="" class="form-control" disabled="true"/>
     <form:label path="surface">Surface :</form:label>
     <form:input path="surface" type="text" value="" class="form-control" disabled="true"/>
-    <form:label path="nbRoom">Nomre de pièces : </form:label>
+    <form:label path="nbRoom">Nomre de pieces : </form:label>
     <form:input path="nbRoom" type="text" value="" class="form-control" disabled="true"/>
     <form:label path="floor">Etage :</form:label>
     <form:input path="floor" type="text" value="" class="form-control" disabled="true"/>
@@ -27,7 +27,6 @@
 
 
     <p>Formule :</p>
-    <form:label path="formul">Type de chauffage</form:label><br/>
     <c:forEach items="${formul}" var="formul">
         <form:label path="formul">${formul.entitled}</form:label>
         <form:checkbox path="formul" value="${formul.entitled}" class="form-control" />
