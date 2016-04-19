@@ -15,8 +15,6 @@
     <div class="col-md-12">
         <form:label path="userName" class="col-md-3">Nom Prénom</form:label>
         <form:input path="userName" class="col-md-3" type="text" disabled="true"/>
-        <%--<label class="col-md-3">NOM Prénom</label>--%>
-        <%--<form:label path="userName" class="col-md-3">${model.userName}</form:label>--%>
     </div>
     <div class="col-md-12">
         <form:label path="quoteHome.typeHome" class="col-md-3">Type Habitation</form:label>
@@ -37,7 +35,7 @@
         <form:input required="required" min="2" path="quoteHome.area" class="col-md-3" type="number" placeholder="100"/>m²
     </div>
 
-    <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>
+    <input value="Étape suivante" name="submit" type="submit" class="submit-btn btn btn-default"/>
 </form:form>
 
 </body>

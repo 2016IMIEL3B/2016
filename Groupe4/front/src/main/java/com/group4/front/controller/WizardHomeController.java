@@ -1,26 +1,33 @@
 package com.group4.front.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.group4.front.common.AppData;
 import com.group4.front.controller.model.QuoteHomeModel;
 import com.group4.front.entities.Quote;
 import com.group4.front.entities.QuoteHome;
+import com.group4.front.entities.SimpleQuote;
+import com.group4.front.entities.User;
+import com.group4.front.services.ItemService;
 import com.group4.front.services.QuoteService;
+import com.group4.front.services.SimpleQuoteService;
 import com.group4.front.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class WizardHomeController {
-
     @Autowired
     AppData session;
     @Autowired
     private UserService userService;
     @Autowired
     private QuoteService quoteService;
+    @Autowired
+    private ItemService itemService;
+    @Autowired
+    private SimpleQuoteService simpleQuoteService;
 
     private QuoteHome currentQuoteHome;
     private Quote currentQuote;
@@ -28,44 +35,33 @@ public class WizardHomeController {
 
     @RequestMapping(path = "/wizard/home/1",  method = RequestMethod.GET)
     public ModelAndView wizardHome(){
-
-        /* Find current user */
         User user = this.userService.findUserById(this.session.getIdUser());
         String userName = user.getSurname() + " " + user.getName();
 
-        /* Generate model for wizard 1 */
         ModelAndView model = new ModelAndView("wizard_home");
 
-        if(currentQuoteHome == null){
-            /* new quote home */
-            QuoteHomeModel quoteHomeModel = new QuoteHomeModel();
-            quoteHomeModel.setUserName(userName);
+        QuoteHomeModel quoteHomeModel = new QuoteHomeModel();
+        quoteHomeModel.setUserName(userName);
+        if (currentQuoteHome == null) {
             quoteHomeModel.setQuoteHome(new QuoteHome());
-            model.addObject("model", quoteHomeModel);
-
-        }else{
-            /* current quote home */
-            QuoteHomeModel quoteHomeModel = new QuoteHomeModel();
-            quoteHomeModel.setUserName(userName);
+        } else {
             quoteHomeModel.setQuoteHome(currentQuoteHome);
-            model.addObject("model", quoteHomeModel);
         }
+        model.addObject("model", quoteHomeModel);
 
         return model;
     }
 
     @RequestMapping(path = "/wizard/home/2", method = { RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView wizardHome1Post(@ModelAttribute QuoteHomeModel quoteHomeModel, BindingResult bindingResult) {
-
-        /* Generate the new model for wizard 2 */
+    public ModelAndView wizardHome1Post(@ModelAttribute QuoteHomeModel quoteHomeModel) {
         ModelAndView modelAndView = new ModelAndView("wizard_home_two");
 
         if(quoteHomeModel.getQuoteHome() != null){
-
             /* create a new quote */
             Quote quote = new Quote();
             quote.setName(quoteHomeModel.getUserName());
             quote.setStep(2);
+            quote.setLogin(this.userService.findUserById(this.session.getIdUser()).getLogin());
             this.quoteService.insertQuote(quote);
 
             /* create a new quote home */
@@ -73,24 +69,19 @@ public class WizardHomeController {
             this.currentQuoteHome.setIdQuote(quote.getId());
             this.quoteService.insertQuoteHome(quoteHomeModel.getQuoteHome());
 
-            modelAndView.addObject("model", quoteHomeModel);
-
-        }else if(this.currentQuoteHome.getId() != 0){
-
+        } else {
             quoteHomeModel.setQuoteHome(currentQuoteHome);
-            modelAndView.addObject("model", quoteHomeModel);
         }
+        modelAndView.addObject("model", quoteHomeModel);
 
         return modelAndView;
     }
 
     @RequestMapping(path = "/wizard/home/3", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView wizardHome2(@ModelAttribute QuoteHomeModel quoteHomeModel) {
-
         ModelAndView modelAndView = new ModelAndView("wizard_home_three");
 
         if(quoteHomeModel.getQuoteHome() != null){
-
             this.currentQuoteHome.setNumberRoom(quoteHomeModel.getQuoteHome().getNumberRoom());
             this.currentQuoteHome.setFloor(quoteHomeModel.getQuoteHome().getFloor());
             this.currentQuoteHome.setNumberBathroom(quoteHomeModel.getQuoteHome().getNumberBathroom());
@@ -103,24 +94,19 @@ public class WizardHomeController {
 
             /* update quote home */
             this.quoteService.insertQuoteHome(this.currentQuoteHome);
-
-            modelAndView.addObject("model", quoteHomeModel);
-
-        }else{
+        } else {
             quoteHomeModel.setQuoteHome(currentQuoteHome);
-            modelAndView.addObject("model", quoteHomeModel);
         }
+        modelAndView.addObject("model", quoteHomeModel);
 
         return modelAndView;
     }
 
     @RequestMapping(path = "/wizard/home/4", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView wizardHome3(@ModelAttribute QuoteHomeModel quoteHomeModel) {
-
         ModelAndView modelAndView = new ModelAndView("wizard_home_four");
 
         if(quoteHomeModel.getQuoteHome() != null){
-
             this.currentQuoteHome.setGroundArea(quoteHomeModel.getQuoteHome().getGroundArea());
             this.currentQuoteHome.setTerraceArea(quoteHomeModel.getQuoteHome().getTerraceArea());
             this.currentQuoteHome.setTypeHeating(quoteHomeModel.getQuoteHome().getTypeHeating());
@@ -133,20 +119,16 @@ public class WizardHomeController {
 
             /* update quote home */
             this.quoteService.insertQuoteHome(this.currentQuoteHome);
-
-            modelAndView.addObject("model", quoteHomeModel);
-
-        }else{
+        } else {
             quoteHomeModel.setQuoteHome(currentQuoteHome);
-            modelAndView.addObject("model", quoteHomeModel);
         }
+        modelAndView.addObject("model", quoteHomeModel);
 
         return modelAndView;
     }
 
     @RequestMapping(path = "/resultHome", method = RequestMethod.POST)
-    public ModelAndView wizardHomeEnd(@ModelAttribute QuoteHomeModel quoteHomeModel) {
-
+    public ModelAndView wizardHomeEnd(@ModelAttribute QuoteHomeModel quoteHomeModel) throws JsonProcessingException {
         ModelAndView modelAndView = new ModelAndView("index");
 
         /* update quote */
@@ -154,6 +136,14 @@ public class WizardHomeController {
         this.currentQuote.setStep(4);
         this.currentQuote.setResume(quoteHomeModel.getQuote().getResume());
         this.currentQuote.setPrice(quoteHomeModel.getQuote().getPrice());
+
+        SimpleQuote simpleQuote = new SimpleQuote();
+        simpleQuote.setPrice(Math.round(this.currentQuote.getPrice()));
+        simpleQuote.setTypeQuote("HomeQuote");
+        simpleQuote.setGuarantee("Standard home guarantee");
+        simpleQuote.setUserId(this.session.getIdUser());
+
+        this.simpleQuoteService.createSimpleQuote(simpleQuote);
         this.quoteService.insertQuote(this.currentQuote);
 
         return modelAndView;

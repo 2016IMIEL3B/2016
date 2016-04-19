@@ -21,8 +21,8 @@
         <form:input required="required" path="quote.price" class="col-md-3" type="text"/>
     </div>
 
-    <input value="Valider le devis" name="submit" type="submit" class="submit-btn"/>
     <a href="/wizard/home/3" class="btn btn-default">Etape précédente</a>
+    <input value="Valider le devis" name="submit" type="submit" class="submit-btn btn btn-default"/>
 </form:form>
 
 </body>

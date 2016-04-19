@@ -39,8 +39,8 @@
         </div>
     </div>
 
-    <input value="Étape suivante" name="submit" type="submit" class="submit-btn"/>
     <a href="/wizard/home/2" class="btn btn-default">Etape précédente</a>
+    <input value="Étape suivante" name="submit" type="submit" class="submit-btn btn btn-default"/>
 </form:form>
 
 </body>
