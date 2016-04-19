@@ -51,6 +51,11 @@ public class Car {
      */
     private String insurance;
 
+    /**
+     * Car is Tier
+     */
+    private boolean tier;
+
     /** Car Quotation. */
     @OneToOne
     @JoinColumn(name = "quotationId")
@@ -122,5 +127,13 @@ public class Car {
 
     public void setMark(String mark) {
         this.mark = mark;
+    }
+
+    public boolean isTier() {
+        return sleepGarage;
+    }
+
+    public void setTier(boolean tier) {
+        this.tier = tier;
     }
 }

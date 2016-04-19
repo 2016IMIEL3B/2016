@@ -53,6 +53,7 @@ CREATE TABLE Car
 	mark NVARCHAR(100),
 	model NVARCHAR(100),	
 	insurance NVARCHAR(100),
+    tier BOOLEAN,
 	quotationId INT,
 	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
 );

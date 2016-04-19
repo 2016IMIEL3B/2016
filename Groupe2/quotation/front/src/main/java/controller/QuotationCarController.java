@@ -205,6 +205,7 @@ public class QuotationCarController {
 
         if ((car.getInsurance() != "")) {
             car.getQuotation().setNbStep(0);
+            car.getQuotation().setState("Terminer");
             Quotation result = this.quotationService.save(car.getQuotation());
             Car carResult = this.carService.save(car);
             model = new ModelAndView(String.format("redirect:/"));
