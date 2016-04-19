@@ -1,0 +1,75 @@
+drop database if exists quotation_front;
+CREATE DATABASE quotation_front;
+
+
+USE quotation_front;
+
+CREATE TABLE TypeQuotation
+(
+	id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	entitled NVARCHAR(20) UNIQUE NOT NULL,
+	CONSTRAINT UK_TypeQuotation UNIQUE (entitled)
+);
+
+
+CREATE TABLE Quotation
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name NVARCHAR(75) NOT NULL,
+	number INT NOT NULL,
+	price FLOAT NOT NULL,
+	state NVARCHAR(100) NOT NULL,
+	nbStep SMALLINT NOT NULL,
+	typeQuotationId SMALLINT NOT NULL,
+	userId INT,
+	CONSTRAINT FK_Quotation_TypeQuotation FOREIGN KEY (typeQuotationId) REFERENCES TypeQuotation(id)
+);
+
+CREATE TABLE Home
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	surface FLOAT,
+	nbRoom SMALLINT,
+	floor SMALLINT,
+	nbBathroom SMALLINT,
+	garage BOOLEAN,
+	surfaceGround FLOAT,
+	surfaceTerrace FLOAT,
+	address NVARCHAR(100),
+	homeType NVARCHAR(100),
+	heaterType NVARCHAR(100),
+	formul NVARCHAR(100),
+	quotationId INT,
+	CONSTRAINT FK_Home_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
+);
+
+CREATE TABLE Car
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	taxableHorsePower SMALLINT,
+	sleepGarage BOOLEAN,
+	address NVARCHAR(100),
+	fuel NVARCHAR(100),
+	mark NVARCHAR(100),
+	model NVARCHAR(100),	
+	insurance NVARCHAR(100),
+    tier BOOLEAN,
+	quotationId INT,
+	CONSTRAINT FK_Car_Quotation FOREIGN KEY (quotationId) REFERENCES Quotation (id) ON DELETE CASCADE
+);
+
+CREATE TABLE Driver
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	lastName NVARCHAR(50),
+	firstName NVARCHAR(50),
+	principal BOOLEAN,
+	licenceDate DATE,
+	nbCrash INT,
+	bonusPenality Float,
+	carId INT,
+	CONSTRAINT FK_Driver_Car FOREIGN KEY (carId) REFERENCES Car (id) ON DELETE CASCADE
+	
+);
+
+

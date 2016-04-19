@@ -1,0 +1,32 @@
+USE quotation_back;
+
+
+INSERT INTO Fuel (entitled) VALUES ("Gasoil"), ("Sans Plomb 95");
+
+INSERT INTO HorsePower (value) VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12), (13), (14), (15), (16),
+(17), (18), (19), (20), (21), (22), (23), (24), (25), (26), (27), (28), (29), (30), (31), (32);
+
+INSERT INTO Price (value, type) VALUES (49900, "Voiture Tier"), (52599, "Habitation"), (89945, "Voiture Tous Risque");
+
+INSERT INTO Formul (entitled) VALUES ("Formule 1"), ("Formule 2");
+
+INSERT INTO HomeType (entitled) VALUES ("Pavillon"), ("Appartement");
+
+INSERT INTO HeaterType (entitled) VALUES ("Plancher chauffant"), ("Radiateur");
+
+INSERT INTO Mark (entitled) VALUES ("Peaugeot"), ("Alfa Roméo");
+
+INSERT INTO Model (entitled,markId) VALUES 
+("207",1),
+("208",1),
+("Giulietta",2),
+("Giulia",2);
+
+INSERT INTO Role (entitled) VALUES ("ADMIN"), ("CLIENT");
+
+INSERT INTO Address (nbStreet,nameStreet,zip,town) VALUES (2,"rue de la vie","53000","Laval");
+
+INSERT INTO User (lastName,firstName,login,password,roleId,addressId) VALUES ("Boussard","Kévin","veelkin","test",1,1);
+
+
+

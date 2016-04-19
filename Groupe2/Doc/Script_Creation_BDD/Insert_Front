@@ -1,0 +1,11 @@
+USE quotation_front;
+
+INSERT INTO TypeQuotation (entitled) VALUES
+("Habitation"),
+("Voiture");
+
+INSERT INTO Quotation (name,number,price,state,nbStep,typeQuotationId,userId) VALUES
+("Devis pour une Habitation",15,102589,"En Cours",4,1,1);
+
+INSERT INTO Home (surface,nbRoom,floor,nbBathroom,garage,surfaceGround,surfaceTerrace,address,homeType,heaterType,formul,quotationId) VALUES
+(50.7,2,0,2,TRUE,22,15,"14 rue de la rélativité 53000 Laval","Pavillon","Plancher chauffant","Formule 1",1);
