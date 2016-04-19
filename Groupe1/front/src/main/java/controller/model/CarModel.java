@@ -24,6 +24,7 @@ public class CarModel {
 
     public CarModel(){
         client = new Client();
+        address = new Address();
         quote = new Quote();
         quote.setVehicle(new Vehicle());
         quote.getVehicle().setModel(new Model());

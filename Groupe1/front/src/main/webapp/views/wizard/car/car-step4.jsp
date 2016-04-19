@@ -13,29 +13,29 @@
             <h4>Devis établi au nom de : John Doe</h4>
 
             <div>
-                <span style="font-size: 18px;">Adresse du propriétaire :</span>
-                <span>${carWizard.address.number}</span>
-                <span>${carWizard.address.street}</span>
-                <span>${carWizard.address.postcode}</span>
-                <span>${carWizard.address.city}</span>
-            </div>
-            <div>
-                <span>${carWizard.client.drivingLicenceDate}</span>
-                <span>${carWizard.client.accidentNumber}</span>
-                <span>${carWizard.client.bonus}</span>
+                <span style="font-size: 18px;">Adresse du propriétaire :</span> <br>
+                <span>${carWizard.address.number}</span><br>
+                <span>${carWizard.address.street}</span><br>
+                <span>${carWizard.address.postcode}</span><br>
+                <span>${carWizard.address.city}</span><br>
             </div>
 
             <div>
-                <span>${carWizard.client.user.firstName}</span>
-                <span>${carWizard.client.user.LastName}</span>
-                <span>${carWizard.client.isSecondary}</span>
+                <span style="font-size: 18px;">Informations conducteur:</span><br>
+                <span>${carWizard.client.user.firstName}</span><br>
+                <span>${carWizard.client.user.lastName}</span><br>
+                <span>Date d'obtention du permis:</span><span>${carWizard.client.drivingLicenceDate}</span><br>
+                <span>Nombre d'accidents:</span> <span>${carWizard.client.accidentNumber}</span>
+
             </div>
 
             <div>
-                <span>${carWizard.quote.vehicle.model}</span>
-                <span>${carWizard.quote.vehicle.fuel}</span>
-                <span>${carWizard.quote.vehicle.horsepower}</span>
-                <span>${carWizard.quote.vehicle.sleepInside}</span>
+                <span style="font-size: 18px;">Informations Véhicule:</span><br>
+                <span>Modèle: </span><span>${carWizard.quote.vehicle.model.name}</span><br>
+                <span>Fuel:</span><span>${carWizard.quote.vehicle.fuel}</span><br>
+                <span>Chevaux fiscaux: </span><span>${carWizard.quote.vehicle.horsepower}</span>
+
+
 
             </div>
         </div>
