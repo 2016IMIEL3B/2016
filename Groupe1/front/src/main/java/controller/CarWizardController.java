@@ -38,24 +38,31 @@ public class CarWizardController {
         return new ModelAndView("wizard/car/"+pageViews[currentPage-1]);
     }
 
-    @RequestMapping(params = "_finish")
-     public ModelAndView processFinish(@ModelAttribute("carWizard") CarModel carWizard, SessionStatus status){
-        status.setComplete();
-        return new ModelAndView("successView");
-     }
-
-    @RequestMapping (params = "_cancel")
-    public String processCancel(SessionStatus status){
-        status.setComplete();
-        return "wizard/canceledView";
-    }
-
     @RequestMapping(value = "/quote/{quoteId}", method = RequestMethod.GET)
     public ModelAndView getFromSynthesis(@PathVariable Integer quoteId) {
         Quote quote = quoteService.findOne(quoteId);
         CarModel carModel = new CarModel(quote);
         return new ModelAndView("wizard/car/car-step"+quote.getStep(),"carWizard", carModel);
     }
+    @RequestMapping(params = "_finish")
 
+    public ModelAndView processFinish(@ModelAttribute("habWizard") CarModel carWizard, SessionStatus status) {
+        try {
+            quoteService.save(carWizard.getQuote());
+        } catch (Exception e){
+            System.out.print(e.getMessage());
+        }
+
+        // suppression de l'objet en session
+        status.setComplete();
+        return new ModelAndView("successView");
+    }
+
+    @RequestMapping(params = "_cancel")
+    public String processCancel(SessionStatus status) {
+        // suppression de l'objet en session
+        status.setComplete();
+        return "wizard/canceledView";
+    }
 
 }
