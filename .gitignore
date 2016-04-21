@@ -1,3 +1,4 @@
+
 ./gitignore
 
 ./**/target/
@@ -40,3 +41,5 @@ Groupe3/Insurance/front/insurance.front.iml
 Groupe3/Insurance/front/pom.xml
 Groupe3/Insurance/front/src/main/java/dao/UserRepository.java
 Groupe3/Insurance/front/src/main/resources/application.propertiesfig/TestController.class
+=======
+ProjetVertx/.idea/
